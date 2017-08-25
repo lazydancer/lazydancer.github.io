@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
-<title>James Pucula</title>
+<title>List</title>
 <style>
 	body{
 		margin:1em auto;
@@ -17,41 +17,310 @@
 </style>
 <article>
 	<header>
-		<a href="/"><img width=140 heihgt=140 src="data:image/png;base64,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"></embed></a>
+		<a href="/"><img src="data:image/png;base64,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"></embed></a>
 		
 	</header>
 
 	<h1>List</h1>	
+
+	<div id="myDIV" class="header">
+	  <input type="text" id="myInput" placeholder="Title...">
+	  <span onclick="newElement()" class="addBtn">Add</span>
+	</div>
 	
-	<p>An all in-browser in list maker. This is more of a toy, everything is avaiable from the url. This could be could for sharing lists of things. It is difficult in updating as the person will need to copy the url each time
-
-
-	<ul id="list">
-		<li contenteditable="true">studio - Simple Haskell Static Site Generator
-		<li contenteditable="true">Automatic Paintball Turret
-		<li contenteditable="true">Looks the same in all your shitty browsers.
-		<li contenteditable="true">Accessible to every asshole that visits your site.
-		<li contenteditable="true">Shit’s legible and gets the fucking point across (if you had one instead of just a 5MB background video of hipsters poking at their iPhones).
+	<ul id="myUL">
+	
 	</ul>
+
+	<span id="code" style="word-wrap: break-word;"></span>
+
+	<p id="length"></p>
+
+	<TEXTAREA ID="holdtext" STYLE="display:none;"></TEXTAREA>
+	<button onclick="ClipBoard();">Copy to Clipboard</button>
+
+	<style>
+
+		* {
+		    box-sizing: border-box;
+		}
+
+		/* Remove margins and padding from the list */
+		ul {
+		    margin: 0;
+		    padding: 0;
+		}
+
+		/* Style the list items */
+		ul li {
+		    cursor: pointer;
+		    position: relative;
+		    padding: 12px 8px 12px 40px;
+		    background: #eee;
+		    font-size: 18px;
+		    transition: 0.2s;
+		    list-style-type: none;
+
+		    /* make the list items unselectable */
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		}
+
+		/* Set all odd list items to a different color (zebra-stripes) */
+		ul li:nth-child(odd) {
+		    background: #f9f9f9;
+		}
+
+		/* Darker background-color on hover */
+		ul li:hover {
+		    background: #ddd;
+		}
+
+		/* When clicked on, add a background color and strike out text */
+		ul li.checked {
+		    background: #888;
+		    color: #fff;
+		    text-decoration: line-through;
+		}
+
+		/* Add a "checked" mark when clicked on */
+		ul li.checked::before {
+		    content: '';
+		    position: absolute;
+		    border-color: #fff;
+		    border-style: solid;
+		    border-width: 0 2px 2px 0;
+		    top: 10px;
+		    left: 16px;
+		    transform: rotate(45deg);
+		    height: 15px;
+		    width: 7px;
+		}
+
+		/* Style the close button */
+		.close {
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    padding: 12px 16px 12px 16px;
+		}
+
+		.close:hover {
+		    background-color: #f44336;
+		    color: white;
+		}
+
+		/* Style the header */
+		.header {
+		    padding: 10px 40px;
+		}
+
+		/* Clear floats after the header */
+		.header:after {
+		    content: "";
+		    display: table;
+		    clear: both;
+		}
+
+		/* Style the input */
+		input {
+		    border: 3px solid black;
+		    width: 75%;
+		    padding: 10px;
+		    float: left;
+		    font-size: 16px;
+		}
+
+		/* Style the "Add" button */
+		.addBtn {
+		    padding: 10px;
+		    width: 25%;
+		    background: #000;
+		    color: #fff;
+		    float: left;
+		    text-align: center;
+		    font-size: 16px;
+		    cursor: pointer;
+		    transition: 0.3s;
+		}
+
+		.addBtn:hover {
+		    background-color: #bbb;
+}
+
+	</style>
+
+	<script>
+	// Create a "close" button and append it to each list item
+	var myNodelist = document.getElementsByTagName("LI");
+	var i;
+	for (i = 0; i < myNodelist.length; i++) {
+	  var span = document.createElement("SPAN");
+	  var txt = document.createTextNode("\u00D7");
+	  span.className = "close";
+	  span.appendChild(txt);
+	  myNodelist[i].appendChild(span);
+	}
+
+	// Click on a close button to hide the current list item
+	var close = document.getElementsByClassName("close");
+	var i;
+	for (i = 0; i < close.length; i++) {
+	  close[i].onclick = function() {
+	    var div = this.parentElement;
+	    //div.style.display = "none";
+	    console.log(div)
+	  }
+	}
+
+	// Add a "checked" symbol when clicking on a list item
+	var list = document.querySelector('ul');
+	list.addEventListener('click', function(ev) {
+	  if (ev.target.tagName === 'LI') {
+	    ev.target.classList.toggle('checked');
+	    updateDataCode();
+	  }
+	}, false);
+
+
+	// Create a new list item when clicking on the "Add" button
+	function newElement(inputValue = "") {
+	  if(inputValue == "") {
+	    var inputValue = document.getElementById("myInput").value;
+	  }
+
+	  var checked = false;
+	  if(inputValue[inputValue.length-1] == 1){
+	  	checked = true;
+	  	inputValue = inputValue.substr(0, inputValue.length-1); //remove 1
+	  }
+
+	  var t = document.createTextNode(inputValue);
+	  var li = document.createElement("li");
+	  if(checked){
+	  	li.setAttribute("class",'checked');
+	  }
+
+	  li.appendChild(t);
+	  if (inputValue === '') {
+	    alert("You must write something!");
+	  } else {
+	    document.getElementById("myUL").appendChild(li);
+	  }
+	  document.getElementById("myInput").value = "";
+
+	  var span = document.createElement("SPAN");
+	  var txt = document.createTextNode("\u00D7");
+	  span.className = "close";
+	  span.appendChild(txt);
+	  li.appendChild(span);
+
+
+	  for (i = 0; i < close.length; i++) {
+	    close[i].onclick = function() {
+	      var div = this.parentElement;
+	      div.remove();
+	      updateDataCode();
+	    }
+	  }
+
+
+	  updateDataCode();
+
+	}		
+
+	</script>
 
 	<script>
 
-	var data = document.getElementsByTagName('li');
+	function getDataCode(){
 
-	var test = []
-	for(var i = 0; i < data.length; i++){
-		test.push(data[i].innerHTML)
+		var data = document.getElementsByTagName('li');
+
+		var test = []
+		for(var i = 0; i < data.length; i++){
+			item = data[i].innerHTML;
+			item = item.replace(/<\/?span[^>]*>/g,"");
+			item = item.substr(0, item.length-1); // remove "x"
+
+			if (data[i].className == "checked"){
+				item = item + "1";
+			}
+
+			item = item + "zz";
+
+			test.push(item); //removes "x" and adds "zz" for return
+		}
+		
+		var words = "" 
+		for(var i = 0; i < data.length; i++){
+			words = words + test[i]
+		}
+		
+		return btoa(words);
+
 	}
+
+	function updateDataCode(){
+
+		dataCode = getDataCode()
+
+		//history.pushState({ foo: "bar"},"page 2", "?" + dataCode);
+		var post = document.getElementById("code");
+		post.textContent = dataCode;
+
+		var post2 = document.getElementById("length");
+		post2.textContent = dataCode.length;
+
+
+	}
+
+	function writeCode(code){
+
+		code = atob(code)
+
+		var listMaybe = code.split('zz')
+		listMaybe.splice(-1,1) //Remove blank element
+
+
+		for(var i = 0; i < listMaybe.length; i++){
+			newElement(listMaybe[i]);
+		}
+
+	}
+
+	function initCode(code){
+		
+		if (code == '' || code == null){
+			newElement("Hit the gym");
+			newElement("Pay bills1");
+			newElement("Meet George");
+			newElement("Buy eggs");
+			newElement("Read a book");
+			newElement("Organize Office1");
+		} else {
+			writeCode(code);
+		}
+
+	}
+
+
+	var url = window.location.href;
+	var array = url.split("?");
+	var code = array[1];
+	window.onload = initCode(code);
+
 	
-	var words = "" 
-	for(var i = 0; i < data.length; i++){
-		words = words + test[i]
+
+	function copyToClipboard(element) {
+	  var $temp = $("<input>");
+	  $("body").append($temp);
+	  $temp.val($(element).text()).select();
+	  document.execCommand("copy");
+	  $temp.remove();
 	}
-
-
-	console.log(window.location.href,escape(words))
-
-	//window.location.href = "file:///C:/Users/James/Dropbox/DoThingsTellPeople/list/index.html" + "?" + encodeURI(words);
 
 	// maximum url length is ~2000 caracters
 
