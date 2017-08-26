@@ -32,12 +32,12 @@
 	
 	</ul>
 
-	<span id="code" style="word-wrap: break-word;"></span>
+	<!--<span id="code" style="word-wrap: break-word;"></span>-->
 
 	<p id="length"></p>
 
-	<TEXTAREA ID="holdtext" STYLE="display:none;"></TEXTAREA>
-	<button onclick="ClipBoard();">Copy to Clipboard</button>
+	<input type="text" id="code" value="" />
+	<button data-copytarget="#code" class="addBtn">copy</button>
 
 	<style>
 
@@ -235,7 +235,7 @@
 
 	<script>
 
-	function getDataCode(){
+	function getDataString(){
 
 		var data = document.getElementsByTagName('li');
 
@@ -265,15 +265,15 @@
 
 	function updateDataCode(){
 
-		dataCode = getDataCode()
+		dataString = getDataString();
+		dataCode = btoa(dataString);
 
 		//history.pushState({ foo: "bar"},"page 2", "?" + dataCode);
 		var post = document.getElementById("code");
-		post.textContent = dataCode;
+		post.value = "pucula.com/list/?" + dataCode;
 
 		var post2 = document.getElementById("length");
 		post2.textContent = dataCode.length;
-
 
 	}
 
@@ -307,22 +307,51 @@
 	}
 
 
+	//copy to clipboard function
+	(function() {
+
+	  'use strict';
+
+	  // click events
+	  document.body.addEventListener('click', copy, true);
+
+	  // event handler
+	  function copy(e) {
+
+	    // find target element
+	    var
+	      t = e.target,
+	      c = t.dataset.copytarget,
+	      inp = (c ? document.querySelector(c) : null);
+
+	    // is element selectable?
+	    if (inp && inp.select) {
+
+	      // select text
+	      inp.select();
+
+	      try {
+	        // copy text
+	        document.execCommand('copy');
+	        inp.blur();
+	      }
+	      catch (err) {
+	        alert('please press Ctrl/Cmd+C to copy');
+	      }
+
+	    }
+
+	  }
+
+	})();
+
+
+
 	var url = window.location.href;
 	var array = url.split("?");
 	var code = array[1];
 	window.onload = initCode(code);
 
-	
-
-	function copyToClipboard(element) {
-	  var $temp = $("<input>");
-	  $("body").append($temp);
-	  $temp.val($(element).text()).select();
-	  document.execCommand("copy");
-	  $temp.remove();
-	}
-
-	// maximum url length is ~2000 caracters
 
 	</script>
 
