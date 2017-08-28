@@ -24,7 +24,7 @@
 	<h1>List</h1>	
 
 	<div id="myDIV" class="header">
-	  <input type="text" id="myInput" placeholder="Title...">
+	  <input type="text" id="myInput" placeholder="Add item..." onkeydown="enterNewElement()">
 	  <span onclick="newElement()" class="addBtn">Add</span>
 	</div>
 	
@@ -32,9 +32,10 @@
 	
 	</ul>
 
-
-	<input type="text" id="code" value="" />
-	<button data-copytarget="#code" class="addBtn">copy</button>
+	<div id="myDIV" class="header">
+		<input type="text" id="code" value="" />
+		<button data-copytarget="#code" class="addBtn" id="copybtn">copy</button>
+	</div>
 
 	<style>
 
@@ -42,7 +43,7 @@
 		    box-sizing: border-box;
 		}
 		ul {
-		    margin: 0;
+		    margin: 0 0 20px 0;
 		    padding: 0;
 		}
 		ul li {
@@ -129,6 +130,7 @@
 		.addBtn {
 		    padding: 10px;
 		    width: 25%;
+		    height:44px;
 		    background: #000;
 		    color: #fff;
 		    float: left;
@@ -136,6 +138,7 @@
 		    font-size: 16px;
 		    cursor: pointer;
 		    transition: 0.3s;
+		    border: none;
 		}
 
 		.addBtn:hover {
@@ -175,6 +178,11 @@
 	  }
 	}, false);
 
+	function enterNewElement(ele) {
+    	if(event.keyCode == 13) {
+        	newElement()       
+    	}
+    }
 
 	// Create a new list item when clicking on the "Add" button
 	function newElement(inputValue = "") {
@@ -363,6 +371,7 @@
 	        // copy text
 	        document.execCommand('copy');
 	        inp.blur();
+	        alert('Link copied')
 	      }
 	      catch (err) {
 	        alert('please press Ctrl/Cmd+C to copy');
