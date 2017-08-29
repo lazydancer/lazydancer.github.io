@@ -5,85 +5,85 @@
 <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
 <title>studio</title>
 <style>
-	body{
-		margin:1em auto;
-		max-width:40em;
-		padding:0 .62em;
-		font:1.2em/1.62 serif;
-	}
-	h1,h2,h3 {
-		line-height:1.2;
-	}
-	code, pre {
-  		background: #eee;
-	}
-	code {
-  		padding: 2px 4px;
-  		vertical-align: text-bottom;
-	}
-	pre {
-  		padding: 1em;
-	}
+    body{
+        margin:1em auto;
+        max-width:40em;
+        padding:0 .62em;
+        font:1.2em/1.62 serif;
+    }
+    h1,h2,h3 {
+        line-height:1.2;
+    }
+    code, pre {
+        background: #eee;
+    }
+    code {
+        padding: 2px 4px;
+        vertical-align: text-bottom;
+    }
+    pre {
+        padding: 1em;
+    }
 
 </style>
 <article>
-	<header>
-		<a href="/"><img src="../bird.png"</a>
-		
-	</header>
+    <header>
+        <a href="/"><img src="../static/bird.png"></a>
+        
+    </header>
 
-	<h1>studio - Simple Haskell Static Site Generator</h1>
+    <h1>studio - Simple Haskell Static Site Generator</h1>
 
-	<p>studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages. 
+    <p>studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages. 
 
-	<p>studio also organizes the html pages and generates a table of contents. Having the flexibility to change a template and adding custom css and javascript. With static webpages, your site is fast, secure and easy to deploy. You can find the code on github
+    <p>studio also organizes the html pages and generates a table of contents. Having the flexibility to change a template and adding custom css and javascript. With static webpages, your site is fast, secure and easy to deploy. You can find the code on github
 
-	<p>It was summer in 2014, I was very interested in Haskell. I was also interested in writing what I learned online. I tried some other static site generators and found that they were over what I needed and was looking for. So I thought I could write my own in Haskell
+    <p>It was summer in 2014, I was very interested in Haskell. I was also interested in writing what I learned online. I tried some other static site generators and found that they were over what I needed and was looking for. So I thought I could write my own in Haskell
 
-	<p>My goal was to create this static site generator in 100 lines of Haskell. I reached my goal but was not readable. I added more spaces and expanded some more of the hairy equation.
+    <p>My goal was to create this static site generator in 100 lines of Haskell. I reached my goal but was not readable. I added more spaces and expanded some more of the hairy equation.
 
-	<p>The basic layout which I need to do. Inputs are ".txt" files with blog posts. I used markdown which is a standard so you can add titles, links and images. We take the titles in the text files and create a table of contents for a main page, generating a link for each article.
+    <p>The basic layout which I need to do. Inputs are ".txt" files with blog posts. I used markdown which is a standard so you can add titles, links and images. We take the titles in the text files and create a table of contents for a main page, generating a link for each article.
 
-	<p>Haskell is a functional language,  I had to divide the functional vs the messy real world. It is also a dense language, you can do a lot of modifications in a few lines of codes vs of other languages. We divide this program into 3 steps
+    <p>Haskell is a functional language,  I had to divide the functional vs the messy real world. It is also a dense language, you can do a lot of modifications in a few lines of codes vs of other languages. We divide this program into 3 steps
 
-	<p>The only large data structure made for this was the Page which has the file path and date.
+    <p>The only large data structure made for this was the Page which has the file path and date.
 
-	<pre><code>data Page = Page { title :: FilePath    -- Path to words
-       		, static  :: [FilePath]  -- List of static files 
-   	   	, date    :: [String]    -- Month,day,year
-   	   } deriving (Show) </code></pre>
+    <pre><code>data Page = Page { title :: FilePath    -- Path to words
+            , static  :: [FilePath]  -- List of static files 
+        , date    :: [String]    -- Month,day,year
+       } deriving (Show) </code></pre>
 
-	
-	<p>1. Create and order pages: Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file is creating a list extra js or css files linked to the article. This offered some flexiblility to have custom css for an article
-	<pre><code>
-	getPages :: [FilePath] -> IO [Page]
-	getPages = mapM (\x -> do static <- getStatic ("Articles/" ++ x)
+    
+    <p>1. Create and order pages: Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file is creating a list extra js or css files linked to the article. This offered some flexiblility to have custom css for an article
+    <pre><code>
+    getPages :: [FilePath] -> IO [Page]
+    getPages = mapM (\x -> do static <- getStatic ("Articles/" ++ x)
                           date <- getPageDate ("Articles/" ++ x ++ "/words.md")
                           return (Page x static date))
     </code></pre>
-	<p>2. Create html from template and pages: To write a page require a template in the form of a string with was HTML and the Page data structure from above. Pandoc helped convert the markdown text files 
-	<pre><code>
-	writePage :: String -> Page -> IO ()
-	writePage template page = do
-  		let year = last $ date page  
+    <p>2. Create html from template and pages: To write a page require a template in the form of a string with was HTML and the Page data structure from above. Pandoc helped convert the markdown text files 
+    <pre><code>
+    writePage :: String -> Page -> IO ()
+    writePage template page = do
+        let year = last $ date page  
 
-  		let urlTitle = urlConvert (title page)
-  		mdArt <- readFile ("Articles/" ++ urlTitle ++ "/words.md")
-  		let pandocArt = readMarkdown def mdArt
-  		let html = writeHtmlString (siteOptions template) pandocArt
-  		createDirectoryIfMissing True $ "Output/" ++ year ++ "/" ++ urlTitle 
-  		writeFile ("Output/" ++ year ++ "/" ++ urlTitle ++ "/index.html") html
-  	</code></pre>
-	<p>3. Write table of contents: The table of contents also use the template but also include some html to make it look pretty
-	<pre><code>
-	writeTOC :: String -> [Page] -> IO ()
-	writeTOC template pages = do
-  		list <- mapM getItem pages 
- 		let html = writeHtmlString (siteOptions template) (tocWrap list) 
-  		createDirectoryIfMissing True $ "Output/archives" 
-  		writeFile "Output/archives/index.html" html 
-  	</code></pre>
+        let urlTitle = urlConvert (title page)
+        mdArt <- readFile ("Articles/" ++ urlTitle ++ "/words.md")
+        let pandocArt = readMarkdown def mdArt
+        let html = writeHtmlString (siteOptions template) pandocArt
+        createDirectoryIfMissing True $ "Output/" ++ year ++ "/" ++ urlTitle 
+        writeFile ("Output/" ++ year ++ "/" ++ urlTitle ++ "/index.html") html
+    </code></pre>
+    <p>3. Write table of contents: The table of contents also use the template but also include some html to make it look pretty
+    <pre><code>
+    writeTOC :: String -> [Page] -> IO ()
+    writeTOC template pages = do
+        list <- mapM getItem pages 
+        let html = writeHtmlString (siteOptions template) (tocWrap list) 
+        createDirectoryIfMissing True $ "Output/archives" 
+        writeFile "Output/archives/index.html" html 
+    </code></pre>
 
-  	<p>That is most likely 80% of the functions of the studio. With most other things being moving files around. Thank you for reading. You can find the code <a href="https://github.com/lazydancer/studio">here</a>
+    <p>That is most likely 80% of the functions of the studio. With most other things being moving files around. Thank you for reading. You can find the code <a href="https://github.com/lazydancer/studio">here</a>
 
 </article>
