@@ -1,0 +1,41 @@
+body{
+    margin:18px auto;
+    max-width:722px;
+    padding:0 10px;
+    font:18px/1.62 sans-serif;
+}
+
+p {
+    color: #303540;
+}
+
+h1,h2,h3 {
+    line-height:1.2;
+    font-family: serif;
+}
+code, pre {
+    background: #eee;
+}
+code {
+    padding: 2px 4px;
+    vertical-align: text-bottom;
+}
+pre {
+    padding: 1em;
+}
+
+.preview {
+        border: solid 1px #ccc;
+    }
+.date {
+    font-size:14px;
+    float: right;
+    color: #636363
+}
+a {
+    color: steelblue;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}

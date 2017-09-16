@@ -4,17 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
 <title>List</title>
-<style>
-    body{
-        margin:1em auto;
-        max-width:40em;
-        padding:0 .62em;
-        font:1.2em/1.62 serif;
-    }
-    h1,h2,h3 {
-        line-height:1.2;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="../style.css">
 <article>
     <header>
         <a href="/"><img width=140 heihgt=140 src="../static/bird.png"></a>
@@ -25,7 +15,7 @@
 
     <div id="myDIV" class="header">
       <input type="text" id="myInput" placeholder="Add item..." onkeydown="enterNewElement()">
-      <span onclick="newElement()" class="addBtn">Add</span>
+      <span onclick="inputNewElement()" id="addBtn" class="addBtn">Add</span>
     </div>
     
     <ul id="myUL">
@@ -148,29 +138,8 @@
 
     <script>
 
-    // Create a "close" button and append it to each list item
-    var myNodelist = document.getElementsByTagName("li");
-    var i;
-    for (i = 0; i < myNodelist.length; i++) {
-      var span = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.appendChild(txt);
-      myNodelist[i].appendChild(span);
-    }
-
-    // Click on a close button to hide the current list item
-    var close = document.getElementsByClassName("close");
-    var i;
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function() {
-        var div = this.parentElement;
-        //div.style.display = "none";
-        console.log(div)
-      }
-    }
-
     // Add a "checked" symbol when clicking on a list item
+    /**
     var list = document.querySelector('ul');
     list.addEventListener('click', function(ev) {
       if (ev.target.tagName === 'LI') {
@@ -178,18 +147,30 @@
         updateDataCode();
       }
     }, false);
+    **/
+    addBtn = document.getElementById("addBtn")
 
-    function enterNewElement(ele) {
+    addBtn.onclick = function(){
+      var inputValue = document.getElementById("myInput").value;
+      inputNewElement(inputValue)
+    }
+
+    function enterNewElement() {
         if(event.keyCode == 13) {
-            newElement()       
+            inputNewElement()       
         }
+    }
+  
+    function inputNewElement(inputValue){
+      if(inputValue == ""){
+        alert("You must write something")
+      } else {
+        newElement(inputValue)
+      }
     }
 
     // Create a new list item when clicking on the "Add" button
-    function newElement(inputValue = "") {
-      if(inputValue == "") {
-        var inputValue = document.getElementById("myInput").value;
-      }
+    function newElement(inputValue) {
 
       var checked = false;
       if(inputValue[inputValue.length-1] == "."){
@@ -197,32 +178,34 @@
         inputValue = inputValue.substr(0, inputValue.length-1); //remove 1
       }
 
-      var t = document.createTextNode(inputValue);
+
       var li = document.createElement("li");
       if(checked){
         li.setAttribute("class",'checked');
       }
 
+      var t = document.createTextNode(inputValue);
       li.appendChild(t);
-      if (inputValue === '') {
-        alert("You must write something!");
-      } else {
-        document.getElementById("myUL").appendChild(li);
-      }
+
+      var close = document.createElement("span");
+      close.className = "close";
+      close.appendChild(document.createTextNode("\u00D7"));
+      li.appendChild(close);
+
+      document.getElementById("myUL").appendChild(li);
+
       document.getElementById("myInput").value = "";
 
-      var span = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.appendChild(txt);
-      li.appendChild(span);
+      close.onclick = function() {
+        this.parentElement.remove();
+        updateDataCode();
+      }
 
-
-      for (i = 0; i < close.length; i++) {
-        close[i].onclick = function() {
-          var div = this.parentElement;
-          div.remove();
-          updateDataCode();
+      li.onclick = function() {
+        if(li.className == "checked"){
+          li.setAttribute("class","")
+        }else{
+          li.setAttribute("class","checked")
         }
       }
 
@@ -326,7 +309,7 @@
 
 
         for(var i = 0; i < listMaybe.length; i++){
-            newElement(listMaybe[i]);
+            inputNewElement(listMaybe[i]);
         }
 
     }
