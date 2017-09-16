@@ -2,11 +2,8 @@ body{
     margin:18px auto;
     max-width:722px;
     padding:0 10px;
-    font:18px/1.62 sans-serif;
-}
-
-p {
-    color: #303540;
+    font:17px/1.62 sans-serif;
+    color: #262626
 }
 
 h1,h2,h3 {
