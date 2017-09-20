@@ -5,6 +5,102 @@
 <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
 <title>List</title>
 <link rel="stylesheet" type="text/css" href="../style.css">
+<style>
+* {
+    box-sizing: border-box;
+}
+ul {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    list-style-type: none;
+
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+ul li:nth-child(odd) {
+    background: #f9f9f9;
+}
+/* Darker background-color on hover */
+ul li:hover {
+    background: #ddd;
+}
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+/* Style the close button */
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+/* Style the header */
+.header {
+    padding: 10px 40px;
+}
+/* Clear floats after the header */
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Style the input */
+input {
+    border: 3px solid black;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+/* Style the "Add" button */
+.addBtn {
+    padding: 10px;
+    width: 25%;
+    height:44px;
+    background: #000;
+    color: #fff;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+.addBtn:hover {
+    background-color: #bbb;
+}
+</style>
 <article>
     <header>
         <a href="/"><img width=140 heihgt=140 src="../static/bird.png"></a>
@@ -26,115 +122,22 @@
         <input type="text" id="code" value="" />
         <button data-copytarget="#code" class="addBtn" id="copybtn">copy</button>
     </div>
-    <link rel="stylesheet" type="text/css" href="../style.css">
-    <style>
 
-        * {
-            box-sizing: border-box;
-        }
-        ul {
-            margin: 0 0 20px 0;
-            padding: 0;
-        }
-        ul li {
-            cursor: pointer;
-            position: relative;
-            padding: 12px 8px 12px 40px;
-            background: #eee;
-            font-size: 18px;
-            transition: 0.2s;
-            list-style-type: none;
+    <p> The above is a application does not access a server and runs entirely in the browser.
 
-            /* make the list items unselectable */
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+    <h3>How it works</h3>
 
-        ul li:nth-child(odd) {
-            background: #f9f9f9;
-        }
+    <p>Everything is done in javascript where when you add and remove an item is deleted the DOM is modified. Each change calls a function to create a code that is placed in the url which can be copied. When the copied url is pasted the code is read and javascript adds the to-do list items
 
-        /* Darker background-color on hover */
-        ul li:hover {
-            background: #ddd;
-        }
+    <p>A problem that can occur is the url can get to long where it will not read it and I believe it looks better when it is a shorter url. 3 things were done to reduce the lenght of the url</p>
 
-        /* When clicked on, add a background color and strike out text */
-        ul li.checked {
-            background: #888;
-            color: #fff;
-            text-decoration: line-through;
-        }
-
-        /* Add a "checked" mark when clicked on */
-        ul li.checked::before {
-            content: '';
-            position: absolute;
-            border-color: #fff;
-            border-style: solid;
-            border-width: 0 2px 2px 0;
-            top: 10px;
-            left: 16px;
-            transform: rotate(45deg);
-            height: 15px;
-            width: 7px;
-        }
-
-        /* Style the close button */
-        .close {
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 12px 16px 12px 16px;
-        }
-
-        .close:hover {
-            background-color: #f44336;
-            color: white;
-        }
-
-        /* Style the header */
-        .header {
-            padding: 10px 40px;
-        }
-
-        /* Clear floats after the header */
-        .header:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* Style the input */
-        input {
-            border: 3px solid black;
-            width: 75%;
-            padding: 10px;
-            float: left;
-            font-size: 16px;
-        }
-
-        /* Style the "Add" button */
-        .addBtn {
-            padding: 10px;
-            width: 25%;
-            height:44px;
-            background: #000;
-            color: #fff;
-            float: left;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-        }
-
-        .addBtn:hover {
-            background-color: #bbb;
-}
-    </style>
+    <ol>
+        <li>Reduced character set, by default it is utf-8 character set which in this case takes 8 bits per character. We can reduce this by using a restricted character set of Base-64 which takes 6 bits per character. This is also benifital has uri valid characters are simailar to the Base-64 character set</li>
+        <li>Mapping the most common characters in english to the shortest characters in arial</li>
+        <li>Not added: Lz compression, this would negate the mapping to the shortest characters and on the shortest lists would actually make the list longer. On long lists this could be useful</li>
+        <li>Not added: Further reduced character set to Base 32, I felt this was to restricted as it removed most additional characters and only lower case which would be seen on the page</li>
+    </ol>
+    
 
     <script src="script.js"></script>
 
