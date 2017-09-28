@@ -23,13 +23,9 @@
 
     <p>The goal of the system is to develop a paintball sentry gun that can acquire, track and engage moving targets autonomously. Using a video image coordinates of the target’s position are determined and sent to turret motors which then orient the paintball gun to aim at the target and fire paintballs. The video image is acquired by a stationary webcam and transmitted to a laptop where the image is processed to acquire the desired target’s position. The position of the object relative to the paintball marker is then found and a desired motor position is then sent to an Arduino for further manipulation. The Arduino then computes the change between the current and desired position to calculate the time the motor is given to move to the final position. The Arduino relays the final position and time allowed to the motors’ onboard controller that handles the trajectory planning and internal PID controller. The servo motors frequently check position and correct following their PID controller. The Arduino validates if the marker is in position and ready to fire paintballs.</p>
 
-
-
     <h2>System Requirements</h2>
 
     <p>The following is a detailed description of the various systems that are part of the paintball sentry system. Section 3.1 describes the physical system including the hardware and supports of the sentry. Section 3.2 speaks on the image processing is discussed this deals with how the intended target is found and its position is extracted. Section 3.3 describes the motor control which deals with the positioning and trajectory planning for the motors. Section 3.4 specifically discusses how the onboard PID motor controllers were used to optimize motor control. And finally, Section 3.5 discusses the logic, circuitry and safety mechanisms behind the firing control system.</p>
-
-
 
     <h2>Physical System</h2>
 
@@ -153,6 +149,6 @@
 
     <h2>Conclusion</h2>
 
-    <p>A functional paintball sentry turret was successfully constructed. It successfully tracked targets of a designated color, transformed coordinates of the targets into motor positions, engaged the motors to reorient to aim at the target, and fired paintballs precisely and with reasonable accuracy. With the success a few lessons were learned, the largest being the importance of sizing an adequate motor and balancing the load. A video demonstration of the system can be found on Youtube [2].</p>
+    <p>A functional paintball sentry turret was successfully constructed. It successfully tracked targets of a designated color, transformed coordinates of the targets into motor positions, engaged the motors to reorient to aim at the target, and fired paintballs precisely and with reasonable accuracy. With the success a few lessons were learned, the largest being the importance of sizing an adequate motor and balancing the load. A video demonstration of the system can be found on <a href="">Youtube</a></p>
         
 </article>
