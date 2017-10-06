@@ -16,27 +16,30 @@
 
     <p>food is an application built to help the planning phase of cooking. The hardest part of cooking is the prep. I wanted an app that made it easy to select a recipe and build a grocery list</p>
 
-    <p>You can find the code and more info on github. In this article I will go behind the scenes to show what this application is running</p>
+    <p>You can find the code and more info on github. In this article I will go behind the scenes to show what this application is running. This was the first time I built a Django Application, so I will post things I learned on the way</p>
+
+    <h2>Tools Used</h2>
+    <ol>
+        <li>Django </li>
+        <li>Amazon Web Services (AWS)</li>
+        <li>Postgres + SQLite3</li>
+    </ol>
 
     <h2>Django</h2>
+
+    <p>This my first time making an app in Django. Python is one of my favorite programming languages and this was fun. 
+
     <h2>AWS</h2>
+
+    <p>AWS runs this site as an S3 bucket. This app uses the power avaiable though this service much better. Setting up an Elastic Beanstalk App. THis automatically starts a EC2 server and Load balancing. </p>
+
     <h2>Postgres + SQLite3</h2>
 
+    <p>THe postgres server also runs on AWS. This is overkill for this application as at this point it could be deliveried through a static site but this always flexiblity. I would like to add user lists and being able to upload your our recipes. 
 
-    <p> The above is a application does not access a server and runs entirely in the browser.
+    <p>On the local machine side for testing SQLite3 server is setup. THis was for people who want to try the app out without starting an Postgres database.</p>
 
-    <h3>How it works</h3>
-
-    <p>Everything is done in javascript where when you add and remove an item is deleted the DOM is modified. Each change calls a function to create a code that is placed in the url which can be copied. When the copied url is pasted the code is read and javascript adds the to-do list items
-
-    <p>A problem that can occur is the url can get to long where it will not read it and I believe it looks better when it is a shorter url. 3 things were done to reduce the lenght of the url</p>
-
-    <ol>
-        <li>Reduced character set, by default it is utf-8 character set which in this case takes 8 bits per character. We can reduce this by using a restricted character set of Base-64 which takes 6 bits per character. This is also benifital has uri valid characters are simailar to the Base-64 character set</li>
-        <li>Mapping the most common characters in english to the shortest characters in arial</li>
-        <li>Not added: Lz compression, this would negate the mapping to the shortest characters and on the shortest lists would actually make the list longer. On long lists this could be useful</li>
-        <li>Not added: Further reduced character set to Base 32, I felt this was to restricted as it removed most additional characters and only lower case which would be seen on the page</li>
-    </ol>
+    <h2>Next</h2>
 
 
 </article>
