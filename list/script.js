@@ -1,3 +1,79 @@
+function getDataString(){
+
+  const data = document.getElementsByTagName('li');
+
+  const test = []
+  for (var i = 0; i < data.length; i++) {
+    item = data[i].innerHTML
+      .replace(/<\/?span[^>]*>/g,'')
+      .slice(0, -1)
+      .split(' ').join('-');
+    
+    if (data[i].className == "checked"){
+        item = item + "$";
+    } else {
+        item = item + "+";
+    }
+
+    test.push(item); //removes "x" and adds "zz" for return
+  }
+  
+  for(var i = 0; i< test.length; i++){
+    test[i] = reverseFirstLeter(test[i]);
+  }
+
+  var words = "" 
+  for(var i = 0; i < data.length; i++){
+      words = words + test[i];
+  }
+  
+  return words;
+
+}
+
+function updateDataCode(){
+  dataCode = getDataString();
+  var post = document.getElementById("code");
+  post.value = "pucula.com/list/?" + encodeShortLetters(dataCode);
+
+}
+
+function newElement(inputValue) {
+  let inputString = inputValue;
+  const li = document.createElement('li');
+
+  if (inputString[inputString.length - 1] === '.') {
+    li.setAttribute('class', 'checked');
+    inputString = inputString.substr(0, inputString.length - 1);
+  }
+
+  li.onclick = () => {
+    if (li.className === 'checked') {
+      li.setAttribute('class', '');
+    } else {
+      li.setAttribute('class', 'checked');
+    }
+    updateDataCode();
+  };
+
+  li.appendChild(document.createTextNode(inputString));
+
+  var close = document.createElement("span");
+  close.className = "close";
+  close.appendChild(document.createTextNode("\u00D7"));
+  li.appendChild(close);
+
+  close.onclick = function() {
+    this.parentElement.remove();
+    updateDataCode();
+  }
+
+  document.getElementById("myUL").appendChild(li);
+
+  document.getElementById("myInput").value = "";
+
+  updateDataCode();
+}       
 
 function inputNewElement(inputValue){
   if (inputValue === '') {
@@ -20,76 +96,7 @@ addBtn.onclick = () => inputNewElement(document.getElementById('myInput').value)
 
 // --------------------------------------------------
 
-function newElement(inputValue) {
 
-  const li = document.createElement("li");
-
-  if(inputValue[inputValue.length-1] == "."){
-    li.setAttribute("class","checked");
-    inputValue = inputValue.substr(0, inputValue.length-1);
-  }
-
-  li.onclick = function() {
-    if(li.className == "checked"){
-      li.setAttribute("class","");
-    }else{
-      li.setAttribute("class","checked");
-    }
-    updateDataCode();
-  }
-
-  li.appendChild(document.createTextNode(inputValue));
-
-  var close = document.createElement("span");
-  close.className = "close";
-  close.appendChild(document.createTextNode("\u00D7"));
-  li.appendChild(close);
-
-  close.onclick = function() {
-    this.parentElement.remove();
-    updateDataCode();
-  }
-
-  document.getElementById("myUL").appendChild(li);
-
-  document.getElementById("myInput").value = "";
-
-  updateDataCode();
-
-}       
-
-function getDataString(){
-
-    var data = document.getElementsByTagName("li");
-
-    var test = []
-    for(var i = 0; i < data.length; i++){
-        item = data[i].innerHTML;
-        item = item.replace(/<\/?span[^>]*>/g,"");
-        item = item.substr(0, item.length-1); // remove "x"
-        item = item.split(' ').join('-'); // change spaces with "-"
-        
-        if (data[i].className == "checked"){
-            item = item + "$";
-        } else {
-            item = item + "+";
-        }
-
-        test.push(item); //removes "x" and adds "zz" for return
-    }
-    
-    for(var i = 0; i< test.length; i++){
-        test[i] = reverseFirstLeter(test[i]);
-    }
-
-    var words = "" 
-    for(var i = 0; i < data.length; i++){
-        words = words + test[i];
-    }
-    
-    return words;
-
-}
 
 function reverseFirstLeter(str){
     if(str == ""){ return ""; }
@@ -100,15 +107,7 @@ function reverseFirstLeter(str){
     }
 }
 
-function updateDataCode(){
 
-    dataCode = getDataString();
-
-    var post = document.getElementById("code");
-    post.value = "pucula.com/list/?" + encodeShortLetters(dataCode);
-
-
-}
 
 function encodeShortLetters(dataString){
     var commonLetters =   "-+$etaoinshrdlcumwfgypbvkjxqz1234567809TAOISWCBPHFMDRELNGUVYJKQXZ"
