@@ -1,87 +1,65 @@
-function getDataString(){
+const encodeShortLetters = (dataString) => {
+    const commonLetters = '-+$etaoinshrdlcumwfgypbvkjxqz1234567809TAOISWCBPHFMDRELNGUVYJKQXZ';
+    const shortestLetters = 'ijltfrI-sJzacebdghnopq1uvxky023456789$FPS+LZTERBCDGHwKNOQAUVXYmMW';
 
-  const data = document.getElementsByTagName('li');
+    return dataString.split('')
+      .map(x => shortestLetters[commonLetters.indexOf(x)])
+      .join('');
+};
 
-  const test = []
-  for (var i = 0; i < data.length; i++) {
-    item = data[i].innerHTML
-      .replace(/<\/?span[^>]*>/g,'')
-      .slice(0, -1)
-      .split(' ').join('-');
-    
-    if (data[i].className == "checked"){
-        item = item + "$";
-    } else {
-        item = item + "+";
-    }
+const getDataString = () => {
+  const myUL = document.getElementById('myUL');
+  const htmlCollection = myUL.getElementsByTagName('li');
+  const data = [].slice.call(htmlCollection);
+  const test = data.map(item => item.innerText
+    .slice(0, -1)
+    .split(' ').join('-')
+    .concat(item.className === 'checked' ? '$' : '+'));
 
-    test.push(item); //removes "x" and adds "zz" for return
-  }
-  
-  for(var i = 0; i< test.length; i++){
-    test[i] = reverseFirstLeter(test[i]);
-  }
+  return encodeShortLetters(test.reduce((prev, next) => prev + next, ''));
+};
 
-  var words = "" 
-  for(var i = 0; i < data.length; i++){
-      words = words + test[i];
-  }
-  
-  return words;
+const updateDataCode = (str) => {
+  const post = document.getElementById('code');
+  post.value = `pucula.com/list/?${str}`;
+};
 
-}
-
-function updateDataCode(){
-  dataCode = getDataString();
-  var post = document.getElementById("code");
-  post.value = "pucula.com/list/?" + encodeShortLetters(dataCode);
-
-}
-
-function newElement(inputValue) {
-  let inputString = inputValue;
+const newElement = (inputValue) => {
   const li = document.createElement('li');
 
-  if (inputString[inputString.length - 1] === '.') {
+  if (inputValue[inputValue.length - 1] === '.') {
     li.setAttribute('class', 'checked');
-    inputString = inputString.substr(0, inputString.length - 1);
+    inputValue = inputValue.slice(0, -1);
   }
+  li.appendChild(document.createTextNode(inputValue));
 
-  li.onclick = () => {
-    if (li.className === 'checked') {
-      li.setAttribute('class', '');
-    } else {
-      li.setAttribute('class', 'checked');
-    }
-    updateDataCode();
-  };
-
-  li.appendChild(document.createTextNode(inputString));
-
-  var close = document.createElement("span");
-  close.className = "close";
+  const close = document.createElement('span');
+  close.className = 'close';
   close.appendChild(document.createTextNode("\u00D7"));
   li.appendChild(close);
 
-  close.onclick = function() {
-    this.parentElement.remove();
-    updateDataCode();
+  document.getElementById('myUL').appendChild(li);
+  
+  li.onclick = () => {
+    li.setAttribute('class', (li.className === 'checked' ? '' : 'checked'));
+    updateDataCode(getDataString());
   }
 
-  document.getElementById("myUL").appendChild(li);
+  close.onclick = () => {
+    close.parentElement.remove();
+    updateDataCode(getDataString());
+  };
 
-  document.getElementById("myInput").value = "";
+  document.getElementById('myInput').value = '';
+  updateDataCode(getDataString());
+};       
 
-  updateDataCode();
-}       
-
-function inputNewElement(inputValue){
-  if (inputValue === '') {
-    alert('You must write something');
-  } else {
+const inputNewElement = (inputValue) => {
+  if (inputValue !== '') {
+    console.log(inputValue);
     newElement(inputValue);
   }
-}
+};
 
 // enterNewElement is called in the html
 function enterNewElement() {
@@ -98,30 +76,6 @@ addBtn.onclick = () => inputNewElement(document.getElementById('myInput').value)
 
 
 
-function reverseFirstLeter(str){
-    if(str == ""){ return ""; }
-    if(str.charAt(0) == str.charAt(0).toUpperCase()){
-        return str.charAt(0).toLowerCase() + str.slice(1);
-    }else{
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-}
-
-
-
-function encodeShortLetters(dataString){
-    var commonLetters =   "-+$etaoinshrdlcumwfgypbvkjxqz1234567809TAOISWCBPHFMDRELNGUVYJKQXZ"
-    var shortestLetters = "ijltfrI-sJzacebdghnopq1uvxky023456789$FPS+LZTERBCDGHwKNOQAUVXYmMW"
-
-    var newWord = [];
-    var letterIndex = 0;
-    for(var i = 0; i < dataString.length;i++){
-        letterIndex = commonLetters.indexOf(dataString[i]);
-        newWord = newWord + shortestLetters[letterIndex];
-    }
-
-    return newWord
-}
 
 function decodeShortLetters(dataString){
     var commonLetters =   "-+$etaoinshrdlcumwfgypbvkjxqz1234567809TAOISWCBPHFMDRELNGUVYJKQXZ"
@@ -142,15 +96,9 @@ function writeCode(code){
     code = decodeShortLetters(code);
 
     code = code.split('-').join(' ');
-    console.log(code);
     var listMaybe = code.replace(/\$/g,".$").split(/\+|\$/);
-    console.log(listMaybe);
     listMaybe.splice(-1,1); //Remove blank element
     
-    for(var i = 0; i< listMaybe.length; i++){
-        listMaybe[i] = reverseFirstLeter(listMaybe[i]);
-    }
-
     for(var i = 0; i < listMaybe.length; i++){
         inputNewElement(listMaybe[i]);
     }

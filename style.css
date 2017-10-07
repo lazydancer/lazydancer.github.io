@@ -1,14 +1,23 @@
 body{
     margin:18px auto;
-    max-width:722px;
+    width:722px;
     padding:0 10px;
-    font:17px/1.62 sans-serif;
-    color: #262626
+    font:17px/1.62 serif;
+    color: #464646
 }
-
+p {
+    width: 520px;
+}
 h1,h2,h3 {
     line-height:1.2;
     font-family: serif;
+    margin-bottom: 0px;
+}
+h1 {
+    font-size: 32pt;
+}
+h2{
+    font-size: 20pt;
 }
 code, pre {
     background: #eee;

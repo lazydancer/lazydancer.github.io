@@ -67,7 +67,7 @@ ul li.checked::before {
 }
 /* Style the header */
 .header {
-    padding: 10px 40px;
+    padding: 10px 0;
 }
 /* Clear floats after the header */
 .header:after {
@@ -131,15 +131,16 @@ input {
 
     <p>A problem that can occur is the url can get to long where it will not read it and I believe it looks better when it is a shorter url. 3 things were done to reduce the lenght of the url</p>
 
-    <ol>
-        <li>Reduced character set, by default it is utf-8 character set which in this case takes 8 bits per character. We can reduce this by using a restricted character set of Base-64 which takes 6 bits per character. This is also benifital has uri valid characters are simailar to the Base-64 character set</li>
-        <li>Mapping the most common characters in english to the shortest characters in arial</li>
-        <li>Not added: Lz compression, this would negate the mapping to the shortest characters and on the shortest lists would actually make the list longer. On long lists this could be useful</li>
-        <li>Not added: Further reduced character set to Base 32, I felt this was to restricted as it removed most additional characters and only lower case which would be seen on the page</li>
-    </ol>
+    <p>Reduced character set, by default it is utf-8 character set which in this case takes 8 bits per character. We can reduce this by using a restricted character set of Base-64 which takes 6 bits per character. This is also benifital has uri valid characters are simailar to the Base-64 character set</li>
+    <p>Mapping the most common characters in english to the shortest characters in arial</li>
+    <p>Not added: Lz compression, this would negate the mapping to the shortest characters and on the shortest lists would actually make the list longer. On long lists this could be useful</li>
+    <p>Not added: Further reduced character set to Base 32, I felt this was to restricted as it removed most additional characters and only lower case which would be seen on the page</li>
+    
     
 
     <script src="script.js"></script>
+    <!--Development-->
+    <script src="live.js"></script>
 
 
 </article>
