@@ -33,14 +33,16 @@
        } deriving (Show) </code></pre>
 
     
-    <p>1. Create and order pages: Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file is creating a list extra js or css files linked to the article. This offered some flexiblility to have custom css for an article
+    <h2>Create and order pages</h2>
+    <p>: Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file is creating a list extra js or css files linked to the article. This offered some flexiblility to have custom css for an article
     <pre><code>
     getPages :: [FilePath] -> IO [Page]
     getPages = mapM (\x -> do static <- getStatic ("Articles/" ++ x)
                           date <- getPageDate ("Articles/" ++ x ++ "/words.md")
                           return (Page x static date))
     </code></pre>
-    <p>2. Create html from template and pages: To write a page require a template in the form of a string with was HTML and the Page data structure from above. Pandoc helped convert the markdown text files 
+    <h2>Create html from template and pages</h2>
+    <p>To write a page require a template in the form of a string with was HTML and the Page data structure from above. Pandoc helped convert the markdown text files 
     <pre><code>
     writePage :: String -> Page -> IO ()
     writePage template page = do
@@ -53,7 +55,8 @@
         createDirectoryIfMissing True $ "Output/" ++ year ++ "/" ++ urlTitle 
         writeFile ("Output/" ++ year ++ "/" ++ urlTitle ++ "/index.html") html
     </code></pre>
-    <p>3. Write table of contents: The table of contents also use the template but also include some html to make it look pretty
+    <h2>Write table of contents</h2>
+    <p>The table of contents also use the template but also include some html to make it look pretty
     <pre><code>
     writeTOC :: String -> [Page] -> IO ()
     writeTOC template pages = do
