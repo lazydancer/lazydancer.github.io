@@ -12,6 +12,7 @@ h1,h2,h3 {
     line-height:1.2;
     font-family: serif;
     margin-bottom: 0px;
+    color:#000;
 }
 h1 {
     font-size: 32pt;

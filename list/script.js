@@ -7,6 +7,15 @@ const encodeShortLetters = (dataString) => {
       .join('');
 };
 
+const decodeShortLetters = (dataString) => {
+    const commonLetters = '-+$etaoinshrdlcumwfgypbvkjxqz1234567809TAOISWCBPHFMDRELNGUVYJKQXZ';
+    const shortestLetters = 'ijltfrI-sJzacebdghnopq1uvxky023456789$FPS+LZTERBCDGHwKNOQAUVXYmMW';
+
+    return dataString.split('')
+      .map(x => commonLetters[shortestLetters.indexOf(x)])
+      .join('');
+};
+
 const getDataString = () => {
   const myUL = document.getElementById('myUL');
   const htmlCollection = myUL.getElementsByTagName('li');
@@ -68,68 +77,37 @@ function enterNewElement() {
   }
 }
 
-// Input by button
 const addBtn = document.getElementById('addBtn');
 addBtn.onclick = () => inputNewElement(document.getElementById('myInput').value);
 
-// --------------------------------------------------
-
-
-
-
-function decodeShortLetters(dataString){
-    var commonLetters =   "-+$etaoinshrdlcumwfgypbvkjxqz1234567809TAOISWCBPHFMDRELNGUVYJKQXZ"
-    var shortestLetters = "ijltfrI-sJzacebdghnopq1uvxky023456789$FPS+LZTERBCDGHwKNOQAUVXYmMW"
-
-    var newWord = [];
-    var letterIndex = 0;
-    for(var i = 0; i < dataString.length;i++){
-        letterIndex = shortestLetters.indexOf(dataString[i]);
-        newWord = newWord + commonLetters[letterIndex];
-    }
-
-    return newWord
-}
-
-function writeCode(code){
-
-    code = decodeShortLetters(code);
-
-    code = code.split('-').join(' ');
-    var listMaybe = code.replace(/\$/g,".$").split(/\+|\$/);
-    listMaybe.splice(-1,1); //Remove blank element
+const writeCode = (code) => {
+  const listMaybe = decodeShortLetters(code)
+    .split('-').join(' ')
+    .replace(/\$/g,".$").split(/\+|\$/)
+    .splice(-1,1); //Remove blank element
     
-    for(var i = 0; i < listMaybe.length; i++){
-        inputNewElement(listMaybe[i]);
-    }
+  listMaybe.forEach(item => inputNewElement(item));
+};
 
-}
-
-function initCode(code){
-    
-    if (code == '' || code == null){
-        newElement("Hit the gym");
-        newElement("Pay bills.");
-        newElement("Meet George");
-        newElement("Buy eggs");
-        newElement("Read a book");
-        newElement("Organize Office.");
+const initCode = (code) => {
+    if (code === '' || code == null){
+        newElement('Hit the gym');
+        newElement('Pay bills.');
+        newElement('Meet George');
+        newElement('Buy eggs');
+        newElement('Read a book');
+        newElement('Organize Office.');
     } else {
         writeCode(code);
     }
+};
 
-}
-
-
-//copy to clipboard function
-document.body.addEventListener('click', copy, true);
-// event handler
+// copy to clipboard function
 function copy(e) {
   // find target element
-  var
-    t = e.target,
-    c = t.dataset.copytarget,
-    inp = (c ? document.querySelector(c) : null);
+  const t = e.target;
+  const c = t.dataset.copytarget;
+  const inp = (c ? document.querySelector(c) : null);
   // is element selectable?
   if (inp && inp.select) {
     // select text
@@ -146,8 +124,10 @@ function copy(e) {
   }
 }
 
+document.body.addEventListener('click', copy, true);
+// event handler
 
-var url = window.location.href;
-var array = url.split("?");
-var code = array[1];
-window.onload = initCode(code);
+
+const url = window.location.href;
+const array = url.split("?");
+window.onload = initCode(array[1]);
