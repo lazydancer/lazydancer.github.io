@@ -129,5 +129,5 @@ document.body.addEventListener('click', copy, true);
 
 
 const url = window.location.href;
-const array = url.split("?");
+const array = url.split('?');
 window.onload = initCode(array[1]);
