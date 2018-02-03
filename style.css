@@ -13,7 +13,7 @@ h1,h2,strong {
   color: #333;
 }
 h2 {
-    font-weight: inital;
+    font-weight: initial;
 }
 
 code, pre {
