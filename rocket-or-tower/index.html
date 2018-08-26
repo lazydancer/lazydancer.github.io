@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<title>studio</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<article>
+    <header>
+        <a href="/"><img src="../bird.png"></a>
+
+    </header>
+
+    <h1>Rocket or Tower</h1>
+
+    <p>Recently I started working on <a href="https://fast.ai">fast.ai</a> and I wanted to post my first attempt at creating a network.
+
+    <p>My train set contains 10 images of rockets and 10 images of towers
+
+    <img src="tower.png" />
+
+    <p>Using the the 3 line program from the the fast.ai library to use the precompiled models of <a href="https://github.com/KaimingHe/deep-residual-networks">resnet</a>
+
+    <pre><code>
+  arch=resnet34
+  data = ImageClassifierData.from_paths(PATH, tfms=tfms_from_model(arch, sz))
+  learn = ConvLearner.pretrained(arch, data, precompute=True)
+  learn.fit(0.01, 5)
+  </pre></code>
+
+    <p>0 is more rocket-like, 1 is more building-like</p>
+
+    <img src="result.png" width="722px" />
+
+
+
+</article>
