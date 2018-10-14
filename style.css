@@ -14,6 +14,16 @@ article{
     max-width:722px;
     padding: 32px 16px 64px 16px;
 }
+
+h1 {
+  margin-bottom: 0px;
+}
+
+span.article-date {
+  font-size: 14px;
+  color: #636363;
+}
+
 p {
     max-width: 480px;
 }
