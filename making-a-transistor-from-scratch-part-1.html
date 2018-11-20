@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- Three Rules of Blogging on The Internet
+1. Make a site that you wish existed
+2. Never complain or have a "how the blog is made" post
+3. Post on a schedule 
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="icon" href="data:;base64,iVBORw0KGgo=">-->
+  <title>Making A Transistor From Scratch Part 1</title>
+  <style>
+  html {
+      overflow-y:scroll;
+  }
+
+  body{
+      margin: 0;
+      font-family: "Helvetica", "Arial", sans-serif;
+      line-height: 1.5;
+      color: #333;
+  }
+
+  article{
+       margin: 0 auto;
+      max-width:722px;
+      padding: 32px 16px 64px 16px;
+  }
+
+  header{
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    margin-bottom: 0px;
+  }
+
+  span.article-date {
+    font-size: 14px;
+    color: #636363;
+  }
+
+  p {
+      max-width: 480px;
+  }
+  h1,h2,strong {
+    color: #333;
+  }
+  h2 {
+      font-weight: initial;
+  }
+  code, pre {
+      background: #eee;
+  }
+  code {
+      padding: 2px 4px;
+      vertical-align: text-bottom;
+  }
+  pre {
+      padding: 1em;
+  }
+
+  .preview {
+      border: solid 1px #ccc;
+  }
+  .date {
+      font-size:14px;
+      float: right;
+      color: #636363
+  }
+  a {
+      color: steelblue;
+      text-decoration: none;
+  }
+  a:hover{
+      text-decoration: underline;
+  }
+
+  </style>
+</head>
+<article>
+    <header>
+      <a href="/">
+<img width=140 heihgt=140 src="data:image/png;base64,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"></a>
+
+    <h1>Making A Transistor From Scratch Part 1</h1>
+
+<span class="article-date" style="margin-bottom: 30px;">Nov 2018 - 
+  
+  
+    7 mins
+  
+</span>
+
+</header>
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:site" content="@lazydancr" />
+
+<meta name="twitter:title" content="Making A Transistor From Scratch Part 1" />
+
+<meta name="twitter:description" content="This part covers theory of a transistor" />
+
+<meta name="twitter:image" content="/assets/making-a-transistor/pn-junction.png" />
+
+<p>I recently finished the book CODE - a book on how to build a computer from scratch. The book was awesome and I wanted to learn more about how a physical computer was built
+</p>
+
+<p>Silicon is great. It's great because it's a semiconductor. Semiconductors are great because we can create interesting properties of how much much energy it takes to release the electron from its orbit and how much energy it takes for an atom to accept an electron.
+
+<p>This difference between an electron being released and being captured is important and has the name <b>band gap</b>
+</p>
+
+<p>When electrons can move we call that electricity. Some material like metal have no band gap meaning that electrons flow easily through them. Insulators there is a band gap and it is difficult.</p>
+
+<p>As seen in the diagram below semicondutors are between conductors and insulators</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg/351px-Band_filling_diagram.svg.png" />
+
+<p>
+<span style="font-size: 10px"> https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg</span>
+</p>
+
+<p>You can shift this band gap by doping silicon</p>
+
+
+<li>Silicon with <b>boron</b> atoms is called <b style="color: #1070CA">p-type silicon</b>, where there is a lack of electrons called holes</li>
+<li>Silicon with <b>phosphorus</b> atoms is called <b style="color: #F7D154">n-type silicon</b>, where free electrons are added</li>
+
+<img src="http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/psem2.gif" />
+
+
+<img src="http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/nsem.gif" />
+
+<p>
+<span style="font-size: 10px">http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/psem2.gif and http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/nsem.gif</span>
+
+
+<p>Lets take a block of p-type silicon and a block of n-type silicon and put them together. 
+
+<p>Where they touch electrons will move from n-type material to p-type material. This is because the n-type atoms have less "hold" on there valence electrons and the p-type is "pulling" these electron</p>
+
+<p>Since the n-type lost an electron, it is not balanced and has to many protons. Making the area positively charged. The equilent and opposite for the p-type. In the diagram below, the lighter yellow has a positive charge. 
+
+
+<svg width="722px" height="400px">
+  <rect width="200px" height="140px" y="40px" fill="#1070CA" /> 
+  <rect width="200px" height="140px" x="220px" y="40px" fill="#F7D154" />
+  <rect width="200px" height="140px" x="10px" y="200px" fill="#1070CA" />
+  <rect width="200px" height="140px" x="210px" y="200px" fill="#F7D154" />
+  <rect width="20px" height="140px" x="190px" y="200px" fill="white" opacity="0.5" />
+  <rect width="20px" height="140px" x="210px" y="200px" fill="white" opacity="0.5" />
+</svg>
+
+<!--
+<p><img src="https://www.electronics-tutorials.ws/diode/diode4a.gif" />
+-->
+
+
+<p>This charge causes a magnetic effect due unbalanced charges. The magnetic effect is the opposing effect to the movement of electrons causing an equilibrium at a certain distance</p>
+
+<p>Since we are displacing electrons from there position, this magnetic effect can also be seen as an electrical potential, aka voltage, within the material</p>
+
+
+<img margin-top="20px" width="722px" src="/assets/making-a-transistor/pn-junction.png" />
+<span style="font-size:10pt">https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Pn-junction-equilibrium-graphs.png</span>
+
+<p> ---------------- </p>
+
+<p>What happens if we try to put electricity though it. 
+
+<p>First, focus on voltage. Don't worry about current. When you put + on the p-type side it will attract the electrons back into the n-type and if you put electrons on the p-type it will push away the electrons / attached the holes. </p>
+
+<p>This causes the number of electrons that are in the other region. Making the voltage to cross the region less. This is what happens when it allows the current to flow. If we change the direction and put the electrons on the n-type. </p>
+
+<p>It will push away the electrons towards the holes and putting + on the p-type will attract the electrons farther in. This increases the number of electrons in the other region increasing the voltage needed to overcome in the materials. Now it is very difficult for the current to move, it would have to overcome the entire region voltage.</p>
+
+<p>Try out the slider below, if you see electricity can only go one direction. We just made an <b>electrical diode</b>!</p>
+
+<svg width="722px" height="300px" id="svgDiode">
+  <rect width="200px" height="140px" x="30px" y="20px" fill="#1070CA" />
+  <rect width="200px" height="140px" x="230px" y="20px" fill="#F7D154" />
+  <rect id="svgDiode_diffusionArea" width="40px" height="140px" x="210px" y="20px" fill="white" opacity="0.5" />
+  <circle r="5px" cx="30px" cy="90px" fill="black" />
+  <circle r="5px" cx="430px" cy="90px" fill="black" />
+  <polyline points="30,90 10,90 10,240 225,240" fill="none" stroke="black" stroke-width="4px" />
+  <polyline points="430,90 450,90 450,240 235,240" fill="none" stroke="black" stroke-width="4px" />
+  <polyline id="svgDiode_leftBattery" points="225,260 225,220" fill="none" stroke="black" stroke-width="4px" />
+  <polyline id="svgDiode_rightBattery" points="235,250 235,230" fill="none" stroke="black" stroke-width="4px" />
+  <text x="215" y="280" id="svgDiode_text">0.1V</text>
+</svg>
+
+ <input type="range" min="-5" max="5" value="-0.1" step="0.1" class="slider" id="myRange" />
+
+ <script>
+    let slider = document.getElementById("myRange");
+    let voltage = document.getElementById("svgDiode_text")
+    slider.oninput = () => {
+      voltage.innerHTML = Math.abs(slider.value) + " V"
+      updateBatteryDirection(slider.value)
+      updateDiffusionRegion(slider.value)
+    }
+
+    const updateBatteryDirection = (value) => {
+      let leftBattery = document.getElementById("svgDiode_leftBattery")
+      let rightBattery = document.getElementById("svgDiode_rightBattery")
+      if(value < 0){
+        leftBattery.setAttribute('points','225,260 225,220')
+        rightBattery.setAttribute('points','235,250 235,230')
+      } else {
+        leftBattery.setAttribute('points','225,250 225,230')
+        rightBattery.setAttribute('points','235,260 235,220')
+      } 
+    }
+
+    const updateDiffusionRegion = (value) => {
+      let diffusionArea = document.getElementById("svgDiode_diffusionArea")
+      
+      diffusionArea.setAttribute('x', 28.5 * value + 210 )
+      diffusionArea.setAttribute('width', -57.14 * value + 40)
+      // 0.7 x = 230 width = 0
+      // 0   x = 210 width = 40
+    }
+
+ </script>
+
+<p> When you try to push electrons to go backwards, the NP junction pushes back at the same but opposite potential. </p>
+
+<p>------------------</p>
+
+<p>Okay, now the MOSFET part.</p>
+
+<p>If you put another n-type material infront of the diode you get a material that doesn't flow any electrity and isn't useful.
+
+
+<svg width="722px" height="300px" id="svgTransistor">
+  <rect width="200px" height="140px" x="30px" y="20px" fill="#F7D154" />
+  <rect width="200px" height="140px" x="230px" y="20px" fill="#1070CA" />
+  <rect width="200px" height="140px" x="430px" y="20px" fill="#F7D154" />
+  <rect id="svgTransistor_diffusionArea" width="40px" height="140px" x="210px" y="20px" fill="white" opacity="0.5" />
+  <rect id="svgTransistor_diffusionArea2" width="40px" height="140px" x="410px" y="20px" fill="white" opacity="0.5" />
+  <circle r="5px" cx="30px" cy="90px" fill="black" />
+  <circle r="5px" cx="630px" cy="90px" fill="black" />
+  <polyline points="30,90 10,90 10,240 225,240" fill="none" stroke="black" stroke-width="4px" />
+  <polyline points="630,90 650,90 650,240 235,240" fill="none" stroke="black" stroke-width="4px" />
+  <polyline id="svgTransistor_leftBattery" points="225,260 225,220" fill="none" stroke="black" stroke-width="4px" />
+  <polyline id="svgTransistor_rightBattery" points="235,250 235,230" fill="none" stroke="black" stroke-width="4px" />
+  <text x="215" y="280" id="svgTransistor_text">0.1V</text>
+</svg>
+ 
+ <input type="range" min="-5" max="5" value="0" step="0.1" class="slider" id="transistor_myRange" />
+ 
+  <script> 
+    let bslider = document.getElementById("transistor_myRange");
+    let bvoltage = document.getElementById("svgTransistor_text")
+    bslider.oninput = () => {
+      bvoltage.innerHTML = Math.abs(bslider.value) + " V"
+      bupdateBatteryDirection(bslider.value)
+      bupdateDiffusionRegion(bslider.value)
+      bupdateDiffusionRegion2(bslider.value)
+    }
+ 
+    const bupdateBatteryDirection = (value) => {
+      let leftBattery = document.getElementById("svgTransistor_leftBattery")
+      let rightBattery = document.getElementById("svgTransistor_rightBattery")
+      if(value > 0){
+        leftBattery.setAttribute('points','225,260 225,220')
+        rightBattery.setAttribute('points','235,250 235,230')
+      } else {
+  leftBattery.setAttribute('points','225,250 225,230')
+        rightBattery.setAttribute('points','235,260 235,220')
+      } 
+    }
+
+    const bupdateDiffusionRegion = (value) => {
+      let diffusionArea = document.getElementById("svgTransistor_diffusionArea")
+      
+      diffusionArea.setAttribute('x', 28.5 * value + 210 )
+      diffusionArea.setAttribute('width', -57.14 * value + 40)
+      // 0.7 x = 230 width = 0
+      // 0   x = 210 width = 40
+    }
+
+ const bupdateDiffusionRegion2 = (value) => {
+      let diffusionArea = document.getElementById("svgTransistor_diffusionArea2")
+      
+      diffusionArea.setAttribute('x', -28.5 * value + 410 )
+      diffusionArea.setAttribute('width', 57.14 * value + 40)
+
+}
+
+  </script>
+
+
+
+
+<p>Put a connector on the base. But not directly on the base but close enough that the magnetic field effects the material but electrons moving between is not possible. Usally an Oxide.
+
+<p>Aside: this is how the MOSFET = Metal-Oxide-Silicon Field-Effect Transistor gets it's name  
+
+<p>Now when you apply a voltage to the base connected the the p-type it attracts the electrons close to the connection to the gate. And when enough electrons are near the top.</p>
+
+
+
+<button onclick="toggleMOSFET()"> Toggle </button>
+
+<span> Status: </span>
+<span id="MOSFET_status" style="color:green">ON</span>
+
+<svg width="722px" height="500px" id="svgMOSFET">
+  <rect width="200" height="15" x="230" y="190" fill="black" />
+  <polyline points="330,190 330,50" fill="none" stroke="black" stroke-width="4px" />
+  <rect width="200px" height="140px" x="30px" y="220px" fill="#F7D154" />
+  <rect width="200px" height="140px" x="230px" y="220px" fill="#1070CA" />
+  <rect width="200px" height="140px" x="430px" y="220px" fill="#F7D154" />
+  <rect id="svgMOSFET_diffusionArea" width="200px" height="20px" x="230px" y="220px" fill="white" opacity="0.5" />
+  <rect id="svgMOSFET_diffusionArea2" width="200px" height="100px" x="230px" y="220px" fill="white" opacity="0.5" />
+  
+</svg>
+
+
+ <script> 
+
+    const toggleMOSFET = () => {
+      let status = document.getElementById("MOSFET_status");
+
+      let firstLayer = document.getElementById("svgMOSFET_diffusionArea")
+      let secondLayer = document.getElementById("svgMOSFET_diffusionArea2")
+
+      if(status.innerHTML === "ON"){
+        firstLayer.setAttribute('fill','none')
+        secondLayer.setAttribute('fill','none')
+        status.innerHTML = 'OFF'
+        status.setAttribute('style','color: red')
+      } else {
+        firstLayer.setAttribute('fill','white')
+        secondLayer.setAttribute('fill','white')
+        status.innerHTML = 'ON'
+        status.setAttribute('style','color: green')
+      }
+    }
+
+ </script>
+
+
+<p>This breaks the np junction. Now that there is this base most the voltage potential is from the top to the bottom and not left to right. The electrons can move with little trouble</p>
+
+<p>In channel is formed that allows electrons to easily pass. There is no - and + difference to pass. Electrons can pass through without a change from - and +. This is called an n-channel.</p>
+
+<p>Thanks for reading, this type of article was new for me. If you enjoyed it please share it. Also I'm now on Twitter, follow me <a href="http://twitter.com/lazydancr">here</a></p>
+
+<p>This was all theroy but in 2 weeks, we will be taking rocks and starting to build this thing</p>
+</p></p></p></p></p></p></p></p>
+
+
+</article>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129008588-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129008588-1');
+</script>
+
+</html>

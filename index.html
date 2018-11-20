@@ -1,82 +1,84 @@
 <!DOCTYPE html>
 <!-- Three Rules of Blogging on The Internet
 1. Make a site that you wish existed
-2. Never have an opinion or "how the blog is made" post
+2. Never complain or have a "how the blog is made" post
 3. Post on a schedule 
 -->
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-<title>James Pucula</title>
-<style>
-html {
-    overflow-y:scroll;
-}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="icon" href="data:;base64,iVBORw0KGgo=">-->
+  <title>James Pucula</title>
+  <style>
+  html {
+      overflow-y:scroll;
+  }
 
-body{
-    margin: 0;
-    font-family: "Helvetica", "Arial", sans-serif;
-    line-height: 1.5;
+  body{
+      margin: 0;
+      font-family: "Helvetica", "Arial", sans-serif;
+      line-height: 1.5;
+      color: #333;
+  }
+
+  article{
+       margin: 0 auto;
+      max-width:722px;
+      padding: 32px 16px 64px 16px;
+  }
+
+  header{
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    margin-bottom: 0px;
+  }
+
+  span.article-date {
+    font-size: 14px;
+    color: #636363;
+  }
+
+  p {
+      max-width: 480px;
+  }
+  h1,h2,strong {
     color: #333;
-}
+  }
+  h2 {
+      font-weight: initial;
+  }
+  code, pre {
+      background: #eee;
+  }
+  code {
+      padding: 2px 4px;
+      vertical-align: text-bottom;
+  }
+  pre {
+      padding: 1em;
+  }
 
-article{
-     margin: 0 auto;
-    max-width:722px;
-    padding: 32px 16px 64px 16px;
-}
+  .preview {
+      border: solid 1px #ccc;
+  }
+  .date {
+      font-size:14px;
+      float: right;
+      color: #636363
+  }
+  a {
+      color: steelblue;
+      text-decoration: none;
+  }
+  a:hover{
+      text-decoration: underline;
+  }
 
-header{
-  margin-bottom: 25px;
-}
-
-h1 {
-  margin-bottom: 0px;
-}
-
-span.article-date {
-  font-size: 14px;
-  color: #636363;
-}
-
-p {
-    max-width: 480px;
-}
-h1,h2,strong {
-  color: #333;
-}
-h2 {
-    font-weight: initial;
-}
-code, pre {
-    background: #eee;
-}
-code {
-    padding: 2px 4px;
-    vertical-align: text-bottom;
-}
-pre {
-    padding: 1em;
-}
-
-.preview {
-    border: solid 1px #ccc;
-}
-.date {
-    font-size:14px;
-    float: right;
-    color: #636363
-}
-a {
-    color: steelblue;
-    text-decoration: none;
-}
-a:hover{
-    text-decoration: underline;
-}
-
-</style>
+  </style>
+</head>
 <article>
     <header>
       <a href="/">
@@ -85,11 +87,21 @@ a:hover{
     <p>Hi, my name is <b>James Pucula</b>, I'm an energy  engineer-in-training looking to learn more about programming and economics. Below you can find projects I'm working on</p>
 <span>
 
-<a href="https://github.com/lazydancer"><svg width="24px" height="24px" viewBox="0 0 1792 1792" fill="#333" xmlns="http://www.w3.org/2000/svg"><path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z"/></svg></path></svg></a><a style="padding-left: 8px;" href="mailto: jrpucula@gmail.com"><svg width="24px" height="24px" fill="#444" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1664 1504v-768q-32 36-69 66-268 206-426 338-51 43-83 67t-86.5 48.5-102.5 24.5h-2q-48 0-102.5-24.5t-86.5-48.5-83-67q-158-132-426-338-37-30-69-66v768q0 13 9.5 22.5t22.5 9.5h1472q13 0 22.5-9.5t9.5-22.5zm0-1051v-24.5l-.5-13-3-12.5-5.5-9-9-7.5-14-2.5h-1472q-13 0-22.5 9.5t-9.5 22.5q0 168 147 284 193 152 401 317 6 5 35 29.5t46 37.5 44.5 31.5 50.5 27.5 43 9h2q20 0 43-9t50.5-27.5 44.5-31.5 46-37.5 35-29.5q208-165 401-317 54-43 100.5-115.5t46.5-131.5zm128-37v1088q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-1088q0-66 47-113t113-47h1472q66 0 113 47t47 113z"/></svg></a>
+<a href="https://github.com/lazydancer"><svg width="24px" height="24px" viewBox="0 0 1792 1792" fill="#222" xmlns="http://www.w3.org/2000/svg"><path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z"/></svg></path></svg></a>
+<a style="padding-left: 4px;" href="https://twitter.com/lazydancr"><svg  xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="#222" viewBox="0 0 1664 1792"><path d="M1620 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></a>
+
+<a style="padding-left: 4px;" href="mailto: jrpucula@gmail.com"><svg width="24px" height="24px" fill="#444" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1664 1504v-768q-32 36-69 66-268 206-426 338-51 43-83 67t-86.5 48.5-102.5 24.5h-2q-48 0-102.5-24.5t-86.5-48.5-83-67q-158-132-426-338-37-30-69-66v768q0 13 9.5 22.5t22.5 9.5h1472q13 0 22.5-9.5t9.5-22.5zm0-1051v-24.5l-.5-13-3-12.5-5.5-9-9-7.5-14-2.5h-1472q-13 0-22.5 9.5t-9.5 22.5q0 168 147 284 193 152 401 317 6 5 35 29.5t46 37.5 44.5 31.5 50.5 27.5 43 9h2q20 0 43-9t50.5-27.5 44.5-31.5 46-37.5 35-29.5q208-165 401-317 54-43 100.5-115.5t46.5-131.5zm128-37v1088q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-1088q0-66 47-113t113-47h1472q66 0 113 47t47 113z"/></svg></a>
+
+
+
 </span>
 
 </header>
 
+
+<p>
+  <span class="date">Nov 2018</span><a href="/making-a-transistor-from-scratch-part-1.html">Making A Transistor From Scratch Part 1</a>
+</p>
 
 <p>
   <span class="date">Oct 2018</span><a href="/altitude-first-look.html">Altitude First Look</a>
@@ -123,18 +135,6 @@ a:hover{
   <span class="date">Aug 2017</span><a href="/studio.html">Studio</a>
 </p>
 
-
-<!--
-
- <p><span class="date">Oct 2018</span><a href="/altitude-first-look">Altitude - First Look</a></p>
-<p><span class="date">Sep 2018</span><a href="/tictactoe-redux">Tic-Tac-Toe Redux</a></p>
-<p><span class="date">Aug 2018</span><a href="/rocket-or-tower">Rocket or Tower</a></p>
-<p><span class="date">Jan 2018</span><a href="/books-for-2018">Books for 2018</a></p>
-<p><span class="date">Dec 2017</span><a href="/single-packet-webpage">Single Packet Webpage</a></p>
-<p><span class="date">Oct 2017</span><a href="/parsley-for-style">Parsley for Style</a></p>
-<p><span class="date">Sep 2017</span><a href="/automatic-paintball-turret">Automatic Paintball Turret</a></p>
-<p><span class="date">Aug 2017</span><a href="/studio">Studio</a></p>
--->
 
 </article>
 
