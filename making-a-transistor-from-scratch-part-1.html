@@ -9,6 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<link rel="icon" href="data:;base64,iVBORw0KGgo=">-->
+
   <title>Making A Transistor From Scratch Part 1</title>
   <style>
   html {
@@ -142,8 +143,8 @@
 
 <p>Since the n-type lost an electron, it is not balanced and has to many protons. Making the area positively charged. The equilent and opposite for the p-type. In the diagram below, the lighter yellow has a positive charge. 
 
-
-<svg width="722px" height="400px">
+<p>
+<svg viewBox="0 0 420 350" width="100%">
   <rect width="200px" height="140px" y="40px" fill="#1070CA" /> 
   <rect width="200px" height="140px" x="220px" y="40px" fill="#F7D154" />
   <rect width="200px" height="140px" x="10px" y="200px" fill="#1070CA" />
@@ -151,7 +152,7 @@
   <rect width="20px" height="140px" x="190px" y="200px" fill="white" opacity="0.5" />
   <rect width="20px" height="140px" x="210px" y="200px" fill="white" opacity="0.5" />
 </svg>
-
+</p>
 <!--
 <p><img src="https://www.electronics-tutorials.ws/diode/diode4a.gif" />
 -->
@@ -161,8 +162,9 @@
 
 <p>Since we are displacing electrons from there position, this magnetic effect can also be seen as an electrical potential, aka voltage, within the material</p>
 
-
-<img margin-top="20px" width="722px" src="/assets/making-a-transistor/pn-junction.png" />
+<p>
+<img margin-top="20px" width="100%" src="/assets/making-a-transistor/pn-junction.png" />
+</p>
 <span style="font-size:10pt">https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Pn-junction-equilibrium-graphs.png</span>
 
 <p> ---------------- </p>
@@ -177,7 +179,8 @@
 
 <p>Try out the slider below, if you see electricity can only go one direction. We just made an <b>electrical diode</b>!</p>
 
-<svg width="722px" height="300px" id="svgDiode">
+<p>
+<svg viewBox="0 0 480 300" width="100%" id="svgDiode">
   <rect width="200px" height="140px" x="30px" y="20px" fill="#1070CA" />
   <rect width="200px" height="140px" x="230px" y="20px" fill="#F7D154" />
   <rect id="svgDiode_diffusionArea" width="40px" height="140px" x="210px" y="20px" fill="white" opacity="0.5" />
@@ -189,6 +192,7 @@
   <polyline id="svgDiode_rightBattery" points="235,250 235,230" fill="none" stroke="black" stroke-width="4px" />
   <text x="215" y="280" id="svgDiode_text">0.1V</text>
 </svg>
+</p>
 
  <input type="range" min="-5" max="5" value="-0.1" step="0.1" class="slider" id="myRange" />
 
@@ -233,7 +237,7 @@
 <p>If you put another n-type material infront of the diode you get a material that doesn't flow any electrity and isn't useful.
 
 
-<svg width="722px" height="300px" id="svgTransistor">
+<svg viewBox="0 0 680 300" width="100%" id="svgTransistor">
   <rect width="200px" height="140px" x="30px" y="20px" fill="#F7D154" />
   <rect width="200px" height="140px" x="230px" y="20px" fill="#1070CA" />
   <rect width="200px" height="140px" x="430px" y="20px" fill="#F7D154" />
@@ -307,17 +311,18 @@
 <span> Status: </span>
 <span id="MOSFET_status" style="color:green">ON</span>
 
-<svg width="722px" height="500px" id="svgMOSFET">
-  <rect width="200" height="15" x="230" y="190" fill="black" />
-  <polyline points="330,190 330,50" fill="none" stroke="black" stroke-width="4px" />
-  <rect width="200px" height="140px" x="30px" y="220px" fill="#F7D154" />
-  <rect width="200px" height="140px" x="230px" y="220px" fill="#1070CA" />
-  <rect width="200px" height="140px" x="430px" y="220px" fill="#F7D154" />
-  <rect id="svgMOSFET_diffusionArea" width="200px" height="20px" x="230px" y="220px" fill="white" opacity="0.5" />
-  <rect id="svgMOSFET_diffusionArea2" width="200px" height="100px" x="230px" y="220px" fill="white" opacity="0.5" />
+<p>
+<svg viewBox="0 0 720 400" width="100%" id="svgMOSFET">
+  <rect width="200" height="15" x="230" y="140" fill="black" />
+  <polyline points="330,140 330,0" fill="none" stroke="black" stroke-width="4px" />
+  <rect width="200px" height="140px" x="30px" y="170px" fill="#F7D154" />
+  <rect width="200px" height="140px" x="230px" y="170px" fill="#1070CA" />
+  <rect width="200px" height="140px" x="430px" y="170px" fill="#F7D154" />
+  <rect id="svgMOSFET_diffusionArea" width="200px" height="20px" x="230px" y="170px" fill="white" opacity="0.5" />
+  <rect id="svgMOSFET_diffusionArea2" width="200px" height="100px" x="230px" y="170px" fill="white" opacity="0.5" />
   
 </svg>
-
+</p>
 
  <script> 
 
