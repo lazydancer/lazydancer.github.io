@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<!-- Three Rules of Blogging on The Internet
+1. Make a site that you wish existed
+2. Never complain or have a "how the blog is made" post
+3. Post on a schedule 
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="icon" href="data:;base64,iVBORw0KGgo=">-->
+
+  <title>Making A Transistor From Scratch Part 2</title>
+  <style>
+  html {
+      overflow-y:scroll;
+  }
+
+  body{
+      margin: 0;
+      font-family: "Helvetica", "Arial", sans-serif;
+      line-height: 1.5;
+      color: #333;
+  }
+
+  article{
+       margin: 0 auto;
+      max-width:722px;
+      padding: 32px 16px 64px 16px;
+  }
+
+  header{
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    margin-bottom: 0px;
+  }
+
+  span.article-date {
+    font-size: 14px;
+    color: #636363;
+  }
+
+  p {
+      max-width: 480px;
+  }
+  h1,h2,strong {
+    color: #333;
+  }
+  h2 {
+      font-weight: initial;
+  }
+  code, pre {
+      background: #eee;
+  }
+  code {
+      padding: 2px 4px;
+      vertical-align: text-bottom;
+  }
+  pre {
+      padding: 1em;
+  }
+
+  .preview {
+      border: solid 1px #ccc;
+  }
+  .date {
+      font-size:14px;
+      float: right;
+      color: #636363
+  }
+  a {
+      color: steelblue;
+      text-decoration: none;
+  }
+  a:hover{
+      text-decoration: underline;
+  }
+
+  </style>
+</head>
+<article>
+    <header>
+      <a href="/">
+<img width=140 heihgt=140 src="data:image/png;base64,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"></a>
+
+    <h1>Making A Transistor From Scratch Part 2</h1>
+
+<span class="article-date" style="margin-bottom: 30px;">Dec 2018 - 
+  
+  
+    25 mins
+  
+</span>
+
+</header>
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:site" content="@flickr" />
+
+<meta name="twitter:title" content="Making a Transistor from Scratch Part 2" />
+
+<meta name="twitter:description" content="In this article we will be going from rocks to a transistor" />
+
+<meta name="twitter:image" content="https://pucula.com/assets/making-a-transistor/Quartzite.png" />
+
+<p>This is a continuation of Part 1 where we learnt about the importance of silicon, p-type and n-type materials and the theory of a MOSFET transistor. <a href="making-a-transistor-from-scratch-part-1.html">Link</a></p>
+
+<p>In this article we will be going from rocks to a transistor</p>
+
+<p>As seen in the last part ultra-pure silicon is necessary to build a transistor. Any contamination to the silicon in a semiconductor changes it properties and causes it to not work.</p>
+
+<h3 id="quartz-rock">Quartz Rock</h3>
+
+<p>Our base raw material is quartz rock, a form of silicon dioxide</p>
+
+<p>Silicon makes up around 28% by mass of the earth’s crust, the second after oxygen and technically we could use any silicon dioxide, but there is already an ultrapure silicon dioxide called quartzite, a type of quartz rock</p>
+
+<p>Quartizite was originally sandstone, but it has been deeply buried in the Earth’s crust and cooked at high temperatures and pressures that many impurities have been distilled out and the sand grains completely welded together.</p>
+
+<p>
+<img src="assets/making-a-transistor/Quartzite.jpg" style="max-width: 480px; width: 100%" />
+</p>
+<p><span style="font-size:12px">https://commons.wikimedia.org/wiki/File:Quartzite_Solli%C3%A8res.jpg</span></p>
+
+<h3 id="metallugical-silicon">Metallugical Silicon</h3>
+
+<p>The next step is to remove all of the oxygen present in silicon dioxide. This can be done though the following reaction</p>
+
+<p>2SiO2 + 2C -&gt; Si + 2CO</p>
+
+<p>The process occurs in an electric arc furnance to a temperature of 2,000C and the quartz is mixed with highly pure coke. Coke is a highly pure carbon fuel made by heating coal in the absensce of air.</p>
+
+<p>This processs is know as a carbothermal reduction of silicon dioxide.</p>
+
+<p>With the reaction above, there is a good chance of silicon carbide, SiC, forming. Excess SiO2 is used to help prevent this forming a secondary reaction.</p>
+
+<p>2 SiC + SiO2 -&gt; 3Si + 2CO</p>
+
+<p>Now we have silicon with up to 99% purity but we are looking up to have “eleven nines” purity or 99.999999999%.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Silicon#Metallurgical_grade">Silicon wikipedia</a></p>
+
+<h3 id="ultra-pure-silicon-poly-silicon">Ultra Pure Silicon (poly-silicon)</h3>
+
+<p>The next step is to remove the contaniments to get an ultra pure silicon we are looking for.</p>
+
+<p>The silicon is reacted with hydrogen chloride gas to form triclorosilane (SiHCl2)</p>
+
+<p>Si + 3 HCl → HCl3Si + H2</p>
+
+<p>Reduced to very pure solution by reacting it with hydrogen at high temperatures</p>
+
+<p>HSiCl3 → Si + HCl + Cl2</p>
+
+<p>Or triclorosilane can be converted to silicon tetrachloride, SiCl4, in a hydrogenation reactor and reduced by vapor phase epitaxy with hydrogen</p>
+
+<p>SiCl4 + 2H2 -&gt; Si + 4HCl</p>
+
+<p>Depending on specifics of the cost, both process are used.</p>
+
+<p>
+<img src="assets/making-a-transistor/PolySilicon.jpg" style="max-width: 480px; width: 100%;" />
+</p>
+<p><span style="font-size:12px">http://images-of-elements.com/silicon.jpg</span></p>
+
+<h3 id="single-crystal-silicon-mono-silicon">Single crystal silicon (mono-silicon)</h3>
+
+<p>In a process called the Czochralski process the poly-silicon which contains mulitple crystals of silicon will be transformed into a single crystal</p>
+
+<p><img src="assets/making-a-transistor/Schematic_of_allotropic_forms_of_silcon.svg.png" height="400px" /></p>
+
+<p><span style="font-size:12px"> https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Schematic_of_allotropic_forms_of_silcon.svg/800px-Schematic_of_allotropic_forms_of_silcon.svg.png</span></p>
+
+<p>A seed crystal is dipped into liquid pure silicon and slowly raised and rotated built the single cystal ingot of pure silicon.</p>
+
+<p>As the crystal is being formed some containimates are pushed out if the contanimates aren’t able to fit in that structure. This called zone refining</p>
+
+<h3 id="wafer">Wafer</h3>
+
+<p>The ingot is sliced into wafer by a diamonded edged saw and cleaned to specifications.</p>
+
+<p><img src="assets/making-a-transistor/1024px-Siliziumwafer.JPG" style="max-width:420px; width:100%;" /></p>
+
+<p><span style="font-size:12px"> https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Siliziumwafer.JPG/1024px-Siliziumwafer.JPG</span></p>
+
+<h3 id="transistor">Transistor</h3>
+
+<p>There are many types of transistors because of space, efficency and cost the metal-oxide-semiconductor FET (MOSFET) is currently the most used.</p>
+
+<p>In this part we are going to look how it is built. Under each slide there are details on how it completed.</p>
+
+<div class="slideShow" style="padding: 20px">
+
+<div class="slide">
+<h2>Start with the P-Type Si Wafer</h2>
+<svg width="722" height="451">
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+<text x="260" y="110">Side View</text>
+<rect x="20" y="185.5" width="200" height="200" fill="#1070CA" />
+<text x="260" y="284">Top View</text>
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+
+</svg>
+<p style="margin-top:0;">The start of the process is at the begining of the other. Usaully this is done in another facility called a foundary.</p>
+</div>
+
+<div class="slide">
+<h2>Oxide Grown</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+<rect x="20" y="65.5" width="200" height="20" fill="#C7CED4" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+
+</svg>
+<p style="margin-top:0;">The first step is generate an SiO2 layer(0.5 -1 um thick) by thermal oxidation. Usally within the range of 900 to 1200 degrees C and a gas flow rate of 1cm/s</p>
+</div>
+
+<div class="slide">
+<h2>Photoresist Applied</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+<rect x="20" y="65.5" width="200" height="20" fill="#C7CED4" />
+<rect x="20" y="45.5" width="200" height="20" fill="#47B881" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">Next step is first mask used by photolithography and is developed with raditation and the excess is removed </p>
+</div>
+<div class="slide">
+<h2>Photoresist Developed</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+<rect x="20" y="65.5" width="200" height="20" fill="#C7CED4" />
+<rect x="20" y="45.5" width="40" height="20" fill="#47B881" />
+<rect x="100" y="45.5" width="40" height="20" fill="#47B881" />
+<rect x="180" y="45.5" width="40" height="20" fill="#47B881" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+<rect x="60" y="260.5" width="40" height="40" fill="#C7CED4" />
+<rect x="140" y="260.5" width="40" height="40" fill="#C7CED4" />
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">The next step is to etch the material that is showing. A chemical is used to attack the oxide layer but not the photoresist or the silicon </p>
+</div>
+
+<div class="slide">
+<h2>Oxide Etched</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="65.5" width="40" height="20" fill="#C7CED4" />
+<rect x="100" y="65.5" width="40" height="20" fill="#C7CED4" />
+<rect x="180" y="65.5" width="40" height="20" fill="#C7CED4" />
+
+
+<rect x="20" y="45.5" width="40" height="20" fill="#47B881" />
+<rect x="100" y="45.5" width="40" height="20" fill="#47B881" />
+<rect x="180" y="45.5" width="40" height="20" fill="#47B881" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+<rect x="60" y="260.5" width="40" height="40" fill="#1070CA" />
+<rect x="140" y="260.5" width="40" height="40" fill="#1070CA" />
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">The next step is to etch the material that is showing. A chemical is used to attack the oxide layer but not the photoresist or the silicon </p>
+</div>
+<div class="slide">
+<h2>Photoresist Removed</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="65.5" width="40" height="20" fill="#C7CED4" />
+<rect x="100" y="65.5" width="40" height="20" fill="#C7CED4" />
+<rect x="180" y="65.5" width="40" height="20" fill="#C7CED4" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+<rect x="60" y="260.5" width="40" height="40" fill="#1070CA" />
+<rect x="140" y="260.5" width="40" height="40" fill="#1070CA" />
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">The photoresist is removed using a solvent or plasma oxidation </p>
+</div>
+<div class="slide">
+<h2>Phosphorus Diffused</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="65.5" width="40" height="20" fill="#C7CED4" />
+<rect x="100" y="65.5" width="40" height="20" fill="#C7CED4" />
+<rect x="180" y="65.5" width="40" height="20" fill="#C7CED4" />
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+<rect x="60" y="260.5" width="40" height="40" fill="#F7D154" />
+<rect x="140" y="260.5" width="40" height="40" fill="#F7D154" />
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">Phosphorus is diffused to make it an n-type region. This is done by Constant Surance Concentration Condition and followed by a drive-in diffusion under a Constant-Total-Dopant Conition  </p>
+</div>
+<div class="slide">
+<h2>Oxide Grown</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+<rect x="100" y="45.5" width="40" height="30" fill="#C7CED4" />
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="200" height="20" fill="#C7CED4" />
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">An oxide layer is grown again. The phosphorus spreads out a little due to diffusion but remains at a high concentration </p>
+</div>
+
+<div class="slide">
+<h2>PR Applied</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="25.5" width="200" height="45" fill="#47B881" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+<rect x="100" y="45.5" width="40" height="30" fill="#C7CED4" />
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="200" height="20" fill="#C7CED4" />
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">The second photolithography is allplied (PR Drop -&gt;Spinning -&gt;Pre-Baking -&gt;Mask Alignment-&gt;UV Exposure -&gt; PR Developing -&gt; Rinsing and Drying -&gt; Post-Baking -&gt; Oxide Etching) as in Lithography #1 is use  </p>
+</div>
+
+<div class="slide">
+<h2>Photoresit Developed</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="25.5" width="80" height="45" fill="#47B881" />
+<rect x="140" y="25.5" width="80" height="45" fill="#47B881" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+<rect x="100" y="45.5" width="40" height="30" fill="#C7CED4" />
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="200" height="20" fill="#C7CED4" />
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+<rect x="100" y="260.5" width="40" height="40" fill="#C7CED4" />
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p style="margin-top:0;">The second photolithography is allplied (PR Drop -&gt;Spinning -&gt;Pre-Baking -&gt;Mask Alignment-&gt;UV Exposure -&gt; PR Developing -&gt; Rinsing and Drying -&gt; Post-Baking -&gt; Oxide Etching) as in Lithography #1 is use  </p>
+</div>
+
+<div class="slide">
+<h2>Oxide Etched</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="25.5" width="80" height="45" fill="#47B881" />
+<rect x="140" y="25.5" width="80" height="45" fill="#47B881" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+<rect x="100" y="260.5" width="40" height="40" fill="#1070CA" />
+
+<rect x="100" y="260.5" width="5" height="40" fill="#F7D154" />
+<rect x="135" y="260.5" width="5" height="40" fill="#F7D154" />
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p> </p>
+</div>
+
+<div class="slide">
+<h2>PR Stripped</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+<rect x="100" y="260.5" width="40" height="40" fill="#1070CA" />
+
+<rect x="100" y="260.5" width="5" height="40" fill="#F7D154" />
+<rect x="135" y="260.5" width="5" height="40" fill="#F7D154" />
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p> </p>
+</div>
+
+<div class="slide">
+<h2>Gate Oxide Grown</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p> </p>
+</div>
+
+<div class="slide">
+<h2>Photoresist Added</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="25.5" width="200" height="56" fill="#47B881" />
+
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p> </p>
+</div>
+
+<div class="slide">
+<h2>Photoresist Developed</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="25.5" width="60" height="56" fill="#47B881" />
+
+<rect x="90" y="25.5" width="60" height="56" fill="#47B881" />
+
+<rect x="160" y="25.5" width="60" height="56" fill="#47B881" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="80" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+<rect x="80" y="275.5" width="10" height="10" fill="#C7CED4" />
+
+<rect x="150" y="275.5" width="10" height="10" fill="#C7CED4" />
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p> </p>
+</div>
+
+<div class="slide">
+<h2>Oxide Etched</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="25.5" width="60" height="56" fill="#47B881" />
+
+<rect x="90" y="25.5" width="60" height="56" fill="#47B881" />
+
+<rect x="160" y="25.5" width="60" height="56" fill="#47B881" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="90" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="160" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+<rect x="80" y="275.5" width="10" height="10" fill="#F7D154" />
+
+<rect x="150" y="275.5" width="10" height="10" fill="#F7D154" />
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p> </p>
+</div>
+
+<div class="slide">
+<h2>Photoresist Removed</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="90" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="160" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+<rect x="80" y="275.5" width="10" height="10" fill="#F7D154" />
+
+<rect x="150" y="275.5" width="10" height="10" fill="#F7D154" />
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+
+</svg>
+<p> </p>
+</div>
+
+<div class="slide">
+<h2>Aluminium Film Deposited</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20.5" y="35.5" width="44.5" height="40" fill="#66788A" />
+<rect x="60" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="100" y="70.5" width="40" height="12" fill="#66788A" />
+<rect x="135" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="175" y="35.5" width="44.5" height="40" fill="#66788A" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="90" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="160" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#66788A" />
+
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+<rect x="410" y="270.5" width="20" height="20" fill="#66788A" />
+<text x="440" y="286">Aluminum</text>
+</svg>
+<p> Now a metal such as Aluminum is then evoporated and deposited on the surface to form a film to create the contacts  </p>
+</div>
+
+<div class="slide">
+<h2>Photoresist Applied</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="20" y="20.5" width="200" height="55" fill="#47B881" />
+
+<rect x="20.5" y="35.5" width="44.5" height="40" fill="#66788A" />
+<rect x="60" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="100" y="70.5" width="40" height="12" fill="#66788A" />
+<rect x="135" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="175" y="35.5" width="44.5" height="40" fill="#66788A" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="90" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="160" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#47B881" />
+
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+<rect x="410" y="270.5" width="20" height="20" fill="#66788A" />
+<text x="440" y="286">Aluminum</text>
+</svg>
+<p>  </p>
+</div>
+
+<div class="slide">
+<h2>Photoresist Applied</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="45" y="20.5" width="50" height="55" fill="#47B881" />
+
+<rect x="105" y="20.5" width="30" height="55" fill="#47B881" />
+
+<rect x="145" y="20.5" width="50" height="55" fill="#47B881" />
+
+<rect x="20" y="35.5" width="45" height="40" fill="#66788A" />
+<rect x="60" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="100" y="70.5" width="40" height="12" fill="#66788A" />
+<rect x="135" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="175" y="35.5" width="45" height="40" fill="#66788A" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="90" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="160" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#66788A" />
+
+<rect x="105" y="185.5" width="30" height="200" fill="#47B881" />
+
+<rect x="45" y="270.5" width="50" height="20" fill="#47B881" />
+<rect x="145" y="270.5" width="50" height="20" fill="#47B881" />
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+<rect x="410" y="270.5" width="20" height="20" fill="#66788A" />
+<text x="440" y="286">Aluminum</text>
+</svg>
+<p>  </p>
+</div>
+
+<div class="slide">
+<h2>Aluminum Etched</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="45" y="20.5" width="50" height="55" fill="#47B881" />
+
+<rect x="105" y="20.5" width="30" height="55" fill="#47B881" />
+
+<rect x="145" y="20.5" width="50" height="55" fill="#47B881" />
+
+<rect x="45" y="35.5" width="20" height="40" fill="#66788A" />
+<rect x="60" y="55.5" width="35" height="30" fill="#66788A" />
+<rect x="105" y="70.5" width="30" height="12" fill="#66788A" />
+<rect x="145" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="175" y="35.5" width="20" height="40" fill="#66788A" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="90" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="160" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+<rect x="105" y="185.5" width="30" height="200" fill="#47B881" />
+
+<rect x="45" y="270.5" width="50" height="20" fill="#47B881" />
+<rect x="145" y="270.5" width="50" height="20" fill="#47B881" />
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+<rect x="410" y="270.5" width="20" height="20" fill="#66788A" />
+<text x="440" y="286">Aluminum</text>
+</svg>
+<p>  </p>
+</div>
+
+<div class="slide">
+<h2>Photoresist Removed</h2>
+<svg width="722" height="451">
+
+<!-- Side View --> 
+<rect x="20" y="85.5" width="200" height="40" fill="#1070CA" />
+
+<rect x="45" y="35.5" width="20" height="40" fill="#66788A" />
+<rect x="60" y="55.5" width="35" height="30" fill="#66788A" />
+<rect x="105" y="70.5" width="30" height="12" fill="#66788A" />
+<rect x="145" y="55.5" width="45" height="30" fill="#66788A" />
+<rect x="175" y="35.5" width="20" height="40" fill="#66788A" />
+
+<rect x="20" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="180" y="45.5" width="40" height="30" fill="#C7CED4" />
+
+<rect x="20" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="90" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="140" y="65.5" width="10" height="20" fill="#C7CED4" />
+
+<rect x="160" y="65.5" width="60" height="20" fill="#C7CED4" />
+
+<rect x="95" y="80.5" width="50" height="5" fill="#C7CED4" />
+
+
+<rect x="55" y="85.5" width="50" height="10" fill="#F7D154" />
+<rect x="135" y="85.5" width="50" height="10" fill="#F7D154" />
+
+
+<!-- Top View -->
+<rect x="20" y="185.5" width="200" height="200" fill="#C7CED4" />
+
+<rect x="105" y="185.5" width="30" height="200" fill="#66788A" />
+
+<rect x="45" y="270.5" width="50" height="20" fill="#66788A" />
+<rect x="145" y="270.5" width="50" height="20" fill="#66788A" />
+
+
+
+<!-- Legend  -->
+<text x="260" y="110">Side View</text>
+<text x="260" y="284">Top View</text>
+
+
+<rect x="399.5" y="100.5" width="160" height="200" stroke="#66788A" fill="transparent" />
+
+<rect x="410" y="110.5" width="20" height="20" fill="#1070CA" />
+<text x="440" y="126">P-Type Silicon</text>
+<rect x="410" y="150.5" width="20" height="20" fill="#F7D154" />
+<text x="440" y="166">N-Type Silicon</text>
+<rect x="410" y="190.5" width="20" height="20" fill="#C7CED4" />
+<text x="440" y="206">Silicon Dioxide</text>
+<rect x="410" y="230.5" width="20" height="20" fill="#47B881" />
+<text x="440" y="246">Photoresist</text>
+<rect x="410" y="270.5" width="20" height="20" fill="#66788A" />
+<text x="440" y="286">Aluminum</text>
+</svg>
+<p>  </p>
+</div>
+
+</div>
+<style>
+.slide {height: 603px;}
+</style>
+
+<script>
+
+var slideIndex = 0
+var min = 0
+var max = 21
+
+const showSlide = () => {
+let slides = document.getElementsByClassName("slide")
+slides = [].slice.call(slides); // Convert to array to use map function
+
+slides.map((slide) => slide.style.display = "none")
+
+slides[slideIndex].style.display = "block";
+}
+
+const next = () => {
+if (slideIndex < max)
+showSlide(slideIndex += 1)
+}
+const back = () => {
+if (slideIndex > min)
+showSlide(slideIndex -= 1)
+}
+
+
+
+showSlide()
+
+</script>
+
+<p><button onclick="back()">Back</button>
+<button onclick="next()">Next</button></p>
+
+<p>Thank you for reading. I enjoyed making this summary and learnt so much.</p>
+
+<p>In the next post I will be using this to make a NAND gate which will be the final step to getting to the point where it become binary logic</p>
+
+<p>If you are interested in this post keep up to date by following me on Twitter <a href="https://twitter.com/lazydancr">here</a></p>
+
+
+</article>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129008588-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129008588-1');
+</script>
+
+</html>
