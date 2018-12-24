@@ -13,7 +13,8 @@
   <title>James Pucula</title>
   <style>
   body{
-      margin: 0;
+
+      padding:10px;
       font-family: "Helvetica", "Arial", sans-serif;
       line-height: 1.5;
       color: #333;
@@ -27,10 +28,11 @@
   header{
     margin: 22px 0;
   }
-
-  h1 {
-    margin-bottom: 0px;
+  .footer {
+    margin-top: 20px;
+    border-top: 1px solid #333;
   }
+  
 
   span.article-date {
     font-size: 14px;
@@ -41,15 +43,18 @@
     max-width: 480px;
     margin-top: 10px;
   }
-
-  .list a {
-    color: #000;
-    font-weight: bold;
-  }
-
   p.excerpt {
     margin-top: 0;
     color: #636363;
+  }
+
+  .preview {
+      border: solid 1px #ccc;
+  }
+  .date {
+      font-size:14px;
+      float: right;
+      color: #636363
   }
 
   p {
@@ -60,9 +65,11 @@
   h1,h2,strong {
     color: #333;
   }
-
+  h1 {
+    margin-bottom: 0px;
+  }
   h2 {
-      font-weight: initial;
+    font-weight: initial;
   }
   code, pre {
       background: #eee;
@@ -74,27 +81,17 @@
   pre {
       padding: 1em;
   }
-
-  .footer {
-    padding-top: 10px;
-    margin-top: 10px;
-    border-top: 1px solid #111;
-  }
-  .preview {
-      border: solid 1px #ccc;
-  }
-  .date {
-      font-size:14px;
-      float: right;
-      color: #636363
-  }
   a {
-      color: steelblue;
       text-decoration: none;
   }
   a:hover{
       text-decoration: underline;
   }
+
+  
+  
+
+  
 
   </style>
 </head>
@@ -126,13 +123,13 @@
 <div class ="list">
   <span class="date">Oct 2018</span>
   <a href="/altitude-first-look.html">Altitude First Look</a>
-  <p class="excerpt">Altitude is a time-budgeting app that is based on two principles of planing your time and review each day to make you more productive.</p>
+  <p class="excerpt">Altitude is a time-budgeting app to plan your time and review each day to make you more productive.</p>
 </div>
 
 <div class ="list">
   <span class="date">Sep 2018</span>
   <a href="/tic-tac-toe-redux.html">Tic Tac Toe Redux</a>
-  <p class="excerpt">This is an extension of the react tutorial using redux. In practice this doesn't make sense for small app like this. I hope it will be useful for someone just starting to learn redux.</p>
+  <p class="excerpt">This is an extension of the react tutorial using redux</p>
 </div>
 
 <div class ="list">
@@ -150,19 +147,19 @@
 <div class ="list">
   <span class="date">Dec 2017</span>
   <a href="/single-packet-webpage.html">Single Packet Webpage</a>
-  <p class="excerpt">Computers communicate by sending packets of information. Each webpage is a combination of multiple packets which are re-combined. As an experiment, I wanted to fit an article into one packet of information</p>
+  <p class="excerpt">As an experiment, I wanted to fit an article into one packet of information</p>
 </div>
 
 <div class ="list">
   <span class="date">Oct 2017</span>
   <a href="/parsley-for-style.html">Parsley For Style</a>
-  <p class="excerpt">Parsely for Style is an app development in-progress to reduce the amount of time it takes to prepare food. There are three main features that</p>
+  <p class="excerpt">Web app written in Django to reduce the amount of time it takes to prepare food.</p>
 </div>
 
 <div class ="list">
   <span class="date">Sep 2017</span>
   <a href="/automatic-paintball-turret.html">Automatic Paintball Turret</a>
-  <p class="excerpt">A paintball turret was developed for the MECH 4806 course at Carleton University in the winter 2014 semester. The system is intended to autonomously track, target, and engage an object</p>
+  <p class="excerpt">Developed for the MECH 4806 course at Carleton University. Autonomously track, target, and engage an object</p>
 </div>
 
 <div class ="list">

@@ -13,7 +13,8 @@
   <title>Tic Tac Toe Redux</title>
   <style>
   body{
-      margin: 0;
+
+      padding:10px;
       font-family: "Helvetica", "Arial", sans-serif;
       line-height: 1.5;
       color: #333;
@@ -27,10 +28,11 @@
   header{
     margin: 22px 0;
   }
-
-  h1 {
-    margin-bottom: 0px;
+  .footer {
+    margin-top: 20px;
+    border-top: 1px solid #333;
   }
+  
 
   span.article-date {
     font-size: 14px;
@@ -41,15 +43,18 @@
     max-width: 480px;
     margin-top: 10px;
   }
-
-  .list a {
-    color: #000;
-    font-weight: bold;
-  }
-
   p.excerpt {
     margin-top: 0;
     color: #636363;
+  }
+
+  .preview {
+      border: solid 1px #ccc;
+  }
+  .date {
+      font-size:14px;
+      float: right;
+      color: #636363
   }
 
   p {
@@ -60,9 +65,11 @@
   h1,h2,strong {
     color: #333;
   }
-
+  h1 {
+    margin-bottom: 0px;
+  }
   h2 {
-      font-weight: initial;
+    font-weight: initial;
   }
   code, pre {
       background: #eee;
@@ -74,27 +81,17 @@
   pre {
       padding: 1em;
   }
-
-  .footer {
-    padding-top: 10px;
-    margin-top: 10px;
-    border-top: 1px solid #111;
-  }
-  .preview {
-      border: solid 1px #ccc;
-  }
-  .date {
-      font-size:14px;
-      float: right;
-      color: #636363
-  }
   a {
-      color: steelblue;
       text-decoration: none;
   }
   a:hover{
       text-decoration: underline;
   }
+
+  
+  
+
+  
 
   </style>
 </head>
