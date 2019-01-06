@@ -11,7 +11,7 @@
   <!--<link rel="icon" href="data:;base64,iVBORw0KGgo=">-->
 
   <title>Advent Of Code 2018</title>
-  <meta name="description" content="Learning programming through advent of code 2018. I review 3 things that I learned while doing the challenge">
+  <meta name="description" content="Learning programming through advent of code 2018. I review two things that I learned while doing the challenges">
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" value="summary">
@@ -20,7 +20,7 @@
   <meta property="og:title" content="Advent Of Code 2018" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="http://pucula.com/advent-of-code-2018.html" />
-  <meta property="og:description" content="Learning programming through advent of code 2018. I review 3 things that I learned while doing the challenge" /> 
+  <meta property="og:description" content="Learning programming through advent of code 2018. I review two things that I learned while doing the challenges" /> 
   
   <style>
   body{
@@ -104,7 +104,7 @@
 <span class="article-date" style="margin-bottom: 30px;">Jan 2019 - 
   
   
-    5 mins
+    4 mins
   
 </span>
 
@@ -118,23 +118,32 @@ o/@'%',\o
 '^^^N^^^`
 </code></pre></div></div>
 
-<p><a href="https://adventofcode.com/">Advent of Code</a> is 25 programming challenges that you complete in December. This years challenge was interesting and a great way to learn programming through solving the problems and also by reading other solutions. In this article I will cover 3 things I learned about and to convince you to try the problems or get ready for next year.</p>
+<p><a href="https://adventofcode.com/">Advent of Code</a> is an annual programming competition where you complete 25 challenges in December. It’s an interesting way to learn programming by solving the problems and reviewing how other people solved the challenge. In this article I will cover two things I learned about this year and try to convince you to join next years competition.</p>
 
 <h3 id="1-assembly-language">1. Assembly Language</h3>
 
-<p>I have always be interest in how a computer actually works, see <a href="https://pucula.com/making-a-transistor-from-scratch-part-1.html">building a transistor from scratch</a>. But have never had the chance to get to much into it or where to start.</p>
+<p>I have always be interested in how computers work, <em>see</em> <a href="https://pucula.com/making-a-transistor-from-scratch-part-1.html">building a transistor from scratch</a>. I have never had the chance to program in assembly. That changed on <a href="https://adventofcode.com/2018/day/16">Day 16</a>, the challenge was to run a new programming language called elf code. Elf code looked almost identical to assembly.</p>
 
-<p>On <a href="https://adventofcode.com/2018/day/16">Day 16</a> we had to use elf lang, a language very similar to assembly, and I thought it was the perfect opportunity to convert the code directly.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 0 2 0
+13 2 0 2
+2 2 3 2
+4 3 2 3
+3 3 2 2
+13 2 1 2
+6 2 1 1
+10 1 2 3
+4 2 3 0
+13 1 0 1
+2 1 1 1
+</code></pre></div></div>
 
-<p>Originally I wrote the code in python but it was too slow, I optimized and ran it in pypy but it was still to slow. To write it in assembly(asm) I took a step into C and used an online C to asm compiler to see how it was done.</p>
+<p>The first number is the opcode, which could represent 1 of 16 operations, ‘add’, ‘mul’, ‘mov’. The second and third were inputs and the forth was what register to use for the output.</p>
 
-<p>First I started to optimize the python code and was able to reduce my time down to 1/10th of the original time, but for the second part, it was not done after running for 3 hours.</p>
+<p>First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours of running I stop it.</p>
 
-<p>In the end the asm was not fast enough even with the changes. Even being roughly 20x faster than my original python implementation. You needed to see the pattern and extend it to solve the second part.</p>
+<p>To solve it, you need to find a pattern, simplify the logic, and get the answer. I was still curious if it could run fast enough to complete the program.</p>
 
-<p>Along the way I learn x86-64 commands, registers, flags and jump commands which is extremely useful</p>
-
-<p>Below is a snippet of the first 7 lines. After the ‘;’ is a comment. The l01, l02, l03 and l07 are labels. For example the first command is jmp l17, which is jump to label l17.</p>
+<p>Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      jmp       l17             ;  L00: goto *jump_table[0+16+1]; //addi 3 16 3
 l01:  mov       r11, 1          ;  L01: reg[1] = 1; //seti 1 2 1
@@ -151,11 +160,9 @@ l03:  mov       rax, r11        ;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5
 l07:  add       r10, r11        ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
 </code></pre></div></div>
 
-<p>I also learned why assembly is not written. This code ran about as fast as the C code that I made. Both can be found on my <a href="https://github.com/lazydancer/Advent-of-Code-2018/tree/master/Day%2019">github</a></p>
+<p>In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation.</p>
 
-<p>In addition to just being as fast, I had troubles getting the linker to combine the assembly with the c library so I could not use the printf() function and had to do a function call by itself.</p>
-
-<p>I don’t recommend copying this code. It writes a single character in ASCII code. Since I already solved it by hand I knew what character it would create but it was not useful if it was the first time trying to solve it</p>
+<p>Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print:
       mov       [value], r10     
@@ -169,9 +176,11 @@ l07:  add       r10, r11        ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
       syscall                      ; invoke operating system to exit 
 </code></pre></div></div>
 
+<p>All the code can be found on my <a href="https://github.com/lazydancer/Advent-of-Code-2018/tree/master/Day%2019">github</a></p>
+
 <h3 id="2-python-imports">2. Python Imports</h3>
 
-<p>Most of the time I avoid python imports for the default data types do the job. I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expressions</p>
+<p>Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expressions</p>
 
 <p><strong>defaultdict</strong> - Having a set value for when nothing exist is a very useful feature</p>
 
@@ -208,18 +217,12 @@ result = networkx.shortest_path(graph)
   <p><em>Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems.</em></p>
 </blockquote>
 
-<p>But I have come to love regular expressions and follow much Jeff Atwoods take on <a href="https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/">them</a></p>
-
-<p>I find the following magical it takes a line, grabs the numbers from the text and converts them to integers</p>
+<p>Now I follow Jeff Atwoods take on <a href="https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/">them</a>. They are amazing but only when you use them sparsely. As an example, the line below grabs the numbers from the a line of text and converts them to integers</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list(map(int, re.findall(r'-?\d+', line)))
 </code></pre></div></div>
 
-<h3 id="3-reading-code">3. Reading Code</h3>
-
 <p>During the challenge, I read as much as I coded. Reading other peoples code was enlightening. You saw how they approached the problem and what trade-offs they chose.</p>
-
-<p>Having a similar challenge you were able to understand the code very quickly as you knew the domain. With such a small solutions, good variable names and keeping the code simple seemed to be significate factors in making it readable.</p>
 
 <p>Thank you <a href="http://was.tl/">Eric Wastl</a> for creating advent of code and everybody that shared their solutions online. I learned a lot.</p>
 
