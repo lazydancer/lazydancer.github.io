@@ -118,7 +118,7 @@ o/@'%',\o
 '^^^N^^^`
 </code></pre></div></div>
 
-<p><a href="https://adventofcode.com/">Advent of Code</a> is an annual programming competition where you complete 25 challenges in December. It’s an interesting way to learn programming by solving the problems and reviewing how other people solved the challenge. In this article I will cover two things I learned about this year and try to convince you to join next years competition.</p>
+<p><a href="https://adventofcode.com/">Advent of Code</a> is an annual programming competition to complete 25 challenges in December. It’s a way grow as a programmer, through solving problems and reveiwing others code. In this article I will cover two things I learned about this year and try to convince you to join next years competition.</p>
 
 <h3 id="1-assembly-language">1. Assembly Language</h3>
 
@@ -139,11 +139,11 @@ o/@'%',\o
 
 <p>The first number is the opcode, which could represent 1 of 16 operations, ‘add’, ‘mul’, ‘mov’. The second and third were inputs and the forth was what register to use for the output.</p>
 
-<p>First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours of running I stop it.</p>
+<p>First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it.</p>
 
-<p>To solve it, you need to find a pattern, simplify the logic, and get the answer. I was still curious if it could run fast enough to complete the program.</p>
+<p>To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware.</p>
 
-<p>Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17.</p>
+<p>Using an intermeddiate step to C, Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      jmp       l17             ;  L00: goto *jump_table[0+16+1]; //addi 3 16 3
 l01:  mov       r11, 1          ;  L01: reg[1] = 1; //seti 1 2 1
