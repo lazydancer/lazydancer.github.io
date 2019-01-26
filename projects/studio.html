@@ -19,7 +19,7 @@
   <!-- Open Graph data -->
   <meta property="og:title" content="Studio" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://pucula.com/studio.html" />
+  <meta property="og:url" content="http://pucula.com/projects/studio" />
   <meta property="og:description" content="studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages" /> 
   
   <style>
@@ -41,9 +41,8 @@
   }
   .footer {
     margin-top: 20px;
-    border-top: 1px solid #333;
+    border-top: 1px solid #999;
   }
-  
 
   span.article-date {
     font-size: 14px;
@@ -54,23 +53,25 @@
     max-width: 480px;
     margin-top: 10px;
   }
-  p.excerpt {
-    font-size: 14px;
-    margin-top: 0;
-    color: #636363;
-  }
+
   .preview {
       border: solid 1px #ccc;
   }
+  
   .date {
       font-size:14px;
-      float: right;
       color: #636363
   }
+  
   p {
     max-width: 480px;
   }
-
+  a {
+    color: #333;
+  }
+  li {
+    margin-top: 10px;
+  }
   h1,h2,strong {
     color: #333;
   }
@@ -101,14 +102,16 @@
 
     <h1>Studio</h1>
 
-<span class="article-date" style="margin-bottom: 30px;">Aug 2017 - 
-  
-  
-    3 mins
-  
+<span class="article-date" style="margin-bottom: 30px;">
 </span>
 
 <p>studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages.</p>
+
+<p><a style="padding-left:7px;" href="https://github.com/lazydancer/studio">Github »</a></p>
+
+<p>Tools:</p>
+<svg width="48px" height="48px" fill="#5D4F85" style="padding-left: 8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Haskell</title><path class="a" d="M.006 20.47L5.649 12 .006 3.531h4.235l5.674 8.47-5.674 8.468zm5.643 0L11.29 12 5.65 3.531h4.266l11.253 16.938h-4.224l-3.535-5.34-3.495 5.34zM19.3 15.525l-1.877-2.827h6.571v2.826zm-2.826-4.235l-1.877-2.827h9.387v2.827z" /></svg>
+<svg style="padding: 0 0 0 8;" fill="#E34F26" width="48px" height="48px" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HTML5</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" /></svg>
 
 <p>studio organizes html pages and generates a table of contents. Having the flexibility to change a template and adding custom css and javascript. With static webpages, your site is fast, secure and easy to deploy. You can find the code on github
 
@@ -168,7 +171,7 @@ writeTOC template pages = do
 
 <div class="footer">
 
-<p>Hi, my name is <b>James Pucula</b>, I'm an energy engineer-in-training learning more about programming and economics</p>
+<p>My name is <b>James Pucula</b>, I'm currently working towards becoming an energy engineer while learning more about programming and economics</p>
 
 <span>
 
