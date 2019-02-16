@@ -50,7 +50,7 @@
   }
   .date {
       font-size:14px;
-      color: #636363
+      color: #999;
   }
   p {
     max-width: 480px;
@@ -67,19 +67,65 @@
   }
   h1 {
     margin-bottom: 0px;
+    color: #000;
   }
   h2 {
     font-weight: initial;
+    color: #000;
+  } 
+  h3 {
+    color: #000;
   }
-  code, pre {
-      background: #eee;
+  b {
+    color: #000;
   }
-  code {
-      vertical-align: text-bottom;
+  img {
+    border-radius:5px;
   }
-  pre {
-      padding: 1em;
-  }
+
+  /* Highlighting BW */
+
+pre.highlight { padding: 1em; }
+.highlight .hll { background-color: #ffffcc } 
+.highlight  { background: #eee; border-radius:5px;} 
+.highlight .c { font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .ch { font-style: italic } /* Comment.Hashbang */
+.highlight .cm { font-style: italic } /* Comment.Multiline */
+.highlight .cpf { font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { font-style: italic } /* Comment.Single */
+.highlight .cs { font-style: italic } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gh { font-weight: bold } /* Generic.Heading */
+.highlight .gp { font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { font-weight: bold } /* Generic.Subheading */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { font-weight: bold } /* Keyword.Namespace */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .s { font-style: italic } /* Literal.String */
+.highlight .nc { font-weight: bold } /* Name.Class */
+.highlight .ni { font-weight: bold } /* Name.Entity */
+.highlight .ne { font-weight: bold } /* Name.Exception */
+.highlight .nn { font-weight: bold } /* Name.Namespace */
+.highlight .nt { font-weight: bold } /* Name.Tag */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .sa { font-style: italic } /* Literal.String.Affix */
+.highlight .sb { font-style: italic } /* Literal.String.Backtick */
+.highlight .sc { font-style: italic } /* Literal.String.Char */
+.highlight .dl { font-style: italic } /* Literal.String.Delimiter */
+.highlight .sd { font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { font-style: italic } /* Literal.String.Double */
+.highlight .se { font-weight: bold; font-style: italic } /* Literal.String.Escape */
+.highlight .sh { font-style: italic } /* Literal.String.Heredoc */
+.highlight .si { font-weight: bold; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { font-style: italic } /* Literal.String.Other */
+.highlight .sr { font-style: italic } /* Literal.String.Regex */
+.highlight .s1 { font-style: italic } /* Literal.String.Single */
+.highlight .ss { font-style: italic } /* Literal.String.Symbol */
+
   
 
   </style>
@@ -100,8 +146,8 @@
 <p><a style="padding-left:7px;" href="https://github.com/lazydancer/studio">Github »</a></p>
 
 <p>Tools:</p>
-<svg width="48px" height="48px" fill="#5D4F85" style="padding-left: 8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Haskell</title><path class="a" d="M.006 20.47L5.649 12 .006 3.531h4.235l5.674 8.47-5.674 8.468zm5.643 0L11.29 12 5.65 3.531h4.266l11.253 16.938h-4.224l-3.535-5.34-3.495 5.34zM19.3 15.525l-1.877-2.827h6.571v2.826zm-2.826-4.235l-1.877-2.827h9.387v2.827z" /></svg>
-<svg style="padding: 0 0 0 8;" fill="#E34F26" width="48px" height="48px" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HTML5</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" /></svg>
+<svg width="48px" height="48px" fill="#5D4F85" style="padding-left: 8px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Haskell</title><path class="a" d="M.006 20.47L5.649 12 .006 3.531h4.235l5.674 8.47-5.674 8.468zm5.643 0L11.29 12 5.65 3.531h4.266l11.253 16.938h-4.224l-3.535-5.34-3.495 5.34zM19.3 15.525l-1.877-2.827h6.571v2.826zm-2.826-4.235l-1.877-2.827h9.387v2.827z" /></svg>
+<svg style="padding: 0 0 0 8px;" fill="#E34F26" width="48px" height="48px" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HTML5</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" /></svg>
 
 <p>studio organizes html pages and generates a table of contents. Having the flexibility to change a template and adding custom css and javascript. With static webpages, your site is fast, secure and easy to deploy. You can find the code on github
 

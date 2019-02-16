@@ -50,7 +50,7 @@
   }
   .date {
       font-size:14px;
-      color: #636363
+      color: #999;
   }
   p {
     max-width: 480px;
@@ -67,19 +67,65 @@
   }
   h1 {
     margin-bottom: 0px;
+    color: #000;
   }
   h2 {
     font-weight: initial;
+    color: #000;
+  } 
+  h3 {
+    color: #000;
   }
-  code, pre {
-      background: #eee;
+  b {
+    color: #000;
   }
-  code {
-      vertical-align: text-bottom;
+  img {
+    border-radius:5px;
   }
-  pre {
-      padding: 1em;
-  }
+
+  /* Highlighting BW */
+
+pre.highlight { padding: 1em; }
+.highlight .hll { background-color: #ffffcc } 
+.highlight  { background: #eee; border-radius:5px;} 
+.highlight .c { font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .ch { font-style: italic } /* Comment.Hashbang */
+.highlight .cm { font-style: italic } /* Comment.Multiline */
+.highlight .cpf { font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { font-style: italic } /* Comment.Single */
+.highlight .cs { font-style: italic } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gh { font-weight: bold } /* Generic.Heading */
+.highlight .gp { font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { font-weight: bold } /* Generic.Subheading */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { font-weight: bold } /* Keyword.Namespace */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .s { font-style: italic } /* Literal.String */
+.highlight .nc { font-weight: bold } /* Name.Class */
+.highlight .ni { font-weight: bold } /* Name.Entity */
+.highlight .ne { font-weight: bold } /* Name.Exception */
+.highlight .nn { font-weight: bold } /* Name.Namespace */
+.highlight .nt { font-weight: bold } /* Name.Tag */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .sa { font-style: italic } /* Literal.String.Affix */
+.highlight .sb { font-style: italic } /* Literal.String.Backtick */
+.highlight .sc { font-style: italic } /* Literal.String.Char */
+.highlight .dl { font-style: italic } /* Literal.String.Delimiter */
+.highlight .sd { font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { font-style: italic } /* Literal.String.Double */
+.highlight .se { font-weight: bold; font-style: italic } /* Literal.String.Escape */
+.highlight .sh { font-style: italic } /* Literal.String.Heredoc */
+.highlight .si { font-weight: bold; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { font-style: italic } /* Literal.String.Other */
+.highlight .sr { font-style: italic } /* Literal.String.Regex */
+.highlight .s1 { font-style: italic } /* Literal.String.Single */
+.highlight .ss { font-style: italic } /* Literal.String.Symbol */
+
   
 
   </style>
@@ -111,17 +157,17 @@ o/@'%',\o
 
 <p>I have always be interested in how computers work, <em>see</em> <a href="https://pucula.com/making-a-transistor-from-scratch-part-1.html">building a transistor from scratch</a>. I have never had the chance to program in assembly. That changed on <a href="https://adventofcode.com/2018/day/16">Day 16</a>, the challenge was to run a new programming language called elf code. Elf code looked almost identical to assembly.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 0 2 0
-13 2 0 2
-2 2 3 2
-4 3 2 3
-3 3 2 2
-13 2 1 2
-6 2 1 1
-10 1 2 3
-4 2 3 0
-13 1 0 1
-2 1 1 1
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">13</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span>
+<span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">3</span>
+<span class="mi">3</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">2</span>
+<span class="mi">13</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span>
+<span class="mi">6</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="mi">10</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+<span class="mi">4</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">13</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="mi">2</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
 </code></pre></div></div>
 
 <p>The first number is the opcode, which could represent 1 of 16 operations, ‘add’, ‘mul’, ‘mov’. The second and third were inputs and the forth was what register to use for the output.</p>
@@ -132,35 +178,35 @@ o/@'%',\o
 
 <p>Using an intermeddiate step to C, Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      jmp       l17             ;  L00: goto *jump_table[0+16+1]; //addi 3 16 3
-l01:  mov       r11, 1          ;  L01: reg[1] = 1; //seti 1 2 1
-l02:  mov       r12, 1          ;  L02: reg[2] = 1; //seti 1 1 2
-l03:  mov       rax, r11        ;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5
-      mov       rbx, r12        ;
-      imul      rax, rbx        ;
-      mov       r15, rax        ;
-      cmp       r15, r14        ;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5
-      sete      al              ;  Grab the flag
-      movzx     r15, al         ;  Move the flag to r15 extends with zeros
-      je        l07             ;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3
-      jmp       l08             ;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3
-l07:  add       r10, r11        ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="k">jmp</span>       <span class="n">l17</span>           <span class="c">;  L00: goto *jump_table[0+16+1]; //addi 3 16 3</span>
+<span class="n">l01</span><span class="o">:</span>  <span class="k">mov</span>       <span class="n">r11</span><span class="p">,</span> <span class="mi">1</span>        <span class="c">;  L01: reg[1] = 1; //seti 1 2 1</span>
+<span class="n">l02</span><span class="o">:</span>  <span class="k">mov</span>       <span class="n">r12</span><span class="p">,</span> <span class="mi">1</span>        <span class="c">;  L02: reg[2] = 1; //seti 1 1 2</span>
+<span class="n">l03</span><span class="o">:</span>  <span class="k">mov</span>       <span class="n">rax</span><span class="p">,</span> <span class="n">r11</span>      <span class="c">;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5</span>
+      <span class="k">mov</span>       <span class="n">rbx</span><span class="p">,</span> <span class="n">r12</span>      <span class="c">;</span>
+      <span class="k">imul</span>      <span class="n">rax</span><span class="p">,</span> <span class="n">rbx</span>      <span class="c">;</span>
+      <span class="k">mov</span>       <span class="n">r15</span><span class="p">,</span> <span class="n">rax</span>      <span class="c">;</span>
+      <span class="k">cmp</span>       <span class="n">r15</span><span class="p">,</span> <span class="n">r14</span>      <span class="c">;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5</span>
+      <span class="k">sete</span>      <span class="n">al</span>            <span class="c">;  Grab the flag</span>
+      <span class="k">movzx</span>     <span class="n">r15</span><span class="p">,</span> <span class="n">al</span>       <span class="c">;  Move the flag to r15 extends with zeros</span>
+      <span class="k">je</span>        <span class="n">l07</span>           <span class="c">;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3</span>
+      <span class="k">jmp</span>       <span class="n">l08</span>           <span class="c">;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3</span>
+<span class="n">l07</span><span class="o">:</span>  <span class="k">add</span>       <span class="n">r10</span><span class="p">,</span> <span class="n">r11</span>      <span class="c">;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0</span>
 </code></pre></div></div>
 
 <p>In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation.</p>
 
 <p>Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print:
-      mov       [value], r10     
-      mov       rax, 1             ; system call for write
-      mov       rdi, 1             ; file handle 1 is stdout
-      mov       rsi, value         ; address of string to output
-      mov       rdx, 8             ; number of bytes
-      syscall                      ; invoke operating system to do the write
-      mov       rax, 60            ; system call for exit
-      xor       rdi, rdi           ; exit code 0
-      syscall                      ; invoke operating system to exit 
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">print</span><span class="o">:</span>
+      <span class="k">mov</span>       <span class="p">[value],</span> <span class="n">r10</span>     
+      <span class="k">mov</span>       <span class="n">rax</span><span class="p">,</span> <span class="mi">1</span>           <span class="c">; system call for write</span>
+      <span class="k">mov</span>       <span class="n">rdi</span><span class="p">,</span> <span class="mi">1</span>           <span class="c">; file handle 1 is stdout</span>
+      <span class="k">mov</span>       <span class="n">rsi</span><span class="p">,</span> <span class="n">value</span>       <span class="c">; address of string to output</span>
+      <span class="k">mov</span>       <span class="n">rdx</span><span class="p">,</span> <span class="mi">8</span>           <span class="c">; number of bytes</span>
+      <span class="k">syscall</span>                    <span class="c">; invoke operating system to do the write</span>
+      <span class="k">mov</span>       <span class="n">rax</span><span class="p">,</span> <span class="mi">60</span>          <span class="c">; system call for exit</span>
+      <span class="k">xor</span>       <span class="n">rdi</span><span class="p">,</span> <span class="n">rdi</span>         <span class="c">; exit code 0</span>
+      <span class="k">syscall</span>                    <span class="c">; invoke operating system to exit </span>
 </code></pre></div></div>
 
 <p>All the code can be found on my <a href="https://github.com/lazydancer/Advent-of-Code-2018/tree/master/Day%2019">github</a></p>
@@ -171,42 +217,44 @@ l07:  add       r10, r11        ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
 
 <p><strong>defaultdict</strong> - Having a set value for when nothing exist is a very useful feature</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>somedict = {}
-print(somedict[3]) # KeyError
-
-someddict = defaultdict(int)
-print(someddict[3]) # print int(), thus 0
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">somedict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">somedict</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># KeyError
+</span>
+<span class="n">someddict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">someddict</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># print int(), thus 0
+</span></code></pre></div></div>
 
 <p><strong>copy</strong> - Because python calls list by reference this is useful to keep things functional</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import copy
-copy.copy(x)
-copy.deepcopy(x)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">copy</span>
+<span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><strong>dequeue</strong> - A double-ended queue, this is useful for when rotation is needed with a rotate function</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d = deque(xrange(10))
-d.rotate(2)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">d</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
-
 <p><strong>networkx</strong> - This was useful for all types of graph equations. Shortest path was used many times</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>graph = networkx.Graph()
-...adding nodes...
-result = networkx.shortest_path(graph)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">graph</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="c1"># ...adding nodes...
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 </code></pre></div></div>
-
 <p><strong>re</strong> - This is a very popular library I have tried to avoid it.</p>
 
 <blockquote>
   <p><em>Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems.</em></p>
 </blockquote>
 
+<blockquote>
+  <p>Jamie Zawinski</p>
+</blockquote>
+
 <p>Now I follow Jeff Atwoods take on <a href="https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/">them</a>. They are amazing but only when you use them sparsely. As an example, the line below grabs the numbers from the a line of text and converts them to integers</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list(map(int, re.findall(r'-?\d+', line)))
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r'-?\d+'</span><span class="p">,</span> <span class="n">line</span><span class="p">)))</span>
 </code></pre></div></div>
 
 <p>During the challenge, I read as much as I coded. Reading other peoples code was enlightening. You saw how they approached the problem and what trade-offs they chose.</p>
