@@ -23,12 +23,15 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="http://pucula.com/projects/parsley-for-style" />
   <meta property="og:description" content="Web app written in Django to reduce the amount of time it takes to prepare food." /> 
+
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   
   <style>
   body{
+      font-size:15px;
       padding:10px;
-      font-family: 'Helvetica', sans-serif;
-      color: #333;
+      font-family: 'Open Sans', sans-serif;
       line-height: 1.6;
   }
   article {
@@ -58,7 +61,7 @@
       color: #999;
   }
   p {
-    color:#424242;
+    color:#333;
   }
   a {
     color: #0366d6;
@@ -71,7 +74,7 @@
     margin-top: 10px;
   }
   h1 {
-    margin-bottom: -6px;
+    margin-bottom: -3px;
     color: #000;
   }
   h2 {
@@ -87,10 +90,20 @@
   img {
     border-radius:5px;
   }
+  .textBreak {
+    width: 100%;
+    border-top: 1px solid #424242;
+  }
+  .centerImage {
+    display: block;
+    margin: 0 auto;
+    max-width:500px;
+  }
+
 
   /* Highlighting BW */
 
-pre.highlight { padding: 1em; }
+pre.highlight { padding: 1em; font-size: 13px}
 .highlight .hll { background-color: #ffffcc } 
 .highlight  { background: #eee; border-radius:5px;} 
 .highlight .c { font-style: italic } /* Comment */
