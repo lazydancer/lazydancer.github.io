@@ -100,6 +100,28 @@
     max-width:500px;
   }
 
+  table {
+    padding:0 20px;
+    border-spacing: 0;
+    width: 100%;
+}
+
+td,
+th {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 1.0rem 1.2rem;
+  text-align: left;
+}
+
+td:first-child,
+th:first-child {
+  padding-left: 0;
+}
+
+td:last-child,
+th:last-child {
+  padding-right: 0;
+}
 
   /* Highlighting BW */
 
@@ -159,13 +181,13 @@ pre.highlight { padding: 1em; font-size: 13px}
 <span class="article-date" style="margin-bottom: 30px;">Aug 2018
 </span>
 
-<p>Recently I started working on <a href="https://fast.ai">fast.ai</a>, this is my attempt at creating a network.
+<p>Recently I started working on <a href="https://fast.ai">fast.ai</a>, this is my attempt at creating a network.</p>
 
 <h2>Attempt One</h2>
 
-<p>My training set contains 10 rockets and 10 towers
+<p>My training set contains 10 rockets and 10 towers</p>
 
-<img src="assets/rocket-or-tower/tower.png" />
+<p><img src="assets/rocket-or-tower/tower.png" /></p>
 
 <p>Using the the 3 line program from the fast.ai library for the precompiled model <a href="https://github.com/KaimingHe/deep-residual-networks">resnet</a>
 
@@ -228,7 +250,7 @@ learn.fit(lr, 3, cycle_len=1, cycle_mult=2)</code></pre>
 <img src="assets/rocket-or-tower/result2.png" width="722px" />
 
 <p>Thank you</p>
-</p></p></p></p></p></p></p></p></p></p></p></p>
+</p></p></p></p></p></p></p></p></p></p>
 
 
 
