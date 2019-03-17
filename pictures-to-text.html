@@ -127,6 +127,18 @@ hr {
   border-top: 1px solid #999;
 }
 
+li {
+    list-style-type: none;
+    position: relative;    /* It is required for setting position to absolute in the next rule. */
+}
+
+li::before {
+    content: '\2022';      /* Unicode for • character */
+    position: absolute;
+    left: -0.8em;          /* Adjust this value so that it appears where you want. */
+    font-size: 1.1em;      /* Adjust this value so that it appears what size you want. */
+}
+
   /* Highlighting BW */
 
 pre.highlight { padding: 1em; font-size: 13px}
@@ -185,7 +197,7 @@ pre.highlight { padding: 1em; font-size: 13px}
 <span class="article-date" style="margin-bottom: 30px;">Mar 2019
 </span>
 
-<p>Converting an image to text, just for fun. I completed the program in iPython. Below is the notebook with comments and will be posting the code to github, currently making the code easier to call.</p>
+<p>Converted a picture into text just for fun. To complete this I used iPython and below you can find the the notebook. Soon I will be posting the code to github, currently making it easier to call.</p>
 
 <div class="highlighter-rouge"><div class="highlight" style="line-height:1;"><pre class="highlight" style="font-size: 11px;"><code>.gMBy         
   WgM_        
@@ -200,11 +212,11 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 <h2 id="ipython-notebook">iPython Notebook</h2>
 
-<p>This program is split into 3 parts:</p>
+<p>The notebook is in 3 parts:</p>
 <ol>
-  <li><strong>Image</strong> - the image that is to be converted is split up into character sized images</li>
-  <li><strong>Font</strong> - the font is split into character sized images of characters</li>
-  <li><strong>Calc</strong> - the images that have been split up are compared to the font images, finding the first one</li>
+  <li><strong>Image</strong> - Input image to be converted. It’s chopped up into little bits.</li>
+  <li><strong>Font</strong> - Input font. The characters are extrated as images.</li>
+  <li><strong>Calc</strong> - the images and font characters are compared to find the best match</li>
 </ol>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
@@ -214,7 +226,7 @@ pre.highlight { padding: 1em; font-size: 13px}
 </code></pre></div></div>
 <h2 id="image">Image</h2>
 
-<p>First thing we do is import the image this time we will be using the following. Most of the code here is converting it from PIL array to numpy’s 2D narray to use matlibplot plot function</p>
+<p>First thing is import the image. As an example I use the finch. Most of the following code is to convert the image from a PIL array to numpy’s 2D narray and use matlibplot plot function</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show_image</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -230,7 +242,7 @@ pre.highlight { padding: 1em; font-size: 13px}
 <img src="assets/pictures-to-text/download (1).png" style="max-width: 500px;" /> 
 </div>
 
-<p>The next step, is taking the imported image and converting it character sized images. The heart of the following methods are the view_as_blocks(). The function fails if there is an overlap with the  edge of the imported image. The function trim_image is there to remove the excess before it sent in. The result can be seen below</p>
+<p>The next step, is taking the imported image and converting it to character sized images. The heart of the following methods are the <strong>view_as_blocks</strong>. The function fails if there is an overlap with the  edge of the imported image. The function <strong>trim_image</strong> is there to remove the excess before it sent in to <strong>view_as_blocks</strong>. The result can be seen below</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">trim_image</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span><span class="p">):</span>
     <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span>
@@ -279,7 +291,7 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 <h2 id="fonts">Fonts</h2>
 
-<p>Now we have the images ready we need to match characters to them. First we need to get images of the font to compare. We will be using the ascii character set, this is found in the string.printable function</p>
+<p>Now we have the images, we can match characters to them. First we need to get images of the font to compare. We will be using the ascii character set, this is found in the <strong>string.printable</strong> function</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">font_images</span><span class="p">():</span>
     <span class="n">fnt</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="s">'fonts/SFMono-Regular.otf'</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
@@ -317,13 +329,13 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 <h2 id="calc">Calc</h2>
 
-<p>Now we have pictures of the elements and sections of the image that we would like to replace. We just need to pick the best match. In this case I used:</p>
+<p>Now we have sections of the input image and character images, we just need to pick the best match. In this case I used:</p>
 
 <div class="centerImage">
 <img src="assets/pictures-to-text/download4.png" style="max-width: 500px;" /> 
 </div>
 
-<p>where A and B are matricis of the same size. We want the lowest score as that will be the most similar</p>
+<p>where A and B are matricis of the same size. We want the lowest score as that will be the smallest difference. I guess I could have inverted it so we were looking for the max or I could have called it the loss function.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solve_section</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">letters</span><span class="p">):</span>
     <span class="n">min_score</span> <span class="o">=</span> <span class="mi">1000000</span>
@@ -388,6 +400,8 @@ pre.highlight { padding: 1em; font-size: 13px}
     _&lt;V _MMK_ 
   _1P"`    "gg
 </code></pre></div></div>
+
+<p>Thanks for reading, this was a slightly different style. For future articles, follow me on <a href="https://twitter.com/lazydancr">twitter</a></p>
 
 
 

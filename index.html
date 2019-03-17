@@ -127,6 +127,18 @@ hr {
   border-top: 1px solid #999;
 }
 
+li {
+    list-style-type: none;
+    position: relative;    /* It is required for setting position to absolute in the next rule. */
+}
+
+li::before {
+    content: '\2022';      /* Unicode for • character */
+    position: absolute;
+    left: -0.8em;          /* Adjust this value so that it appears where you want. */
+    font-size: 1.1em;      /* Adjust this value so that it appears what size you want. */
+}
+
   /* Highlighting BW */
 
 pre.highlight { padding: 1em; font-size: 13px}
