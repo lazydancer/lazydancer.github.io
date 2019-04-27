@@ -174,17 +174,17 @@ pre.highlight { padding: 1em; font-size: 13px}
 <span class="article-date" style="margin-bottom: 30px;">Apr 2019
 </span>
 
-<p>For the second assigment of the discrete opimization course, you need to colour a map where each neighbouring country has to be a different colour. The challenge is to find the smallest number of colours where you can colour every country. Like the other problems so far in this course this is an NP problem.</p>
+<p>For the second segment of the discrete optimization course you need to colour a map where each neighbouring country is a different colour. The challenge is to find the smallest number of colours to fill in the map. Like the other problems in this course, this is an NP problem.</p>
 
-<p>This in an challenge in which the difficulty grows exponentally with the number of countries added. We can generalize the map and change it into a graph. This allows us to have as many bordering counties as we want. I will call countries “nodes” as they are represented in a graph. This type of problem is also called vertex colouring.</p>
+<p>The difficulty grows exponentially with the number of countries added. We can generalize the map and change it into a graph. This allows us to have as many bordering counties as we want. I will call countries “nodes” as they are represented in a graph. This type of problem is also called vertex colouring.</p>
 
 <h2 id="brute-force">Brute force</h2>
 
 <p>I am going to start by trying every single combination and returning the best solution. Computers are great with numbers and I want to be lazy.</p>
 
-<p>The computer 2 million combinations a second. With a 2GHz computer that is a check every 1000 cycles. I’m sure we could get 10x or 100x optimizing the code but I’ll show you below, we need much more than that.</p>
+<p>The computer 2 million combinations a second. With a 2GHz computer that is a check every 1000 cycles. I’m sure we could get 10x or 100x optimizing the code, but due to the exponentially increasing work, it will be beneficial to find a different way.</p>
 
-<p>The number of possible combinations is equal to number of colors ^ number of nodes.</p>
+<p>The possible combinations is equal to the “number of colors” ^ “number of nodes”.</p>
 
 <p><strong>Example: (3 colours and 20 nodes)</strong></p>
 
@@ -200,35 +200,35 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 <h2 id="pick-most-connected">Pick most connected</h2>
 
-<p>Instead of trying every combination, lets order the way we select the nodes we colour. Starting from the node which has the most connections, choosing its colour and moving to the next adding a new colour if neighbouring nodes used all the previous colors. This will go on till all the colors are choosen</p>
+<p>Instead of trying every combination, lets order the way we select the nodes we colour. Starting from the node which has the most connections, choosing its colour and moving to the next, adding a new colour if neighbouring nodes used all the previous colors. This will run until all the colours are chosen</p>
 
-<p>This is so much faster! It is a greedy algoritym so it doesn’t give us an optimal result but the speed is important here. When you add a new node the time only increases a bit each time and is closer to linear.</p>
+<p>This is so much faster! It is a greedy algorithm so it doesn’t give us an optimal result, but the speed is important here. When you add a new node, it adds only a small amount of time and is close to linear.</p>
 
 <h2 id="saturation">Saturation</h2>
 
-<p>This method is very similar to the most connected but in this case I will update each time and pick the one that has been chosen updating it’s saturation, how many differnent colors does it neighbour with. The other name for this algorithm is DSATUR and is a well known algoritym for completing this problem</p>
+<p>This method is very similar to the “most connected” but in this case the next node to select will update each time. When a node is colored the connected nodes are updated with a new saturation number. This saturation number tells how many different colors a node neighbours with. The other name for this algorithm is DSATUR and is a well known algorithm for completing this problem</p>
 
 <h2 id="continuing">Continuing</h2>
 
-<p>So far it has been interersting on how large NP problems can get and we have to try different algorithms. Where we can not find the best solution easily but we can find a good enough solution. I will continue to write more about this as I go through the class and it looks like there is some possiblility of using local search. Below I have included 2 dead-ends which I tried but was unsuccessful.</p>
+<p>So far it has been interesting on how large NP problems can get and we have to try different algorithms. A good enough solution is much easier to get than a perfect solution. I will continue to write more about this as I go through the class and it looks like there is some possibility of using local search. Below I have included 2 dead-ends which I tried but was unsuccessful.</p>
 
 <h2 id="aside-dead-end-adjancency-matrix">Aside: Dead-End: Adjancency Matrix</h2>
 
-<p>I thought of reframing the problem from a graph theory problem to a linar algabra question. Computers are really good at doing matrix opperations so I wil convert this into a linear algabra question</p>
+<p>I thought of reforming the problem from a graph theory problem to a linear algebra question. Computers are really good at doing matrix operations.</p>
 
-<p>The first thing I do is create adjantency matrix.</p>
+<p>The first thing I do is create adjacency matrix.</p>
 
-<p>From there we can use the following equation and if an element in the matrix is true then 2 nodes are the same colour and that is not a solutoin</p>
+<p>From there we can use the following equation and if an element in the matrix is true, then 2 nodes are the same colour and that is not a solution</p>
 
 <p>adjMatrix * sol and  adjMatrix * transpose(sol)</p>
 
-<p>II believe it is because the improved brute force is only checking the connections. Where the matrix will be checking every possible connection, even if the connection doesn’t exist it will need to do 0 * sol == 0 * Transpose(sol). In addition the original brute will fail in the first case it sees a break in the conditions and the first has to calculate to the end.</p>
+<p>I believe it is because the improved brute force is only checking the connections. Where the matrix will be checking every possible connection, even if the connection doesn’t exist, it will need to do 0 * sol == 0 * Transpose(sol). In addition the original brute will fail in the first case it sees a break in the conditions and the first has to calculate to the end.</p>
 
 <h2 id="aside-dead-end-brute-force-v2">Aside: Dead-End: Brute Force v2</h2>
 
-<p>I didn’t review my our writings about brute force. I thought I could try again, using 2 different metods. the first was using the Numba library which would speed up python 100x and use a randomizing algorithm, the first time just going though each combination. My thought was that there exists multiple solutions so that to increase my chances I could jump around the solution space more</p>
+<p>I didn’t review my our writings about brute force. I thought I could try again, using 2 different methods. the first was using the Numba library which would speed up python 100x and use a randomizing algorithm, the first time just going though each combination. My thought was that there exists multiple solutions so that to increase my chances I could jump around the solution space more</p>
 
-<p>Unfortuanately, I was trying for a while but could not get numba to run in nopython mode. They don’t support matrix boolean operations. But I got to a point where it was working where I did the calcuaiton out numba. I was only getting 30 k iterations / sec vs the 2,000 kiterations /s in the v1. I could have continued, but I feel like this was a wrong approach to take.</p>
+<p>Unfortunately, I was trying for a while but couldn’t get numba to run in nopython mode. They don’t support matrix boolean operations. But I got to a point where it was working. I was only getting 30 k iterations / sec vs the 2,000 kiterations /s in the v1. I could have continued, but I feel like this was a wrong approach to take.</p>
 
 
 
