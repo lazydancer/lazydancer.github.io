@@ -70,7 +70,7 @@ a:hover {
 h1,h2,h3,h4,h5,h6 { margin-bottom: 12px }
 h1,h2,h3,h4,h5,h6,strong { color: #000 }
 h1,h2,h3,h4,h5,h6,b,strong,th { font-weight: 600 }
-h1 { font-size: 2.2em; margin-top: 0; margin-bottom: -3px}
+h1 { font-size: 2.2em; margin-top: 0;}
 
 img {
   border-radius:5px;
@@ -185,29 +185,62 @@ pre.highlight { padding: 1em; font-size: 13px}
 <span class="article-date" style="margin-bottom: 30px;">Apr 2019
 </span>
 
+<p><a href="https://en.wikipedia.org/wiki/Map_coloring">Map colouring</a> is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</p>
+
+<div class="centerImage">
+<img src="assets/map-colouring/English_ceremonial_counties_1998.svg" style="max-width: 500px;" /> 
+</div>
+
+<p>Since then computers have got much quicker and there are many different proof methods for the <a href="https://en.wikipedia.org/wiki/Four_color_theorem">Four color theorem</a> and was the first major theorem to be proved using a computer in 1976.</p>
+
+<p>When converting the map to a graph, with the features represents as nodes and the borders as connections this becomes a more difficult problem and more useful part of graph theory. It could be used in scheduling problems, register allocation problems and problems such as pattern matching and solving Sudoku puzzles.</p>
+
+<h2 id="solving">Solving</h2>
+
 <p>For the second segment of the discrete optimization course you need to colour a map where each neighbouring country is a different colour. The challenge is to find the smallest number of colours to fill in the map. Like the other problems in this course, this is an NP problem.</p>
 
-<p>The difficulty grows exponentially with the number of countries added. We can generalize the map and change it into a graph. This allows us to have as many bordering counties as we want. I will call countries “nodes” as they are represented in a graph. This type of problem is also called vertex colouring.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Nodes</th>
+      <th>Colours</th>
+      <th>Number of States</th>
+      <th>Time to Solve*</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Small Example</td>
+      <td>20</td>
+      <td>3</td>
+      <td>3,486,784,401 or 10^9</td>
+      <td>2 seconds</td>
+    </tr>
+    <tr>
+      <td>Counties of England</td>
+      <td>83</td>
+      <td>4</td>
+      <td>10^50</td>
+      <td>10^36 years</td>
+    </tr>
+    <tr>
+      <td>Countries of the World</td>
+      <td>195</td>
+      <td>4</td>
+      <td>10^117</td>
+      <td>10^103 years</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>*Assuming 2GHz computer, very optimistically checking 1 combination a cycle</p>
 
 <h2 id="brute-force">Brute force</h2>
 
-<p>I am going to start by trying every single combination and returning the best solution. Computers are great with numbers and I want to be lazy.</p>
+<p>I would start by trying every single combination and returning the best solution. Computers are great with numbers and I want to be lazy. But looking at the table above there is no way to complete this in a reasonable time.</p>
 
-<p>The computer 2 million combinations a second. With a 2GHz computer that is a check every 1000 cycles. I’m sure we could get 10x or 100x optimizing the code, but due to the exponentially increasing work, it will be beneficial to find a different way.</p>
-
-<p>The possible combinations is equal to the “number of colors” ^ “number of nodes”.</p>
-
-<p><strong>Example: (3 colours and 20 nodes)</strong></p>
-
-<p>3 ^ 20 = 3,486,784,401 or <strong>3.4 * 10^9 possibilities</strong></p>
-
-<p>Which would take our brute force 2 seconds to complete</p>
-
-<p><strong>World Map: (4 colours, 195 nodes)</strong></p>
-
-<p>4 ^ 195 = <strong>2.5 * 10^117 possibilities</strong></p>
-
-<p>Which would take our brute force 10^111 seconds or 10^103 years. We need another way.</p>
+<p>We need another way</p>
 
 <h2 id="pick-most-connected">Pick most connected</h2>
 
@@ -223,23 +256,7 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 <p>So far it has been interesting on how large NP problems can get and we have to try different algorithms. A good enough solution is much easier to get than a perfect solution. I will continue to write more about this as I go through the class and it looks like there is some possibility of using local search. Below I have included 2 dead-ends which I tried but was unsuccessful.</p>
 
-<h2 id="aside-dead-end-adjancency-matrix">Aside: Dead-End: Adjancency Matrix</h2>
-
-<p>I thought of reforming the problem from a graph theory problem to a linear algebra question. Computers are really good at doing matrix operations.</p>
-
-<p>The first thing I do is create adjacency matrix.</p>
-
-<p>From there we can use the following equation and if an element in the matrix is true, then 2 nodes are the same colour and that is not a solution</p>
-
-<p>adjMatrix * sol and  adjMatrix * transpose(sol)</p>
-
-<p>I believe it is because the improved brute force is only checking the connections. Where the matrix will be checking every possible connection, even if the connection doesn’t exist, it will need to do 0 * sol == 0 * Transpose(sol). In addition the original brute will fail in the first case it sees a break in the conditions and the first has to calculate to the end.</p>
-
-<h2 id="aside-dead-end-brute-force-v2">Aside: Dead-End: Brute Force v2</h2>
-
-<p>I didn’t review my our writings about brute force. I thought I could try again, using 2 different methods. the first was using the Numba library which would speed up python 100x and use a randomizing algorithm, the first time just going though each combination. My thought was that there exists multiple solutions so that to increase my chances I could jump around the solution space more</p>
-
-<p>Unfortunately, I was trying for a while but couldn’t get numba to run in nopython mode. They don’t support matrix boolean operations. But I got to a point where it was working. I was only getting 30 k iterations / sec vs the 2,000 kiterations /s in the v1. I could have continued, but I feel like this was a wrong approach to take.</p>
+<p>Thank you for reading</p>
 
 
 
