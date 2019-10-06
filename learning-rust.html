@@ -12,17 +12,17 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>James Pucula</title>
-  <meta name="description" content="Working to become an energy engineer while learning more about programming and economics. These are my posts about things I am interested in, learning about and want to share">
+  <title>Learning Rust</title>
+  <meta name="description" content="Things I learned not releated Rust while learning Rust">
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" value="summary">
 
   <!-- Open Graph data -->
-  <meta property="og:title" content="James Pucula" />
+  <meta property="og:title" content="Learning Rust" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://pucula.com/" />
-  <meta property="og:description" content="Working to become an energy engineer while learning more about programming and economics. These are my posts about things I am interested in, learning about and want to share" />
+  <meta property="og:url" content="http://pucula.com/learning-rust.html" />
+  <meta property="og:description" content="Things I learned not releated Rust while learning Rust" />
   
   
 
@@ -175,112 +175,57 @@ pre.highlight { padding: 1em; font-size: 13px}
 <img width=64 heihgt=64 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAMAAACZHrEMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFLS0tOjo6R0dHVVVVYmJib29vfHx8lpaWiYmJ8vLy5eXl19fXo6Ojvb29sLCwysrK////At3ZUwAAABF0Uk5T/////////////////////wAlrZliAAAOAElEQVR42tRciWLbOg4UCYL3of//2h2AkmzHyWucSG7XbdPUbqsxjsEAhLys/9Bj+b8BU8b4F8CkHp1ZjHOLjWH8VTDdLpbYsLVkjVkWG9LfAhNw+WWhOJpzlhdr8WfT/gqYxAJlERieG0d21soT4S+AKXplgOHQ2sj45cnpc5zeDaaZiQWxCwf5EJtjjuTkaZvfCGZUWo6HI0OLd/gRubqir/B7wKTmDXkX/G6XaSDvDIwT44irPuHy9WBaNMZaxz7udjELzd8sggfh4511mmJXg0l+sbtvECAHnAOYJZ9y7PqX4sVg+l2kLE9QFqE/63voRv9evtpNJdAHJMY8YuPm63yO35BNOUR3bw3QLgqBdcZOcJ0tGXu1ae55prQ9YmCJJbogmDSg3PDBG7WNfx/piXkIZbIzhciHOZZcnd2+TW8DE7f8Ye6jRuSzm7UAFGQ9qcvq28CkYBfQn4meu3MUSnPkhG/gKKtFYTFvrNpVwte7AU3lOxVuFAAm1x5rII2p/j4wAcyGGHGZauQcgw8MR8Fl1le212b3E5gCnxgixy2UkYV3xU29kPN28p5JbwMjJdFQj73n1FzsRNCeS/QQxSFac6mfnsHASeA6zyl2T7GWAVs5E5l8mxF8nZ+ewXQtBiC8jl8RYcvsqHpjQ/U00eS3gQmLN6qBI/vuUcdd8R6xQxwCTCN46I1gJIJdVM41LmpCM6zlSQq4mqa8C8xUUZJFmlcR+tPYarR27tqivguMpi8KgcYH7XJCqvf8Tr/494BJm+ycWbzMqm0ECb5YhXZZ8X4CM6RQSo89GU4p7ybRDe2yy6c3gKniE+P3C9vHfuFOAfKbwJBxlpy2cruj7qDsgM5vMZdnAoZ/LOoi7LPMH5+Jdcl3fzkYJx5BAZg97kNX9wBLXmkXg8kzi2fcBtd5+eIhswlTLrbM7AaEYWiBmhmIno1nPjw0xvO1YHhrbTWtYwuTBM3RSZmH2KF0ccyoHTR0fSljjY4+Npn33roWjLCdFTzIppxHU3jmEz9t3roSzGYGozxDPZe1gZEX86VxwtVgyLIXyywhlDUlT8t/PNqV2SSVOhqezWStkAvQNu5LPy02XcjAk+IceY8SZUpsa17ryl+bhi4DE2ZwoI8jUTVLqBRHQiSPPgaZx+GJOTeIn7NpMr91kJhTVqEolFLW0lOrmmjhqiB+AuMnA3tpVw6m4xJj4bEmsI4f1V8UxE9gdHZnmXgju1kwK3teaim9jhLaiDb6x2TPl4BpGgsIXuJ+DLOMRzrBWgO55ftaGgD5BzCUrwAzWIu2t8zef8hnCtEEtFEjlNx9fXwtXQJGiyJTRBdHz7RrzICdSgmjub2cT5VczgezzgxCyHQy1n1GK7hwjYX8Bm4Pc9vPByN+WnTUCUDTTfxUlaiWOR41d7azPZ0NZlWa8ZUN4THfNulz9z6ze6494Kyng5F3jCafbGBnN5aNaq1H3r0hsceQ/3e2+QRM5gVl0jvEhdtHr3ZPK7vcNbxHq2DPYb/PDkx5xrCvPR6dinT/8Nv02CQ8+0mV+p2nPgWj524m1ra2GG8FKBgXnLS+i8JFQH2mt8q5YIbdaDfG3u6kgw+Wqlsa7MWqA9lqX/PIfr/gm0/PtZO6gawPbb2/EgdyIS69IsnkwNnIN0toj0LQjHPB9C1MfGz4/i6hBxHg9dIWl7xd4tqrdeGmKTTjfiz9vlg/EBGFDGrRV2/v8tj06FcUqLW2ulZyvELn8DyluwWxPxcMQgP9JDUOMrt/OCUk6t1R682Ntfgw8nB7attfiq0vwLQgKmYwu1haD7c3PimmB8t52NhqgBK1D0n1i7n1V1si1cgE2pK1o40yaJdS5iA/CwNJ1XiSfe7HYuur/RnhO1yR0CS00luos+f9cFn+ckDxI3nz5TJPUGUeHct0OqfbOkCsj5joacCm5BzOBLPmMcetoNyIHnccWVUL3Uq5hvQDmr2b6WeCSU3KgrWWcoir9JVOVySAYnjec8dukz+t3faGEI9xIhg9eoJpLFRNS+jjWmYt3tFaruorSen7ts75cD+ITGeCAY3ooIa4ijIoaQT1VazoqELYjeC+GN28Ppz9LzApZak98vY55tZyq2hQjHG2lGrQOolx3IOcuYtr+7q4+cOeXpZDHYsizWj/c+oZWYb2G9iyg2o32wz9o222luHVAv7HpcE5m4k1oCA1/OcJKOzoEBOM5HcP1LzpLXOgebFk/nmDcWzLEYRmaeQ1lVSicShPZJFadioxIespuO6IT6x2Mphm9u2e6Lmm3sDOQc+ilIX2Fm7ZhqQcH+aR4Vwwif2Ul8Y536sH4yQfapwdkxrE7i5Sj0F/RWSdneWjnQpmTWM/KEVWeV9QOFPLa2vueZT/oZuh14L4W1uvJYf9IsbbOAqeKT2s42jk7vSO+aAn3MlgRG1tk2AEMrua08qtlJwKz0O6/dzOajNsfzjW+vY+cD52w+RQudaRwTtwQYn0cCClaUQPLVU6HQw4Lx4yxjrLre4Cqrh5FLM1n95bY25ClAyfD0aau2PGx6NHKIvgU5L3PTrYeLabjhZp8+aEfXlNTby0tj3cDU5DRxcCIjlBKiQQc9SkYhlQzI0o449JRbkADHzl7zSn89xjLCO1o8a7iciDk+5HJt8sCy8vtNeDc2hLZIt41hqvypmUZBDGRPTqxO/17foc6Y5GYALUTMsl95IRO2uj7ZzV3iY639U2P1j1T+NBMcj2BsplHbbjpVjz8LeWhd02+/oW9/3kvoNC9EG8gAo9xR7HGG0dgURZMYxm7sZM8RowyKrPVKYxCJ4cOzQhcg11HnDiXQH314ABnGepKfUC8Uwyze4BtZTFU/FuUtovArOGxWmL6VLZz8U2mcfOcc8lxyL1zCkFfnOo9VMwWdYUgEbiMpMyHM+hp0qaGLrrWY9lUOj3qmbbNWBSXXSu7+bZR8h7G9qC7FEI/YD75kAfUtlv4+12FLozwazb0CboxsIjp6WgeWRotnownz068hFCWiv3sUJOC02cAWZyCRWF9bSFkKKPC/pP16c4ldOqfWpp6jqSaKGzLJPQPBHcAfUpt7Z8Kp+YU1yc2zSpK2EGMns1xnluSoZQFOcyT/mqDPbWhhSu7dBzcW26qp7MwNBPtdS0Dwe+Gjf0Jgt2zDfBrri49H4amGBjX2w5mqrPqk4KQ6SOjr/83aBClQ5l7U1PAJOczB63fasm1fADeeSQ5O61MlTiIN9MPOZIsvOh7UtS/QxJJglVyg/BdCL83MJPZ9f3t96kddQUZniKIM1yuxQseWtfDIJI6kTAq5BlYGoAcz8Ck1iS1edNh+tEFCRfUiq91ppaRzgFqgXFsqvkyrIya+LRL5hIvqrUqc2jf4c/UVl/AqZDuhg7bnMtpyWpjYyOBZ1e9H343urozSG+S+111MoU0IgeaByVUnSOakNLqbaQ+3gZDMpRaEvc8jjrmIiEPSh0YdNKeLbFaOT6FGu1JItbqJVcu7+Lm65HJRam6YEDI2Tyq2AKWN3sMiA16YesjyTCOxY4KiF7aqhQVmylpLMOJmYbChNEO0UoyqvrCBYQD8fgY1sAJr0IJiJHrem7gJBjZoBzswohuRA1o2jeWKeztwi7OMNyix+6iISOdJuKGttgEFmnykf+vQQm0bLdwJj1gFkuF4Rf5zk8yk1uGa2UOeY0i43Oy4ZSDLVD4KCg67BSb1LyCC8UUf4Rz4xtMuZ8I5n3QiQEuY/FBRkWA1SjOIKbQ7XKwAR/Vc1tpNpWi0q+HRZB8NTgDJWXwSR+uPcqBOMX72B8L7siuqsr9xbCdcSuNURQfapWSfBka7ZhhuEKImrG9FeHRXMutg01PeLWxIGEETkwdy9pac1OO/xRyc9ZDlmCxVKlh4r/DTCalRSgF6rr+wwvDmngSId4yIhvnOjkMEXhnGUjqvs6GmzDLw4YLXdZVQkjuho2lVTl/N1y9Q2J9K09xjxPhueM1lCMIcgNXpa/DSYzMVeSfmiF7gc3RNnzQdx6Y2sNUUnwe1PEkZUizBx2yX1LdejoK38LjBz9lUHg9zUw+qHQLCmdMVtXUe7mf/PKKX/ho83CG+KWxVbfKAetNR/rgCQIEJkgMZZGKCKhF5ngpyNQvj2aKnoCoCGjswGQem3pOGVY/uMUo7a1lxLWnpqzMdBSUYKJnAtS2cqRB+XbJ0tDfJpkQiFnV8IKDDYqZiszX55R4lVcVd3cpH8El4kY6be8CQ+R+cJD2ZwnLRg/8IYlIdJXYLoT2ZhEluTcvPxrpBPR79fxsuo/nfLLnUqgcVNzlq0C9F7Lp8qywgBJuz7Ee+ZtXbmetlHqN3E+h6FoXlj7waeF9tIbXlbd2CIsgZIjQgDKpZ23ol3McQC+aPhWqVf3YFIFhqK9XhaZtKYud/+qJjHxtNX1klUz3s34jXa/7s4yBZJo5wvvWkUyaTvteudy5m62tgXrrrWWLXwgufYAhhRByZWYkPOkNJoZMkb0EEHr6Y85gRhuN80cysknCEww0K0aJmOV7rm7Kjd98VUfTTFldKbj8DDiauHGM77mUlsjz6jyiBNuveTL7obWsTGU320X06oEPWIGbY6XW/0RSpGpX/ohEDluSvrowk28Z2BVj5I50udd/nEUQ9vjfNsPcA+1Cc6xlsNse6//bIzutGyGx+WfHYwh/5bPLjmYRONmdQ83mSw/LHa/D2Ip9S1EPbervxww/p5tsn6VYLXpL4MRUptzDePS+tfBtBm10fv174NZcztrKH1i0fxHwOiQ/J8Bs3UM/wyYu8f/BBgAYqaJYGfAaDwAAAAASUVORK5CYII="></a>
 </header>
 
-    <h3>Posts</h3>
+    <h1 style="margin-bottom: 0">Learning Rust</h1>
 
-<ul>
-    
-    <li>
-        <div class ="list">
-            <a href="/learning-rust.html">Learning Rust</a>
-            <span class="date"> // 2019-09</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/pathfinding.html">Pathfinding</a>
-            <span class="date"> // 2019-05</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/map-colouring.html">Map Colouring</a>
-            <span class="date"> // 2019-04</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/pictures-to-text.html">Pictures To Text</a>
-            <span class="date"> // 2019-03</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/intro-to-fossil-fuels.html">Intro To Fossil Fuels</a>
-            <span class="date"> // 2019-02</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/advent-of-code-2018.html">Advent Of Code 2018</a>
-            <span class="date"> // 2019-01</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/making-a-transistor-from-scratch-part-2.html">Making A Transistor From Scratch Part 2</a>
-            <span class="date"> // 2018-12</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/oil-refineries-around-the-world.html">Oil Refineries Around The World</a>
-            <span class="date"> // 2018-11</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/making-a-transistor-from-scratch-part-1.html">Making A Transistor From Scratch Part 1</a>
-            <span class="date"> // 2018-11</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/rocket-or-tower.html">Rocket Or Tower</a>
-            <span class="date"> // 2018-08</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/books-for-2018.html">Books For 2018</a>
-            <span class="date"> // 2018-01</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/single-packet-webpage.html">Single Packet Webpage</a>
-            <span class="date"> // 2017-12</span>
-        </div>
-   </li>
-   
-    <li>
-        <div class ="list">
-            <a href="/automatic-paintball-turret.html">Automatic Paintball Turret</a>
-            <span class="date"> // 2017-09</span>
-        </div>
-   </li>
-   
-</ul>
+<span class="article-date" style="margin-bottom: 30px;">2019-09
+</span>
 
-<h3>Projects</h3>
-<ul class="list">
-    <li><div class ="list"><a href="projects/pictotxt.html">Pictotxt</a><span class="date"> // Convert images to text using python</span></div></li>
-    <li><div class ="list"><a href="projects/altitude.html">Altitude</a><span class="date"> // Time budgeting app using React and Redux</span></div></li>
-    <li><div class ="list"><a href="projects/parsley-for-style.html">Parsley For Style</a><span class="date"> // Recipe app using Python and Django</span></div></li>
-    <li><div class ="list"><a href="projects/studio.html">Studio</a><span class="date"> // Simple static site generator using Haskell </span></div></li>
-</ul>
+<p>I was introduced to Rust through a glowing review on the Stacked Overflow annual survey. After a few months of using Rust, I believe it deserves its praise.</p>
 
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">width1</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">height1</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
 
+    <span class="nd">println!</span><span class="p">(</span>
+        <span class="s">"The area of the rectangle is {} square pixels."</span><span class="p">,</span>
+        <span class="nf">area</span><span class="p">(</span><span class="n">width1</span><span class="p">,</span> <span class="n">height1</span><span class="p">)</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
+    <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It has an great community, “The Rust Book” is a great starting place for anyone learning the language. It has a package manager which is built-in to rust called Cargo. It compiles your packages, manages its dependences and upload them. Having common stucture in the package files helps when reviewing an existing package.</p>
+
+<p>Rust’s ownership model has been an experience. It reduces memory-errors during compile-time and no runtime or garbage collector are needed when the program is running. It is also unique in popular programming languages and takes a while to learn and get use to.</p>
+
+<p>Rust doesn’t have pointers (in safe mode) but I found the need to understand pointers to use rust, especially the difference between passed-by-value or passed-by-reference. This tripped me up for a while. I also learned about a how pointers can go wrong, if the pointer is pointing to data that is unreadable (Null pointers), a pointer that points to nothing (Dangling pointer) or dropping the data when it is needed by another pointer (Double free / Null pointer).</p>
+
+<p>If you find Rust interesting, I would recommend what I did:</p>
+
+<style>
+    li {
+        list-style-type: decimal;
+    }
+</style>
+
+<ol>
+  <li>Spend a weekend using Rust on a problem that you were solving in Python. Give up the project because the compiler errors are driving you crazy</li>
+  <li>Spend a week reading the Rust Book and tell yourself you understand ownership model.</li>
+  <li>Spend the next weekend using rust on the project again. Get 90% of the way there but give up and vow to never to talk about rust again.</li>
+  <li>Wait two months, when you need to what to avoid C++ and turn to Rust as an alternative</li>
+  <li>Read the Rust book. Take your time and go through each example.</li>
+  <li>Do lots of mini problems. Get a feel for the ownership model. Realize that int,floats act differently than vec,string and box.</li>
+  <li>Do “Too Many Linked Lists” and feel like you know nothing again.</li>
+  <li>Write some bigger stuff and complete what ever you set out to do in step 4.</li>
+  <li>Write a blog article that you survived learning Rust and used it once. Secretly feel insecure about your software skills.</li>
+</ol>
+
+<p>Actually, start at step 5. When you get to step 9 send me a message with the link.</p>
+
+<p>Thanks,</p>
 
 
 

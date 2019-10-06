@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-15T23:20:18-04:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Pathfinding</title><link href="/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/pathfinding</id><content type="html" xml:base="/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-06T09:16:47-04:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Learning Rust</title><link href="/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-01T00:00:00-04:00</published><updated>2019-09-01T00:00:00-04:00</updated><id>/learning-rust</id><content type="html" xml:base="/learning-rust.html">&lt;p&gt;I was introduced to Rust through a glowing review on the Stacked Overflow annual survey. After a few months of using Rust, I believe it deserves its praise.&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;The area of the rectangle is {} square pixels.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It has an great community, “The Rust Book” is a great starting place for anyone learning the language. It has a package manager which is built-in to rust called Cargo. It compiles your packages, manages its dependences and upload them. Having common stucture in the package files helps when reviewing an existing package.&lt;/p&gt;
+
+&lt;p&gt;Rust’s ownership model has been an experience. It reduces memory-errors during compile-time and no runtime or garbage collector are needed when the program is running. It is also unique in popular programming languages and takes a while to learn and get use to.&lt;/p&gt;
+
+&lt;p&gt;Rust doesn’t have pointers (in safe mode) but I found the need to understand pointers to use rust, especially the difference between passed-by-value or passed-by-reference. This tripped me up for a while. I also learned about a how pointers can go wrong, if the pointer is pointing to data that is unreadable (Null pointers), a pointer that points to nothing (Dangling pointer) or dropping the data when it is needed by another pointer (Double free / Null pointer).&lt;/p&gt;
+
+&lt;p&gt;If you find Rust interesting, I would recommend what I did:&lt;/p&gt;
+
+&lt;style&gt;
+    li {
+        list-style-type: decimal;
+    }
+&lt;/style&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Spend a weekend using Rust on a problem that you were solving in Python. Give up the project because the compiler errors are driving you crazy&lt;/li&gt;
+  &lt;li&gt;Spend a week reading the Rust Book and tell yourself you understand ownership model.&lt;/li&gt;
+  &lt;li&gt;Spend the next weekend using rust on the project again. Get 90% of the way there but give up and vow to never to talk about rust again.&lt;/li&gt;
+  &lt;li&gt;Wait two months, when you need to what to avoid C++ and turn to Rust as an alternative&lt;/li&gt;
+  &lt;li&gt;Read the Rust book. Take your time and go through each example.&lt;/li&gt;
+  &lt;li&gt;Do lots of mini problems. Get a feel for the ownership model. Realize that int,floats act differently than vec,string and box.&lt;/li&gt;
+  &lt;li&gt;Do “Too Many Linked Lists” and feel like you know nothing again.&lt;/li&gt;
+  &lt;li&gt;Write some bigger stuff and complete what ever you set out to do in step 4.&lt;/li&gt;
+  &lt;li&gt;Write a blog article that you survived learning Rust and used it once. Secretly feel insecure about your software skills.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Actually, start at step 5. When you get to step 9 send me a message with the link.&lt;/p&gt;
+
+&lt;p&gt;Thanks,&lt;/p&gt;</content><author><name></name></author><summary type="html">I was introduced to Rust through a glowing review on the Stacked Overflow annual survey. After a few months of using Rust, I believe it deserves its praise.</summary></entry><entry><title type="html">Pathfinding</title><link href="/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/pathfinding</id><content type="html" xml:base="/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
 &lt;img src=&quot;assets/pathfinding/BlockConnect.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
@@ -2535,199 +2580,4 @@ learn.fit(lr, 3, cycle_len=1, cycle_mult=2)&lt;/code&gt;&lt;/pre&gt;
 &lt;img src=&quot;assets/rocket-or-tower/result2.png&quot; width=&quot;722px&quot; /&gt;
 
 &lt;p&gt;Thank you&lt;/p&gt;
-&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Recently I started working on fast.ai, this is my attempt at creating a network.</summary></entry><entry><title type="html">Books For 2018</title><link href="/books-for-2018.html" rel="alternate" type="text/html" title="Books For 2018" /><published>2018-01-01T00:00:00-05:00</published><updated>2018-01-01T00:00:00-05:00</updated><id>/books-for-2018</id><content type="html" xml:base="/books-for-2018.html">&lt;p&gt;I read 34 books in 2018, not 52 as my goal, but this year was most books I ever read.&lt;/p&gt;
-
-&lt;p&gt;I read many interesting biographies of Howard Hughes, Viktor Frankl, Sam Walton, The Wright Brothers, Paul Erdos.  I enjoyed non-fiction from Code, Fabless, Ant Encounters, Enlightenment Now, Code Complete 2, Debt: The first 5000 years, Energy and Civilization, Naked Economics and the Goal and Finishing off the Foundation series.&lt;/p&gt;
-
-&lt;p&gt;My favorite book of this year was Do Androids Dream of Electric Sheep? which was made into a movie called Bladerunner. I enjoyed the bizarre atmosphere of the book and its theme of questioning what is real and does it matter&lt;/p&gt;
-
-&lt;li&gt;&lt;b&gt;Prelude to Foundation&lt;/b&gt; &lt;i&gt;by Isaac Asimov&lt;/i&gt;&lt;p&gt;
-The story follows Hari Seldon in the creation
-of pychohistory while providing more information of Trantor, the center
-of the Empire.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;What Money Can't Buy&lt;/b&gt; &lt;i&gt;by Michael J. Sandel&lt;/i&gt;&lt;p&gt;
-This book is about the moral questions of buying and selling stuff.
-Should we bet on death (life insurance), paying kids for good
-grades and classroom advertising.
-The book showed how creating a market changed the morally of each.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Forward the Foundation&lt;/b&gt; &lt;i&gt;by Isaac Asimov&lt;/i&gt;&lt;p&gt;
-With the further look into the First Foundation and the creation of the Second Foundation.
-We were able to get more detail of the First Foundation and the Second Foundation. I loved
-the Foundation Series and would recommend to read
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;On Writing&lt;/b&gt; &lt;i&gt; by Stephen King&lt;/i&gt;&lt;p&gt;
-1. Tell the Truth, if in your writing you are holding back then you can not create a connection to the reader.
-2. Don't use adverbs or the passive tense, I will try my best.
-3. To be a good writer, you need to read a lot.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Code&lt;/b&gt; &lt;i&gt; by Charles Petzold&lt;/i&gt;&lt;p&gt;
-After the first few chapters, I expected this book to a math book on the
-theory of programming and a part of it was. The majority of this book was practical and went on how a computer
-is designed and built from telephone relays to a high level computer language. This helps take the &quot;magic&quot; out of computers.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Fabless&lt;/b&gt; &lt;i&gt;by Paul McLellan&lt;/i&gt;&lt;p&gt;
-An interesting book on the semiconductor industry. When starting this
-book I was expecting more deep dive into the technical aspects of the industry but was more of a history book.
-I felt some of the &quot;In there own words&quot; sections where just repeating
-what the author said in the chapter leading up to the excerpt.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Howard Hughes&lt;/b&gt; &lt;i&gt;by Donald L. Barlett and James B. Steele&lt;/i&gt;&lt;p&gt;
-I didn't know anything about Howard Hughes before reading this book.
-It is interesting how much he did with this life being a movie producer, record breaking pilot, airplane designer
-to name a few. This book had so much detail on Hugh's actions and it was an interesting perspective from Hugh's associates
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Do Androids Dream of Electric Sheep?&lt;/b&gt; &lt;i&gt;by Philip K. Dick&lt;/i&gt;&lt;p&gt;
-The book creates an atmosphere of post-apocalyptic 2020 San Francisco which I seem to get lost in.
-It is the book's 50th anniversary. It is interesting how it seems futuristic still. It brings up the question
-what is the difference between an android and a human.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;The Mythical Man-Month&lt;/b&gt; &lt;i&gt;by Fred Brooks&lt;/i&gt;&lt;p&gt;
-This book came out 40 years ago, other then the talk of mainframe computers, I feel this book has held up its
-principles still. The central principle being, adding manpower to a late software project makes it later.
-Maybe this could be we greatly underestimate the time needed to learn a new system and the time that is
-added when there is more people that need to be informed.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Ant Encounters&lt;/b&gt; &lt;i&gt;by Deborah Gordon&lt;/i&gt;&lt;p&gt;
-There is so much information about ants and this book seems to be an introduction to the wider field of how
-living things interact. It is interesting that with no central control, ants are able to live though the rate
-in which they interact and the pattern of their encounters. I would recommend this book, it was a nice quick read.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;The Man in the High Castle&lt;/b&gt; &lt;i&gt;by Philip K. Dick&lt;/i&gt;&lt;p&gt;
-This book looks at what would have happened if World War II ended differently. It took some time to reorient
-oneself each &quot;jump&quot; in the book. I really enjoyed this book, and like Do Androids Dream of Electric Sheep looked agian at what is real and what is fake,
-is there any difference from the two and does it matter.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Man's Search for Meaning&lt;/b&gt; &lt;i&gt;by Viktor Frankl&lt;/i&gt;&lt;p&gt;
-Viktor Frankl writes about experiences as an Auschwitz concentration camp inmate during World War II. This was an emotional
-book to read, when looking at what happened in the concentration camps. Frankl looks at this from a phycologist perspective
-and the later section of the books presents his psychotherapeutic method. I would recommend this book
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;The Hard Thing About Hard Things&lt;/b&gt; &lt;i&gt;by Ben Horowitz&lt;/i&gt;&lt;p&gt;
-This book is about Ben Horowitz experiences as a CEO of many startup companies and he outlines his experiences.
-This I would
-not catergorize as a business book and closer to an auto-biography. It offers an in-depth look in to the world of fast
-growing technology companies.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Evicted&lt;/b&gt; &lt;i&gt;by Matthew Desmond&lt;/i&gt;&lt;p&gt;
-The book follows half a dozen families and their stuggles.
-At the same time, it shows the larger picture with the facts of evictions in the usa and the impact it has.
-It was enlightining to have the landlord's perpective of this enviroment, bringing up the discussion of explotation and
-housing being a fundamental human need.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Made in America&lt;/b&gt; &lt;i&gt;by Sam Walton&lt;/i&gt;&lt;p&gt;
-Learning about Sam Walton and his obsession with retail, from his first stores to the discount stores in
-rural america. He was extremely competitive and trying out things that haven't be done before. At the same time
-taking best practices from his competitors.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Enlightenment Now&lt;/b&gt; &lt;i&gt;by Steven Pinker&lt;/i&gt;&lt;p&gt;
-This was a long book. I read Part I and II but had to abandon it half way though Part III. This book made me think
-differently about how well we are doing in the world. I really enjoyed the chapter on climate change, in how
-Pinker goes over how we have taken the news and how it has also been a political issue and how there are divided.
-It was also interesting to see how the news warps our image of the world and he re-enforces the availiblity bias
-and confirmation bias.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;A Wrinkle in Time&lt;/b&gt; &lt;i&gt;by Madeleine L'Engle&lt;/i&gt;&lt;p&gt;
-A fun weird little story
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Code Complete 2&lt;/b&gt; &lt;i&gt;by Steve McConnell&lt;/i&gt;&lt;p&gt;
-I have been focusing to improving my programming skills. From reviews online, I heard this was the textbook for programmers.
-I believe it lived up to the hype, many guidelines it recommends I use everyday. I liked that this book went into detail of many
-elements of project management which can be used out of programming.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Fight Club&lt;/b&gt; &lt;i&gt;Chuck Palahniuk&lt;/i&gt;&lt;p&gt;
-It was a very interesting analysis of the human psychology. The movie follows the books very closely expect
-for ending which leave the movie and book with different a message at the end of the book.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Le Petit Nicolas&lt;/b&gt; &lt;i&gt;René Goscinny&lt;/i&gt;&lt;p&gt;
-Un livre de jeunesse que j'ai lu pour améliorer mon français.
-&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;&lt;b&gt;The Subtle Art of Not Giving A F*ck&lt;/b&gt; &lt;i&gt;by Mark Manson&lt;/i&gt;&lt;p&gt;
-It is an okay book. My  favorite part of the book is how when
-you remove actions and challenges each of us has core values and you have to strive for maintaining these values
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Debt: The First 5000 Years&lt;/b&gt; &lt;i&gt;by David Graeber&lt;/i&gt;&lt;p&gt;
-This was a insightful book that brought up many new ideas. The barter economy
-never existed. Describing the market economy and human economy.
-This book was lonng and read like a textbook. It
-provides a very detailed account of the introduction of money and worth and the different systems that were used until
-today.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;I, Robot&lt;/b&gt; &lt;i&gt;by Isaac Asimov&lt;/i&gt;&lt;p&gt;
-I, Robot is a  story about when robots came be able to talk and perform a larger variety of tasks. Each chapter seemed to introduce
-a new and exciting problem which made you think about the ethics of robots and how they relate to people.
-&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;&lt;b&gt;Fooled by Randomness&lt;/b&gt; &lt;i&gt;by Nassim Nicholas Taleb&lt;/i&gt;&lt;p&gt;
-This book was a great book to look at how bad humans are at guessing the future.
-In addition the book looked at the bias everyone has and how they apply in the real world
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Sex, Drugs, and Cocoa Puffs&lt;/b&gt; &lt;i&gt;by Chuck Klosterman&lt;/i&gt;&lt;p&gt;
-A book of eighteen essays. The book looks into pop culture and how it affects us.
-The book was released 15 years ago and makes a lot of references I've heard of; The Real World, Billy Joel, Saved by the bell but I didn't experience them like the reader.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Le Petit Prince&lt;/b&gt; &lt;i&gt;by Antoine de Saint-Exupéry&lt;/i&gt;&lt;p&gt;
-C'est un histoire bizzare. Je pense que je le devrai lire en anglais. J'ai lu pour améliorer mon français.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;The Wright Brothers&lt;/b&gt; &lt;i&gt;by David McCullough&lt;/i&gt;&lt;p&gt;
-An awesome history of the birth of flight. It is interesting to see the contrast between langley with large goveremnt spending and the wright brothers who made money at the bike shop to pay for the development. The Wright brothers were not considered by the US goverenment when they were look to sell there plane.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Reality Is Not What It Seems&lt;/b&gt; &lt;i&gt;by Carlo Rovelli&lt;/i&gt;&lt;p&gt;
-This book went through the history of physics from Greek philosophers to present day. It has been an intersting hearing a simple explaination of modern physics - With two basic theories of quantum mechanics and general relativitity and the attempt to combine these incompatible theories. This book introducted loop quantum gravitiy as the new leading contender.
-&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;&lt;b&gt;Seveneves&lt;/b&gt; &lt;i&gt;by Neal Stephenson&lt;/i&gt;&lt;p&gt;
-The book is about the what would happen if the moon suddenly split apart. This book felt like 2 books, with the first being a scifi novel and the second being a drama. I enjoyed the first half, the second seemed to drag on a bit. It was an interesting thought experiment and covered a large variety of issues that could occur.
-&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;&lt;b&gt;Energy and Civilization&lt;/b&gt; &lt;i&gt;by Vaclav Smil&lt;/i&gt;&lt;p&gt;
-The books puts together a big history of society and its relationship with energy and technology. I enjoyed looking at the energy perspective in biology and the benefits of bipedalism and why we have 2 feet. In addition, agriculture and how the calorie of food per hours of work is an important heuristic for a population density.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Never Split The Difference&lt;/b&gt; &lt;i&gt;by Chris Voss&lt;/i&gt;&lt;p&gt;
-I try to avoid most business type books, but this book exceeded my expectations. I enjoyed reading Chris Voss's experience of being a hostage negotiator and hearing how he learnt all of these lessons in the field. The points he shows are actionable and feel very achievable. 
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;The Man Who Loved Only Numbers&lt;/b&gt; &lt;i&gt;by Paul Hoffman&lt;/i&gt;&lt;p&gt;
-A biography of the famous mathematician Paul Erdos. I really enjoyed this book and hear about Erdos's life. I also enjoyed hearing about other mathematicians in the book such as Ronald Graham and Carl Friedrich Gauss
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Naked Economics&lt;/b&gt; &lt;i&gt;by Charles Wheelan&lt;/i&gt;&lt;p&gt;
-A nice introduction to economic thinking. I found the part of determining what makes an economy rich an interesting concept.
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;The Goal&lt;/b&gt; &lt;i&gt;by Eliyahu Goldratt&lt;/i&gt;&lt;p&gt;
-This was a piece of fiction where a main character is trying to save his plant. It is also a business book to run an efficient business. I have heard a lot about this book and was glad to read it. The main theory of the book is reduce your bottlenecks.
-&lt;/p&gt;
-&lt;/li&gt;</content><author><name></name></author><summary type="html">I read 34 books in 2018, not 52 as my goal, but this year was most books I ever read.</summary></entry></feed>
+&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Recently I started working on fast.ai, this is my attempt at creating a network.</summary></entry></feed>
