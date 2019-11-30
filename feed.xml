@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-29T21:37:03-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Learning Rust</title><link href="/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-30T00:00:00-04:00</published><updated>2019-09-30T00:00:00-04:00</updated><id>/learning-rust</id><content type="html" xml:base="/learning-rust.html">&lt;p&gt;I was introduced to Rust when reading over the Stacked Overflow annual survey. On the survey it received a glowing review and I thought I would look at it as well. After a few months of using it on a few project I believe it deserves it praise when working on system design problems.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-29T22:30:03-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Learning Rust</title><link href="/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-30T00:00:00-04:00</published><updated>2019-09-30T00:00:00-04:00</updated><id>/learning-rust</id><content type="html" xml:base="/learning-rust.html">&lt;p&gt;From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects,  I believe it deserves its praise.&lt;/p&gt;
 
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -23,18 +23,19 @@
 
 &lt;p&gt;If you find Rust interesting, I would recommend what I did:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Spend a weekend using Rust on a problem that you were solving in Python. Give up the project because the compiler errors are driving you crazy
-Spend a week reading the Rust Book and tell yourself you understand ownership model.
-Spend the next weekend using rust on the project again. Get 90% of the way there but give up and vow to never to talk about rust again.
-Wait two months, when you need to what to avoid C++ and turn to Rust as an alternative
-Read the Rust book. Take your time and go through each example.
-Do lots of mini problems. Get a feel for the ownership model. Realize that int,floats act differently than vec,string and box.
-Do “Too Many Linked Lists” and feel like you know nothing again.
-Write some bigger stuff and complete what ever you set out to do in step 4.
-Write a blog article that you survived learning Rust and used it once. Secretly feel insecure about your software skills.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;Spend a weekend using Rust on a problem that you were solving in Python. Give up the project because the compiler errors are driving you crazy&lt;/li&gt;
+  &lt;li&gt;Spend a week reading the Rust Book and tell yourself you understand ownership model.&lt;/li&gt;
+  &lt;li&gt;Spend the next weekend using rust on the project again. Get 90% of the way there but give up and vow to never to talk about rust again.&lt;/li&gt;
+  &lt;li&gt;Wait two months, when you need to what to avoid C++ and turn to Rust as an alternative&lt;/li&gt;
+  &lt;li&gt;Read the Rust book. Take your time and go through each example.&lt;/li&gt;
+  &lt;li&gt;Do lots of mini problems. Get a feel for the ownership model. Realize that int,floats act differently than vec,string and box.&lt;/li&gt;
+  &lt;li&gt;Do “Too Many Linked Lists” and feel like you know nothing again.&lt;/li&gt;
+  &lt;li&gt;Write some bigger stuff and complete what ever you set out to do in step 4.&lt;/li&gt;
+  &lt;li&gt;Write a blog article that you survived learning Rust and used it once. Secretly feel insecure about your software skills.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Actually, start at step 5. When you get to step 9 send me a message with the link.&lt;/p&gt;</content><author><name></name></author><summary type="html">I was introduced to Rust when reading over the Stacked Overflow annual survey. On the survey it received a glowing review and I thought I would look at it as well. After a few months of using it on a few project I believe it deserves it praise when working on system design problems.</summary></entry><entry><title type="html">Pathfinding</title><link href="/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/pathfinding</id><content type="html" xml:base="/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
+&lt;p&gt;Actually, start at step 5. When you get to step 9 send me a message with the link.&lt;/p&gt;</content><author><name></name></author><summary type="html">From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects, I believe it deserves its praise.</summary></entry><entry><title type="html">Pathfinding</title><link href="/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/pathfinding</id><content type="html" xml:base="/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
 &lt;img src=&quot;assets/pathfinding/BlockConnect.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
