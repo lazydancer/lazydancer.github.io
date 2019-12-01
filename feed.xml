@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-29T22:46:47-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Learning Rust</title><link href="/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-30T00:00:00-04:00</published><updated>2019-09-30T00:00:00-04:00</updated><id>/learning-rust</id><content type="html" xml:base="/learning-rust.html">&lt;p&gt;From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects,  I believe it deserves its praise.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-12-01T11:18:11-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/advent-of-code-2019-solutions</id><content type="html" xml:base="/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I first participated in Advent of Code in 2018. I enjoyed working on the challenges and I learned a lot. The goal of the advent of code is to try to get on the leaderboard which is the fastest people to complete the problem when it is released at midnight.&lt;/p&gt;
+
+&lt;p&gt;Last year my goal was to complete all the problems. This year I will focus on writing clean code and writing more about my experience.&lt;/p&gt;
+
+&lt;p&gt;Each code snippet is complete, runnable program. I have included my input for each day. While you are in the directory for the day (ex. /Day-01) you can run the code line this&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ python solution.py input.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can also find all of these solutions on Github: &lt;a href=&quot;https://github.com/lazydancer/Advent-of-Code-2019&quot;&gt;lazydancer/Advent-of-Code-2019&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Table of Contents&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;Day 1: The Tyranny of the Rocket Equation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div id=&quot;1&quot;&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;day-1-the-tyranny-of-the-rocket-equation&quot;&gt;Day 1: The Tyranny of the Rocket Equation&lt;/h2&gt;
+
+&lt;p&gt;For Part 1, we simply need to divide each module weight by 3 and substact 2. The only thing in my code that is unusally is the ‘//’ which is an integer divide. It acts as a round down function.&lt;/p&gt;
+
+&lt;p&gt;For Part 2, we need to account for the extra weight of the fuel. This is done with a while loop where it looks for values which would add more fuel. When the fuel get less than 8.9999… the result will be 0.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;fileinput&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;part_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;module_weights&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileinput&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fuel_calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuel_calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;	
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;part_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;module_weights&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileinput&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;calculate_fuel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculate_fuel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module_weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;total_fuel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fuel_calc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;fuel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuel_calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module_weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;total_fuel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuel&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt; 8.99999 results in fuel calc equalling 0  
+&lt;/span&gt;		&lt;span class=&quot;n&quot;&gt;fuel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuel_calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;total_fuel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuel&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_fuel&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'The solution to part 1 is'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;part_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 3188480
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'The solution to part 2 is'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;part_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 4779847
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The tyranny of the rocket equation relates to the ideal rocket equation. Which is interesting to derive. We have the follow the rule of conservation of momentum where the momentum in a closed system needs to remain constant.&lt;/p&gt;
+
+&lt;div style=&quot;margin: 0 auto; max-width: 405px&quot;&gt;
+&lt;img src=&quot;assets/advent-of-code-2019-solutions/Var_mass_system.svg&quot; /&gt; 
+&lt;/div&gt;
+
+&lt;p&gt;All this simplifies to…&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mdv = v_exhaust * dm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This makes sense the change in the momentum of the ship is the change in mass of the ship times the exhaust speed&lt;/p&gt;
+
+&lt;p&gt;Rearranging and integrating both sides with respect to time and knowing 1/x integrates to ln(x) and ln(a) - ln(b) = ln(a/b). Finds the ideal rocket equation.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;v_final - v_inital = v-exhaust * ln(m_inital / m_final)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div id=&quot;2&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;3&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;4&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;5&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;6&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;7&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;8&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;9&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;10&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;11&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;12&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;13&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;14&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;15&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;16&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;17&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;18&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;19&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;20&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;21&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;22&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;23&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;24&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;25&quot;&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Python solutions to the daily coding puzzles, explained.</summary></entry><entry><title type="html">Learning Rust</title><link href="/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-30T00:00:00-04:00</published><updated>2019-09-30T00:00:00-04:00</updated><id>/learning-rust</id><content type="html" xml:base="/learning-rust.html">&lt;p&gt;From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects,  I believe it deserves its praise.&lt;/p&gt;
 
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -2509,73 +2611,4 @@ createMap = (geojson) =&gt; {
 &lt;p&gt;&lt;b&gt;Update: &lt;/b&gt;&lt;a href=&quot;/making-a-transistor-from-scratch-part-2.html&quot;&gt;Part 2&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Thanks for reading, this type of article was new for me. If you enjoyed it please share it. Also I'm now on Twitter, follow me &lt;a href=&quot;http://twitter.com/lazydancr&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Rocket Or Tower</title><link href="/rocket-or-tower.html" rel="alternate" type="text/html" title="Rocket Or Tower" /><published>2018-08-01T00:00:00-04:00</published><updated>2018-08-01T00:00:00-04:00</updated><id>/rocket-or-tower</id><content type="html" xml:base="/rocket-or-tower.html">&lt;p&gt;Recently I started working on &lt;a href=&quot;https://fast.ai&quot;&gt;fast.ai&lt;/a&gt;, this is my attempt at creating a network.&lt;/p&gt;
-
-&lt;h2&gt;Attempt One&lt;/h2&gt;
-
-&lt;p&gt;My training set contains 10 rockets and 10 towers&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/rocket-or-tower/tower.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Using the the 3 line program from the fast.ai library for the precompiled model &lt;a href=&quot;https://github.com/KaimingHe/deep-residual-networks&quot;&gt;resnet&lt;/a&gt;
-
-&lt;pre&gt;&lt;code&gt;
-arch=resnet34
-data = ImageClassifierData.from_paths(PATH, tfms=tfms_from_model(arch, sz))
-learn = ConvLearner.pretrained(arch, data, precompute=True)
-learn.fit(0.01, 5)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;0 is more rocket-like, 1 is more building-like&lt;/p&gt;
-
-&lt;p&gt;With having only 10 examples of each. It is amazing how well it did. Only misclassifing the CN tower just barely to being a rocket
-
-&lt;img src=&quot;assets/rocket-or-tower/result.png&quot; width=&quot;722px&quot; /&gt;
-
-&lt;h2&gt;Attempt Two&lt;/h2&gt;
-
-&lt;p&gt;I added a lot more photos to about 300 each for training and 15 for the validation
-
-&lt;p&gt;This time adding data augmentation, variable learning rate and unfreezing the model
-
-&lt;h3&gt;Data Augmentation&lt;/h3&gt;
-
-&lt;p&gt;Modify the image slightly to known effects of a camera. This is transformations that shift, zoom and flip the images. These are fed into the learning like any other image
-
-&lt;pre&gt;&lt;code&gt;tfms = tfms_from_model(resnet34, sz, aug_tfms=transforms_side_on, max_zoom=1.1)&lt;/code&gt;&lt;/pre&gt;
-
-&lt;img src=&quot;assets/rocket-or-tower/aug.png&quot; /&gt;
-
-
-&lt;h3&gt;Stochastic Gradient Descent with Restarts&lt;/h3&gt;
-
-&lt;p&gt;When a network is learning a function. It needs to start off high and reduce to gain more accuracy. This is included but also is restarted every epoch. This helps generalize the network, by trying avoiding narrow minimums. Creating a learning rate like this...
-
-&lt;img src=&quot;assets/rocket-or-tower/learning.png&quot; /&gt;
-
-&lt;p&gt;This is improved a little bit more by slowing down the learning rate on the later epochs.
-
-&lt;img src=&quot;assets/rocket-or-tower/learning2.png&quot; /&gt;
-
-&lt;h3&gt;Training the precomputed Model&lt;/h3&gt;
-
-&lt;p&gt;Before training was done on the last few layers. This opens the begining layers. Also much lower learning rates are used in decreasing order to the earlier layers
-
-&lt;pre&gt;&lt;code&gt;  learn.unfreeze()
-lr=np.array([1e-4,1e-3,1e-2])
-learn.fit(lr, 3, cycle_len=1, cycle_mult=2)&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3&gt;Result&lt;/h3&gt;
-
-&lt;p&gt;96.6% accuracy. With one error in classification
-
-&lt;pre&gt;&lt;code&gt;  plot_confusion_matrix(cm, data.classes)&lt;/code&gt;&lt;/pre&gt;
-
-&lt;img src=&quot;assets/rocket-or-tower/confusion.png&quot; /&gt;
-
-&lt;p&gt;Below it the images it was most uncertain of including the incorrect labeling of the rocket on the bottom left
-
-&lt;img src=&quot;assets/rocket-or-tower/result2.png&quot; width=&quot;722px&quot; /&gt;
-
-&lt;p&gt;Thank you&lt;/p&gt;
-&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Recently I started working on fast.ai, this is my attempt at creating a network.</summary></entry></feed>
+&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
