@@ -245,6 +245,74 @@ pre.highlight { padding: 1em; font-size: 13px}
 </code></pre></div></div>
 
 <div id="2"></div>
+
+<h2 id="day-2-1202-program-alarm">Day 2: 1202 Program Alarm</h2>
+
+<p>For part 1, we need a run program which would set the pointer every 4 numbers. This is done with a simple for loop but not robust if another size of jump is needed.</p>
+
+<p>For part 2, we iterate over the program to find when a result is a desired number. The inputs are changed till the result is given. With only 100 possible values for the two. Leads to only 10,000 combinations and since order matters we look at the permutations using the builtin itertools module.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fileinput</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">int_program</span> <span class="o">=</span> <span class="n">load_program</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'The solution to part 1 is'</span><span class="p">,</span> <span class="n">run_program</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># 4930687
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">'The solution to part 2 is'</span><span class="p">,</span> <span class="n">find_inputs</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="mi">19690720</span><span class="p">))</span> <span class="c1"># 5335
+</span>
+
+<span class="k">def</span> <span class="nf">load_program</span><span class="p">():</span>
+    <span class="n">int_program</span> <span class="o">=</span> <span class="n">fileinput</span><span class="o">.</span><span class="nb">input</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">int_program</span> <span class="o">=</span> <span class="n">int_program</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">','</span><span class="p">)</span>     
+    <span class="n">int_program</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">int_program</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">int_program</span>
+
+
+<span class="k">def</span> <span class="nf">find_inputs</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">noun</span><span class="p">,</span> <span class="n">verb</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">run_program</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="n">noun</span><span class="p">,</span> <span class="n">verb</span><span class="p">)</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">noun</span> <span class="o">+</span> <span class="n">verb</span>
+
+
+<span class="k">def</span> <span class="nf">run_program</span><span class="p">(</span><span class="n">input_int_program</span><span class="p">,</span> <span class="n">noun</span><span class="p">,</span> <span class="n">verb</span><span class="p">):</span>
+    <span class="n">int_program</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">input_int_program</span><span class="p">)</span>
+
+    <span class="n">int_program</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">noun</span>
+    <span class="n">int_program</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">verb</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">int_program</span><span class="p">),</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">isComplete</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="k">break</span>
+
+        <span class="n">int_program</span> <span class="o">=</span> <span class="n">run_opcode</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">int_program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">run_opcode</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="n">opcode</span> <span class="o">=</span> <span class="n">int_program</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">int_program</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">int_program</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">int_program</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">opcode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">int_program</span><span class="p">[</span><span class="n">result</span><span class="p">]</span> <span class="o">=</span> <span class="n">int_program</span><span class="p">[</span><span class="n">first</span><span class="p">]</span> <span class="o">+</span> <span class="n">int_program</span><span class="p">[</span><span class="n">second</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">opcode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">int_program</span><span class="p">[</span><span class="n">result</span><span class="p">]</span> <span class="o">=</span> <span class="n">int_program</span><span class="p">[</span><span class="n">first</span><span class="p">]</span> <span class="o">*</span> <span class="n">int_program</span><span class="p">[</span><span class="n">second</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">Error</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">int_program</span>
+
+
+<span class="k">def</span> <span class="nf">isComplete</span><span class="p">(</span><span class="n">int_program</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">int_program</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">99</span>
+
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
 <div id="3"></div>
 <div id="4"></div>
 <div id="5"></div>
