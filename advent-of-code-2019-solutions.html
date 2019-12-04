@@ -190,6 +190,7 @@ pre.highlight { padding: 1em; font-size: 13px}
   <li><a href="#1">Day 1: The Tyranny of the Rocket Equation</a></li>
   <li><a href="#2">Day 2: 1202 Program Alarm</a></li>
   <li><a href="#3">Day 3: Crossed Wires</a></li>
+  <li><a href="#4">Day 4: Secure Container</a></li>
 </ul>
 
 <div id="1"></div>
@@ -374,6 +375,65 @@ pre.highlight { padding: 1em; font-size: 13px}
 <span class="p">}</span>
 </code></pre></div></div>
 <div id="4"></div>
+
+<h2 id="day-4-secure-container">Day 4: Secure Container</h2>
+
+<p>Part 1, we can look at a way to find adjancent cells. This was done by taking a copy shifting it by one and comparing agaisnt the original.</p>
+
+<p>Part 2, we can use a BTreeMap and count all of the numbers given finding if any are equal to 2.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">collections</span><span class="p">::</span><span class="nn">btree_map</span><span class="p">::</span><span class="n">BTreeMap</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">only_doubles</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">bool</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">count</span> <span class="o">=</span> <span class="nn">BTreeMap</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="n">in</span> <span class="n">x</span><span class="nf">.to_string</span><span class="p">()</span><span class="nf">.chars</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">count</span><span class="nf">.entry</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="nf">.or_insert</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+
+    <span class="n">count</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.map</span><span class="p">(|(</span><span class="n">ch</span><span class="p">,</span> <span class="n">count</span><span class="p">)|</span> <span class="n">count</span><span class="p">)</span><span class="nf">.any</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="p">(</span><span class="o">*</span><span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">adjancent_chars</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">bool</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="nf">.to_string</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">chars_a</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">x</span><span class="nf">.chars</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">chars_b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">chars_a</span><span class="nf">.clone</span><span class="p">()[</span><span class="mi">1</span><span class="o">..</span><span class="p">];</span>
+
+    <span class="n">chars_a</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.zip</span><span class="p">(</span><span class="n">chars_b</span><span class="nf">.iter</span><span class="p">())</span><span class="nf">.map</span><span class="p">(|(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)|</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span><span class="nf">.any</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">always_increase</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">bool</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="nf">.to_string</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">chars_a</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">x</span><span class="nf">.chars</span><span class="p">()</span><span class="nf">.map</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="n">x</span><span class="nf">.to_digit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">())</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">chars_b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">chars_a</span><span class="nf">.clone</span><span class="p">()[</span><span class="mi">1</span><span class="o">..</span><span class="p">];</span>
+
+    <span class="n">chars_a</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.zip</span><span class="p">(</span><span class="n">chars_b</span><span class="nf">.iter</span><span class="p">())</span><span class="nf">.map</span><span class="p">(|(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)|</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span><span class="nf">.all</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">part_1_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="mi">387638</span><span class="o">..</span><span class="mi">919123</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nf">adjancent_chars</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nf">always_increase</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">part_1_count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{:?}"</span><span class="p">,</span> <span class="n">part_1_count</span><span class="p">);</span> <span class="c">//466</span>
+
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">part_2_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="mi">387638</span><span class="o">..</span><span class="mi">919123</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nf">adjancent_chars</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nf">always_increase</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nf">only_doubles</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">part_2_count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nd">println!</span><span class="p">(</span><span class="s">"{:?}: {:?}"</span><span class="p">,</span> <span class="n">part_2_count</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{:?}"</span><span class="p">,</span> <span class="n">part_2_count</span><span class="p">);</span> <span class="c">//292</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
 <div id="5"></div>
 <div id="6"></div>
 <div id="7"></div>
