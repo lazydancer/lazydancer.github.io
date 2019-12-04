@@ -117,7 +117,7 @@ pre.highlight { padding: 1em; font-size: 13px}
 .highlight .hll { background-color: #ffffcc } 
 .highlight  { background: #eee; border-radius:5px;} 
 .highlight .c { font-style: italic } /* Comment */
-.highlight .err { border: 1px solid #FF0000 } /* Error */
+/*.highlight .err { border: 1px solid #FF0000 } *//* Error */
 .highlight .k { font-weight: bold } /* Keyword */
 .highlight .ch { font-style: italic } /* Comment.Hashbang */
 .highlight .cm { font-style: italic } /* Comment.Multiline */
@@ -189,6 +189,7 @@ pre.highlight { padding: 1em; font-size: 13px}
 <ul>
   <li><a href="#1">Day 1: The Tyranny of the Rocket Equation</a></li>
   <li><a href="#2">Day 2: 1202 Program Alarm</a></li>
+  <li><a href="#3">Day 3: Crossed Wires</a></li>
 </ul>
 
 <div id="1"></div>
@@ -315,6 +316,63 @@ pre.highlight { padding: 1em; font-size: 13px}
 </code></pre></div></div>
 
 <div id="3"></div>
+
+<h2 id="day-3-crossed-wires">Day 3: Crossed Wires</h2>
+
+<p>This one was done in Rust</p>
+
+<p>For Part 1, we can find the path in which each wire takes, creating a vector of locations. Finding where the two wires interset is looking at where both wire end at a location. We can use a set data type to find the union, in this case a HashSet finding an intersection.</p>
+
+<p>For Part 2, we look for the shortest manhattan distance along the path of the wires.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="n">env</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="n">fs</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">collections</span><span class="p">::</span><span class="n">HashSet</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">filename</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">let</span> <span class="n">input</span> <span class="o">=</span> <span class="nn">fs</span><span class="p">::</span><span class="nf">read_to_string</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+         <span class="nf">.expect</span><span class="p">(</span><span class="s">"Something went wrong reading the file"</span><span class="p">);</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">input</span><span class="nf">.lines</span><span class="p">();</span>
+
+    <span class="k">let</span> <span class="n">steps_0</span> <span class="o">=</span> <span class="nf">parse_line</span><span class="p">(</span><span class="n">lines</span><span class="nf">.next</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">());</span>
+    <span class="k">let</span> <span class="n">steps_1</span> <span class="o">=</span> <span class="nf">parse_line</span><span class="p">(</span><span class="n">lines</span><span class="nf">.next</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">());</span>
+
+    <span class="k">let</span> <span class="n">positions_0</span><span class="p">:</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">steps_0</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.cloned</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">positions_1</span><span class="p">:</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">steps_1</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.cloned</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">collisions</span> <span class="o">=</span> <span class="n">positions_0</span><span class="nf">.intersection</span><span class="p">(</span><span class="o">&amp;</span><span class="n">positions_1</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">closest_collision</span> <span class="o">=</span> <span class="n">collisions</span><span class="nf">.clone</span><span class="p">()</span><span class="nf">.map</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="n">x</span><span class="err">.</span><span class="mi">0</span><span class="nf">.abs</span><span class="p">()</span> <span class="o">+</span> <span class="n">x</span><span class="err">.</span><span class="mi">1</span><span class="nf">.abs</span><span class="p">())</span><span class="nf">.min</span><span class="p">();</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"Part One: {:?}"</span><span class="p">,</span> <span class="n">closest_collision</span><span class="nf">.unwrap</span><span class="p">());</span>
+
+    <span class="k">let</span> <span class="n">quickest_collision</span> <span class="o">=</span> <span class="n">collisions</span><span class="nf">.map</span><span class="p">(|</span><span class="n">pos</span><span class="p">|</span> <span class="n">steps_0</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.position</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="n">x</span> <span class="o">==</span> <span class="n">pos</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">()</span> <span class="o">+</span> <span class="n">steps_1</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.position</span><span class="p">(|</span><span class="n">x</span><span class="p">|</span> <span class="n">x</span> <span class="o">==</span> <span class="n">pos</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span><span class="nf">.min</span><span class="p">();</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"Part Two: {:?}"</span><span class="p">,</span> <span class="n">quickest_collision</span><span class="nf">.unwrap</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">parse_step</span><span class="p">(</span><span class="n">step</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">impl</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Item</span> <span class="o">=</span> <span class="p">(</span><span class="nb">isize</span><span class="p">,</span> <span class="nb">isize</span><span class="p">)</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">step</span><span class="nf">.chars</span><span class="p">();</span>
+
+    <span class="k">let</span> <span class="n">coord</span> <span class="o">=</span> <span class="k">match</span> <span class="n">chars</span><span class="nf">.next</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="sc">'U'</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="sc">'D'</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">),</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="sc">'L'</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="sc">'R'</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="mi">_</span>         <span class="k">=&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">};</span>
+
+    <span class="k">let</span> <span class="n">dist</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="n">chars</span><span class="py">.collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">()</span><span class="nf">.parse</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">();</span>
+    
+    <span class="nn">std</span><span class="p">::</span><span class="nn">iter</span><span class="p">::</span><span class="nf">repeat</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span><span class="nf">.take</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">parse_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">isize</span><span class="p">,</span> <span class="nb">isize</span><span class="p">)</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="n">line</span><span class="nf">.split</span><span class="p">(</span><span class="s">","</span><span class="p">)</span><span class="nf">.flat_map</span><span class="p">(</span><span class="n">parse_step</span><span class="p">)</span><span class="nf">.scan</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">|</span><span class="n">pos</span><span class="p">,</span> <span class="n">step</span><span class="p">|</span> <span class="p">{</span>
+        <span class="n">pos</span><span class="err">.</span><span class="mi">0</span> <span class="o">+=</span> <span class="n">step</span><span class="err">.</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">pos</span><span class="err">.</span><span class="mi">1</span> <span class="o">+=</span> <span class="n">step</span><span class="err">.</span><span class="mi">1</span><span class="p">;</span>
+        <span class="nf">Some</span><span class="p">(</span><span class="n">pos</span><span class="nf">.clone</span><span class="p">())</span>
+    <span class="p">})</span><span class="nf">.collect</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
 <div id="4"></div>
 <div id="5"></div>
 <div id="6"></div>
