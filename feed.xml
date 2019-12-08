@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-12-05T19:19:25-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/advent-of-code-2019-solutions</id><content type="html" xml:base="/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-12-08T12:02:27-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/advent-of-code-2019-solutions</id><content type="html" xml:base="/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.&lt;/p&gt;
@@ -23,6 +23,7 @@
   &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;Day 3: Crossed Wires&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;Day 4: Secure Container&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#5&quot;&gt;Day 5: Sunny with a Chance of Asteroids&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6&quot;&gt;Day 6: Universal Orbit Map&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div id=&quot;1&quot;&gt;&lt;/div&gt;
@@ -378,6 +379,64 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div id=&quot;6&quot;&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;day-6-universal-orbit-map&quot;&gt;Day 6: Universal Orbit Map&lt;/h2&gt;
+
+&lt;p&gt;For part 1, we can set up a map which looks at what planet it orbits. For each planet going down the chain to the base. Finding the base is done by taking the differnce between two sets. The ‘guide’ is a hashmap for really quick lookup values&lt;/p&gt;
+
+&lt;p&gt;For part 2, we can find the path of YOU and SAN back to the base element and the paths will be common until a divergent step. Add up the remain elements that aren’t common to find the paths between them.&lt;/p&gt;
+
+&lt;p&gt;``` python
+import fileinput&lt;/p&gt;
+
+&lt;p&gt;input = fileinput.input()
+input = [line.strip().split(‘)’) for line in input]&lt;/p&gt;
+
+&lt;h1 id=&quot;hash-guide-from-planet-to-lower-orbit&quot;&gt;hash guide from planet to lower orbit&lt;/h1&gt;
+&lt;p&gt;guide = {line[1]: line[0] for line in input}&lt;/p&gt;
+
+&lt;h1 id=&quot;should-be-only-one-planet-that-doesnt-have-a-guide-value&quot;&gt;should be only one planet that doesn’t have a guide value&lt;/h1&gt;
+&lt;p&gt;(base,) = set(guide.values()) - set(guide.keys())&lt;/p&gt;
+
+&lt;p&gt;count = 0
+for planet in guide:
+    while planet != base:
+        planet = guide[planet]
+        count += 1&lt;/p&gt;
+
+&lt;p&gt;print(‘The solution to part 1 is:’, count) # 162816&lt;/p&gt;
+
+&lt;h1 id=&quot;find-the-descent-patterns-of-you-and-san&quot;&gt;Find the descent patterns of YOU and SAN&lt;/h1&gt;
+&lt;h1 id=&quot;match-the-first-common-element&quot;&gt;Match the first common element&lt;/h1&gt;
+&lt;h1 id=&quot;add-up-the-above-to-find-the-transfer-distance---2&quot;&gt;Add up the above to find the transfer distance - 2&lt;/h1&gt;
+&lt;p&gt;you_path = []
+planet = ‘YOU’
+while planet != base:
+    planet = guide[planet]
+    you_path.append(planet)
+you_path.reverse()&lt;/p&gt;
+
+&lt;p&gt;san_path = []
+planet = ‘SAN’
+while planet != base:
+    planet = guide[planet]
+    san_path.append(planet)
+san_path.reverse()&lt;/p&gt;
+
+&lt;p&gt;diverge_step = 0
+for step in range(len(san_path)):
+    if san_path[step] != you_path[step]:
+        diverge_step = step - 1
+        break;&lt;/p&gt;
+
+&lt;p&gt;steps_you = len(you_path) - diverge_step 
+steps_san = len(san_path) - diverge_step&lt;/p&gt;
+
+&lt;p&gt;result = steps_san + steps_you - 2&lt;/p&gt;
+
+&lt;p&gt;print(‘The solution to part 2 is:’, result)
+``` python&lt;/p&gt;
+
 &lt;div id=&quot;7&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;8&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;9&quot;&gt;&lt;/div&gt;
