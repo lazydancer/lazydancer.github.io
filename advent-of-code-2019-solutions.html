@@ -555,58 +555,111 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 <p>For part 2, we can find the path of YOU and SAN back to the base element and the paths will be common until a divergent step. Add up the remain elements that aren’t common to find the paths between them.</p>
 
-<p>``` python
-import fileinput</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fileinput</span>
 
-<p>input = fileinput.input()
-input = [line.strip().split(‘)’) for line in input]</p>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">fileinput</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">')'</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">]</span>
 
-<h1 id="hash-guide-from-planet-to-lower-orbit">hash guide from planet to lower orbit</h1>
-<p>guide = {line[1]: line[0] for line in input}</p>
+<span class="c1"># hash guide from planet to lower orbit 
+</span><span class="n">guide</span> <span class="o">=</span> <span class="p">{</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">}</span>
 
-<h1 id="should-be-only-one-planet-that-doesnt-have-a-guide-value">should be only one planet that doesn’t have a guide value</h1>
-<p>(base,) = set(guide.values()) - set(guide.keys())</p>
+<span class="c1"># should be only one planet that doesn't have a guide value
+</span><span class="p">(</span><span class="n">base</span><span class="p">,)</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">guide</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">guide</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-<p>count = 0
-for planet in guide:
-    while planet != base:
-        planet = guide[planet]
-        count += 1</p>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">planet</span> <span class="ow">in</span> <span class="n">guide</span><span class="p">:</span>
+    <span class="k">while</span> <span class="n">planet</span> <span class="o">!=</span> <span class="n">base</span><span class="p">:</span>
+        <span class="n">planet</span> <span class="o">=</span> <span class="n">guide</span><span class="p">[</span><span class="n">planet</span><span class="p">]</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-<p>print(‘The solution to part 1 is:’, count) # 162816</p>
 
-<h1 id="find-the-descent-patterns-of-you-and-san">Find the descent patterns of YOU and SAN</h1>
-<h1 id="match-the-first-common-element">Match the first common element</h1>
-<h1 id="add-up-the-above-to-find-the-transfer-distance---2">Add up the above to find the transfer distance - 2</h1>
-<p>you_path = []
-planet = ‘YOU’
-while planet != base:
-    planet = guide[planet]
-    you_path.append(planet)
-you_path.reverse()</p>
+<span class="k">print</span><span class="p">(</span><span class="s">'The solution to part 1 is:'</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="c1"># 162816
+</span>
 
-<p>san_path = []
-planet = ‘SAN’
-while planet != base:
-    planet = guide[planet]
-    san_path.append(planet)
-san_path.reverse()</p>
+<span class="c1"># Find the descent patterns of YOU and SAN
+# Match the first common element
+# Add up the above to find the transfer distance - 2
+</span><span class="n">you_path</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">planet</span> <span class="o">=</span> <span class="s">'YOU'</span>
+<span class="k">while</span> <span class="n">planet</span> <span class="o">!=</span> <span class="n">base</span><span class="p">:</span>
+    <span class="n">planet</span> <span class="o">=</span> <span class="n">guide</span><span class="p">[</span><span class="n">planet</span><span class="p">]</span>
+    <span class="n">you_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">planet</span><span class="p">)</span>
+<span class="n">you_path</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 
-<p>diverge_step = 0
-for step in range(len(san_path)):
-    if san_path[step] != you_path[step]:
-        diverge_step = step - 1
-        break;</p>
+<span class="n">san_path</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">planet</span> <span class="o">=</span> <span class="s">'SAN'</span>
+<span class="k">while</span> <span class="n">planet</span> <span class="o">!=</span> <span class="n">base</span><span class="p">:</span>
+    <span class="n">planet</span> <span class="o">=</span> <span class="n">guide</span><span class="p">[</span><span class="n">planet</span><span class="p">]</span>
+    <span class="n">san_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">planet</span><span class="p">)</span>
+<span class="n">san_path</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 
-<p>steps_you = len(you_path) - diverge_step 
-steps_san = len(san_path) - diverge_step</p>
+<span class="n">diverge_step</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">san_path</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">san_path</span><span class="p">[</span><span class="n">step</span><span class="p">]</span> <span class="o">!=</span> <span class="n">you_path</span><span class="p">[</span><span class="n">step</span><span class="p">]:</span>
+        <span class="n">diverge_step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">break</span><span class="p">;</span>
 
-<p>result = steps_san + steps_you - 2</p>
 
-<p>print(‘The solution to part 2 is:’, result)
-``` python</p>
+<span class="n">steps_you</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">you_path</span><span class="p">)</span> <span class="o">-</span> <span class="n">diverge_step</span> 
+<span class="n">steps_san</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">san_path</span><span class="p">)</span> <span class="o">-</span> <span class="n">diverge_step</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">steps_san</span> <span class="o">+</span> <span class="n">steps_you</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'The solution to part 2 is:'</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
 
 <div id="7"></div>
+
+<p>For part 1, we can use the itertools library and use the permutations function to get the result of the max</p>
+
+<p>For part 2, I didn’t get it done in the time I had. I think you need to keep the state of the program. I will come back to this, I will try to create a stateful ampifier class</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fileinput</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">program</span> <span class="o">=</span> <span class="n">fileinput</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span>
+    <span class="n">program</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">','</span><span class="p">)]</span>
+
+    <span class="n">highest</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">phase_settings</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phase_settings</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">intcode_run</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="p">[</span><span class="n">phase</span><span class="p">,</span> <span class="n">output</span><span class="p">]))</span>
+        
+        <span class="n">highest</span> <span class="o">=</span> <span class="n">output</span> <span class="k">if</span> <span class="n">output</span> <span class="o">&gt;</span> <span class="n">highest</span> <span class="k">else</span> <span class="n">highest</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"The solution to part 1 is"</span><span class="p">,</span> <span class="n">highest</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">intcode_run</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">param</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ptr</span> <span class="o">=</span> <span class="mi">0</span>   
+    <span class="n">skip</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">99</span><span class="p">:</span>
+        <span class="n">opcode</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="o">%</span> <span class="mi">10</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span> 
+            <span class="n">param</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span> <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span><span class="o">//</span><span class="nb">int</span><span class="p">(</span><span class="s">'100'</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="s">'0'</span><span class="p">))</span> <span class="o">%</span> <span class="mi">10</span> <span class="k">else</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">2</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">3</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">4</span><span class="p">:</span> 
+            <span class="k">yield</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="ow">or</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">6</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span> 
+            <span class="n">ptr</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">3</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">7</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">&lt;</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">8</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">ptr</span> <span class="o">+=</span> <span class="n">skip</span><span class="p">[</span><span class="n">opcode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
 <div id="8"></div>
 <div id="9"></div>
 <div id="10"></div>
