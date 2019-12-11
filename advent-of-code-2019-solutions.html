@@ -194,6 +194,9 @@ pre.highlight { padding: 1em; font-size: 13px}
   <li><a href="#5">Day 5: Sunny with a Chance of Asteroids</a></li>
   <li><a href="#6">Day 6: Universal Orbit Map</a></li>
   <li><a href="#7">Day 7: Amplification Circuit</a></li>
+  <li><a href="#8">Day 8: Space Image Format</a></li>
+  <li><a href="#9">Day 9: Sensor Boost</a></li>
+  <li><a href="#10">Day 10: Monitoring Station</a></li>
 </ul>
 
 <div id="1"></div>
@@ -664,8 +667,189 @@ pre.highlight { padding: 1em; font-size: 13px}
 <span class="n">main</span><span class="p">()</span>
 </code></pre></div></div>
 <div id="8"></div>
+
+<h2 id="day-8-space-image-format">Day 8: Space Image Format</h2>
+
+<p>For part 1, we can split the transmission into different chunks and count the layer with the fews 0 by using the min and count function</p>
+
+<p>For part 2, we just send to a function which returns 1 or 0 the first layer it sees them</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fileinput</span>
+
+<span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">transmission</span> <span class="o">=</span> <span class="n">fileinput</span><span class="o">.</span><span class="nb">input</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">chunks</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">n</span><span class="p">]</span>
+
+<span class="n">layers</span> <span class="o">=</span> <span class="n">chunks</span><span class="p">(</span><span class="n">transmission</span><span class="p">,</span> <span class="n">WIDTH</span> <span class="o">*</span> <span class="n">HEIGHT</span><span class="p">)</span>
+
+<span class="n">fewest_zeros</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([(</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">"0"</span><span class="p">))</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'The solution to part 1 is:'</span><span class="p">,</span> <span class="n">fewest_zeros</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'1'</span><span class="p">)</span> <span class="o">*</span> <span class="n">fewest_zeros</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'2'</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">get_color</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">'1'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">'1'</span>
+        <span class="k">if</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">'0'</span>
+
+<span class="n">layers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chunks</span><span class="p">(</span><span class="n">transmission</span><span class="p">,</span> <span class="n">WIDTH</span> <span class="o">*</span> <span class="n">HEIGHT</span><span class="p">))</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">*</span> <span class="n">HEIGHT</span><span class="p">):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">get_color</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">HEIGHT</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">:(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'0'</span><span class="p">,</span> <span class="s">' '</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'1'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">))</span>
+</code></pre></div></div>
+
 <div id="9"></div>
+
+<h2 id="day-9-sensor-boost">Day 9: Sensor Boost</h2>
+
+<p>After debugging for a while, I have left this one where it is. I hope to come back to this challenge</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fileinput</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">program</span> <span class="o">=</span> <span class="n">fileinput</span><span class="o">.</span><span class="nb">input</span><span class="p">()</span>
+    <span class="n">program</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">','</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">intcode_run</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">intcode_run</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">param</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ptr</span> <span class="o">=</span> <span class="mi">0</span>   
+    <span class="n">rb</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">99</span><span class="p">:</span>
+        <span class="n">opcode</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="o">%</span> <span class="mi">10</span>
+
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="o">//</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">%</span> <span class="mi">10</span>  <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">param</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="o">//</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">%</span> <span class="mi">10</span>  <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">param</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span>
+            <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span><span class="p">]</span> <span class="o">//</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">%</span> <span class="mi">10</span>  <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">param</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rb</span> <span class="o">+</span> <span class="n">program</span><span class="p">[</span><span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span>
+
+
+        <span class="k">if</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">4</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">2</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">4</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">3</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">2</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">4</span><span class="p">:</span> 
+            <span class="k">yield</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">2</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="ow">or</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">6</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span> 
+            <span class="n">ptr</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">3</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">3</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="s">"Number 6"</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">7</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">&lt;</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">4</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">8</span><span class="p">:</span> 
+            <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">4</span>
+        <span class="k">elif</span> <span class="n">opcode</span> <span class="ow">is</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="n">rb</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="n">ptr</span> <span class="o">+=</span> <span class="mi">2</span>
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
 <div id="10"></div>
+
+<h2 id="day-10-monitoring-station">Day 10: Monitoring Station</h2>
+
+<p>For part one I selected an asteroid to check if it had the most lines of sight by creating an expanding box from the asteroid and using any asteroids as casting shadows on the ones behind it</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">fileinput</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">asteroids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fileinput</span><span class="o">.</span><span class="nb">input</span><span class="p">()):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s">'#'</span><span class="p">:</span>
+                <span class="n">asteroids</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+    <span class="n">solution</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">visible_asteroids</span><span class="p">(</span><span class="n">ast</span><span class="p">,</span> <span class="n">asteroids</span><span class="p">)</span> <span class="k">for</span> <span class="n">ast</span> <span class="ow">in</span> <span class="n">asteroids</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"The solution to part 1 is"</span><span class="p">,</span> <span class="n">solution</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">visible_asteroids</span><span class="p">(</span><span class="n">ast</span><span class="p">,</span> <span class="n">asteroids</span><span class="p">):</span>
+    <span class="n">local_asteroids</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">asteroids</span><span class="p">)</span>
+    <span class="n">space_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">asteroids</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+
+    <span class="n">top_lefts</span> <span class="o">=</span> <span class="p">[(</span><span class="n">ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">ast</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">space_width</span><span class="p">)]</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tl</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">top_lefts</span><span class="p">):</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span>
+    
+        <span class="n">casts_shade</span> <span class="o">=</span> <span class="n">local_asteroids</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">ring</span><span class="p">(</span><span class="n">tl</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">cs</span> <span class="ow">in</span> <span class="n">casts_shade</span><span class="p">:</span>
+            <span class="n">shaded</span> <span class="o">=</span> <span class="n">shade_mapping</span><span class="p">(</span><span class="n">ast</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">space_width</span><span class="p">)</span>
+            <span class="n">local_asteroids</span> <span class="o">-=</span> <span class="n">shaded</span>
+
+
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">local_asteroids</span><span class="p">)</span>
+
+
+
+<span class="k">def</span> <span class="nf">shade_mapping</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="n">x_offset</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_offset</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">gcd</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">x_offset</span><span class="p">,</span> <span class="n">y_offset</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">gcd</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x_offset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x_offset</span> <span class="o">/</span> <span class="n">gcd</span><span class="p">)</span>
+        <span class="n">y_offset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_offset</span> <span class="o">/</span> <span class="n">gcd</span><span class="p">)</span>
+
+    <span class="n">shaded</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="n">shaded</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x_offset</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y_offset</span> <span class="o">*</span> <span class="n">i</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">shaded</span>
+
+
+<span class="k">def</span> <span class="nf">ring</span><span class="p">(</span><span class="n">tl_loc</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tl_loc</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">tl_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">tl_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">tl_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">tl_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">tl_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">width</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">,</span> <span class="n">tl_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>  <span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">tl_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tl_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">width</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
 <div id="11"></div>
 <div id="12"></div>
 <div id="13"></div>
