@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-12-10T20:42:53-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/advent-of-code-2019-solutions</id><content type="html" xml:base="/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-02-01T17:10:42-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/notes/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/notes/advent-of-code-2019-solutions</id><content type="html" xml:base="/notes/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.&lt;/p&gt;
@@ -69,7 +69,7 @@
 &lt;p&gt;The tyranny of the rocket equation relates to the ideal rocket equation. Which is interesting to derive. We have the follow the rule of conservation of momentum where the momentum in a closed system needs to remain constant.&lt;/p&gt;
 
 &lt;div style=&quot;margin: 0 auto; max-width: 405px&quot;&gt;
-&lt;img src=&quot;assets/advent-of-code-2019-solutions/Var_mass_system.svg&quot; /&gt; 
+&lt;img src=&quot;../assets/advent-of-code-2019-solutions/Var_mass_system.svg&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;All this simplifies to…&lt;/p&gt;
@@ -695,7 +695,7 @@
 &lt;div id=&quot;22&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;23&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;24&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;25&quot;&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Python solutions to the daily coding puzzles, explained.</summary></entry><entry><title type="html">Learning Rust</title><link href="/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-30T00:00:00-04:00</published><updated>2019-09-30T00:00:00-04:00</updated><id>/learning-rust</id><content type="html" xml:base="/learning-rust.html">&lt;p&gt;From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects,  I believe it deserves its praise.&lt;/p&gt;
+&lt;div id=&quot;25&quot;&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Python solutions to the daily coding puzzles, explained.</summary></entry><entry><title type="html">Learning Rust</title><link href="/notes/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-30T00:00:00-04:00</published><updated>2019-09-30T00:00:00-04:00</updated><id>/notes/learning-rust</id><content type="html" xml:base="/notes/learning-rust.html">&lt;p&gt;From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects,  I believe it deserves its praise.&lt;/p&gt;
 
 &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -738,10 +738,10 @@
 
 &lt;p&gt;Nineth Write a blog article that you survived learning Rust and used it once. Secretly feel insecure about your software skills.&lt;/p&gt;
 
-&lt;p&gt;Actually, start at step 5. When you get to step 9 send me a message with the link.&lt;/p&gt;</content><author><name></name></author><summary type="html">From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects, I believe it deserves its praise.</summary></entry><entry><title type="html">Pathfinding</title><link href="/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/pathfinding</id><content type="html" xml:base="/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
+&lt;p&gt;Actually, start at step 5. When you get to step 9 send me a message with the link.&lt;/p&gt;</content><author><name></name></author><summary type="html">From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects, I believe it deserves its praise.</summary></entry><entry><title type="html">Pathfinding</title><link href="/notes/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/notes/pathfinding</id><content type="html" xml:base="/notes/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/pathfinding/BlockConnect.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/pathfinding/BlockConnect.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and “solution idealness” of the different approachs to take when pathfinding.&lt;/p&gt;
@@ -772,7 +772,7 @@
 
 &lt;video autoplay=&quot;&quot; loop=&quot;&quot;&gt;
 
-&lt;source src=&quot;assets/pathfinding/depth.webm&quot; type=&quot;video/webm&quot; /&gt;
+&lt;source src=&quot;../assets/pathfinding/depth.webm&quot; type=&quot;video/webm&quot; /&gt;
 
 &lt;/video&gt;
 
@@ -796,7 +796,7 @@
 
 &lt;video autoplay=&quot;&quot; loop=&quot;&quot;&gt;
 
-&lt;source src=&quot;assets/pathfinding/breadth.webm&quot; type=&quot;video/webm&quot; /&gt;
+&lt;source src=&quot;../assets/pathfinding/breadth.webm&quot; type=&quot;video/webm&quot; /&gt;
 
 &lt;/video&gt;
 
@@ -885,7 +885,7 @@ while queue != []:
 
 &lt;video autoplay=&quot;&quot; loop=&quot;&quot;&gt;
 
-&lt;source src=&quot;assets/pathfinding/best.webm&quot; type=&quot;video/webm&quot; /&gt;
+&lt;source src=&quot;../assets/pathfinding/best.webm&quot; type=&quot;video/webm&quot; /&gt;
 
 &lt;/video&gt;
 
@@ -927,7 +927,7 @@ while queue != []:
 
 &lt;video autoplay=&quot;&quot; loop=&quot;&quot;&gt;
 
-&lt;source src=&quot;assets/pathfinding/astar.webm&quot; type=&quot;video/webm&quot; /&gt;
+&lt;source src=&quot;../assets/pathfinding/astar.webm&quot; type=&quot;video/webm&quot; /&gt;
 
 &lt;/video&gt;
 
@@ -973,10 +973,10 @@ while queue != []:
 
 &lt;p&gt;Thank you for reading.&lt;/p&gt;
 
-&lt;p&gt;If you enjoyed this post, I would recommend checking out my post on &lt;a href=&quot;https://pucula.com/map-colouring.html&quot;&gt;Map Coloring&lt;/a&gt;. Also, I have posted all of the code on &lt;a href=&quot;https://github.com/lazydancer/path-finding&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.</summary></entry><entry><title type="html">Map Colouring</title><link href="/map-colouring.html" rel="alternate" type="text/html" title="Map Colouring" /><published>2019-04-02T00:00:00-04:00</published><updated>2019-04-02T00:00:00-04:00</updated><id>/map-colouring</id><content type="html" xml:base="/map-colouring.html">&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Map_coloring&quot;&gt;Map colouring&lt;/a&gt; is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.&lt;/p&gt;
+&lt;p&gt;If you enjoyed this post, I would recommend checking out my post on &lt;a href=&quot;https://pucula.com/map-colouring.html&quot;&gt;Map Coloring&lt;/a&gt;. Also, I have posted all of the code on &lt;a href=&quot;https://github.com/lazydancer/path-finding&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.</summary></entry><entry><title type="html">Map Colouring</title><link href="/notes/map-colouring.html" rel="alternate" type="text/html" title="Map Colouring" /><published>2019-04-02T00:00:00-04:00</published><updated>2019-04-02T00:00:00-04:00</updated><id>/notes/map-colouring</id><content type="html" xml:base="/notes/map-colouring.html">&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Map_coloring&quot;&gt;Map colouring&lt;/a&gt; is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/map-colouring/English_ceremonial_counties_1998.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/map-colouring/English_ceremonial_counties_1998.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;Since then computers have got much quicker and there are many different proof methods for the &lt;a href=&quot;https://en.wikipedia.org/wiki/Four_color_theorem&quot;&gt;Four color theorem&lt;/a&gt; and was the first major theorem to be proved using a computer in 1976.&lt;/p&gt;
@@ -1044,7 +1044,7 @@ while queue != []:
 
 &lt;p&gt;So far it has been interesting on how large NP problems can get and we have to try different algorithms. A good enough solution is much easier to get than a perfect solution. I will continue to write more about this as I go through the class and it looks like there is some possibility of using local search.&lt;/p&gt;
 
-&lt;p&gt;Thank you for reading&lt;/p&gt;</content><author><name></name></author><summary type="html">Map colouring is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</summary></entry><entry><title type="html">Pictures To Text</title><link href="/pictures-to-text.html" rel="alternate" type="text/html" title="Pictures To Text" /><published>2019-03-16T00:00:00-04:00</published><updated>2019-03-16T00:00:00-04:00</updated><id>/pictures-to-text</id><content type="html" xml:base="/pictures-to-text.html">&lt;p&gt;Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on &lt;a href=&quot;https://github.com/lazydancer/pictotxt&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thank you for reading&lt;/p&gt;</content><author><name></name></author><summary type="html">Map colouring is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</summary></entry><entry><title type="html">Pictures To Text</title><link href="/notes/pictures-to-text.html" rel="alternate" type="text/html" title="Pictures To Text" /><published>2019-03-16T00:00:00-04:00</published><updated>2019-03-16T00:00:00-04:00</updated><id>/notes/pictures-to-text</id><content type="html" xml:base="/notes/pictures-to-text.html">&lt;p&gt;Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on &lt;a href=&quot;https://github.com/lazydancer/pictotxt&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot; style=&quot;line-height:1;&quot;&gt;&lt;pre class=&quot;highlight&quot; style=&quot;font-size: 11px;&quot;&gt;&lt;code&gt;.gMBy         
   WgM_        
@@ -1082,7 +1082,7 @@ while queue != []:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Output:&lt;/p&gt;
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/pictures-to-text/download (1).png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/pictures-to-text/download (1).png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;The next step is taking the imported image and converting it into character sized images. The heart of the following methods are the &lt;strong&gt;view_as_blocks&lt;/strong&gt;. The function fails if there is an overlap with the  edge of the imported image. The function &lt;strong&gt;trim_image&lt;/strong&gt; is there to remove the excess before it sent in to &lt;strong&gt;view_as_blocks&lt;/strong&gt;. The result can be seen below.&lt;/p&gt;
@@ -1129,7 +1129,7 @@ while queue != []:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Output:&lt;/p&gt;
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/pictures-to-text/download2.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/pictures-to-text/download2.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;h2 id=&quot;fonts&quot;&gt;Fonts&lt;/h2&gt;
@@ -1167,7 +1167,7 @@ while queue != []:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Output:&lt;/p&gt;
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/pictures-to-text/download3.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/pictures-to-text/download3.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;h2 id=&quot;calc&quot;&gt;Calc&lt;/h2&gt;
@@ -1175,7 +1175,7 @@ while queue != []:
 &lt;p&gt;Now we have sections of the input image and character images, we just need to pick the best match. In this case I used:&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/pictures-to-text/download4.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/pictures-to-text/download4.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;where A and B are matricis of the same size. We want the lowest score as that will be the smallest difference. I guess I could have inverted it so we were looking for the max or I could have called it the loss function.&lt;/p&gt;
@@ -1218,7 +1218,7 @@ while queue != []:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Output:&lt;/p&gt;
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/pictures-to-text/download5.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/pictures-to-text/download5.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;Now we can finish it by collecting the characters and printing&lt;/p&gt;
@@ -1244,7 +1244,7 @@ while queue != []:
   _1P&quot;`    &quot;gg
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Thanks for reading, this was a slightly different style. For future articles, follow me on &lt;a href=&quot;https://twitter.com/lazydancr&quot;&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on github.</summary></entry><entry><title type="html">Intro To Fossil Fuels</title><link href="/intro-to-fossil-fuels.html" rel="alternate" type="text/html" title="Intro To Fossil Fuels" /><published>2019-02-22T00:00:00-05:00</published><updated>2019-02-22T00:00:00-05:00</updated><id>/intro-to-fossil-fuels</id><content type="html" xml:base="/intro-to-fossil-fuels.html">&lt;p&gt;Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, &lt;strong&gt;87%&lt;/strong&gt; of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.&lt;/p&gt;
+&lt;p&gt;Thanks for reading, this was a slightly different style. For future articles, follow me on &lt;a href=&quot;https://twitter.com/lazydancr&quot;&gt;twitter&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on github.</summary></entry><entry><title type="html">Introduction To Fossil Fuels</title><link href="/notes/introduction-to-fossil-fuels.html" rel="alternate" type="text/html" title="Introduction To Fossil Fuels" /><published>2019-02-22T00:00:00-05:00</published><updated>2019-02-22T00:00:00-05:00</updated><id>/notes/introduction-to-fossil-fuels</id><content type="html" xml:base="/notes/introduction-to-fossil-fuels.html">&lt;p&gt;Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, &lt;strong&gt;87%&lt;/strong&gt; of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.&lt;/p&gt;
 
 &lt;p&gt;&lt;span style=&quot;color: rgb(127, 0, 0); font-weight: bold&quot;&gt;Coal&lt;/span&gt;, &lt;span style=&quot;color: rgb(184, 13, 8); font-weight: bold&quot;&gt;Crude Oil&lt;/span&gt; and &lt;span style=&quot;color: rgb(241, 109, 74); font-weight: bold&quot;&gt;Natural Gas&lt;/span&gt;&lt;/p&gt;
 
@@ -1259,7 +1259,7 @@ while queue != []:
 &lt;p&gt;Not all coal is the same, the two most important factors to classifying coal are its calorific value, how much energy can it release when burned, and its percent of carbon, a higher percent carbon is a cleaner burning fuel, other atoms hydrogen, sulfur, oxygen and nitrogen are common.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/fossil-fuels/Coal_Rank_USGS.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/fossil-fuels/Coal_Rank_USGS.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;table&gt;
@@ -1350,7 +1350,7 @@ while queue != []:
 &lt;p&gt;Formed when zooplankton and algae died and buried underneath sedimentary rock and compressed and heated for millions of years. Crude oil is a combination of many different carbon chains.  These carbon chains are separated using a process called fractional distillation, which seperates products by boiling point. Each chain’s has a different boiling point, for example methane has -161.5 degC and gasoline has a boiling point of 35 degC. These form products such as gasoline, diesel, methane, asphalt and chemicals to make plastic.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/fossil-fuels/Crude_Oil_Distillation.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/fossil-fuels/Crude_Oil_Distillation.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;As the same with coal, not all crude oil is the same. Coal is usually classified to where it is found, for example “WTI”, “Bret” and “Oman”. The fuel in these large pockets all have similar characteristics.&lt;/p&gt;
@@ -1358,7 +1358,7 @@ while queue != []:
 &lt;p&gt;When comparing these pockets, the two largest factors are its sulfur content and API gravity. API gravity is a function of density and is a measure on how heavy or light the crude oil is.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
-&lt;img src=&quot;assets/fossil-fuels/Crudes.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
+&lt;img src=&quot;../assets/fossil-fuels/Crudes.png&quot; style=&quot;max-width: 500px;&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;A high API is desired as more gasoline can be extracted from it and a low sulfur content is desired as less processing is needed to remove or capture the excess sulfur.&lt;/p&gt;
@@ -1403,7 +1403,7 @@ while queue != []:
 &lt;p&gt;Natural gas consists of mostly methane. Similar to crude oil and coal it is formed from decaying organic matter and therefore is found close to both coal and crude oil layers. When extracting oil in the 19th and 20th century it was common to burn off the unwanted natural gas.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot; style=&quot;max-width: 200px;&quot;&gt;
-&lt;img src=&quot;assets/fossil-fuels/640px-Methane-2D-dimensions.svg.png&quot; width=&quot;200px&quot; /&gt; 
+&lt;img src=&quot;../assets/fossil-fuels/640px-Methane-2D-dimensions.svg.png&quot; width=&quot;200px&quot; /&gt; 
 &lt;/div&gt;
 
 &lt;p&gt;Natural gas is very important and is mostly used directly. It is a low density fuel compared to crude oil and coal, so it has limitation were it can be used. It is relatively clean burning, making it useful domestic heating and electricity generation.&lt;/p&gt;
@@ -1477,7 +1477,7 @@ while queue != []:
   &lt;li&gt;&lt;a href=&quot;http://vaclavsmil.com/2016/12/14/energy-transitions-global-and-national-perspectives-second-expanded-and-updated-edition/&quot;&gt;Vaclav Smil (2017)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy.html&quot;&gt;BP Statistical Review of World Energy&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.ipcc.ch/site/assets/uploads/2018/02/ipcc_wg3_ar5_annex-iii.pdf&quot;&gt;IPCC&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, 87% of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.</summary></entry><entry><title type="html">Advent Of Code 2018</title><link href="/advent-of-code-2018.html" rel="alternate" type="text/html" title="Advent Of Code 2018" /><published>2019-01-04T00:00:00-05:00</published><updated>2019-01-04T00:00:00-05:00</updated><id>/advent-of-code-2018</id><content type="html" xml:base="/advent-of-code-2018.html">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    !
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, 87% of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.</summary></entry><entry><title type="html">Advent Of Code 2018</title><link href="/notes/advent-of-code-2018.html" rel="alternate" type="text/html" title="Advent Of Code 2018" /><published>2019-01-04T00:00:00-05:00</published><updated>2019-01-04T00:00:00-05:00</updated><id>/notes/advent-of-code-2018</id><content type="html" xml:base="/notes/advent-of-code-2018.html">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    !
   -~*~-
    /!\
   /%;@\
@@ -1595,7 +1595,7 @@ o/@'%',\o
 
 &lt;p&gt;During the challenge, I read as much as I coded. Reading other peoples code was enlightening. You saw how they approached the problem and what trade-offs they chose.&lt;/p&gt;
 
-&lt;p&gt;Thank you &lt;a href=&quot;http://was.tl/&quot;&gt;Eric Wastl&lt;/a&gt; for creating advent of code and everybody that shared their solutions online. I learned a lot.&lt;/p&gt;</content><author><name></name></author><summary type="html">! -~*~- /!\ /%;@\ o/@,%\o /%;`@,\ o/@'%',\o '^^^N^^^`</summary></entry><entry><title type="html">Making A Transistor From Scratch Part 2</title><link href="/making-a-transistor-from-scratch-part-2.html" rel="alternate" type="text/html" title="Making A Transistor From Scratch Part 2" /><published>2018-12-07T00:00:00-05:00</published><updated>2018-12-07T00:00:00-05:00</updated><id>/making-a-transistor-from-scratch-part-2</id><content type="html" xml:base="/making-a-transistor-from-scratch-part-2.html">&lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot; /&gt;
+&lt;p&gt;Thank you &lt;a href=&quot;http://was.tl/&quot;&gt;Eric Wastl&lt;/a&gt; for creating advent of code and everybody that shared their solutions online. I learned a lot.&lt;/p&gt;</content><author><name></name></author><summary type="html">! -~*~- /!\ /%;@\ o/@,%\o /%;`@,\ o/@'%',\o '^^^N^^^`</summary></entry><entry><title type="html">Making A Transistor From Scratch Part 2</title><link href="/notes/making-a-transistor-from-scratch-part-2.html" rel="alternate" type="text/html" title="Making A Transistor From Scratch Part 2" /><published>2018-12-07T00:00:00-05:00</published><updated>2018-12-07T00:00:00-05:00</updated><id>/notes/making-a-transistor-from-scratch-part-2</id><content type="html" xml:base="/notes/making-a-transistor-from-scratch-part-2.html">&lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot; /&gt;
 
 &lt;meta name=&quot;twitter:site&quot; content=&quot;@flickr&quot; /&gt;
 
@@ -1603,7 +1603,7 @@ o/@'%',\o
 
 &lt;meta name=&quot;twitter:description&quot; content=&quot;In this article we will be going from rocks to a transistor&quot; /&gt;
 
-&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pucula.com/assets/making-a-transistor/Quartzite.png&quot; /&gt;
+&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pucula.com/../assets/making-a-transistor/Quartzite.png&quot; /&gt;
 
 &lt;p&gt;This is a continuation of Part 1 where we learnt about the importance of silicon, p-type and n-type materials and the theory of a MOSFET transistor. &lt;a href=&quot;making-a-transistor-from-scratch-part-1.html&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 
@@ -1620,7 +1620,7 @@ o/@'%',\o
 &lt;p&gt;Quartizite was originally sandstone, but it has been deeply buried in the Earth’s crust and cooked at high temperatures and pressures that many impurities have been distilled out and the sand grains completely welded together.&lt;/p&gt;
 
 &lt;p&gt;
-&lt;img src=&quot;assets/making-a-transistor/Quartzite.jpg&quot; style=&quot;max-width: 480px; width: 100%&quot; /&gt;
+&lt;img src=&quot;../assets/making-a-transistor/Quartzite.jpg&quot; style=&quot;max-width: 480px; width: 100%&quot; /&gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt;https://commons.wikimedia.org/wiki/File:Quartzite_Solli%C3%A8res.jpg&lt;/span&gt;&lt;/p&gt;
 
@@ -1661,7 +1661,7 @@ o/@'%',\o
 &lt;p&gt;Depending on specifics of the cost, both process are used.&lt;/p&gt;
 
 &lt;p&gt;
-&lt;img src=&quot;assets/making-a-transistor/PolySilicon.jpg&quot; style=&quot;max-width: 480px; width: 100%;&quot; /&gt;
+&lt;img src=&quot;../assets/making-a-transistor/PolySilicon.jpg&quot; style=&quot;max-width: 480px; width: 100%;&quot; /&gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt;http://images-of-elements.com/silicon.jpg&lt;/span&gt;&lt;/p&gt;
 
@@ -1669,7 +1669,7 @@ o/@'%',\o
 
 &lt;p&gt;In a process called the Czochralski process the poly-silicon which contains mulitple crystals of silicon will be transformed into a single crystal&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/making-a-transistor/Schematic_of_allotropic_forms_of_silcon.svg.png&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/making-a-transistor/Schematic_of_allotropic_forms_of_silcon.svg.png&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Schematic_of_allotropic_forms_of_silcon.svg/800px-Schematic_of_allotropic_forms_of_silcon.svg.png&lt;/span&gt;&lt;/p&gt;
 
@@ -1681,7 +1681,7 @@ o/@'%',\o
 
 &lt;p&gt;The ingot is sliced into wafer by a diamonded edged saw and cleaned to specifications.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/making-a-transistor/1024px-Siliziumwafer.JPG&quot; style=&quot;max-width:420px; width:100%;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/making-a-transistor/1024px-Siliziumwafer.JPG&quot; style=&quot;max-width:420px; width:100%;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Siliziumwafer.JPG/1024px-Siliziumwafer.JPG&lt;/span&gt;&lt;/p&gt;
 
@@ -2775,7 +2775,7 @@ showSlide()
 
 &lt;p&gt;In the next post I will be using this to make a NAND gate which will be the final step to getting to the point where it become binary logic&lt;/p&gt;
 
-&lt;p&gt;If you are interested in this post keep up to date by following me on Twitter &lt;a href=&quot;https://twitter.com/lazydancr&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Oil Refineries Around The World</title><link href="/oil-refineries-around-the-world.html" rel="alternate" type="text/html" title="Oil Refineries Around The World" /><published>2018-11-30T00:00:00-05:00</published><updated>2018-11-30T00:00:00-05:00</updated><id>/oil-refineries-around-the-world</id><content type="html" xml:base="/oil-refineries-around-the-world.html">&lt;style&gt;
+&lt;p&gt;If you are interested in this post keep up to date by following me on Twitter &lt;a href=&quot;https://twitter.com/lazydancr&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Oil Refineries Around The World</title><link href="/notes/oil-refineries-around-the-world.html" rel="alternate" type="text/html" title="Oil Refineries Around The World" /><published>2018-11-30T00:00:00-05:00</published><updated>2018-11-30T00:00:00-05:00</updated><id>/notes/oil-refineries-around-the-world</id><content type="html" xml:base="/notes/oil-refineries-around-the-world.html">&lt;style&gt;
 #content .map path {
   fill: #ddd;
   stroke: #aaa;
@@ -2876,7 +2876,7 @@ var refineries = [
 
 
 
-d3.json('/assets/maps/ne_110m_land.json', function(err, json) {
+d3.json('../assets/maps/ne_110m_land.json', function(err, json) {
   createMap(json);
 })
 
@@ -2945,7 +2945,7 @@ createMap = (geojson) =&gt; {
 }
 
   &lt;/script&gt;
-&lt;/body&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Making A Transistor From Scratch Part 1</title><link href="/making-a-transistor-from-scratch-part-1.html" rel="alternate" type="text/html" title="Making A Transistor From Scratch Part 1" /><published>2018-11-19T00:00:00-05:00</published><updated>2018-11-19T00:00:00-05:00</updated><id>/making-a-transistor-from-scratch-part-1</id><content type="html" xml:base="/making-a-transistor-from-scratch-part-1.html">&lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot; /&gt;
+&lt;/body&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Making A Transistor From Scratch Part 1</title><link href="/notes/making-a-transistor-from-scratch-part-1.html" rel="alternate" type="text/html" title="Making A Transistor From Scratch Part 1" /><published>2018-11-19T00:00:00-05:00</published><updated>2018-11-19T00:00:00-05:00</updated><id>/notes/making-a-transistor-from-scratch-part-1</id><content type="html" xml:base="/notes/making-a-transistor-from-scratch-part-1.html">&lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot; /&gt;
 
 &lt;meta name=&quot;twitter:site&quot; content=&quot;@lazydancr&quot; /&gt;
 
@@ -2953,7 +2953,7 @@ createMap = (geojson) =&gt; {
 
 &lt;meta name=&quot;twitter:description&quot; content=&quot;Starting with the theory on how a transistor is made!&quot; /&gt;
 
-&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pucula.com/assets/making-a-transistor/pn-junction.png&quot; /&gt;
+&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pucula.com../assets/making-a-transistor/pn-junction.png&quot; /&gt;
 
 &lt;p&gt;I recently finished the book CODE - a book on how to build a computer from scratch. The book was awesome and I wanted to learn more about how a physical computer was built
 &lt;/p&gt;
@@ -2967,7 +2967,7 @@ createMap = (geojson) =&gt; {
 
 &lt;p&gt;As seen in the diagram below semicondutors are between conductors and insulators&lt;/p&gt;
 
-&lt;img src=&quot;/assets/making-a-transistor/351px-Band_filling_diagram.svg.png&quot; /&gt;
+&lt;img src=&quot;../assets/making-a-transistor/351px-Band_filling_diagram.svg.png&quot; /&gt;
 
 &lt;p&gt;
 &lt;span style=&quot;font-size: 10px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg&lt;/span&gt;
@@ -2979,8 +2979,8 @@ createMap = (geojson) =&gt; {
 &lt;li&gt;Silicon with &lt;b&gt;boron&lt;/b&gt; atoms is called &lt;b style=&quot;color: #1070CA&quot;&gt;p-type silicon&lt;/b&gt;, where there is a lack of electrons called holes&lt;/li&gt;
 &lt;li&gt;Silicon with &lt;b&gt;phosphorus&lt;/b&gt; atoms is called &lt;b style=&quot;color: #F7D154&quot;&gt;n-type silicon&lt;/b&gt;, where free electrons are added&lt;/li&gt;
 
-&lt;img src=&quot;/assets/making-a-transistor/psem2.gif&quot; /&gt;
-&lt;img src=&quot;/assets/making-a-transistor/nsem.gif&quot; /&gt;
+&lt;img src=&quot;../assets/making-a-transistor/psem2.gif&quot; /&gt;
+&lt;img src=&quot;../assets/making-a-transistor/nsem.gif&quot; /&gt;
 
 &lt;p&gt;
 &lt;span style=&quot;font-size: 10px&quot;&gt;http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/psem2.gif and http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/nsem.gif&lt;/span&gt;
@@ -3012,7 +3012,7 @@ createMap = (geojson) =&gt; {
 &lt;p&gt;Since we are displacing electrons from there position, this magnetic effect can also be seen as an electrical potential, aka voltage, within the material&lt;/p&gt;
 
 &lt;p&gt;
-&lt;img margin-top=&quot;20px&quot; width=&quot;100%&quot; src=&quot;/assets/making-a-transistor/pn-junction.png&quot; /&gt;
+&lt;img margin-top=&quot;20px&quot; width=&quot;100%&quot; src=&quot;../assets/making-a-transistor/pn-junction.png&quot; /&gt;
 &lt;/p&gt;
 &lt;span style=&quot;font-size:10pt&quot;&gt;https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Pn-junction-equilibrium-graphs.png&lt;/span&gt;
 

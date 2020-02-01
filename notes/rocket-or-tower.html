@@ -12,17 +12,17 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>Studio</title>
-  <meta name="description" content="studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages">
+  <title>Rocket Or Tower</title>
+  <meta name="description" content="Recently I started working on fast.ai, this is my attempt at creating a network.">
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" value="summary">
 
   <!-- Open Graph data -->
-  <meta property="og:title" content="Studio" />
+  <meta property="og:title" content="Rocket Or Tower" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://pucula.com/projects/studio" />
-  <meta property="og:description" content="studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages" />
+  <meta property="og:url" content="http://pucula.com/notes/rocket-or-tower.html" />
+  <meta property="og:description" content="Recently I started working on fast.ai, this is my attempt at creating a network." />
   
 
 
@@ -274,80 +274,89 @@ pre.highlight { padding: 1em; font-size: 13px}
 <a href="/">Home</a>
 
   
-    <a href="/projects/">Projects</a>
+    <a href="/notes/">Notes</a>
   
 
   
-    <span class='current'>Studio</span>
+    <span class='current'>Rocket or tower</span>
   
 
     </header>
 <article>
-    <h1 style="margin-bottom: 0">Studio</h1>
+    <h1 style="margin-bottom: 0">Rocket Or Tower</h1>
 
-<span class="article-date" style="margin-bottom: 30px;">
+<span class="article-date" style="margin-bottom: 30px;">2018-08
 </span>
 
-<p>studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages.</p>
+<p>Recently I started working on <a href="https://fast.ai">fast.ai</a>, this is my attempt at creating a network.</p>
 
-<p><a style="padding-left:7px;" href="https://github.com/lazydancer/studio">Github »</a></p>
+<h2>Attempt One</h2>
 
-<p>Tools:</p>
-<svg width="48px" height="48px" fill="#5D4F85" style="padding-left: 8px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Haskell</title><path class="a" d="M.006 20.47L5.649 12 .006 3.531h4.235l5.674 8.47-5.674 8.468zm5.643 0L11.29 12 5.65 3.531h4.266l11.253 16.938h-4.224l-3.535-5.34-3.495 5.34zM19.3 15.525l-1.877-2.827h6.571v2.826zm-2.826-4.235l-1.877-2.827h9.387v2.827z" /></svg>
-<svg style="padding: 0 0 0 8px;" fill="#E34F26" width="48px" height="48px" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HTML5</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" /></svg>
+<p>My training set contains 10 rockets and 10 towers</p>
 
-<p>studio organizes html pages and generates a table of contents. Having the flexibility to change a template and adding custom css and javascript. With static webpages, your site is fast, secure and easy to deploy. You can find the code on github
+<p><img src="../assets/rocket-or-tower/tower.png" /></p>
 
-<p>It was summer in 2014, I was very interested in Haskell. I was also interested in writing what I learned online. I tried some other static site generators and found that they were over what I needed and was looking for. So I thought I could write my own in Haskell
+<p>Using the the 3 line program from the fast.ai library for the precompiled model <a href="https://github.com/KaimingHe/deep-residual-networks">resnet</a>
 
-<p>My goal was to create this static site generator in 100 lines of Haskell. I reached my goal but was not readable. I added more spaces and expanded some more of the hairy equation.
-
-<p>The basic layout which I need to do. Inputs are ".txt" files with blog posts. I used markdown which is a standard so you can add titles, links and images. We take the titles in the text files and create a table of contents for a main page, generating a link for each article.
-
-<p>Haskell is a functional language,  I had to divide the functional vs the messy real world. It is also a dense language, you can do a lot of modifications in a few lines of codes vs of other languages. We divide this program into 3 steps
-
-<p>The only large data structure made for this was the Page which has the file path and date.
-
-<pre><code>data Page = Page { title :: FilePath    -- Path to words
-        , static  :: [FilePath]  -- List of static files 
-    , date    :: [String]    -- Month,day,year
-   } deriving (Show) </code></pre>
-
-
-<h2>Create and order pages</h2>
-<p>: Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file is creating a list extra js or css files linked to the article. This offered some flexiblility to have custom css for an article
 <pre><code>
-getPages :: [FilePath] -&gt; IO [Page]
-getPages = mapM (\x -&gt; do static &lt;- getStatic ("Articles/" ++ x)
-                      date &lt;- getPageDate ("Articles/" ++ x ++ "/words.md")
-                      return (Page x static date))
-</code></pre>
-<h2>Create html from template and pages</h2>
-<p>To write a page require a template in the form of a string with was HTML and the Page data structure from above. Pandoc helped convert the markdown text files 
-<pre><code>
-writePage :: String -&gt; Page -&gt; IO ()
-writePage template page = do
-    let year = last $ date page  
-
-    let urlTitle = urlConvert (title page)
-    mdArt &lt;- readFile ("Articles/" ++ urlTitle ++ "/words.md")
-    let pandocArt = readMarkdown def mdArt
-    let html = writeHtmlString (siteOptions template) pandocArt
-    createDirectoryIfMissing True $ "Output/" ++ year ++ "/" ++ urlTitle 
-    writeFile ("Output/" ++ year ++ "/" ++ urlTitle ++ "/index.html") html
-</code></pre>
-<h2>Write table of contents</h2>
-<p>The table of contents also use the template but also include some html to make it look pretty
-<pre><code>
-writeTOC :: String -&gt; [Page] -&gt; IO ()
-writeTOC template pages = do
-    list &lt;- mapM getItem pages 
-    let html = writeHtmlString (siteOptions template) (tocWrap list) 
-    createDirectoryIfMissing True $ "Output/archives" 
-    writeFile "Output/archives/index.html" html 
+arch=resnet34
+data = ImageClassifierData.from_paths(PATH, tfms=tfms_from_model(arch, sz))
+learn = ConvLearner.pretrained(arch, data, precompute=True)
+learn.fit(0.01, 5)
 </code></pre>
 
-<p>That is most likely 80% of the functions of the studio. With most other things being moving files around. Thank you for reading. You can find the code <a href="https://github.com/lazydancer/studio">here</a>
+<p>0 is more rocket-like, 1 is more building-like</p>
+
+<p>With having only 10 examples of each. It is amazing how well it did. Only misclassifing the CN tower just barely to being a rocket
+
+<img src="../assets/rocket-or-tower/result.png" width="722px" />
+
+<h2>Attempt Two</h2>
+
+<p>I added a lot more photos to about 300 each for training and 15 for the validation
+
+<p>This time adding data augmentation, variable learning rate and unfreezing the model
+
+<h3>Data Augmentation</h3>
+
+<p>Modify the image slightly to known effects of a camera. This is transformations that shift, zoom and flip the images. These are fed into the learning like any other image
+
+<pre><code>tfms = tfms_from_model(resnet34, sz, aug_tfms=transforms_side_on, max_zoom=1.1)</code></pre>
+
+<img src="../assets/rocket-or-tower/aug.png" />
+
+
+<h3>Stochastic Gradient Descent with Restarts</h3>
+
+<p>When a network is learning a function. It needs to start off high and reduce to gain more accuracy. This is included but also is restarted every epoch. This helps generalize the network, by trying avoiding narrow minimums. Creating a learning rate like this...
+
+<img src="../assets/rocket-or-tower/learning.png" />
+
+<p>This is improved a little bit more by slowing down the learning rate on the later epochs.
+
+<img src="../assets/rocket-or-tower/learning2.png" />
+
+<h3>Training the precomputed Model</h3>
+
+<p>Before training was done on the last few layers. This opens the begining layers. Also much lower learning rates are used in decreasing order to the earlier layers
+
+<pre><code>  learn.unfreeze()
+lr=np.array([1e-4,1e-3,1e-2])
+learn.fit(lr, 3, cycle_len=1, cycle_mult=2)</code></pre>
+
+<h3>Result</h3>
+
+<p>96.6% accuracy. With one error in classification
+
+<pre><code>  plot_confusion_matrix(cm, data.classes)</code></pre>
+
+<img src="../assets/rocket-or-tower/confusion.png" />
+
+<p>Below it the images it was most uncertain of including the incorrect labeling of the rocket on the bottom left
+
+<img src="../assets/rocket-or-tower/result2.png" width="722px" />
+
+<p>Thank you</p>
 </p></p></p></p></p></p></p></p></p></p>
 
 </article>
