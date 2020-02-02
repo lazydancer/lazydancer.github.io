@@ -1,4 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-02-02T09:18:33-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/notes/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/notes/advent-of-code-2019-solutions</id><content type="html" xml:base="/notes/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-02-02T17:50:24-05:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Books Of 2019</title><link href="/notes/books-of-2019.html" rel="alternate" type="text/html" title="Books Of 2019" /><published>2020-01-01T00:00:00-05:00</published><updated>2020-01-01T00:00:00-05:00</updated><id>/notes/books-of-2019</id><content type="html" xml:base="/notes/books-of-2019.html">&lt;p&gt;Last year, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.&lt;/p&gt;
+
+&lt;h2 id=&quot;infinite-jest-by-david-foster-wallace&quot;&gt;Infinite Jest by David Foster Wallace&lt;/h2&gt;
+
+&lt;p&gt;I would not recommend you read this book, unless you want to. In school, I didn’t read many books, Sparknotes was my friend. Part of me is glad to have finished this book due to the size alone, but that is a horrible reason to read a book. This book won awards in 2009. And I thought it would be good. It definitely changed the way I read. By now I have forgotten most of the book and I hope the good stuff is what remains.&lt;/p&gt;
+
+&lt;p&gt;The book is not a single cohesive story, it’s a mixture of a dozen half-complete ones. The stories circle around the theme of addiction. There is also a lot of unrelated funny events happening. I found the non-linearly of the book interesting, it really separates the view point from the book and the actual events of the story. It made you think about where the words you were reading exists in the context of where and when it occurred.&lt;/p&gt;
+
+&lt;p&gt;Even with the size of the book, the entire story is even larger. There is a whole other side which occurs but is not written down and is implied throughout the book. It is like a story that reads backwards, where you start seeing the story lines come together and it all makes sense in the end but in this case it doesn’t reach a conclusion.&lt;/p&gt;
+
+&lt;p&gt;To add to the disorientation, the book has many references which you need to read the footnotes. The footnotes are long enough to warrant their own footnotes. I also had to use an Infinite Jest dictionary online. I had the book on my e-reader, the physical book for the footnotes and the laptop open for the dictionary at the same time. It actively makes me think that the author did not want you to understand what was going on so you would put your own story together. Below is except from the Infinite Jest dictionary.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tyrolean hats:&lt;/strong&gt; The Tyrolean hat, named after the region of Tyrol, is associated with the Austrian Alps. Tyrolean hats have a cord wrapped around the base of the crown and a feather or brush on the side as trim.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;H.E.W.:&lt;/strong&gt;the U.S. Department of Health, Education, and Welfare&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;rife:&lt;/strong&gt; abounding&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Eminent nondomain:&lt;/strong&gt; “Eminent domain” is the right of the government to seize private property to serve a greater good. This would be the opposite, i.e., the right of the government to divest or cede private property to serve the greater good.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;bien sûr:&lt;/strong&gt; French: of course&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;U.S.O.:&lt;/strong&gt; United States Organizations, an organization dedicated to entertaining troops at war&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://infinitejest.wallacewiki.com/david-foster-wallace/index.php?title=Infinite_Jest_Page_by_Page&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I found many quotes of the book, don’t give a good taste of what the book is about. Below is an except from a main character, Gately.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;“I think there must be probably different types of suicides. I'm not one of the
+self-hating ones. The type of like &quot;I'm shit and the world'd be better off without
+poor me&quot; type that says that but also imagines what everybody'll say at their
+funeral. I've met types like that on wards.
+Poor-me-I-hate-me-punish-me-come-to-my-funeral. Then they show you a 20 X 25 glossy
+of their dead cat. It's all self-pity bullshit. It's bullshit. I didn't have any
+special grudges. I didn't fail an exam or get dumped by anybody. All these types.
+Hurt themselves. I didn't want to especially hurt myself. Or like punish. I don't
+hate myself. I just wanted out. I didn't want to play anymore is all. I wanted to
+just stop being conscious. I'm a whole different type. I wanted to stop feeling this
+way. If I could have just put myself in a really long coma I would have done that.
+Or given myself shock I would have done that. Instead.” 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;merchants-of-doubt-by-naomi-oreskes&quot;&gt;Merchants of Doubt by Naomi Oreskes&lt;/h2&gt;
+
+&lt;p&gt;Merchants of Doubt is about people that cast doubt in science towards the public. An example given in the book is the correlation between smoking and cancer. This correlation was proven in 1929 in Germany, re-proven in 1950 in the UK and was included in a Surgeon General’s Report in the United States in 1964.  Tobacco companies claimed that these study lacked credibility and health authorities sided with these claims until 1998. One of the main arguments the “merchants of doubt” used was that a perfect relation could not be found, not all people that smoke got cancer. There is so much room for interpretation and bias in gathering a dataset. Everything is relative and we can trick people and even ourselves.&lt;/p&gt;
+
+&lt;p&gt;I learned a lot about how political movements work and why we think they occur. A small group of people that really care are much more powerful than a large group of people who only have a preference and not a strong belief.&lt;/p&gt;
+
+&lt;p&gt;I found refreshing, is the book didn’t portray these “Merchants of Doubt” as evil. The Merchants of Doubt legitimately thought they were making the world a better place. It’s unfortunate that they had to name names but I think it helped solidify the statements, making it more grounded. A nuclear physicist, with the credentials to match, believed that cigarettes didn’t cause cancer and pushing for more research, when what was needed was to act at that moment.&lt;/p&gt;
+
+&lt;p&gt;There seemed to be a common themes in the opposing view. That more research is needed. People believe that government intervention is not always the best method. Before I thought it was money that motivated these people from large companies that would appose this need for government regulation.&lt;/p&gt;
+
+&lt;p&gt;Another topic brought up in the book, is there a need for equal sides. This was something that I never thought of. Does every decision have two equal sides? As an example for climate change, you could have a member of the scientific community saying that climate change will have long term effects and then the opposition says they want representation and believing there will be no long term effects. When looking from it from someone totally new to the topic, it looks like the scientific community is split. Even with the good indention of the news company. Have a fair representation should not be equal but should align with the consenseis. To compound the issue, science is full of questions, and they don’t try to hide that uncertainty.&lt;/p&gt;
+
+&lt;p&gt;I enjoyed Why We Sleep by Matthew Walker, until I learned that it lied… a lot. The premise of the book is that sleep is good for you, it reduces cancer risk, makes you more alert, makes you live longer. I love my sleep and what was being said made sense and the author has a PhD and many years experience and I thought it was a trusted source.&lt;/p&gt;
+
+&lt;p&gt;From further research it has been found incomplete context was given. In each almost every result the author used the most compelling argument for his case and ignored any information that would have contradicted him. For an example in the part about beauty. The author gives an example. A group was split into 2 one group slept for only 5 hours and the other 8 hours. The result found that when the photos of them were rated. The participates with 8 hours were labeled more beautiful and healthier than the participants with only 5 hours of sleep. What the author failed to mention was at what time the photos were taken. In the study, the participants who slept 8 hours had their picture taken 7 hours after waking where the participants who slept 5 hours had their picture taken 31 hours after they awoke.&lt;/p&gt;
+
+&lt;p&gt;The author of this book lied by leaving out crucial information and context. And this isn’t isolated but is basically the entire book. This book a learned about how to lie without giving false facts. And it showed what was being done in the merchants of doubt. There are facts, the context to the facts and how you present then, adding irrelevant information and leaving out information. It made me change how I think about scientific results.&lt;/p&gt;
+
+&lt;p&gt;This didn’t really fit in the review, but Hank Green’s critic of someone apposing climate change and how masterful you can skew a topic with language. &lt;a href=&quot;https://www.youtube.com/watch?v=_Es4gG9xVf8&quot;&gt;Youtube&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-rest&quot;&gt;The Rest&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Consider Phlebas by Iain Banks&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Loved the comparison of war in space being like the transition from hand-to-hand to the introduction of guns&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The Restaurant at the End of the Universe by Douglas Adams&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Adams bizarrely introspective books which makes fun of and expands science fiction&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The Remains of the Day by Kazuo Ishiguro&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Amazon’s CEO favorite book. I feel like I didn’t get the intended effect of the book. I will have to return to it later.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The Handmaids Tale by Margaret Atwood&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Felt like a personal diary from a person in dystopian future. You only learn about the universe overtime. I would recommend reading.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;How to Fail at Almost Everything and Still Win Big by Scott Adams&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Although not advice I would take, the story behind Dilbert and his perspective was interesting.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;100 Years of Solitude Gabriel García Márquez&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I wanted to enjoy this book more. It mixed interesting elements of the natural and unnatural.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Thinking in Systems: A Primer by Donella Meadows&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Very much an introduction. I don’t remember much of this book.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Philoshopy of Software Design by John Ousterhout&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I wish this book was longer. I learned about having deep modules and simple interfaces, how to define complexity as dependency and obscurity and also the strategic mindset. He also gave “red flags” to see in your software.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thanks for reading&lt;/p&gt;</content><author><name></name></author><summary type="html">Last year, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.</summary></entry><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/notes/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/notes/advent-of-code-2019-solutions</id><content type="html" xml:base="/notes/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.&lt;/p&gt;
@@ -2945,265 +3049,4 @@ createMap = (geojson) =&gt; {
 }
 
   &lt;/script&gt;
-&lt;/body&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Making A Transistor From Scratch Part 1</title><link href="/notes/making-a-transistor-from-scratch-part-1.html" rel="alternate" type="text/html" title="Making A Transistor From Scratch Part 1" /><published>2018-11-19T00:00:00-05:00</published><updated>2018-11-19T00:00:00-05:00</updated><id>/notes/making-a-transistor-from-scratch-part-1</id><content type="html" xml:base="/notes/making-a-transistor-from-scratch-part-1.html">&lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot; /&gt;
-
-&lt;meta name=&quot;twitter:site&quot; content=&quot;@lazydancr&quot; /&gt;
-
-&lt;meta name=&quot;twitter:title&quot; content=&quot;Making A Transistor From Scratch Part 1&quot; /&gt;
-
-&lt;meta name=&quot;twitter:description&quot; content=&quot;Starting with the theory on how a transistor is made!&quot; /&gt;
-
-&lt;meta name=&quot;twitter:image&quot; content=&quot;https://pucula.com/assets/making-a-transistor/pn-junction.png&quot; /&gt;
-
-&lt;p&gt;I recently finished the book CODE - a book on how to build a computer from scratch. The book was awesome and I wanted to learn more about how a physical computer was built
-&lt;/p&gt;
-
-&lt;p&gt;Silicon is great. It's great because it's a semiconductor. Semiconductors are great because we can create interesting properties of how much much energy it takes to release the electron from its orbit and how much energy it takes for an atom to accept an electron.
-
-&lt;p&gt;This difference between an electron being released and being captured is important and has the name &lt;b&gt;band gap&lt;/b&gt;
-&lt;/p&gt;
-
-&lt;p&gt;When electrons can move we call that electricity. Some material like metal have no band gap meaning that electrons flow easily through them. Insulators there is a band gap and it is difficult.&lt;/p&gt;
-
-&lt;p&gt;As seen in the diagram below semicondutors are between conductors and insulators&lt;/p&gt;
-
-&lt;img src=&quot;../assets/making-a-transistor/351px-Band_filling_diagram.svg.png&quot; /&gt;
-
-&lt;p&gt;
-&lt;span style=&quot;font-size: 10px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg&lt;/span&gt;
-&lt;/p&gt;
-
-&lt;p&gt;You can shift this band gap by doping silicon&lt;/p&gt;
-
-
-&lt;li&gt;Silicon with &lt;b&gt;boron&lt;/b&gt; atoms is called &lt;b style=&quot;color: #1070CA&quot;&gt;p-type silicon&lt;/b&gt;, where there is a lack of electrons called holes&lt;/li&gt;
-&lt;li&gt;Silicon with &lt;b&gt;phosphorus&lt;/b&gt; atoms is called &lt;b style=&quot;color: #F7D154&quot;&gt;n-type silicon&lt;/b&gt;, where free electrons are added&lt;/li&gt;
-
-&lt;img src=&quot;../assets/making-a-transistor/psem2.gif&quot; /&gt;
-&lt;img src=&quot;../assets/making-a-transistor/nsem.gif&quot; /&gt;
-
-&lt;p&gt;
-&lt;span style=&quot;font-size: 10px&quot;&gt;http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/psem2.gif and http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/nsem.gif&lt;/span&gt;
-
-
-&lt;p&gt;Lets take a block of p-type silicon and a block of n-type silicon and put them together. 
-
-&lt;p&gt;Where they touch electrons will move from n-type material to p-type material. This is because the n-type atoms have less &quot;hold&quot; on there valence electrons and the p-type is &quot;pulling&quot; these electron&lt;/p&gt;
-
-&lt;p&gt;Since the n-type lost an electron, it is not balanced and has to many protons. Making the area positively charged. The equilent and opposite for the p-type. In the diagram below, the lighter yellow has a positive charge. 
-
-&lt;p&gt;
-&lt;svg viewBox=&quot;0 0 420 350&quot; width=&quot;100%&quot;&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; y=&quot;40px&quot; fill=&quot;#1070CA&quot; /&gt; 
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;220px&quot; y=&quot;40px&quot; fill=&quot;#F7D154&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;10px&quot; y=&quot;200px&quot; fill=&quot;#1070CA&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;200px&quot; fill=&quot;#F7D154&quot; /&gt;
-  &lt;rect width=&quot;20px&quot; height=&quot;140px&quot; x=&quot;190px&quot; y=&quot;200px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
-  &lt;rect width=&quot;20px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;200px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
-&lt;/svg&gt;
-&lt;/p&gt;
-&lt;!--
-&lt;p&gt;&lt;img src=&quot;https://www.electronics-tutorials.ws/diode/diode4a.gif&quot; /&gt;
---&gt;
-
-
-&lt;p&gt;This charge causes a magnetic effect due unbalanced charges. The magnetic effect is the opposing effect to the movement of electrons causing an equilibrium at a certain distance&lt;/p&gt;
-
-&lt;p&gt;Since we are displacing electrons from there position, this magnetic effect can also be seen as an electrical potential, aka voltage, within the material&lt;/p&gt;
-
-&lt;p&gt;
-&lt;img margin-top=&quot;20px&quot; width=&quot;100%&quot; src=&quot;../assets/making-a-transistor/pn-junction.png&quot; /&gt;
-&lt;/p&gt;
-&lt;span style=&quot;font-size:10pt&quot;&gt;https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Pn-junction-equilibrium-graphs.png&lt;/span&gt;
-
-&lt;p&gt; ---------------- &lt;/p&gt;
-
-&lt;p&gt;What happens if we try to put electricity though it. 
-
-&lt;p&gt;First, focus on voltage. Don't worry about current. When you put + on the p-type side it will attract the electrons back into the n-type and if you put electrons on the p-type it will push away the electrons / attached the holes. &lt;/p&gt;
-
-&lt;p&gt;This causes the number of electrons that are in the other region. Making the voltage to cross the region less. This is what happens when it allows the current to flow. If we change the direction and put the electrons on the n-type. &lt;/p&gt;
-
-&lt;p&gt;It will push away the electrons towards the holes and putting + on the p-type will attract the electrons farther in. This increases the number of electrons in the other region increasing the voltage needed to overcome in the materials. Now it is very difficult for the current to move, it would have to overcome the entire region voltage.&lt;/p&gt;
-
-&lt;p&gt;Try out the slider below, if you see electricity can only go one direction. We just made an &lt;b&gt;electrical diode&lt;/b&gt;!&lt;/p&gt;
-
-&lt;p&gt;
-&lt;svg viewBox=&quot;0 0 480 300&quot; width=&quot;100%&quot; id=&quot;svgDiode&quot;&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;30px&quot; y=&quot;20px&quot; fill=&quot;#1070CA&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;230px&quot; y=&quot;20px&quot; fill=&quot;#F7D154&quot; /&gt;
-  &lt;rect id=&quot;svgDiode_diffusionArea&quot; width=&quot;40px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;20px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
-  &lt;circle r=&quot;5px&quot; cx=&quot;30px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
-  &lt;circle r=&quot;5px&quot; cx=&quot;430px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
-  &lt;polyline points=&quot;30,90 10,90 10,240 225,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;polyline points=&quot;430,90 450,90 450,240 235,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;polyline id=&quot;svgDiode_leftBattery&quot; points=&quot;225,260 225,220&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;polyline id=&quot;svgDiode_rightBattery&quot; points=&quot;235,250 235,230&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;text x=&quot;215&quot; y=&quot;280&quot; id=&quot;svgDiode_text&quot;&gt;0.1V&lt;/text&gt;
-&lt;/svg&gt;
-&lt;/p&gt;
-
- &lt;input type=&quot;range&quot; min=&quot;-5&quot; max=&quot;5&quot; value=&quot;-0.1&quot; step=&quot;0.1&quot; class=&quot;slider&quot; id=&quot;myRange&quot; /&gt;
-
- &lt;script&gt;
-    let slider = document.getElementById(&quot;myRange&quot;);
-    let voltage = document.getElementById(&quot;svgDiode_text&quot;)
-    slider.oninput = () =&gt; {
-      voltage.innerHTML = Math.abs(slider.value) + &quot; V&quot;
-      updateBatteryDirection(slider.value)
-      updateDiffusionRegion(slider.value)
-    }
-
-    const updateBatteryDirection = (value) =&gt; {
-      let leftBattery = document.getElementById(&quot;svgDiode_leftBattery&quot;)
-      let rightBattery = document.getElementById(&quot;svgDiode_rightBattery&quot;)
-      if(value &lt; 0){
-        leftBattery.setAttribute('points','225,260 225,220')
-        rightBattery.setAttribute('points','235,250 235,230')
-      } else {
-        leftBattery.setAttribute('points','225,250 225,230')
-        rightBattery.setAttribute('points','235,260 235,220')
-      } 
-    }
-
-    const updateDiffusionRegion = (value) =&gt; {
-      let diffusionArea = document.getElementById(&quot;svgDiode_diffusionArea&quot;)
-      
-      diffusionArea.setAttribute('x', 28.5 * value + 210 )
-      diffusionArea.setAttribute('width', -57.14 * value + 40)
-      // 0.7 x = 230 width = 0
-      // 0   x = 210 width = 40
-    }
-
- &lt;/script&gt;
-
-&lt;p&gt; When you try to push electrons to go backwards, the NP junction pushes back at the same but opposite potential. &lt;/p&gt;
-
-&lt;p&gt;------------------&lt;/p&gt;
-
-&lt;p&gt;Okay, now the MOSFET part.&lt;/p&gt;
-
-&lt;p&gt;If you put another n-type material infront of the diode you get a material that doesn't flow any electrity and isn't useful.
-
-
-&lt;svg viewBox=&quot;0 0 680 300&quot; width=&quot;100%&quot; id=&quot;svgTransistor&quot;&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;30px&quot; y=&quot;20px&quot; fill=&quot;#F7D154&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;230px&quot; y=&quot;20px&quot; fill=&quot;#1070CA&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;430px&quot; y=&quot;20px&quot; fill=&quot;#F7D154&quot; /&gt;
-  &lt;rect id=&quot;svgTransistor_diffusionArea&quot; width=&quot;40px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;20px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
-  &lt;rect id=&quot;svgTransistor_diffusionArea2&quot; width=&quot;40px&quot; height=&quot;140px&quot; x=&quot;410px&quot; y=&quot;20px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
-  &lt;circle r=&quot;5px&quot; cx=&quot;30px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
-  &lt;circle r=&quot;5px&quot; cx=&quot;630px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
-  &lt;polyline points=&quot;30,90 10,90 10,240 225,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;polyline points=&quot;630,90 650,90 650,240 235,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;polyline id=&quot;svgTransistor_leftBattery&quot; points=&quot;225,260 225,220&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;polyline id=&quot;svgTransistor_rightBattery&quot; points=&quot;235,250 235,230&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;text x=&quot;215&quot; y=&quot;280&quot; id=&quot;svgTransistor_text&quot;&gt;0.1V&lt;/text&gt;
-&lt;/svg&gt;
- 
- &lt;input type=&quot;range&quot; min=&quot;-5&quot; max=&quot;5&quot; value=&quot;0&quot; step=&quot;0.1&quot; class=&quot;slider&quot; id=&quot;transistor_myRange&quot; /&gt;
- 
-  &lt;script&gt; 
-    let bslider = document.getElementById(&quot;transistor_myRange&quot;);
-    let bvoltage = document.getElementById(&quot;svgTransistor_text&quot;)
-    bslider.oninput = () =&gt; {
-      bvoltage.innerHTML = Math.abs(bslider.value) + &quot; V&quot;
-      bupdateBatteryDirection(bslider.value)
-      bupdateDiffusionRegion(bslider.value)
-      bupdateDiffusionRegion2(bslider.value)
-    }
- 
-    const bupdateBatteryDirection = (value) =&gt; {
-      let leftBattery = document.getElementById(&quot;svgTransistor_leftBattery&quot;)
-      let rightBattery = document.getElementById(&quot;svgTransistor_rightBattery&quot;)
-      if(value &gt; 0){
-        leftBattery.setAttribute('points','225,260 225,220')
-        rightBattery.setAttribute('points','235,250 235,230')
-      } else {
-  leftBattery.setAttribute('points','225,250 225,230')
-        rightBattery.setAttribute('points','235,260 235,220')
-      } 
-    }
-
-    const bupdateDiffusionRegion = (value) =&gt; {
-      let diffusionArea = document.getElementById(&quot;svgTransistor_diffusionArea&quot;)
-      
-      diffusionArea.setAttribute('x', 28.5 * value + 210 )
-      diffusionArea.setAttribute('width', -57.14 * value + 40)
-      // 0.7 x = 230 width = 0
-      // 0   x = 210 width = 40
-    }
-
- const bupdateDiffusionRegion2 = (value) =&gt; {
-      let diffusionArea = document.getElementById(&quot;svgTransistor_diffusionArea2&quot;)
-      
-      diffusionArea.setAttribute('x', -28.5 * value + 410 )
-      diffusionArea.setAttribute('width', 57.14 * value + 40)
-
-}
-
-  &lt;/script&gt;
-
-
-
-
-&lt;p&gt;Put a connector on the base. But not directly on the base but close enough that the magnetic field effects the material but electrons moving between is not possible. Usally an Oxide.
-
-&lt;p&gt;Aside: this is how the MOSFET = Metal-Oxide-Silicon Field-Effect Transistor gets it's name  
-
-&lt;p&gt;Now when you apply a voltage to the base connected the the p-type it attracts the electrons close to the connection to the gate. And when enough electrons are near the top.&lt;/p&gt;
-
-
-
-&lt;button onclick=&quot;toggleMOSFET()&quot;&gt; Toggle &lt;/button&gt;
-
-&lt;span&gt; Status: &lt;/span&gt;
-&lt;span id=&quot;MOSFET_status&quot; style=&quot;color:green&quot;&gt;ON&lt;/span&gt;
-
-&lt;p&gt;
-&lt;svg viewBox=&quot;0 0 720 400&quot; width=&quot;100%&quot; id=&quot;svgMOSFET&quot;&gt;
-  &lt;rect width=&quot;200&quot; height=&quot;15&quot; x=&quot;230&quot; y=&quot;140&quot; fill=&quot;black&quot; /&gt;
-  &lt;polyline points=&quot;330,140 330,0&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;30px&quot; y=&quot;170px&quot; fill=&quot;#F7D154&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;230px&quot; y=&quot;170px&quot; fill=&quot;#1070CA&quot; /&gt;
-  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;430px&quot; y=&quot;170px&quot; fill=&quot;#F7D154&quot; /&gt;
-  &lt;rect id=&quot;svgMOSFET_diffusionArea&quot; width=&quot;200px&quot; height=&quot;20px&quot; x=&quot;230px&quot; y=&quot;170px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
-  &lt;rect id=&quot;svgMOSFET_diffusionArea2&quot; width=&quot;200px&quot; height=&quot;100px&quot; x=&quot;230px&quot; y=&quot;170px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
-  
-&lt;/svg&gt;
-&lt;/p&gt;
-
- &lt;script&gt; 
-
-    const toggleMOSFET = () =&gt; {
-      let status = document.getElementById(&quot;MOSFET_status&quot;);
-
-      let firstLayer = document.getElementById(&quot;svgMOSFET_diffusionArea&quot;)
-      let secondLayer = document.getElementById(&quot;svgMOSFET_diffusionArea2&quot;)
-
-      if(status.innerHTML === &quot;ON&quot;){
-        firstLayer.setAttribute('fill','none')
-        secondLayer.setAttribute('fill','none')
-        status.innerHTML = 'OFF'
-        status.setAttribute('style','color: red')
-      } else {
-        firstLayer.setAttribute('fill','white')
-        secondLayer.setAttribute('fill','white')
-        status.innerHTML = 'ON'
-        status.setAttribute('style','color: green')
-      }
-    }
-
- &lt;/script&gt;
-
-
-&lt;p&gt;This breaks the np junction. Now that there is this base most the voltage potential is from the top to the bottom and not left to right. The electrons can move with little trouble&lt;/p&gt;
-
-&lt;p&gt;In channel is formed that allows electrons to easily pass. There is no - and + difference to pass. Electrons can pass through without a change from - and +. This is called an n-channel.&lt;/p&gt;
-
-&lt;p&gt;This was all theory, in 2 weeks I will be posting part 2 where we will start to build a transistor from rocks&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Update: &lt;/b&gt;&lt;a href=&quot;https://pucula.com/notes/making-a-transistor-from-scratch-part-2.html&quot;&gt;Part 2&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading, this type of article was new for me. If you enjoyed it please share it. Also I'm now on Twitter, follow me &lt;a href=&quot;http://twitter.com/lazydancr&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
+&lt;/body&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
