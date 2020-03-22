@@ -36,7 +36,6 @@ body{
     font-weight:400;
     text-rendering: optimizeLegibility;
     font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    */
     line-height: 1.4;
     color: #363636;
     display: grid;
@@ -85,6 +84,7 @@ body > nav > ul a:not(:hover) {
 
 body > main {
   padding: 32px;
+  padding-left:42px;
 }
 
 body > main > header {
@@ -298,7 +298,46 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 </p>
 
-<p>More information on github</p>
+<p><strong>pictotxt</strong> is a python script which converts an image to text</p>
+
+<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/movie.gif" alt="pictotxt" /></p>
+
+<h2 id="how-to-use">How to use</h2>
+
+<p>Requirements:</p>
+<ul>
+  <li>Python Image Library (PIL)</li>
+  <li>Numpy</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:lazydancer/pictotxt.git
+cd pictotxt
+pip install -r requirements
+python src/pictotxt.py examples/octocat.png
+</code></pre></div></div>
+
+<p>The result will be printed on your console/terminal</p>
+
+<h2 id="how-it-works">How it works</h2>
+
+<p>Input:</p>
+
+<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step1.png" alt="step1" /></p>
+
+<p>The imported image is split up into ‘character sized’ images.</p>
+
+<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step2.png" alt="step2" /></p>
+
+<p>Split of the font to get individual images of each character</p>
+
+<p>For each mini-image from the imported image, compare it with all the characters and find the best match with the following function</p>
+
+<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step4.png" alt="step4" /></p>
+
+<p>Result:</p>
+
+<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step5.png" width="366" /></p>
+
 
 </article>
 </main>
