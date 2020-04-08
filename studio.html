@@ -12,15 +12,15 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>Pictotxt</title>
+  <title>Studio</title>
 
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,400i,500,600,700&amp;display=swap">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Catamaran:400,500,700&amp;display=swap">
 <style>
 body{
     font-size:12px;
     font-weight:400;
     text-rendering: optimizeLegibility;
-    font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Catamaran', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #363636;
     margin: 0 auto;
     max-width: 700px;
@@ -42,7 +42,7 @@ body > main > header{
 }
 
 body > main > article > ul {
-  margin-left: -34px;
+  margin-left: -38px;
 }
 
 .footer {
@@ -70,13 +70,19 @@ a:hover {
 }
 
 h1 {
-    color: var(--head);
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 700;
     margin: 0;
     margin-bottom: 1em;
 }
 
+h2 {
+    margin-top: 0;
+}
+
+h3 {
+  color: #888;
+}
 img {
   border-radius:5px;
 }
@@ -167,62 +173,76 @@ pre.highlight { padding: 1em; font-size: 13px}
   <img width=64 heihgt=64 src="data:image/png;base64,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"></a>
   </header>
     <article>
-        <h1 style="margin-bottom: 0">Pictotxt</h1>
+        <h1 style="margin-bottom: 0">Studio</h1>
 
-<span class="article-date" style="margin-bottom: 30px;">
+<span class="article-date" style="margin-bottom: 30px;">Updated: 2017-01
 </span>
 
-<p>A python program which takes an image and outputs text in the form of the input image.</p>
+<p>studio is a simple static site generator for a web journal. Making it easy to convert your text articles in to webpages.</p>
 
-<p><a style="padding-left:7px;" href="https://github.com/lazydancer/pictotxt">Github »</a></p>
+<p><a style="padding-left:7px;" href="https://github.com/lazydancer/studio">Github »</a></p>
 
 <p>Tools:</p>
-<svg fill="#3776AB" width="40px" height="40px" style="padding-left: 8px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img"><title>Python</title><path d="M14.31.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.83l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.23l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.24l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05 1.07.13zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22z" /><path d="M21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z" /></svg>
+<svg width="48px" height="48px" fill="#5D4F85" style="padding-left: 8px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>Haskell</title><path class="a" d="M.006 20.47L5.649 12 .006 3.531h4.235l5.674 8.47-5.674 8.468zm5.643 0L11.29 12 5.65 3.531h4.266l11.253 16.938h-4.224l-3.535-5.34-3.495 5.34zM19.3 15.525l-1.877-2.827h6.571v2.826zm-2.826-4.235l-1.877-2.827h9.387v2.827z" /></svg>
+<svg style="padding: 0 0 0 8px;" fill="#E34F26" width="48px" height="48px" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HTML5</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" /></svg>
 
-<p>
+<p><strong>studio</strong> convert markdown files and organizes the resulting html pages. In addition, having the flexibility to change a template and adding custom css and javascript. With static webpages - your site is fast, secure and easy to deploy</p>
 
-</p>
+<p>I built this program in summer in 2014, I was very interested in Haskell. I was also interested in writing what I learned online. I tried some other static site generators and found that they were over what I needed and was looking for. So I thought I could write my own in Haskell</p>
 
-<p><strong>pictotxt</strong> is a python script which converts an image to text</p>
+<p>My goal was to create this static-site generator in 100 lines of Haskell. I reached my goal, sacraficing all of the readability. I later added more spaces and expanded some more of the longer equations.</p>
 
-<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/movie.gif" alt="pictotxt" /></p>
+<p>The basic layout which I need to do. Inputs are “.txt” files with blog posts. I used markdown which is a standard so you can add titles, links and images. We take the titles in the text files and create a table of contents for a main page, generating a link for each article.</p>
 
-<h2 id="how-to-use">How to use</h2>
+<p>Haskell is a functional language, I had to divide the functional vs the unfunctional real world. It is also a dense language, you can do a lot of modifications in a few lines of codes vs other languages. We divide this program into 3 steps</p>
 
-<p>Requirements:</p>
-<ul>
-  <li>Python Image Library (PIL)</li>
-  <li>Numpy</li>
-</ul>
+<p>The only large data structure made for this was the Page which has the file path and date.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:lazydancer/pictotxt.git
-cd pictotxt
-pip install -r requirements
-python src/pictotxt.py examples/octocat.png
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data Page = Page { title :: FilePath    -- Path to words
+        , static  :: [FilePath]  -- List of static files 
+    , date    :: [String]    -- Month,day,year
+   } deriving (Show) &lt;/code&gt;&lt;/pre&gt;
 </code></pre></div></div>
 
-<p>The result will be printed on your console/terminal</p>
+<h3 id="create-and-order-pages">Create and order pages</h3>
 
-<h2 id="how-it-works">How it works</h2>
+<p>Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file is creating a list extra js or css files linked to the article. This offered some flexiblility to have custom css for an article</p>
 
-<p>Input:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>getPages :: [FilePath] -&gt; IO [Page]
+getPages = mapM (\x -&gt; do static &lt;- getStatic ("Articles/" ++ x)
+                      date &lt;- getPageDate ("Articles/" ++ x ++ "/words.md")
+                      return (Page x static date))
+</code></pre></div></div>
 
-<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step1.png" alt="step1" /></p>
+<h3 id="create-html-from-template-and-pages">Create html from template and pages</h3>
 
-<p>The imported image is split up into ‘character sized’ images.</p>
+<p>To write a page require a template in the form of a string with was HTML and the Page data structure from above. Pandoc helped convert the markdown text files</p>
 
-<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step2.png" alt="step2" /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>writePage :: String -&gt; Page -&gt; IO ()
+writePage template page = do
+    let year = last $ date page  
 
-<p>Split of the font to get individual images of each character</p>
+    let urlTitle = urlConvert (title page)
+    mdArt &lt;- readFile ("Articles/" ++ urlTitle ++ "/words.md")
+    let pandocArt = readMarkdown def mdArt
+    let html = writeHtmlString (siteOptions template) pandocArt
+    createDirectoryIfMissing True $ "Output/" ++ year ++ "/" ++ urlTitle 
+    writeFile ("Output/" ++ year ++ "/" ++ urlTitle ++ "/index.html") html
+</code></pre></div></div>
 
-<p>For each mini-image from the imported image, compare it with all the characters and find the best match with the following function</p>
+<h3 id="write-table-of-contentsh2">Write table of contents&lt;/h2&gt;</h3>
 
-<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step4.png" alt="step4" /></p>
+<p>The table of contents also use the template but also include some html to make it look pretty</p>
 
-<p>Result:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>writeTOC :: String -&gt; [Page] -&gt; IO ()
+writeTOC template pages = do
+    list &lt;- mapM getItem pages 
+    let html = writeHtmlString (siteOptions template) (tocWrap list) 
+    createDirectoryIfMissing True $ "Output/archives" 
+    writeFile "Output/archives/index.html" html 
+</code></pre></div></div>
 
-<p><img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step5.png" width="366" /></p>
-
+<p>That is most likely 80% of the functions of the studio. With most other things being moving files around. Thank you for reading. You can find the code <a href="https://github.com/lazydancer/studio">here</a></p>
 
     </article>
   </main>

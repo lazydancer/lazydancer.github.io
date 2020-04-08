@@ -14,13 +14,13 @@
 
   <title>Introduction To Fossil Fuels</title>
 
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,400i,500,600,700&amp;display=swap">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Catamaran:400,500,700&amp;display=swap">
 <style>
 body{
     font-size:12px;
     font-weight:400;
     text-rendering: optimizeLegibility;
-    font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Catamaran', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #363636;
     margin: 0 auto;
     max-width: 700px;
@@ -42,7 +42,7 @@ body > main > header{
 }
 
 body > main > article > ul {
-  margin-left: -34px;
+  margin-left: -38px;
 }
 
 .footer {
@@ -70,13 +70,19 @@ a:hover {
 }
 
 h1 {
-    color: var(--head);
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 700;
     margin: 0;
     margin-bottom: 1em;
 }
 
+h2 {
+    margin-top: 0;
+}
+
+h3 {
+  color: #888;
+}
 img {
   border-radius:5px;
 }
@@ -169,7 +175,7 @@ pre.highlight { padding: 1em; font-size: 13px}
     <article>
         <h1 style="margin-bottom: 0">Introduction To Fossil Fuels</h1>
 
-<span class="article-date" style="margin-bottom: 30px;">2019-02
+<span class="article-date" style="margin-bottom: 30px;">Updated: 2019-02
 </span>
 
 <p>Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, <strong>87%</strong> of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.</p>
@@ -394,6 +400,179 @@ pre.highlight { padding: 1em; font-size: 13px}
 
 <p>Thank you for reading.</p>
 
+<h2 id="bonus-map-of-oil-refineries-around-the-world">Bonus: Map of Oil Refineries Around the World</h2>
+
+<style>
+#content .map path {
+  fill: #ddd;
+  stroke: #aaa;
+}
+
+#content circle {
+	fill: rgba(0,0,0,0.4);
+}
+
+div.tooltip {
+  color: white;
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: rgba(0,0,0,.8);
+  border: 1px solid black;
+  pointer-events: none;
+}
+
+</style>
+
+<body>
+  <div id="content">
+    <svg width="800px" height="400px">
+      <g class="map"></g>
+    </svg>
+  </div>
+
+  <p>source: <a href="https://en.wikipedia.org/wiki/List_of_oil_refineries">Wikipedia: List of oil refineries</a></p>
+
+  <p>I was testing d3js, GEOjson and some javascript code which I found interesting and wanted to share.</p>
+
+  <p>Oil refineries are the backbone of the world economy, most of our energy generated is from fossil fuels and refineries play an essential role. Currently there are about 660 of them</p>
+
+  <p>In the chart above I have shown the 10 largest refineries. The largest is in India called the Jamnagar Refinery. It has the capacity of refining 1,240,000 barrels of crude oil per day.</p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+  <script>
+var geojson = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Africa"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-6, 36], [33, 30], [43, 11], [51, 12], [29, -33], [18, -35], [7, 5], [-17, 14], [-6, 36]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Australia"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[143, -11], [153, -28], [144, -38], [131, -31], [116, -35], [114, -22], [136, -12], [140, -17], [143, -11]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Timbuktu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.0026, 16.7666]
+      }
+    }
+  ]
+};
+
+var refineries = [
+	{"name": "Jamnager Refinery", "location": "Jamnagar, Gujarat, India", "production" : 1240000, "coordinates": [69.52, 22.20]},
+	{"name": "Paraguana Refinery", "location": "Punto Fijo, Falcón, Venezuela", "production" : 940000, "coordinates": [-70.11, 11.44]},
+	{"name": "SK Energy Ulsan Refinery", "location": "Ulsan, South Korea", "production" : 850000, "coordinates": [129.34, 35.43]},
+	{"name": "Ruwais Refinery", "location": "Ruwais, UAE", "production" :  	817000, "coordinates": [52.72, 24.12]},
+	{"name": "Yeosu Refinery", "location": "Yeosu, South Jeolla, South Korea", "production": 730000, "coordinates": [127.75, 34.72]},
+	{"name": "Onsan Refinery", "location": "Ulsan, South Korea", "production":  669000, "coordinates": [129.34, 35.44]},
+	{"name": "Jurong Island Refinery", "location": "Jurong Island, Singapore", "production":  605000, "coordinates": [103.70, 1.27]},
+	{"name": "Port Arthur Refinery", "location": "Port Arthur, Texas, United States", "production":  603000, "coordinates": [-93.57, 29.53]},
+	{"name": "Galveston Bay Refinery", "location": "Texas City, Texas, United States", "production":  571000, "coordinates": [-94.91, 29.40]},
+	{"name": "Baytown Refinery", "location": "Baytown, Texas, United States", "production":  560500, "coordinates": [-95.01, 29.74]},
+	{"name": "Garyville Refinery", "location": "Garyville, Louisiana, United States", "production": 556000 , "coordinates": [-90.36,30.03]},
+	{"name": "Ras Tanura Refinery", "location": "Ras Tanura, Saudi Arabia", "production": 550000 , "coordinates": [50.10,26.39]},
+	{"name": " 	Baton Rouge Refinery", "location": "Baton Rouge, Louisiana, United States", "production": 502500, "coordinates": [-91.10,30.29]},
+	{"name": "Shell Pulau Bukom Refinery", "location": "Bukom Island, Singapore", "production":  500000, "coordinates": [103.45,1.14]},
+	{"name": "Abadan Refinery", "location": "Abadan, Iran", "production": 450000 , "coordinates": [48.18,30.20]},
+
+]
+
+
+
+
+d3.json('../assets/maps/ne_110m_land.json', function(err, json) {
+  createMap(json);
+})
+
+createMap = (geojson) => {
+
+	var projection = d3.geoMercator()
+	  .fitSize([722, 400], geojson)
+	 
+	var geoGenerator = d3.geoPath()
+	  .projection(projection);
+
+	function update(geojson) {
+	  var u = d3.select('#content g.map')
+	    .selectAll('path')
+	    .data(geojson.features);
+
+	  u.enter()
+	    .append('path')
+	    .attr('d', geoGenerator);
+		
+	  svg = d3.select("svg");
+
+	  console.log(svg)
+
+    // Define the div for the tooltip
+    const div = d3
+      .select('body')
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('opacity', 0);
+
+    handleMouseOver = (d, i) => {
+      div
+        .transition()
+        .duration(200)
+        .style('opacity', 0.9);
+      div
+        .html(d.name + ' - ' + (d.production).toLocaleString('en') + ' barrels per day')
+        .style('left', d3.event.pageX + 10 + 'px')
+        .style('top', d3.event.pageY - 28 + 'px');
+
+    }
+
+    handleMouseOut = (d, i) => {
+      div
+            .transition()
+            .duration(500)
+            .style('opacity', 0);
+    }
+        
+	  svg.append("g")
+	  		.attr("class", "bubble")
+	  	.selectAll("circle")
+	  		.data(refineries)
+	  	.enter().append("circle")
+	  		.attr("transform", d => "translate(" + projection(d.coordinates) + ")")
+	  		.attr("r", d => Math.sqrt(d.production/10000))
+        .on('mouseover', handleMouseOver)
+        .on('mouseout', handleMouseOut);
+
+ 
+	}
+
+	update(geojson);
+
+}
+
+  </script>
+</body>
 <h4 id="references">References</h4>
 
 <ul>

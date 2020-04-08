@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-04-07T17:17:26-04:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Books Of 2019</title><link href="/notes/books-of-2019.html" rel="alternate" type="text/html" title="Books Of 2019" /><published>2020-01-01T00:00:00-05:00</published><updated>2020-01-01T00:00:00-05:00</updated><id>/notes/books-of-2019</id><content type="html" xml:base="/notes/books-of-2019.html">&lt;p&gt;Last year, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-04-08T15:41:13-04:00</updated><id>/feed.xml</id><title type="html">James Pucula</title><entry><title type="html">Reading List</title><link href="/reading-list.html" rel="alternate" type="text/html" title="Reading List" /><published>2020-01-01T00:00:00-05:00</published><updated>2020-01-01T00:00:00-05:00</updated><id>/reading-list</id><content type="html" xml:base="/reading-list.html">&lt;p&gt;In 2019, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.&lt;/p&gt;
 
 &lt;h2 id=&quot;infinite-jest-by-david-foster-wallace&quot;&gt;Infinite Jest by David Foster Wallace&lt;/h2&gt;
 
@@ -102,7 +102,208 @@ Or given myself shock I would have done that. Instead.”
   &lt;li&gt;I wish this book was longer. I learned about having deep modules and simple interfaces, how to define complexity as dependency and obscurity and also the strategic mindset. He also gave “red flags” to see in your software.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Thanks for reading&lt;/p&gt;</content><author><name></name></author><summary type="html">Last year, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.</summary></entry><entry><title type="html">Advent Of Code 2019 Solutions</title><link href="/notes/advent-of-code-2019-solutions.html" rel="alternate" type="text/html" title="Advent Of Code 2019 Solutions" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/notes/advent-of-code-2019-solutions</id><content type="html" xml:base="/notes/advent-of-code-2019-solutions.html">&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
+&lt;h1 id=&quot;2018&quot;&gt;2018&lt;/h1&gt;
+
+&lt;p&gt;I read 34 books in 2018, not 52 as my goal, but this year was most books I ever read.&lt;/p&gt;
+
+&lt;p&gt;I read many interesting biographies of Howard Hughes, Viktor Frankl, Sam Walton, The Wright Brothers, Paul Erdos.  I enjoyed non-fiction from Code, Fabless, Ant Encounters, Enlightenment Now, Code Complete 2, Debt: The first 5000 years, Energy and Civilization, Naked Economics and the Goal and Finishing off the Foundation series.&lt;/p&gt;
+
+&lt;p&gt;My favorite book of this year was Do Androids Dream of Electric Sheep? which was made into a movie called Bladerunner. I enjoyed the bizarre atmosphere of the book and its theme of questioning what is real and does it matter&lt;/p&gt;
+
+&lt;li&gt;&lt;b&gt;Prelude to Foundation&lt;/b&gt; &lt;i&gt;by Isaac Asimov&lt;/i&gt;&lt;p&gt;
+The story follows Hari Seldon in the creation
+of pychohistory while providing more information of Trantor, the center
+of the Empire.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;What Money Can't Buy&lt;/b&gt; &lt;i&gt;by Michael J. Sandel&lt;/i&gt;&lt;p&gt;
+This book is about the moral questions of buying and selling stuff.
+Should we bet on death (life insurance), paying kids for good
+grades and classroom advertising.
+The book showed how creating a market changed the morally of each.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Forward the Foundation&lt;/b&gt; &lt;i&gt;by Isaac Asimov&lt;/i&gt;&lt;p&gt;
+With the further look into the First Foundation and the creation of the Second Foundation.
+We were able to get more detail of the First Foundation and the Second Foundation. I loved
+the Foundation Series and would recommend to read
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;On Writing&lt;/b&gt; &lt;i&gt; by Stephen King&lt;/i&gt;&lt;p&gt;
+1. Tell the Truth, if in your writing you are holding back then you can not create a connection to the reader.
+2. Don't use adverbs or the passive tense, I will try my best.
+3. To be a good writer, you need to read a lot.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Code&lt;/b&gt; &lt;i&gt; by Charles Petzold&lt;/i&gt;&lt;p&gt;
+After the first few chapters, I expected this book to a math book on the
+theory of programming and a part of it was. The majority of this book was practical and went on how a computer
+is designed and built from telephone relays to a high level computer language. This helps take the &quot;magic&quot; out of computers.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Fabless&lt;/b&gt; &lt;i&gt;by Paul McLellan&lt;/i&gt;&lt;p&gt;
+An interesting book on the semiconductor industry. When starting this
+book I was expecting more deep dive into the technical aspects of the industry but was more of a history book.
+I felt some of the &quot;In there own words&quot; sections where just repeating
+what the author said in the chapter leading up to the excerpt.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Howard Hughes&lt;/b&gt; &lt;i&gt;by Donald L. Barlett and James B. Steele&lt;/i&gt;&lt;p&gt;
+I didn't know anything about Howard Hughes before reading this book.
+It is interesting how much he did with this life being a movie producer, record breaking pilot, airplane designer
+to name a few. This book had so much detail on Hugh's actions and it was an interesting perspective from Hugh's associates
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Do Androids Dream of Electric Sheep?&lt;/b&gt; &lt;i&gt;by Philip K. Dick&lt;/i&gt;&lt;p&gt;
+The book creates an atmosphere of post-apocalyptic 2020 San Francisco which I seem to get lost in.
+It is the book's 50th anniversary. It is interesting how it seems futuristic still. It brings up the question
+what is the difference between an android and a human.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;The Mythical Man-Month&lt;/b&gt; &lt;i&gt;by Fred Brooks&lt;/i&gt;&lt;p&gt;
+This book came out 40 years ago, other then the talk of mainframe computers, I feel this book has held up its
+principles still. The central principle being, adding manpower to a late software project makes it later.
+Maybe this could be we greatly underestimate the time needed to learn a new system and the time that is
+added when there is more people that need to be informed.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Ant Encounters&lt;/b&gt; &lt;i&gt;by Deborah Gordon&lt;/i&gt;&lt;p&gt;
+There is so much information about ants and this book seems to be an introduction to the wider field of how
+living things interact. It is interesting that with no central control, ants are able to live though the rate
+in which they interact and the pattern of their encounters. I would recommend this book, it was a nice quick read.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;The Man in the High Castle&lt;/b&gt; &lt;i&gt;by Philip K. Dick&lt;/i&gt;&lt;p&gt;
+This book looks at what would have happened if World War II ended differently. It took some time to reorient
+oneself each &quot;jump&quot; in the book. I really enjoyed this book, and like Do Androids Dream of Electric Sheep looked agian at what is real and what is fake,
+is there any difference from the two and does it matter.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Man's Search for Meaning&lt;/b&gt; &lt;i&gt;by Viktor Frankl&lt;/i&gt;&lt;p&gt;
+Viktor Frankl writes about experiences as an Auschwitz concentration camp inmate during World War II. This was an emotional
+book to read, when looking at what happened in the concentration camps. Frankl looks at this from a phycologist perspective
+and the later section of the books presents his psychotherapeutic method. I would recommend this book
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;The Hard Thing About Hard Things&lt;/b&gt; &lt;i&gt;by Ben Horowitz&lt;/i&gt;&lt;p&gt;
+This book is about Ben Horowitz experiences as a CEO of many startup companies and he outlines his experiences.
+This I would
+not catergorize as a business book and closer to an auto-biography. It offers an in-depth look in to the world of fast
+growing technology companies.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Evicted&lt;/b&gt; &lt;i&gt;by Matthew Desmond&lt;/i&gt;&lt;p&gt;
+The book follows half a dozen families and their stuggles.
+At the same time, it shows the larger picture with the facts of evictions in the usa and the impact it has.
+It was enlightining to have the landlord's perpective of this enviroment, bringing up the discussion of explotation and
+housing being a fundamental human need.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Made in America&lt;/b&gt; &lt;i&gt;by Sam Walton&lt;/i&gt;&lt;p&gt;
+Learning about Sam Walton and his obsession with retail, from his first stores to the discount stores in
+rural america. He was extremely competitive and trying out things that haven't be done before. At the same time
+taking best practices from his competitors.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Enlightenment Now&lt;/b&gt; &lt;i&gt;by Steven Pinker&lt;/i&gt;&lt;p&gt;
+This was a long book. I read Part I and II but had to abandon it half way though Part III. This book made me think
+differently about how well we are doing in the world. I really enjoyed the chapter on climate change, in how
+Pinker goes over how we have taken the news and how it has also been a political issue and how there are divided.
+It was also interesting to see how the news warps our image of the world and he re-enforces the availiblity bias
+and confirmation bias.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;A Wrinkle in Time&lt;/b&gt; &lt;i&gt;by Madeleine L'Engle&lt;/i&gt;&lt;p&gt;
+A fun weird little story
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Code Complete 2&lt;/b&gt; &lt;i&gt;by Steve McConnell&lt;/i&gt;&lt;p&gt;
+I have been focusing to improving my programming skills. From reviews online, I heard this was the textbook for programmers.
+I believe it lived up to the hype, many guidelines it recommends I use everyday. I liked that this book went into detail of many
+elements of project management which can be used out of programming.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Fight Club&lt;/b&gt; &lt;i&gt;Chuck Palahniuk&lt;/i&gt;&lt;p&gt;
+It was a very interesting analysis of the human psychology. The movie follows the books very closely expect
+for ending which leave the movie and book with different a message at the end of the book.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Le Petit Nicolas&lt;/b&gt; &lt;i&gt;René Goscinny&lt;/i&gt;&lt;p&gt;
+Un livre de jeunesse que j'ai lu pour améliorer mon français.
+&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;b&gt;The Subtle Art of Not Giving A F*ck&lt;/b&gt; &lt;i&gt;by Mark Manson&lt;/i&gt;&lt;p&gt;
+It is an okay book. My  favorite part of the book is how when
+you remove actions and challenges each of us has core values and you have to strive for maintaining these values
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Debt: The First 5000 Years&lt;/b&gt; &lt;i&gt;by David Graeber&lt;/i&gt;&lt;p&gt;
+This was a insightful book that brought up many new ideas. The barter economy
+never existed. Describing the market economy and human economy.
+This book was lonng and read like a textbook. It
+provides a very detailed account of the introduction of money and worth and the different systems that were used until
+today.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;I, Robot&lt;/b&gt; &lt;i&gt;by Isaac Asimov&lt;/i&gt;&lt;p&gt;
+I, Robot is a  story about when robots came be able to talk and perform a larger variety of tasks. Each chapter seemed to introduce
+a new and exciting problem which made you think about the ethics of robots and how they relate to people.
+&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;b&gt;Fooled by Randomness&lt;/b&gt; &lt;i&gt;by Nassim Nicholas Taleb&lt;/i&gt;&lt;p&gt;
+This book was a great book to look at how bad humans are at guessing the future.
+In addition the book looked at the bias everyone has and how they apply in the real world
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Sex, Drugs, and Cocoa Puffs&lt;/b&gt; &lt;i&gt;by Chuck Klosterman&lt;/i&gt;&lt;p&gt;
+A book of eighteen essays. The book looks into pop culture and how it affects us.
+The book was released 15 years ago and makes a lot of references I've heard of; The Real World, Billy Joel, Saved by the bell but I didn't experience them like the reader.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Le Petit Prince&lt;/b&gt; &lt;i&gt;by Antoine de Saint-Exupéry&lt;/i&gt;&lt;p&gt;
+C'est un histoire bizzare. Je pense que je le devrai lire en anglais. J'ai lu pour améliorer mon français.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;The Wright Brothers&lt;/b&gt; &lt;i&gt;by David McCullough&lt;/i&gt;&lt;p&gt;
+An awesome history of the birth of flight. It is interesting to see the contrast between langley with large goveremnt spending and the wright brothers who made money at the bike shop to pay for the development. The Wright brothers were not considered by the US goverenment when they were look to sell there plane.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Reality Is Not What It Seems&lt;/b&gt; &lt;i&gt;by Carlo Rovelli&lt;/i&gt;&lt;p&gt;
+This book went through the history of physics from Greek philosophers to present day. It has been an intersting hearing a simple explaination of modern physics - With two basic theories of quantum mechanics and general relativitity and the attempt to combine these incompatible theories. This book introducted loop quantum gravitiy as the new leading contender.
+&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;b&gt;Seveneves&lt;/b&gt; &lt;i&gt;by Neal Stephenson&lt;/i&gt;&lt;p&gt;
+The book is about the what would happen if the moon suddenly split apart. This book felt like 2 books, with the first being a scifi novel and the second being a drama. I enjoyed the first half, the second seemed to drag on a bit. It was an interesting thought experiment and covered a large variety of issues that could occur.
+&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;b&gt;Energy and Civilization&lt;/b&gt; &lt;i&gt;by Vaclav Smil&lt;/i&gt;&lt;p&gt;
+The books puts together a big history of society and its relationship with energy and technology. I enjoyed looking at the energy perspective in biology and the benefits of bipedalism and why we have 2 feet. In addition, agriculture and how the calorie of food per hours of work is an important heuristic for a population density.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Never Split The Difference&lt;/b&gt; &lt;i&gt;by Chris Voss&lt;/i&gt;&lt;p&gt;
+I try to avoid most business type books, but this book exceeded my expectations. I enjoyed reading Chris Voss's experience of being a hostage negotiator and hearing how he learnt all of these lessons in the field. The points he shows are actionable and feel very achievable. 
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;The Man Who Loved Only Numbers&lt;/b&gt; &lt;i&gt;by Paul Hoffman&lt;/i&gt;&lt;p&gt;
+A biography of the famous mathematician Paul Erdos. I really enjoyed this book and hear about Erdos's life. I also enjoyed hearing about other mathematicians in the book such as Ronald Graham and Carl Friedrich Gauss
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Naked Economics&lt;/b&gt; &lt;i&gt;by Charles Wheelan&lt;/i&gt;&lt;p&gt;
+A nice introduction to economic thinking. I found the part of determining what makes an economy rich an interesting concept.
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;The Goal&lt;/b&gt; &lt;i&gt;by Eliyahu Goldratt&lt;/i&gt;&lt;p&gt;
+This was a piece of fiction where a main character is trying to save his plant. It is also a business book to run an efficient business. I have heard a lot about this book and was glad to read it. The main theory of the book is reduce your bottlenecks.
+&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;p&gt;Thanks for reading&lt;/p&gt;</content><author><name></name></author><summary type="html">In 2019, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.</summary></entry><entry><title type="html">Advent Of Code</title><link href="/advent-of-code.html" rel="alternate" type="text/html" title="Advent Of Code" /><published>2019-12-01T00:00:00-05:00</published><updated>2019-12-01T00:00:00-05:00</updated><id>/advent-of-code</id><content type="html" xml:base="/advent-of-code.html">&lt;h2 id=&quot;2019&quot;&gt;2019&lt;/h2&gt;
+
+&lt;p&gt;Python solutions to the daily coding puzzles, explained.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.&lt;/p&gt;
@@ -785,64 +986,127 @@ Or given myself shock I would have done that. Instead.”
 &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div id=&quot;11&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;12&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;13&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;14&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;15&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;16&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;17&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;18&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;19&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;20&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;21&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;22&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;23&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;24&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;25&quot;&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Python solutions to the daily coding puzzles, explained.</summary></entry><entry><title type="html">Learning Rust</title><link href="/notes/learning-rust.html" rel="alternate" type="text/html" title="Learning Rust" /><published>2019-09-30T00:00:00-04:00</published><updated>2019-09-30T00:00:00-04:00</updated><id>/notes/learning-rust</id><content type="html" xml:base="/notes/learning-rust.html">&lt;p&gt;From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects,  I believe it deserves its praise.&lt;/p&gt;
+&lt;h1 id=&quot;2018&quot;&gt;2018&lt;/h1&gt;
 
-&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;The area of the rectangle is {} square pixels.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    !
+  -~*~-
+   /!\
+  /%;@\
+ o/@,%\o
+ /%;`@,\
+o/@'%',\o
+'^^^N^^^`
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;It has an great community, “The Rust Book” is a great starting place for anyone learning the language. It has a package manager which is built-in to rust called Cargo. It compiles your packages, manages its dependences and upload them. Having common stucture in the package files helps when reviewing an existing package.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://adventofcode.com/&quot;&gt;Advent of Code&lt;/a&gt; is an annual programming competition to complete 25 challenges in December. It’s a way grow as a programmer, through solving problems and reveiwing others code. In this article I will cover two things I learned about this year and try to convince you to join next years competition.&lt;/p&gt;
 
-&lt;p&gt;Rust’s ownership model has been an experience. It reduces memory-errors during compile-time and no runtime or garbage collector are needed when the program is running. It is also unique in popular programming languages and takes a while to learn and get use to.&lt;/p&gt;
+&lt;h3 id=&quot;1-assembly-language&quot;&gt;1. Assembly Language&lt;/h3&gt;
 
-&lt;p&gt;Rust doesn’t have pointers (in safe mode) but I found the need to understand pointers to use rust, especially the difference between passed-by-value or passed-by-reference. This tripped me up for a while. I also learned about a how pointers can go wrong, if the pointer is pointing to data that is unreadable (Null pointers), a pointer that points to nothing (Dangling pointer) or dropping the data when it is needed by another pointer (Double free / Null pointer).&lt;/p&gt;
+&lt;p&gt;I have always be interested in how computers work, &lt;em&gt;see&lt;/em&gt; &lt;a href=&quot;https://pucula.com/notes/making-a-transistor-from-scratch-part-1.html&quot;&gt;building a transistor from scratch&lt;/a&gt;. I have never had the chance to program in assembly. That changed on &lt;a href=&quot;https://adventofcode.com/2018/day/16&quot;&gt;Day 16&lt;/a&gt;, the challenge was to run a new programming language called elf code. Elf code looked almost identical to assembly.&lt;/p&gt;
 
-&lt;p&gt;If you find Rust interesting, I would recommend what I did:&lt;/p&gt;
+&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;First, Spend a weekend using Rust on a problem that you were solving in Python. Give up the project because the compiler errors are driving you crazy&lt;/p&gt;
+&lt;p&gt;The first number is the opcode, which could represent 1 of 16 operations, ‘add’, ‘mul’, ‘mov’. The second and third were inputs and the forth was what register to use for the output.&lt;/p&gt;
 
-&lt;p&gt;Second, Spend a week reading the Rust Book and tell yourself you understand ownership model.&lt;/p&gt;
+&lt;p&gt;First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it.&lt;/p&gt;
 
-&lt;p&gt;Third, Spend the next weekend using rust on the project again. Get 90% of the way there but give up and vow to never to talk about rust again.&lt;/p&gt;
+&lt;p&gt;To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware.&lt;/p&gt;
 
-&lt;p&gt;Fourth, Wait two months, when you need to what to avoid C++ and turn to Rust as an alternative&lt;/p&gt;
+&lt;p&gt;Using an intermeddiate step to C, Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17.&lt;/p&gt;
 
-&lt;p&gt;Fifth, Read the Rust book. Take your time and go through each example.&lt;/p&gt;
+&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      &lt;span class=&quot;k&quot;&gt;jmp&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;l17&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;;  L00: goto *jump_table[0+16+1]; //addi 3 16 3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;l01&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;;  L01: reg[1] = 1; //seti 1 2 1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;l02&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;;  L02: reg[2] = 1; //seti 1 1 2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;l03&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r11&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r12&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;imul&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;cmp&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r14&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;sete&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;al&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;;  Grab the flag&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;movzx&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;al&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;;  Move the flag to r15 extends with zeros&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;je&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;l07&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;jmp&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;l08&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;l07&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;add&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r11&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Sixth, Do lots of mini problems. Get a feel for the ownership model. Realize that int,floats act differently than vec,string and box.&lt;/p&gt;
+&lt;p&gt;In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation.&lt;/p&gt;
 
-&lt;p&gt;Seventh, Do “Too Many Linked Lists” and feel like you know nothing again.&lt;/p&gt;
+&lt;p&gt;Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen.&lt;/p&gt;
 
-&lt;p&gt;Eighth Write some bigger stuff and complete what ever you set out to do in the fourth step.&lt;/p&gt;
+&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;[value],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;     
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;; system call for write&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;; file handle 1 is stdout&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;; address of string to output&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rdx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;; number of bytes&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;syscall&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;; invoke operating system to do the write&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;; system call for exit&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;xor&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;; exit code 0&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;syscall&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;; invoke operating system to exit &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Nineth Write a blog article that you survived learning Rust and used it once. Secretly feel insecure about your software skills.&lt;/p&gt;
+&lt;p&gt;All the code can be found on my &lt;a href=&quot;https://github.com/lazydancer/Advent-of-Code-2018/tree/master/Day%2019&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Actually, start at step 5. When you get to step 9 send me a message with the link.&lt;/p&gt;</content><author><name></name></author><summary type="html">From the Stacked Overlow annual survey, rust has had consistant high praise. I thought I would look at it as well. After a few months and a few projects, I believe it deserves its praise.</summary></entry><entry><title type="html">Pathfinding</title><link href="/notes/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/notes/pathfinding</id><content type="html" xml:base="/notes/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
+&lt;h3 id=&quot;2-python-imports&quot;&gt;2. Python Imports&lt;/h3&gt;
+
+&lt;p&gt;Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expressions&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;defaultdict&lt;/strong&gt; - Having a set value for when nothing exist is a very useful feature&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;somedict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somedict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# KeyError
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;someddict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;someddict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# print int(), thus 0
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;copy&lt;/strong&gt; - Because python calls list by reference this is useful to keep things functional&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;copy&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deepcopy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;dequeue&lt;/strong&gt; - A double-ended queue, this is useful for when rotation is needed with a rotate function&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;networkx&lt;/strong&gt; - This was useful for all types of graph equations. Shortest path was used many times&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;networkx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ...adding nodes...
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;networkx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shortest_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;re&lt;/strong&gt; - This is a very popular library I have tried to avoid it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Jamie Zawinski&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now I follow Jeff Atwoods take on &lt;a href=&quot;https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/&quot;&gt;them&lt;/a&gt;. They are amazing but only when you use them sparsely. As an example, the line below grabs the numbers from the a line of text and converts them to integers&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r'-?\d+'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;During the challenge, I read as much as I coded. Reading other peoples code was enlightening. You saw how they approached the problem and what trade-offs they chose.&lt;/p&gt;
+
+&lt;p&gt;Thank you &lt;a href=&quot;http://was.tl/&quot;&gt;Eric Wastl&lt;/a&gt; for creating advent of code and everybody that shared their solutions online. I learned a lot.&lt;/p&gt;</content><author><name></name></author><summary type="html">2019</summary></entry><entry><title type="html">Pathfinding</title><link href="/pathfinding.html" rel="alternate" type="text/html" title="Pathfinding" /><published>2019-05-30T00:00:00-04:00</published><updated>2019-05-30T00:00:00-04:00</updated><id>/pathfinding</id><content type="html" xml:base="/pathfinding.html">&lt;p&gt;I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
 &lt;img src=&quot;../assets/pathfinding/BlockConnect.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
@@ -1077,7 +1341,7 @@ while queue != []:
 
 &lt;p&gt;Thank you for reading.&lt;/p&gt;
 
-&lt;p&gt;If you enjoyed this post, I would recommend checking out my post on &lt;a href=&quot;https://pucula.com/notes/map-colouring.html&quot;&gt;Map Coloring&lt;/a&gt;. Also, I have posted all of the code on &lt;a href=&quot;https://github.com/lazydancer/path-finding&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.</summary></entry><entry><title type="html">Map Colouring</title><link href="/notes/map-colouring.html" rel="alternate" type="text/html" title="Map Colouring" /><published>2019-04-02T00:00:00-04:00</published><updated>2019-04-02T00:00:00-04:00</updated><id>/notes/map-colouring</id><content type="html" xml:base="/notes/map-colouring.html">&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Map_coloring&quot;&gt;Map colouring&lt;/a&gt; is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.&lt;/p&gt;
+&lt;p&gt;If you enjoyed this post, I would recommend checking out my post on &lt;a href=&quot;https://pucula.com/notes/map-colouring.html&quot;&gt;Map Coloring&lt;/a&gt;. Also, I have posted all of the code on &lt;a href=&quot;https://github.com/lazydancer/path-finding&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.</summary></entry><entry><title type="html">Map Colouring</title><link href="/map-colouring.html" rel="alternate" type="text/html" title="Map Colouring" /><published>2019-04-02T00:00:00-04:00</published><updated>2019-04-02T00:00:00-04:00</updated><id>/map-colouring</id><content type="html" xml:base="/map-colouring.html">&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Map_coloring&quot;&gt;Map colouring&lt;/a&gt; is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.&lt;/p&gt;
 
 &lt;div class=&quot;centerImage&quot;&gt;
 &lt;img src=&quot;../assets/map-colouring/English_ceremonial_counties_1998.svg&quot; style=&quot;max-width: 500px;&quot; /&gt; 
@@ -1148,7 +1412,7 @@ while queue != []:
 
 &lt;p&gt;So far it has been interesting on how large NP problems can get and we have to try different algorithms. A good enough solution is much easier to get than a perfect solution. I will continue to write more about this as I go through the class and it looks like there is some possibility of using local search.&lt;/p&gt;
 
-&lt;p&gt;Thank you for reading&lt;/p&gt;</content><author><name></name></author><summary type="html">Map colouring is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</summary></entry><entry><title type="html">Pictures To Text</title><link href="/notes/pictures-to-text.html" rel="alternate" type="text/html" title="Pictures To Text" /><published>2019-03-16T00:00:00-04:00</published><updated>2019-03-16T00:00:00-04:00</updated><id>/notes/pictures-to-text</id><content type="html" xml:base="/notes/pictures-to-text.html">&lt;p&gt;Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on &lt;a href=&quot;https://github.com/lazydancer/pictotxt&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thank you for reading&lt;/p&gt;</content><author><name></name></author><summary type="html">Map colouring is an interesting puzzle where you are looking to assign different colours to different feautures on a map. It was first mentioned in 1852 as a mathamatics problem to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colors were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</summary></entry><entry><title type="html">Pictures To Text</title><link href="/pictures-to-text.html" rel="alternate" type="text/html" title="Pictures To Text" /><published>2019-03-16T00:00:00-04:00</published><updated>2019-03-16T00:00:00-04:00</updated><id>/pictures-to-text</id><content type="html" xml:base="/pictures-to-text.html">&lt;p&gt;Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on &lt;a href=&quot;https://github.com/lazydancer/pictotxt&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot; style=&quot;line-height:1;&quot;&gt;&lt;pre class=&quot;highlight&quot; style=&quot;font-size: 11px;&quot;&gt;&lt;code&gt;.gMBy         
   WgM_        
@@ -1348,7 +1612,56 @@ while queue != []:
   _1P&quot;`    &quot;gg
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Thanks for reading.&lt;/p&gt;</content><author><name></name></author><summary type="html">Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on github.</summary></entry><entry><title type="html">Introduction To Fossil Fuels</title><link href="/notes/introduction-to-fossil-fuels.html" rel="alternate" type="text/html" title="Introduction To Fossil Fuels" /><published>2019-02-22T00:00:00-05:00</published><updated>2019-02-22T00:00:00-05:00</updated><id>/notes/introduction-to-fossil-fuels</id><content type="html" xml:base="/notes/introduction-to-fossil-fuels.html">&lt;p&gt;Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, &lt;strong&gt;87%&lt;/strong&gt; of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.&lt;/p&gt;
+&lt;p&gt;&lt;a style=&quot;padding-left:7px;&quot; href=&quot;https://github.com/lazydancer/pictotxt&quot;&gt;Github »&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tools:&lt;/p&gt;
+&lt;svg fill=&quot;#3776AB&quot; width=&quot;40px&quot; height=&quot;40px&quot; style=&quot;padding-left: 8px;&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; role=&quot;img&quot;&gt;&lt;title&gt;Python&lt;/title&gt;&lt;path d=&quot;M14.31.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.83l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.23l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.24l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05 1.07.13zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22z&quot; /&gt;&lt;path d=&quot;M21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z&quot; /&gt;&lt;/svg&gt;
+
+&lt;p&gt;
+
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;pictotxt&lt;/strong&gt; is a python script which converts an image to text&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/movie.gif&quot; alt=&quot;pictotxt&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;p&gt;Requirements:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Python Image Library (PIL)&lt;/li&gt;
+  &lt;li&gt;Numpy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone git@github.com:lazydancer/pictotxt.git
+cd pictotxt
+pip install -r requirements
+python src/pictotxt.py examples/octocat.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result will be printed on your console/terminal&lt;/p&gt;
+
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;/h2&gt;
+
+&lt;p&gt;Input:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step1.png&quot; alt=&quot;step1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The imported image is split up into ‘character sized’ images.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step2.png&quot; alt=&quot;step2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Split of the font to get individual images of each character&lt;/p&gt;
+
+&lt;p&gt;For each mini-image from the imported image, compare it with all the characters and find the best match with the following function&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step4.png&quot; alt=&quot;step4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step5.png&quot; width=&quot;366&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;</content><author><name></name></author><summary type="html">Converted a picture into text just for fun. To complete this I used jupyter notebook, found below. The code is avaliable on github.</summary></entry><entry><title type="html">Introduction To Fossil Fuels</title><link href="/introduction-to-fossil-fuels.html" rel="alternate" type="text/html" title="Introduction To Fossil Fuels" /><published>2019-02-22T00:00:00-05:00</published><updated>2019-02-22T00:00:00-05:00</updated><id>/introduction-to-fossil-fuels</id><content type="html" xml:base="/introduction-to-fossil-fuels.html">&lt;p&gt;Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, &lt;strong&gt;87%&lt;/strong&gt; of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.&lt;/p&gt;
 
 &lt;p&gt;&lt;span style=&quot;color: rgb(127, 0, 0); font-weight: bold&quot;&gt;Coal&lt;/span&gt;, &lt;span style=&quot;color: rgb(184, 13, 8); font-weight: bold&quot;&gt;Crude Oil&lt;/span&gt; and &lt;span style=&quot;color: rgb(241, 109, 74); font-weight: bold&quot;&gt;Natural Gas&lt;/span&gt;&lt;/p&gt;
 
@@ -1570,6 +1883,179 @@ while queue != []:
 
 &lt;p&gt;Thank you for reading.&lt;/p&gt;
 
+&lt;h2 id=&quot;bonus-map-of-oil-refineries-around-the-world&quot;&gt;Bonus: Map of Oil Refineries Around the World&lt;/h2&gt;
+
+&lt;style&gt;
+#content .map path {
+  fill: #ddd;
+  stroke: #aaa;
+}
+
+#content circle {
+	fill: rgba(0,0,0,0.4);
+}
+
+div.tooltip {
+  color: white;
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: rgba(0,0,0,.8);
+  border: 1px solid black;
+  pointer-events: none;
+}
+
+&lt;/style&gt;
+
+&lt;body&gt;
+  &lt;div id=&quot;content&quot;&gt;
+    &lt;svg width=&quot;800px&quot; height=&quot;400px&quot;&gt;
+      &lt;g class=&quot;map&quot;&gt;&lt;/g&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+
+  &lt;p&gt;source: &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_oil_refineries&quot;&gt;Wikipedia: List of oil refineries&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;I was testing d3js, GEOjson and some javascript code which I found interesting and wanted to share.&lt;/p&gt;
+
+  &lt;p&gt;Oil refineries are the backbone of the world economy, most of our energy generated is from fossil fuels and refineries play an essential role. Currently there are about 660 of them&lt;/p&gt;
+
+  &lt;p&gt;In the chart above I have shown the 10 largest refineries. The largest is in India called the Jamnagar Refinery. It has the capacity of refining 1,240,000 barrels of crude oil per day.&lt;/p&gt;
+
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js&quot;&gt;&lt;/script&gt;
+
+  &lt;script&gt;
+var geojson = {
+  &quot;type&quot;: &quot;FeatureCollection&quot;,
+  &quot;features&quot;: [
+    {
+      &quot;type&quot;: &quot;Feature&quot;,
+      &quot;properties&quot;: {
+        &quot;name&quot;: &quot;Africa&quot;
+      },
+      &quot;geometry&quot;: {
+        &quot;type&quot;: &quot;Polygon&quot;,
+        &quot;coordinates&quot;: [[[-6, 36], [33, 30], [43, 11], [51, 12], [29, -33], [18, -35], [7, 5], [-17, 14], [-6, 36]]]
+      }
+    },
+    {
+      &quot;type&quot;: &quot;Feature&quot;,
+      &quot;properties&quot;: {
+        &quot;name&quot;: &quot;Australia&quot;
+      },
+      &quot;geometry&quot;: {
+        &quot;type&quot;: &quot;Polygon&quot;,
+        &quot;coordinates&quot;: [[[143, -11], [153, -28], [144, -38], [131, -31], [116, -35], [114, -22], [136, -12], [140, -17], [143, -11]]]
+      }
+    },
+    {
+      &quot;type&quot;: &quot;Feature&quot;,
+      &quot;properties&quot;: {
+        &quot;name&quot;: &quot;Timbuktu&quot;
+      },
+      &quot;geometry&quot;: {
+        &quot;type&quot;: &quot;Point&quot;,
+        &quot;coordinates&quot;: [-3.0026, 16.7666]
+      }
+    }
+  ]
+};
+
+var refineries = [
+	{&quot;name&quot;: &quot;Jamnager Refinery&quot;, &quot;location&quot;: &quot;Jamnagar, Gujarat, India&quot;, &quot;production&quot; : 1240000, &quot;coordinates&quot;: [69.52, 22.20]},
+	{&quot;name&quot;: &quot;Paraguana Refinery&quot;, &quot;location&quot;: &quot;Punto Fijo, Falcón, Venezuela&quot;, &quot;production&quot; : 940000, &quot;coordinates&quot;: [-70.11, 11.44]},
+	{&quot;name&quot;: &quot;SK Energy Ulsan Refinery&quot;, &quot;location&quot;: &quot;Ulsan, South Korea&quot;, &quot;production&quot; : 850000, &quot;coordinates&quot;: [129.34, 35.43]},
+	{&quot;name&quot;: &quot;Ruwais Refinery&quot;, &quot;location&quot;: &quot;Ruwais, UAE&quot;, &quot;production&quot; :  	817000, &quot;coordinates&quot;: [52.72, 24.12]},
+	{&quot;name&quot;: &quot;Yeosu Refinery&quot;, &quot;location&quot;: &quot;Yeosu, South Jeolla, South Korea&quot;, &quot;production&quot;: 730000, &quot;coordinates&quot;: [127.75, 34.72]},
+	{&quot;name&quot;: &quot;Onsan Refinery&quot;, &quot;location&quot;: &quot;Ulsan, South Korea&quot;, &quot;production&quot;:  669000, &quot;coordinates&quot;: [129.34, 35.44]},
+	{&quot;name&quot;: &quot;Jurong Island Refinery&quot;, &quot;location&quot;: &quot;Jurong Island, Singapore&quot;, &quot;production&quot;:  605000, &quot;coordinates&quot;: [103.70, 1.27]},
+	{&quot;name&quot;: &quot;Port Arthur Refinery&quot;, &quot;location&quot;: &quot;Port Arthur, Texas, United States&quot;, &quot;production&quot;:  603000, &quot;coordinates&quot;: [-93.57, 29.53]},
+	{&quot;name&quot;: &quot;Galveston Bay Refinery&quot;, &quot;location&quot;: &quot;Texas City, Texas, United States&quot;, &quot;production&quot;:  571000, &quot;coordinates&quot;: [-94.91, 29.40]},
+	{&quot;name&quot;: &quot;Baytown Refinery&quot;, &quot;location&quot;: &quot;Baytown, Texas, United States&quot;, &quot;production&quot;:  560500, &quot;coordinates&quot;: [-95.01, 29.74]},
+	{&quot;name&quot;: &quot;Garyville Refinery&quot;, &quot;location&quot;: &quot;Garyville, Louisiana, United States&quot;, &quot;production&quot;: 556000 , &quot;coordinates&quot;: [-90.36,30.03]},
+	{&quot;name&quot;: &quot;Ras Tanura Refinery&quot;, &quot;location&quot;: &quot;Ras Tanura, Saudi Arabia&quot;, &quot;production&quot;: 550000 , &quot;coordinates&quot;: [50.10,26.39]},
+	{&quot;name&quot;: &quot; 	Baton Rouge Refinery&quot;, &quot;location&quot;: &quot;Baton Rouge, Louisiana, United States&quot;, &quot;production&quot;: 502500, &quot;coordinates&quot;: [-91.10,30.29]},
+	{&quot;name&quot;: &quot;Shell Pulau Bukom Refinery&quot;, &quot;location&quot;: &quot;Bukom Island, Singapore&quot;, &quot;production&quot;:  500000, &quot;coordinates&quot;: [103.45,1.14]},
+	{&quot;name&quot;: &quot;Abadan Refinery&quot;, &quot;location&quot;: &quot;Abadan, Iran&quot;, &quot;production&quot;: 450000 , &quot;coordinates&quot;: [48.18,30.20]},
+
+]
+
+
+
+
+d3.json('../assets/maps/ne_110m_land.json', function(err, json) {
+  createMap(json);
+})
+
+createMap = (geojson) =&gt; {
+
+	var projection = d3.geoMercator()
+	  .fitSize([722, 400], geojson)
+	 
+	var geoGenerator = d3.geoPath()
+	  .projection(projection);
+
+	function update(geojson) {
+	  var u = d3.select('#content g.map')
+	    .selectAll('path')
+	    .data(geojson.features);
+
+	  u.enter()
+	    .append('path')
+	    .attr('d', geoGenerator);
+		
+	  svg = d3.select(&quot;svg&quot;);
+
+	  console.log(svg)
+
+    // Define the div for the tooltip
+    const div = d3
+      .select('body')
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('opacity', 0);
+
+    handleMouseOver = (d, i) =&gt; {
+      div
+        .transition()
+        .duration(200)
+        .style('opacity', 0.9);
+      div
+        .html(d.name + ' - ' + (d.production).toLocaleString('en') + ' barrels per day')
+        .style('left', d3.event.pageX + 10 + 'px')
+        .style('top', d3.event.pageY - 28 + 'px');
+
+    }
+
+    handleMouseOut = (d, i) =&gt; {
+      div
+            .transition()
+            .duration(500)
+            .style('opacity', 0);
+    }
+        
+	  svg.append(&quot;g&quot;)
+	  		.attr(&quot;class&quot;, &quot;bubble&quot;)
+	  	.selectAll(&quot;circle&quot;)
+	  		.data(refineries)
+	  	.enter().append(&quot;circle&quot;)
+	  		.attr(&quot;transform&quot;, d =&gt; &quot;translate(&quot; + projection(d.coordinates) + &quot;)&quot;)
+	  		.attr(&quot;r&quot;, d =&gt; Math.sqrt(d.production/10000))
+        .on('mouseover', handleMouseOver)
+        .on('mouseout', handleMouseOut);
+
+ 
+	}
+
+	update(geojson);
+
+}
+
+  &lt;/script&gt;
+&lt;/body&gt;
 &lt;h4 id=&quot;references&quot;&gt;References&lt;/h4&gt;
 
 &lt;ul&gt;
@@ -1581,209 +2067,334 @@ while queue != []:
   &lt;li&gt;&lt;a href=&quot;http://vaclavsmil.com/2016/12/14/energy-transitions-global-and-national-perspectives-second-expanded-and-updated-edition/&quot;&gt;Vaclav Smil (2017)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy.html&quot;&gt;BP Statistical Review of World Energy&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.ipcc.ch/site/assets/uploads/2018/02/ipcc_wg3_ar5_annex-iii.pdf&quot;&gt;IPCC&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, 87% of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.</summary></entry><entry><title type="html">Advent Of Code 2018</title><link href="/notes/advent-of-code-2018.html" rel="alternate" type="text/html" title="Advent Of Code 2018" /><published>2019-01-04T00:00:00-05:00</published><updated>2019-01-04T00:00:00-05:00</updated><id>/notes/advent-of-code-2018</id><content type="html" xml:base="/notes/advent-of-code-2018.html">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    !
-  -~*~-
-   /!\
-  /%;@\
- o/@,%\o
- /%;`@,\
-o/@'%',\o
-'^^^N^^^`
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Formed over millions of years, fossil fuels are essential to way we live and have greatly improved our standard of living. Today, 87% of the world’s primary energy is from fossil fuels. In this article I will give an overview of these fuel sources.</summary></entry><entry><title type="html">Making A Transistor</title><link href="/making-a-transistor.html" rel="alternate" type="text/html" title="Making A Transistor" /><published>2018-11-19T00:00:00-05:00</published><updated>2018-11-19T00:00:00-05:00</updated><id>/making-a-transistor</id><content type="html" xml:base="/making-a-transistor.html">&lt;p&gt;I recently finished the book CODE - a book on how to build a computer from scratch. The book was awesome and I wanted to learn more about how a physical computer was built
+&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://adventofcode.com/&quot;&gt;Advent of Code&lt;/a&gt; is an annual programming competition to complete 25 challenges in December. It’s a way grow as a programmer, through solving problems and reveiwing others code. In this article I will cover two things I learned about this year and try to convince you to join next years competition.&lt;/p&gt;
+&lt;p&gt;Silicon is great. It's great because it's a semiconductor. Semiconductors are great because we can create interesting properties of how much much energy it takes to release the electron from its orbit and how much energy it takes for an atom to accept an electron.
 
-&lt;h3 id=&quot;1-assembly-language&quot;&gt;1. Assembly Language&lt;/h3&gt;
+&lt;p&gt;This difference between an electron being released and being captured is important and has the name &lt;b&gt;band gap&lt;/b&gt;
+&lt;/p&gt;
 
-&lt;p&gt;I have always be interested in how computers work, &lt;em&gt;see&lt;/em&gt; &lt;a href=&quot;https://pucula.com/notes/making-a-transistor-from-scratch-part-1.html&quot;&gt;building a transistor from scratch&lt;/a&gt;. I have never had the chance to program in assembly. That changed on &lt;a href=&quot;https://adventofcode.com/2018/day/16&quot;&gt;Day 16&lt;/a&gt;, the challenge was to run a new programming language called elf code. Elf code looked almost identical to assembly.&lt;/p&gt;
+&lt;p&gt;When electrons can move we call that electricity. Some material like metal have no band gap meaning that electrons flow easily through them. Insulators there is a band gap and it is difficult.&lt;/p&gt;
 
-&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As seen in the diagram below semicondutors are between conductors and insulators&lt;/p&gt;
 
-&lt;p&gt;The first number is the opcode, which could represent 1 of 16 operations, ‘add’, ‘mul’, ‘mov’. The second and third were inputs and the forth was what register to use for the output.&lt;/p&gt;
+&lt;img src=&quot;../assets/making-a-transistor/351px-Band_filling_diagram.svg.png&quot; /&gt;
 
-&lt;p&gt;First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it.&lt;/p&gt;
+&lt;p&gt;
+&lt;span style=&quot;font-size: 10px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg&lt;/span&gt;
+&lt;/p&gt;
 
-&lt;p&gt;To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware.&lt;/p&gt;
+&lt;p&gt;You can shift this band gap by doping silicon&lt;/p&gt;
 
-&lt;p&gt;Using an intermeddiate step to C, Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17.&lt;/p&gt;
 
-&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      &lt;span class=&quot;k&quot;&gt;jmp&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;l17&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;;  L00: goto *jump_table[0+16+1]; //addi 3 16 3&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;l01&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;;  L01: reg[1] = 1; //seti 1 2 1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;l02&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;;  L02: reg[2] = 1; //seti 1 1 2&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;l03&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r11&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r12&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;imul&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;cmp&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r14&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;sete&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;al&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;;  Grab the flag&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;movzx&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;al&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;;  Move the flag to r15 extends with zeros&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;je&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;l07&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;jmp&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;l08&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;l07&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;add&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r11&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;li&gt;Silicon with &lt;b&gt;boron&lt;/b&gt; atoms is called &lt;b style=&quot;color: #1070CA&quot;&gt;p-type silicon&lt;/b&gt;, where there is a lack of electrons called holes&lt;/li&gt;
+&lt;li&gt;Silicon with &lt;b&gt;phosphorus&lt;/b&gt; atoms is called &lt;b style=&quot;color: #F7D154&quot;&gt;n-type silicon&lt;/b&gt;, where free electrons are added&lt;/li&gt;
 
-&lt;p&gt;In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation.&lt;/p&gt;
+&lt;img src=&quot;../assets/making-a-transistor/psem2.gif&quot; /&gt;
+&lt;img src=&quot;../assets/making-a-transistor/nsem.gif&quot; /&gt;
 
-&lt;p&gt;Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen.&lt;/p&gt;
+&lt;p&gt;
+&lt;span style=&quot;font-size: 10px&quot;&gt;http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/psem2.gif and http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/imgsol/nsem.gif&lt;/span&gt;
 
-&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;[value],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;     
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;; system call for write&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;; file handle 1 is stdout&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;; address of string to output&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rdx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;; number of bytes&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;syscall&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;; invoke operating system to do the write&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;; system call for exit&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;xor&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;; exit code 0&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;syscall&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;; invoke operating system to exit &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;All the code can be found on my &lt;a href=&quot;https://github.com/lazydancer/Advent-of-Code-2018/tree/master/Day%2019&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Lets take a block of p-type silicon and a block of n-type silicon and put them together. 
 
-&lt;h3 id=&quot;2-python-imports&quot;&gt;2. Python Imports&lt;/h3&gt;
+&lt;p&gt;Where they touch electrons will move from n-type material to p-type material. This is because the n-type atoms have less &quot;hold&quot; on there valence electrons and the p-type is &quot;pulling&quot; these electron&lt;/p&gt;
 
-&lt;p&gt;Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expressions&lt;/p&gt;
+&lt;p&gt;Since the n-type lost an electron, it is not balanced and has to many protons. Making the area positively charged. The equilent and opposite for the p-type. In the diagram below, the lighter yellow has a positive charge. 
 
-&lt;p&gt;&lt;strong&gt;defaultdict&lt;/strong&gt; - Having a set value for when nothing exist is a very useful feature&lt;/p&gt;
+&lt;p&gt;
+&lt;svg viewBox=&quot;0 0 420 350&quot; width=&quot;100%&quot;&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; y=&quot;40px&quot; fill=&quot;#1070CA&quot; /&gt; 
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;220px&quot; y=&quot;40px&quot; fill=&quot;#F7D154&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;10px&quot; y=&quot;200px&quot; fill=&quot;#1070CA&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;200px&quot; fill=&quot;#F7D154&quot; /&gt;
+  &lt;rect width=&quot;20px&quot; height=&quot;140px&quot; x=&quot;190px&quot; y=&quot;200px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
+  &lt;rect width=&quot;20px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;200px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
+&lt;/svg&gt;
+&lt;/p&gt;
+&lt;!--
+&lt;p&gt;&lt;img src=&quot;https://www.electronics-tutorials.ws/diode/diode4a.gif&quot; /&gt;
+--&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;somedict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somedict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# KeyError
-&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;someddict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;someddict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# print int(), thus 0
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;copy&lt;/strong&gt; - Because python calls list by reference this is useful to keep things functional&lt;/p&gt;
+&lt;p&gt;This charge causes a magnetic effect due unbalanced charges. The magnetic effect is the opposing effect to the movement of electrons causing an equilibrium at a certain distance&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;copy&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deepcopy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Since we are displacing electrons from there position, this magnetic effect can also be seen as an electrical potential, aka voltage, within the material&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;dequeue&lt;/strong&gt; - A double-ended queue, this is useful for when rotation is needed with a rotate function&lt;/p&gt;
+&lt;p&gt;
+&lt;img margin-top=&quot;20px&quot; width=&quot;100%&quot; src=&quot;../assets/making-a-transistor/pn-junction.png&quot; /&gt;
+&lt;/p&gt;
+&lt;span style=&quot;font-size:10pt&quot;&gt;https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Pn-junction-equilibrium-graphs.png&lt;/span&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;networkx&lt;/strong&gt; - This was useful for all types of graph equations. Shortest path was used many times&lt;/p&gt;
+&lt;p&gt; ---------------- &lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;networkx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# ...adding nodes...
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;networkx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shortest_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;re&lt;/strong&gt; - This is a very popular library I have tried to avoid it.&lt;/p&gt;
+&lt;p&gt;What happens if we try to put electricity though it. 
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;em&gt;Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;First, focus on voltage. Don't worry about current. When you put + on the p-type side it will attract the electrons back into the n-type and if you put electrons on the p-type it will push away the electrons / attached the holes. &lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Jamie Zawinski&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;This causes the number of electrons that are in the other region. Making the voltage to cross the region less. This is what happens when it allows the current to flow. If we change the direction and put the electrons on the n-type. &lt;/p&gt;
 
-&lt;p&gt;Now I follow Jeff Atwoods take on &lt;a href=&quot;https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/&quot;&gt;them&lt;/a&gt;. They are amazing but only when you use them sparsely. As an example, the line below grabs the numbers from the a line of text and converts them to integers&lt;/p&gt;
+&lt;p&gt;It will push away the electrons towards the holes and putting + on the p-type will attract the electrons farther in. This increases the number of electrons in the other region increasing the voltage needed to overcome in the materials. Now it is very difficult for the current to move, it would have to overcome the entire region voltage.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r'-?\d+'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Try out the slider below, if you see electricity can only go one direction. We just made an &lt;b&gt;electrical diode&lt;/b&gt;!&lt;/p&gt;
 
-&lt;p&gt;During the challenge, I read as much as I coded. Reading other peoples code was enlightening. You saw how they approached the problem and what trade-offs they chose.&lt;/p&gt;
+&lt;p&gt;
+&lt;svg viewBox=&quot;0 0 480 300&quot; width=&quot;100%&quot; id=&quot;svgDiode&quot;&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;30px&quot; y=&quot;20px&quot; fill=&quot;#1070CA&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;230px&quot; y=&quot;20px&quot; fill=&quot;#F7D154&quot; /&gt;
+  &lt;rect id=&quot;svgDiode_diffusionArea&quot; width=&quot;40px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;20px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
+  &lt;circle r=&quot;5px&quot; cx=&quot;30px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
+  &lt;circle r=&quot;5px&quot; cx=&quot;430px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
+  &lt;polyline points=&quot;30,90 10,90 10,240 225,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;polyline points=&quot;430,90 450,90 450,240 235,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;polyline id=&quot;svgDiode_leftBattery&quot; points=&quot;225,260 225,220&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;polyline id=&quot;svgDiode_rightBattery&quot; points=&quot;235,250 235,230&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;text x=&quot;215&quot; y=&quot;280&quot; id=&quot;svgDiode_text&quot;&gt;0.1V&lt;/text&gt;
+&lt;/svg&gt;
+&lt;/p&gt;
 
-&lt;p&gt;Thank you &lt;a href=&quot;http://was.tl/&quot;&gt;Eric Wastl&lt;/a&gt; for creating advent of code and everybody that shared their solutions online. I learned a lot.&lt;/p&gt;</content><author><name></name></author><summary type="html">! -~*~- /!\ /%;@\ o/@,%\o /%;`@,\ o/@'%',\o '^^^N^^^`</summary></entry><entry><title type="html">Making A Transistor From Scratch Part 2</title><link href="/notes/making-a-transistor-from-scratch-part-2.html" rel="alternate" type="text/html" title="Making A Transistor From Scratch Part 2" /><published>2018-12-07T00:00:00-05:00</published><updated>2018-12-07T00:00:00-05:00</updated><id>/notes/making-a-transistor-from-scratch-part-2</id><content type="html" xml:base="/notes/making-a-transistor-from-scratch-part-2.html">&lt;p&gt;This is a continuation of Part 1 where we learnt about the importance of silicon, p-type and n-type materials and the theory of a MOSFET transistor. &lt;a href=&quot;https://pucula.com/notes/making-a-transistor-from-scratch-part-1.html&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+ &lt;input type=&quot;range&quot; min=&quot;-5&quot; max=&quot;5&quot; value=&quot;-0.1&quot; step=&quot;0.1&quot; class=&quot;slider&quot; id=&quot;myRange&quot; /&gt;
 
-&lt;p&gt;In this article we will be going from rocks to a transistor&lt;/p&gt;
+ &lt;script&gt;
+    let slider = document.getElementById(&quot;myRange&quot;);
+    let voltage = document.getElementById(&quot;svgDiode_text&quot;)
+    slider.oninput = () =&gt; {
+      voltage.innerHTML = Math.abs(slider.value) + &quot; V&quot;
+      updateBatteryDirection(slider.value)
+      updateDiffusionRegion(slider.value)
+    }
 
-&lt;p&gt;As seen in the last part ultra-pure silicon is necessary to build a transistor. Any contamination to the silicon in a semiconductor changes it properties and causes it to not work.&lt;/p&gt;
+    const updateBatteryDirection = (value) =&gt; {
+      let leftBattery = document.getElementById(&quot;svgDiode_leftBattery&quot;)
+      let rightBattery = document.getElementById(&quot;svgDiode_rightBattery&quot;)
+      if(value &lt; 0){
+        leftBattery.setAttribute('points','225,260 225,220')
+        rightBattery.setAttribute('points','235,250 235,230')
+      } else {
+        leftBattery.setAttribute('points','225,250 225,230')
+        rightBattery.setAttribute('points','235,260 235,220')
+      } 
+    }
 
-&lt;h3 id=&quot;quartz-rock&quot;&gt;Quartz Rock&lt;/h3&gt;
+    const updateDiffusionRegion = (value) =&gt; {
+      let diffusionArea = document.getElementById(&quot;svgDiode_diffusionArea&quot;)
+      
+      diffusionArea.setAttribute('x', 28.5 * value + 210 )
+      diffusionArea.setAttribute('width', -57.14 * value + 40)
+      // 0.7 x = 230 width = 0
+      // 0   x = 210 width = 40
+    }
 
-&lt;p&gt;Our base raw material is quartz rock, a form of silicon dioxide&lt;/p&gt;
+ &lt;/script&gt;
 
-&lt;p&gt;Silicon makes up around 28% by mass of the earth’s crust, the second after oxygen and technically we could use any silicon dioxide, but there is already an ultrapure silicon dioxide called quartzite, a type of quartz rock&lt;/p&gt;
+&lt;p&gt; When you try to push electrons to go backwards, the NP junction pushes back at the same but opposite potential. &lt;/p&gt;
 
-&lt;p&gt;Quartizite was originally sandstone, but it has been deeply buried in the Earth’s crust and cooked at high temperatures and pressures that many impurities have been distilled out and the sand grains completely welded together.&lt;/p&gt;
+&lt;p&gt;------------------&lt;/p&gt;
+
+&lt;p&gt;Okay, now the MOSFET part.&lt;/p&gt;
+
+&lt;p&gt;If you put another n-type material infront of the diode you get a material that doesn't flow any electrity and isn't useful.
+
+
+&lt;svg viewBox=&quot;0 0 680 300&quot; width=&quot;100%&quot; id=&quot;svgTransistor&quot;&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;30px&quot; y=&quot;20px&quot; fill=&quot;#F7D154&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;230px&quot; y=&quot;20px&quot; fill=&quot;#1070CA&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;430px&quot; y=&quot;20px&quot; fill=&quot;#F7D154&quot; /&gt;
+  &lt;rect id=&quot;svgTransistor_diffusionArea&quot; width=&quot;40px&quot; height=&quot;140px&quot; x=&quot;210px&quot; y=&quot;20px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
+  &lt;rect id=&quot;svgTransistor_diffusionArea2&quot; width=&quot;40px&quot; height=&quot;140px&quot; x=&quot;410px&quot; y=&quot;20px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
+  &lt;circle r=&quot;5px&quot; cx=&quot;30px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
+  &lt;circle r=&quot;5px&quot; cx=&quot;630px&quot; cy=&quot;90px&quot; fill=&quot;black&quot; /&gt;
+  &lt;polyline points=&quot;30,90 10,90 10,240 225,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;polyline points=&quot;630,90 650,90 650,240 235,240&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;polyline id=&quot;svgTransistor_leftBattery&quot; points=&quot;225,260 225,220&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;polyline id=&quot;svgTransistor_rightBattery&quot; points=&quot;235,250 235,230&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;text x=&quot;215&quot; y=&quot;280&quot; id=&quot;svgTransistor_text&quot;&gt;0.1V&lt;/text&gt;
+&lt;/svg&gt;
+ 
+ &lt;input type=&quot;range&quot; min=&quot;-5&quot; max=&quot;5&quot; value=&quot;0&quot; step=&quot;0.1&quot; class=&quot;slider&quot; id=&quot;transistor_myRange&quot; /&gt;
+ 
+  &lt;script&gt; 
+    let bslider = document.getElementById(&quot;transistor_myRange&quot;);
+    let bvoltage = document.getElementById(&quot;svgTransistor_text&quot;)
+    bslider.oninput = () =&gt; {
+      bvoltage.innerHTML = Math.abs(bslider.value) + &quot; V&quot;
+      bupdateBatteryDirection(bslider.value)
+      bupdateDiffusionRegion(bslider.value)
+      bupdateDiffusionRegion2(bslider.value)
+    }
+ 
+    const bupdateBatteryDirection = (value) =&gt; {
+      let leftBattery = document.getElementById(&quot;svgTransistor_leftBattery&quot;)
+      let rightBattery = document.getElementById(&quot;svgTransistor_rightBattery&quot;)
+      if(value &gt; 0){
+        leftBattery.setAttribute('points','225,260 225,220')
+        rightBattery.setAttribute('points','235,250 235,230')
+      } else {
+  leftBattery.setAttribute('points','225,250 225,230')
+        rightBattery.setAttribute('points','235,260 235,220')
+      } 
+    }
+
+    const bupdateDiffusionRegion = (value) =&gt; {
+      let diffusionArea = document.getElementById(&quot;svgTransistor_diffusionArea&quot;)
+      
+      diffusionArea.setAttribute('x', 28.5 * value + 210 )
+      diffusionArea.setAttribute('width', -57.14 * value + 40)
+      // 0.7 x = 230 width = 0
+      // 0   x = 210 width = 40
+    }
+
+ const bupdateDiffusionRegion2 = (value) =&gt; {
+      let diffusionArea = document.getElementById(&quot;svgTransistor_diffusionArea2&quot;)
+      
+      diffusionArea.setAttribute('x', -28.5 * value + 410 )
+      diffusionArea.setAttribute('width', 57.14 * value + 40)
+
+}
+
+  &lt;/script&gt;
+
+
+
+
+&lt;p&gt;Put a connector on the base. But not directly on the base but close enough that the magnetic field effects the material but electrons moving between is not possible. Usally an Oxide.
+
+&lt;p&gt;Aside: this is how the MOSFET = Metal-Oxide-Silicon Field-Effect Transistor gets it's name  
+
+&lt;p&gt;Now when you apply a voltage to the base connected the the p-type it attracts the electrons close to the connection to the gate. And when enough electrons are near the top.&lt;/p&gt;
+
+
+
+&lt;button onclick=&quot;toggleMOSFET()&quot;&gt; Toggle &lt;/button&gt;
+
+&lt;span&gt; Status: &lt;/span&gt;
+&lt;span id=&quot;MOSFET_status&quot; style=&quot;color:green&quot;&gt;ON&lt;/span&gt;
+
+&lt;p&gt;
+&lt;svg viewBox=&quot;0 0 720 400&quot; width=&quot;100%&quot; id=&quot;svgMOSFET&quot;&gt;
+  &lt;rect width=&quot;200&quot; height=&quot;15&quot; x=&quot;230&quot; y=&quot;140&quot; fill=&quot;black&quot; /&gt;
+  &lt;polyline points=&quot;330,140 330,0&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;4px&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;30px&quot; y=&quot;170px&quot; fill=&quot;#F7D154&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;230px&quot; y=&quot;170px&quot; fill=&quot;#1070CA&quot; /&gt;
+  &lt;rect width=&quot;200px&quot; height=&quot;140px&quot; x=&quot;430px&quot; y=&quot;170px&quot; fill=&quot;#F7D154&quot; /&gt;
+  &lt;rect id=&quot;svgMOSFET_diffusionArea&quot; width=&quot;200px&quot; height=&quot;20px&quot; x=&quot;230px&quot; y=&quot;170px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
+  &lt;rect id=&quot;svgMOSFET_diffusionArea2&quot; width=&quot;200px&quot; height=&quot;100px&quot; x=&quot;230px&quot; y=&quot;170px&quot; fill=&quot;white&quot; opacity=&quot;0.5&quot; /&gt;
+  
+&lt;/svg&gt;
+&lt;/p&gt;
+
+ &lt;script&gt; 
+
+    const toggleMOSFET = () =&gt; {
+      let status = document.getElementById(&quot;MOSFET_status&quot;);
+
+      let firstLayer = document.getElementById(&quot;svgMOSFET_diffusionArea&quot;)
+      let secondLayer = document.getElementById(&quot;svgMOSFET_diffusionArea2&quot;)
+
+      if(status.innerHTML === &quot;ON&quot;){
+        firstLayer.setAttribute('fill','none')
+        secondLayer.setAttribute('fill','none')
+        status.innerHTML = 'OFF'
+        status.setAttribute('style','color: red')
+      } else {
+        firstLayer.setAttribute('fill','white')
+        secondLayer.setAttribute('fill','white')
+        status.innerHTML = 'ON'
+        status.setAttribute('style','color: green')
+      }
+    }
+
+ &lt;/script&gt;
+
+
+&lt;p&gt;This breaks the np junction. Now that there is this base most the voltage potential is from the top to the bottom and not left to right. The electrons can move with little trouble&lt;/p&gt;
+
+&lt;p&gt;In channel is formed that allows electrons to easily pass. There is no - and + difference to pass. Electrons can pass through without a change from - and +. This is called an n-channel.&lt;/p&gt;
+
+
+### Quartz Rock
+
+Our base raw material is quartz rock, a form of silicon dioxide 
+
+Silicon makes up around 28% by mass of the earth's crust, the second after oxygen and technically we could use any silicon dioxide, but there is already an ultrapure silicon dioxide called quartzite, a type of quartz rock
+
+Quartizite was originally sandstone, but it has been deeply buried in the Earth's crust and cooked at high temperatures and pressures that many impurities have been distilled out and the sand grains completely welded together.
 
 &lt;p&gt;
 &lt;img src=&quot;../assets/making-a-transistor/Quartzite.jpg&quot; style=&quot;max-width: 480px; width: 100%&quot; /&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt;https://commons.wikimedia.org/wiki/File:Quartzite_Solli%C3%A8res.jpg&lt;/span&gt;&lt;/p&gt;
+&lt;span style=&quot;font-size:12px&quot;&gt;https://commons.wikimedia.org/wiki/File:Quartzite_Solli%C3%A8res.jpg&lt;/span&gt;
 
-&lt;h3 id=&quot;metallugical-silicon&quot;&gt;Metallugical Silicon&lt;/h3&gt;
 
-&lt;p&gt;The next step is to remove all of the oxygen present in silicon dioxide. This can be done though the following reaction&lt;/p&gt;
+### Metallugical Silicon
 
-&lt;p&gt;2SiO2 + 2C -&amp;gt; Si + 2CO&lt;/p&gt;
+The next step is to remove all of the oxygen present in silicon dioxide. This can be done though the following reaction
 
-&lt;p&gt;The process occurs in an electric arc furnance to a temperature of 2,000C and the quartz is mixed with highly pure coke. Coke is a highly pure carbon fuel made by heating coal in the absensce of air.&lt;/p&gt;
+2SiO2 + 2C -&amp;gt; Si + 2CO
 
-&lt;p&gt;This processs is know as a carbothermal reduction of silicon dioxide.&lt;/p&gt;
+The process occurs in an electric arc furnance to a temperature of 2,000C and the quartz is mixed with highly pure coke. Coke is a highly pure carbon fuel made by heating coal in the absensce of air. 
 
-&lt;p&gt;With the reaction above, there is a good chance of silicon carbide, SiC, forming. Excess SiO2 is used to help prevent this forming a secondary reaction.&lt;/p&gt;
+This processs is know as a carbothermal reduction of silicon dioxide.
 
-&lt;p&gt;2 SiC + SiO2 -&amp;gt; 3Si + 2CO&lt;/p&gt;
+With the reaction above, there is a good chance of silicon carbide, SiC, forming. Excess SiO2 is used to help prevent this forming a secondary reaction.
 
-&lt;p&gt;Now we have silicon with up to 99% purity but we are looking up to have “eleven nines” purity or 99.999999999%.&lt;/p&gt;
+2 SiC + SiO2 -&amp;gt; 3Si + 2CO
 
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Silicon#Metallurgical_grade&quot;&gt;Silicon wikipedia&lt;/a&gt;&lt;/p&gt;
+Now we have silicon with up to 99% purity but we are looking up to have &quot;eleven nines&quot; purity or 99.999999999%.
 
-&lt;h3 id=&quot;ultra-pure-silicon-poly-silicon&quot;&gt;Ultra Pure Silicon (poly-silicon)&lt;/h3&gt;
+[Silicon wikipedia](https://en.wikipedia.org/wiki/Silicon#Metallurgical_grade)
 
-&lt;p&gt;The next step is to remove the contaniments to get an ultra pure silicon we are looking for.&lt;/p&gt;
+### Ultra Pure Silicon (poly-silicon)
 
-&lt;p&gt;The silicon is reacted with hydrogen chloride gas to form triclorosilane (SiHCl2)&lt;/p&gt;
+The next step is to remove the contaniments to get an ultra pure silicon we are looking for. 
 
-&lt;p&gt;Si + 3 HCl → HCl3Si + H2&lt;/p&gt;
+The silicon is reacted with hydrogen chloride gas to form triclorosilane (SiHCl2)
 
-&lt;p&gt;Reduced to very pure solution by reacting it with hydrogen at high temperatures&lt;/p&gt;
+Si + 3 HCl → HCl3Si + H2
 
-&lt;p&gt;HSiCl3 → Si + HCl + Cl2&lt;/p&gt;
+Reduced to very pure solution by reacting it with hydrogen at high temperatures
 
-&lt;p&gt;Or triclorosilane can be converted to silicon tetrachloride, SiCl4, in a hydrogenation reactor and reduced by vapor phase epitaxy with hydrogen&lt;/p&gt;
+HSiCl3 → Si + HCl + Cl2
 
-&lt;p&gt;SiCl4 + 2H2 -&amp;gt; Si + 4HCl&lt;/p&gt;
+Or triclorosilane can be converted to silicon tetrachloride, SiCl4, in a hydrogenation reactor and reduced by vapor phase epitaxy with hydrogen
 
-&lt;p&gt;Depending on specifics of the cost, both process are used.&lt;/p&gt;
+SiCl4 + 2H2 -&amp;gt; Si + 4HCl
+
+Depending on specifics of the cost, both process are used.
 
 &lt;p&gt;
 &lt;img src=&quot;../assets/making-a-transistor/PolySilicon.jpg&quot; style=&quot;max-width: 480px; width: 100%;&quot; /&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt;http://images-of-elements.com/silicon.jpg&lt;/span&gt;&lt;/p&gt;
+&lt;span style=&quot;font-size:12px&quot;&gt;http://images-of-elements.com/silicon.jpg&lt;/span&gt;
 
-&lt;h3 id=&quot;single-crystal-silicon-mono-silicon&quot;&gt;Single crystal silicon (mono-silicon)&lt;/h3&gt;
 
-&lt;p&gt;In a process called the Czochralski process the poly-silicon which contains mulitple crystals of silicon will be transformed into a single crystal&lt;/p&gt;
+### Single crystal silicon (mono-silicon)
 
-&lt;p&gt;&lt;img src=&quot;../assets/making-a-transistor/Schematic_of_allotropic_forms_of_silcon.svg.png&quot; height=&quot;400px&quot; /&gt;&lt;/p&gt;
+In a process called the Czochralski process the poly-silicon which contains mulitple crystals of silicon will be transformed into a single crystal
 
-&lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Schematic_of_allotropic_forms_of_silcon.svg/800px-Schematic_of_allotropic_forms_of_silcon.svg.png&lt;/span&gt;&lt;/p&gt;
+&lt;img src=&quot;../assets/making-a-transistor/Schematic_of_allotropic_forms_of_silcon.svg.png&quot; height=&quot;400px&quot; /&gt;    
 
-&lt;p&gt;A seed crystal is dipped into liquid pure silicon and slowly raised and rotated built the single cystal ingot of pure silicon.&lt;/p&gt;
+&lt;span style=&quot;font-size:12px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Schematic_of_allotropic_forms_of_silcon.svg/800px-Schematic_of_allotropic_forms_of_silcon.svg.png&lt;/span&gt;
 
-&lt;p&gt;As the crystal is being formed some containimates are pushed out if the contanimates aren’t able to fit in that structure. This called zone refining&lt;/p&gt;
+A seed crystal is dipped into liquid pure silicon and slowly raised and rotated built the single cystal ingot of pure silicon.
 
-&lt;h3 id=&quot;wafer&quot;&gt;Wafer&lt;/h3&gt;
+As the crystal is being formed some containimates are pushed out if the contanimates aren't able to fit in that structure. This called zone refining
 
-&lt;p&gt;The ingot is sliced into wafer by a diamonded edged saw and cleaned to specifications.&lt;/p&gt;
+### Wafer
 
-&lt;p&gt;&lt;img src=&quot;../assets/making-a-transistor/1024px-Siliziumwafer.JPG&quot; style=&quot;max-width:420px; width:100%;&quot; /&gt;&lt;/p&gt;
+The ingot is sliced into wafer by a diamonded edged saw and cleaned to specifications.
 
-&lt;p&gt;&lt;span style=&quot;font-size:12px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Siliziumwafer.JPG/1024px-Siliziumwafer.JPG&lt;/span&gt;&lt;/p&gt;
+&lt;img src=&quot;../assets/making-a-transistor/1024px-Siliziumwafer.JPG&quot; style=&quot;max-width:420px; width:100%;&quot; /&gt;
 
-&lt;h3 id=&quot;transistor&quot;&gt;Transistor&lt;/h3&gt;
+&lt;span style=&quot;font-size:12px&quot;&gt; https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Siliziumwafer.JPG/1024px-Siliziumwafer.JPG&lt;/span&gt;
 
-&lt;p&gt;There are many types of transistors because of space, efficency and cost the metal-oxide-semiconductor FET (MOSFET) is currently the most used.&lt;/p&gt;
+### Transistor
 
-&lt;p&gt;In this part we are going to look how it is built. Under each slide there are details on how it completed.&lt;/p&gt;
+There are many types of transistors because of space, efficency and cost the metal-oxide-semiconductor FET (MOSFET) is currently the most used.
+
+In this part we are going to look how it is built. Under each slide there are details on how it completed.
 
 &lt;div class=&quot;slideShow&quot; style=&quot;padding: 20px&quot;&gt;
 
@@ -2832,6 +3443,8 @@ o/@'%',\o
 .slide {height: 603px;}
 &lt;/style&gt;
 
+
+
 &lt;script&gt;
 
 var slideIndex = 0
@@ -2862,181 +3475,184 @@ showSlide()
 
 &lt;/script&gt;
 
-&lt;p&gt;&lt;button onclick=&quot;back()&quot;&gt;Back&lt;/button&gt;
-&lt;button onclick=&quot;next()&quot;&gt;Next&lt;/button&gt;&lt;/p&gt;
+&lt;button onclick=&quot;back()&quot;&gt;Back&lt;/button&gt;
+&lt;button onclick=&quot;next()&quot;&gt;Next&lt;/button&gt;
 
-&lt;p&gt;Thank you for reading. I enjoyed making this summary and learnt so much.&lt;/p&gt;
+Thank you for reading. I enjoyed making this summary and learnt so much.
+&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I recently finished the book CODE - a book on how to build a computer from scratch. The book was awesome and I wanted to learn more about how a physical computer was built</summary></entry><entry><title type="html">Rocket Or Tower</title><link href="/rocket-or-tower.html" rel="alternate" type="text/html" title="Rocket Or Tower" /><published>2018-08-01T00:00:00-04:00</published><updated>2018-08-01T00:00:00-04:00</updated><id>/rocket-or-tower</id><content type="html" xml:base="/rocket-or-tower.html">&lt;p&gt;Recently I started working on &lt;a href=&quot;https://fast.ai&quot;&gt;fast.ai&lt;/a&gt;, this is my attempt at creating a network.&lt;/p&gt;
 
-&lt;p&gt;In the next post I will be using this to make a NAND gate which will be the final step to getting to the point where it become binary logic&lt;/p&gt;
+&lt;h2&gt;Attempt One&lt;/h2&gt;
 
-&lt;p&gt;If you are interested in this post keep up to date by following me on Twitter &lt;a href=&quot;https://twitter.com/lazydancr&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This is a continuation of Part 1 where we learnt about the importance of silicon, p-type and n-type materials and the theory of a MOSFET transistor. Link</summary></entry><entry><title type="html">Oil Refineries Around The World</title><link href="/notes/oil-refineries-around-the-world.html" rel="alternate" type="text/html" title="Oil Refineries Around The World" /><published>2018-11-30T00:00:00-05:00</published><updated>2018-11-30T00:00:00-05:00</updated><id>/notes/oil-refineries-around-the-world</id><content type="html" xml:base="/notes/oil-refineries-around-the-world.html">&lt;style&gt;
-#content .map path {
-  fill: #ddd;
-  stroke: #aaa;
-}
+&lt;p&gt;My training set contains 10 rockets and 10 towers&lt;/p&gt;
 
-#content circle {
-	fill: rgba(0,0,0,0.4);
-}
+&lt;p&gt;&lt;img src=&quot;../assets/rocket-or-tower/tower.png&quot; /&gt;&lt;/p&gt;
 
-div.tooltip {
-  color: white;
-  position: absolute;
-  text-align: center;
-  width: 100px;
-  height: 60px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: rgba(0,0,0,.8);
-  border: 1px solid black;
-  pointer-events: none;
-}
+&lt;p&gt;Using the the 3 line program from the fast.ai library for the precompiled model &lt;a href=&quot;https://github.com/KaimingHe/deep-residual-networks&quot;&gt;resnet&lt;/a&gt;
 
-&lt;/style&gt;
+&lt;pre&gt;&lt;code&gt;
+arch=resnet34
+data = ImageClassifierData.from_paths(PATH, tfms=tfms_from_model(arch, sz))
+learn = ConvLearner.pretrained(arch, data, precompute=True)
+learn.fit(0.01, 5)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;body&gt;
-  &lt;div id=&quot;content&quot;&gt;
-    &lt;svg width=&quot;800px&quot; height=&quot;400px&quot;&gt;
-      &lt;g class=&quot;map&quot;&gt;&lt;/g&gt;
-    &lt;/svg&gt;
-  &lt;/div&gt;
+&lt;p&gt;0 is more rocket-like, 1 is more building-like&lt;/p&gt;
 
-  &lt;p&gt;source: &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_oil_refineries&quot;&gt;Wikipedia: List of oil refineries&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;With having only 10 examples of each. It is amazing how well it did. Only misclassifing the CN tower just barely to being a rocket
 
-  &lt;p&gt;I was testing d3js, GEOjson and some javascript code which I found interesting and wanted to share.&lt;/p&gt;
+&lt;img src=&quot;../assets/rocket-or-tower/result.png&quot; width=&quot;722px&quot; /&gt;
 
-  &lt;p&gt;Oil refineries are the backbone of the world economy, most of our energy generated is from fossil fuels and refineries play an essential role. Currently there are about 660 of them&lt;/p&gt;
+&lt;h2&gt;Attempt Two&lt;/h2&gt;
 
-  &lt;p&gt;In the chart above I have shown the 10 largest refineries. The largest is in India called the Jamnagar Refinery. It has the capacity of refining 1,240,000 barrels of crude oil per day.&lt;/p&gt;
+&lt;p&gt;I added a lot more photos to about 300 each for training and 15 for the validation
 
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;This time adding data augmentation, variable learning rate and unfreezing the model
 
-  &lt;script&gt;
-var geojson = {
-  &quot;type&quot;: &quot;FeatureCollection&quot;,
-  &quot;features&quot;: [
-    {
-      &quot;type&quot;: &quot;Feature&quot;,
-      &quot;properties&quot;: {
-        &quot;name&quot;: &quot;Africa&quot;
-      },
-      &quot;geometry&quot;: {
-        &quot;type&quot;: &quot;Polygon&quot;,
-        &quot;coordinates&quot;: [[[-6, 36], [33, 30], [43, 11], [51, 12], [29, -33], [18, -35], [7, 5], [-17, 14], [-6, 36]]]
-      }
-    },
-    {
-      &quot;type&quot;: &quot;Feature&quot;,
-      &quot;properties&quot;: {
-        &quot;name&quot;: &quot;Australia&quot;
-      },
-      &quot;geometry&quot;: {
-        &quot;type&quot;: &quot;Polygon&quot;,
-        &quot;coordinates&quot;: [[[143, -11], [153, -28], [144, -38], [131, -31], [116, -35], [114, -22], [136, -12], [140, -17], [143, -11]]]
-      }
-    },
-    {
-      &quot;type&quot;: &quot;Feature&quot;,
-      &quot;properties&quot;: {
-        &quot;name&quot;: &quot;Timbuktu&quot;
-      },
-      &quot;geometry&quot;: {
-        &quot;type&quot;: &quot;Point&quot;,
-        &quot;coordinates&quot;: [-3.0026, 16.7666]
-      }
-    }
-  ]
-};
+&lt;h3&gt;Data Augmentation&lt;/h3&gt;
 
-var refineries = [
-	{&quot;name&quot;: &quot;Jamnager Refinery&quot;, &quot;location&quot;: &quot;Jamnagar, Gujarat, India&quot;, &quot;production&quot; : 1240000, &quot;coordinates&quot;: [69.52, 22.20]},
-	{&quot;name&quot;: &quot;Paraguana Refinery&quot;, &quot;location&quot;: &quot;Punto Fijo, Falcón, Venezuela&quot;, &quot;production&quot; : 940000, &quot;coordinates&quot;: [-70.11, 11.44]},
-	{&quot;name&quot;: &quot;SK Energy Ulsan Refinery&quot;, &quot;location&quot;: &quot;Ulsan, South Korea&quot;, &quot;production&quot; : 850000, &quot;coordinates&quot;: [129.34, 35.43]},
-	{&quot;name&quot;: &quot;Ruwais Refinery&quot;, &quot;location&quot;: &quot;Ruwais, UAE&quot;, &quot;production&quot; :  	817000, &quot;coordinates&quot;: [52.72, 24.12]},
-	{&quot;name&quot;: &quot;Yeosu Refinery&quot;, &quot;location&quot;: &quot;Yeosu, South Jeolla, South Korea&quot;, &quot;production&quot;: 730000, &quot;coordinates&quot;: [127.75, 34.72]},
-	{&quot;name&quot;: &quot;Onsan Refinery&quot;, &quot;location&quot;: &quot;Ulsan, South Korea&quot;, &quot;production&quot;:  669000, &quot;coordinates&quot;: [129.34, 35.44]},
-	{&quot;name&quot;: &quot;Jurong Island Refinery&quot;, &quot;location&quot;: &quot;Jurong Island, Singapore&quot;, &quot;production&quot;:  605000, &quot;coordinates&quot;: [103.70, 1.27]},
-	{&quot;name&quot;: &quot;Port Arthur Refinery&quot;, &quot;location&quot;: &quot;Port Arthur, Texas, United States&quot;, &quot;production&quot;:  603000, &quot;coordinates&quot;: [-93.57, 29.53]},
-	{&quot;name&quot;: &quot;Galveston Bay Refinery&quot;, &quot;location&quot;: &quot;Texas City, Texas, United States&quot;, &quot;production&quot;:  571000, &quot;coordinates&quot;: [-94.91, 29.40]},
-	{&quot;name&quot;: &quot;Baytown Refinery&quot;, &quot;location&quot;: &quot;Baytown, Texas, United States&quot;, &quot;production&quot;:  560500, &quot;coordinates&quot;: [-95.01, 29.74]},
-	{&quot;name&quot;: &quot;Garyville Refinery&quot;, &quot;location&quot;: &quot;Garyville, Louisiana, United States&quot;, &quot;production&quot;: 556000 , &quot;coordinates&quot;: [-90.36,30.03]},
-	{&quot;name&quot;: &quot;Ras Tanura Refinery&quot;, &quot;location&quot;: &quot;Ras Tanura, Saudi Arabia&quot;, &quot;production&quot;: 550000 , &quot;coordinates&quot;: [50.10,26.39]},
-	{&quot;name&quot;: &quot; 	Baton Rouge Refinery&quot;, &quot;location&quot;: &quot;Baton Rouge, Louisiana, United States&quot;, &quot;production&quot;: 502500, &quot;coordinates&quot;: [-91.10,30.29]},
-	{&quot;name&quot;: &quot;Shell Pulau Bukom Refinery&quot;, &quot;location&quot;: &quot;Bukom Island, Singapore&quot;, &quot;production&quot;:  500000, &quot;coordinates&quot;: [103.45,1.14]},
-	{&quot;name&quot;: &quot;Abadan Refinery&quot;, &quot;location&quot;: &quot;Abadan, Iran&quot;, &quot;production&quot;: 450000 , &quot;coordinates&quot;: [48.18,30.20]},
+&lt;p&gt;Modify the image slightly to known effects of a camera. This is transformations that shift, zoom and flip the images. These are fed into the learning like any other image
 
-]
+&lt;pre&gt;&lt;code&gt;tfms = tfms_from_model(resnet34, sz, aug_tfms=transforms_side_on, max_zoom=1.1)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;img src=&quot;../assets/rocket-or-tower/aug.png&quot; /&gt;
 
 
+&lt;h3&gt;Stochastic Gradient Descent with Restarts&lt;/h3&gt;
 
+&lt;p&gt;When a network is learning a function. It needs to start off high and reduce to gain more accuracy. This is included but also is restarted every epoch. This helps generalize the network, by trying avoiding narrow minimums. Creating a learning rate like this...
 
-d3.json('../assets/maps/ne_110m_land.json', function(err, json) {
-  createMap(json);
-})
+&lt;img src=&quot;../assets/rocket-or-tower/learning.png&quot; /&gt;
 
-createMap = (geojson) =&gt; {
+&lt;p&gt;This is improved a little bit more by slowing down the learning rate on the later epochs.
 
-	var projection = d3.geoMercator()
-	  .fitSize([722, 400], geojson)
-	 
-	var geoGenerator = d3.geoPath()
-	  .projection(projection);
+&lt;img src=&quot;../assets/rocket-or-tower/learning2.png&quot; /&gt;
 
-	function update(geojson) {
-	  var u = d3.select('#content g.map')
-	    .selectAll('path')
-	    .data(geojson.features);
+&lt;h3&gt;Training the precomputed Model&lt;/h3&gt;
 
-	  u.enter()
-	    .append('path')
-	    .attr('d', geoGenerator);
-		
-	  svg = d3.select(&quot;svg&quot;);
+&lt;p&gt;Before training was done on the last few layers. This opens the begining layers. Also much lower learning rates are used in decreasing order to the earlier layers
 
-	  console.log(svg)
+&lt;pre&gt;&lt;code&gt;  learn.unfreeze()
+lr=np.array([1e-4,1e-3,1e-2])
+learn.fit(lr, 3, cycle_len=1, cycle_mult=2)&lt;/code&gt;&lt;/pre&gt;
 
-    // Define the div for the tooltip
-    const div = d3
-      .select('body')
-      .append('div')
-      .attr('class', 'tooltip')
-      .style('opacity', 0);
+&lt;h3&gt;Result&lt;/h3&gt;
 
-    handleMouseOver = (d, i) =&gt; {
-      div
-        .transition()
-        .duration(200)
-        .style('opacity', 0.9);
-      div
-        .html(d.name + ' - ' + (d.production).toLocaleString('en') + ' barrels per day')
-        .style('left', d3.event.pageX + 10 + 'px')
-        .style('top', d3.event.pageY - 28 + 'px');
+&lt;p&gt;96.6% accuracy. With one error in classification
 
-    }
+&lt;pre&gt;&lt;code&gt;  plot_confusion_matrix(cm, data.classes)&lt;/code&gt;&lt;/pre&gt;
 
-    handleMouseOut = (d, i) =&gt; {
-      div
-            .transition()
-            .duration(500)
-            .style('opacity', 0);
-    }
-        
-	  svg.append(&quot;g&quot;)
-	  		.attr(&quot;class&quot;, &quot;bubble&quot;)
-	  	.selectAll(&quot;circle&quot;)
-	  		.data(refineries)
-	  	.enter().append(&quot;circle&quot;)
-	  		.attr(&quot;transform&quot;, d =&gt; &quot;translate(&quot; + projection(d.coordinates) + &quot;)&quot;)
-	  		.attr(&quot;r&quot;, d =&gt; Math.sqrt(d.production/10000))
-        .on('mouseover', handleMouseOver)
-        .on('mouseout', handleMouseOut);
+&lt;img src=&quot;../assets/rocket-or-tower/confusion.png&quot; /&gt;
 
- 
-	}
+&lt;p&gt;Below it the images it was most uncertain of including the incorrect labeling of the rocket on the bottom left
 
-	update(geojson);
+&lt;img src=&quot;../assets/rocket-or-tower/result2.png&quot; width=&quot;722px&quot; /&gt;
 
-}
+&lt;p&gt;Thank you&lt;/p&gt;
+&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Recently I started working on fast.ai, this is my attempt at creating a network.</summary></entry><entry><title type="html">Automatic Paintball Turret</title><link href="/automatic-paintball-turret.html" rel="alternate" type="text/html" title="Automatic Paintball Turret" /><published>2017-09-01T00:00:00-04:00</published><updated>2017-09-01T00:00:00-04:00</updated><id>/automatic-paintball-turret</id><content type="html" xml:base="/automatic-paintball-turret.html">&lt;p&gt;For a mechatronics university course, we had a project to combine our electrical and mechanical knowledge. It was a very broad scope. Our team decided to make an automatic paintball turret, where it would autonomously track and shoot an object. Given how much we spend on it, it worked suprisingly well. In this article, I would like show you a brief overview on what we built and the things we learned.&lt;/p&gt;
 
-  &lt;/script&gt;
-&lt;/body&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
+&lt;p&gt;We broke the work into 2 parts&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Mechanical&lt;/strong&gt;, which would hold the paintball gun and be able to move it around. It needed to rotate in 3D space, around 90 deg field of view is good enough&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Software&lt;/strong&gt; for us to know how to move the turret and when it knows to shoot. This was more on the electronics and software side.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;mechanical&quot;&gt;Mechanical&lt;/h2&gt;
+
+&lt;p&gt;In order for the system to orient itself to aim at targets within it’s range, two rotational degrees of freedom were required. The first degree of freedom, a rotation about the vertical axis, will be referred to as pan. This aims the barrel of the paintball gun left or right. The second degree of freedom, a rotation about the horizontal axis, will be referred to as tilt. This aims the barrel of the gun up or down. To achieve these degrees of freedom, two motors were required to power the system. To avoid gear alignment and the need for optical encoders, direct drive servo motors were desirable.&lt;/p&gt;
+
+&lt;p&gt;For a smooth pan rotation, it was desirable to remove any axial loads acting on the pan motor. For this reason, the weight of the assembly was supported on a large lazy susan bearing oriented for pan rotation. This lazy susan was rated well over the required weight and the square shape made for very easy mounting. The motor was mounted underneath in a non-load- bearing method.&lt;/p&gt;
+
+&lt;p&gt;For a smooth tilt rotation, two lubricated bearings were selected to bear any radial loads due to weight, inertia, and recoil that would otherwise transfer directly to the motor. These bearings were sealed to prevent the possible intrusion of paint or dirt and flanged to make for easier mounting. An affordable half inch rod was selected to support all loads. To mount the motor to the shaft, horns were employed to simplify construction and minimize cost of the prototype.&lt;/p&gt;
+
+&lt;p&gt;The housing was made out of ½” plywood. This selection made manufacturing simple, eliminated the need for a machine shop, and kept the housing relatively light. Before mounting the horns to the housing, the housing was suspended and with the use of a plumb the center of gravity was found to make the movement as smooth as possible. The entire assembly was mounted on a tripod constructed of ¾” schedule 40 steel piping. This allowed for flexibility in design with readily available materials. The weight of the tripod also provided for a low and stable centre of gravity. If additional mass was required the piping could be filled with sand.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-|- (Gun) -|-
+ |         |
+ -----------
+ (Lazy Susan)
+ ------------
+   (Tripod)
+   /  |   \
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;p&gt;Camera -&amp;gt; Computer -&amp;gt; Arduino -&amp;gt; Stepper Controller -&amp;gt; Stepper Motors -&amp;gt; Turret&lt;/p&gt;
+
+&lt;p&gt;We used a webcam which was attached to the base of the paintball gun holder. The camera data was sent to the computer over usb. The compyter was runing a python program with opencv library. The opencv did the heavy lifting of finding a color and selecting the “glob” with the most area of the camera and found the center, this was the target. We then sent the information to the arduino which converted the message to the stepper motors changing the direction of the paintball gun.&lt;/p&gt;
+
+&lt;p&gt;The motor control system receives its input from either the video processing system or the joystick. An Arduino microcontroller receives serial position information over a USB link from PC processing the video. This takes the form of the ASCII character p for pan or t for tilt, followed by a step number between 0 and 1024 to signify the position between 0 and 320 degrees, finalized by a newline character ‘\n’. An example is p200/n, telling the pan motor to reach 62.5 degrees. The microcontroller ensures the position information is valid then calculates the time the motor has to move to the new position. This was calibrated as 2 milli seconds per change in step. Continuing the example, if pan started at position 300, it would have 200 milliseconds to move to position 200. The Herkulex DRS-0101 motors contain microcontrollers which plot a trapezoidal path between their current and final position. This reduces their peak power draw by ramping up, leveling off, then ramping down near the final position. The internal PID control is further explained in section 3.5. The DRS-0101 communicates over serial communication channel. The original Arduino library written by Alessandro Giacomel from Italy. Support was added for Arduino Due through additional control statements for the different build sections. The Arduino code written for this project will now build for Due, Uno, and all previous Arduinos which support either hardware UART Serial or SoftwareSerial.h.&lt;/p&gt;
+
+&lt;p&gt;Target tracking was done by taking visual information from a webcam, processing this visual information and sending a message to the Arduino for the pan and tilt of the servos. The following paragraphs will break down the system that connects these elements. Using the python programming language and opencv, a set of various computer vision functions. The program is set up into 2 parts: initialization; and a loop that runs continuously during operation of the turret.&lt;/p&gt;
+
+&lt;h3&gt;Motor PID Controller Tuning&lt;/h3&gt;
+
+&lt;p&gt;The HerculeX DRS-0101 comes with a built in PID controller to improve motor control performance. Tuning this controller allowed for better response time, a reduction in overshoot and oscillation, and a minimized steady state error. A PID controller receives an error signal, in this case the difference between the current motor position and the desired motor position, and uses this error to send an ideal output to the motor.&lt;/p&gt;
+
+&lt;p&gt;The equation defining the output of a PID controller can be defined as Where e(t) is the error signal, K p is the proportional constant, K i is the integral constant, K d is the derivative constant, and u(t) is the output signal to the motor. The proportional constant, K p , affects the output to the motor based on the current error signal. Increasing this constant will increase the response time of the system but possibly result in overshoot and oscillations.&lt;/p&gt;
+
+&lt;p&gt;The integral constant, K i , affects the output based on the current error signal and the duration of error. Meaning that it affects the output based on past errors. Increasing this constant helps to eliminate offset in the steady state error but can lead to a lag in the response. The derivative constant, K d , controls the output based on the slope of the error. In other words, it affects the output to the motor based on future predicted errors. Increasing this constant results in a faster response and improves settling time but is sensitive to high frequencies in the system, for this reason, a low pass filter is required. In this case, the inertia of the system acts as a low pass filter.&lt;/p&gt;
+
+&lt;p&gt;As mentioned, the HerculeX motors used in the system have built in PID controllers. The Servo Manager Kit software allows for the adjustment of position K p , position K i , and position K d constants of the motors. Originally, it was planned to employ the Ziegler-Nichols rules for tuning the PID controllers. These are experimental methods for determining PID constants by observing the step response of the system with both integral and derivative constants set to zero&lt;/p&gt;
+
+&lt;p&gt;Note that on all vertical axes, the position is in the step units of the motor. After observing the system’s response, it seemed satisfactory for our purposes. The system was capable of settling within one second in all cases with very minimal overshoot. For this reason, additional tuning was not done.&lt;/p&gt;
+
+&lt;h3&gt;Firing control&lt;/h3&gt;
+
+&lt;p&gt;A key design choice made early in the project was selecting a paintball gun with an electronic trigger. This allowed the project to electronically trip the trigger instead of building an additional mechanical system to depress the trigger. Below in Figure 8 is a circuit diagram of the microcontroller and circuit within the Smart Parts Ion PaintBall Gun. Highlighted with the arrow is the mechanical micro switch trigger mechanism. When the switch is depressed pin 15 of the ATMega48v senses connection to ground from the NC connection through the switch. The spring loaded microswitch returns to open when not depressed. The microcontroller will only fire on the falling edge, leaving the trigger depressed will not allow the gun to fire until the microcontroller senses pin high again.&lt;/p&gt;
+
+&lt;p&gt;The Arduino Uno used in the final design operates at 5v, while the paintball gun at 3.3v. To compensate for this difference, a voltage divider (as seen in Figure 9) was designed. This was an effective design as power draw by the paintball gun was nonexistent and the Arduino was wall powered, thus losses through the resistors were deemed acceptable.&lt;/p&gt;
+
+&lt;p&gt;When you want to aim something but only have the perspective from another object is difficult.We wanted to take the webcam image and point the gun at a point in which the camera sees.&lt;/p&gt;
+
+&lt;p&gt;First, I tried the simplest approach and assumed they saw the samething. The shots were off by a lot and it was most noticable on the edges of the frame.&lt;/p&gt;
+
+&lt;p&gt;We needed to get the target in 3D space. First convert the 2D image seen from the camera. It is a 640 x 480 output, from an online source it was found the FOV was 60 Deg and from the aspect ration of 4:3. X had a view of 48 Deg and the y had a view of 36 Deg&lt;/p&gt;
+
+&lt;p&gt;The next we had to place this point in 3D space, we are missing a distance. Don’t tell any one we just used a constant (10 m). Most things we were going to shot where going to be far enough to avoid rebound and it would not be accurate enough to hit anything further.&lt;/p&gt;
+
+&lt;p&gt;Now with spheical cordiantes now in spheical corrdiantes we convert to cartistain to move our origin to get the position reative to the gun. Getting it is simple as adding the difference in the distance between the camera and the gun, shifting the coordinate system&lt;/p&gt;
+
+&lt;p&gt;We are not done yet. The motors are looking for angle to be at. We do one more coordinate transmation and send the horizontal angle to the horizontal servo motor and the vertial to the vertial motor.&lt;/p&gt;
+
+&lt;h3 id=&quot;it-takes-time-to-do-things&quot;&gt;It takes time to do things&lt;/h3&gt;
+
+&lt;p&gt;It takes time for the motor to move and even get up to speed and It takes tiem for the projectile to reach its moving target. We needed to predict we there object will be and in what direction we needed to shot to hit it.&lt;/p&gt;
+
+&lt;p&gt;Built in the coordinate transformation function is a target prediction that can be used to estimate where the target will be in a defined period of time. It is using simple linear extrapolation of the position based the targets current velocity, illustrated in Figure 5.&lt;/p&gt;
+
+&lt;p&gt;Figure 5: Linear extrapolation of a velocity vector&lt;/p&gt;
+
+&lt;p&gt;The velocity is estimated by comparing the current and previous frame and observing how far the centres of the object have moved. Using this distance and the time elapsed, the velocity of the object can be found. To predict the next position the current position is taken and added to the velocity times a defined period of ‘leading’ time which represents how far ahead we would like to predict. Longer periods of leading time can be used to track fast moving or long-distance targets. However, accuracy will likely decrease with longer leading times.&lt;/p&gt;
+
+&lt;p&gt;We had to make some comprimises in our code, to bring on the code. We started trying to do most of the calculatoin on the arduino. That ended quickly when we wanted to use the opencv library.&lt;/p&gt;
+
+&lt;p&gt;We had a laptop which was already getting up there in age being 6 years old at the time. It could only process 1 frame per second. We reduced the complexity of the calcultion, reduced the camera resolutoin by half.&lt;/p&gt;
+
+&lt;p&gt;The first step is to retrieve a frame from the camera. The camera being used is the Logitech C270 HD Webcam, with a frame displaying 640 by 480 pixels. This gives a total pixel count of 640*480 = 307200 pixels. Each pixel contains 3 numbers to define its state. The frame uses RGB(red, green and blue), each colour is a number between 0 and 255 which fits in one byte. The frame is written to a file and blurred slightly to reduce noise and make contours of greater uniformity.&lt;/p&gt;
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;During field testing, the compressed air line and paintballs were added to the paintball sentry. As this additional mass was not accounted for during initial testing and motor tuning, the tilt servo motor was overloaded causing it to stall and eventually caused internal gear damage. Future designs should account for masses added to the gun during use. Additionally, alternate housing designs should be considered to reduce weight. &lt;/p&gt;
+
+&lt;p&gt;Future projects should consider using the HerkuleX motor line as their serial communication and internal PID control made for excellent prototyping. &lt;/p&gt;
+
+&lt;p&gt;A functional paintball sentry turret was successfully constructed. It successfully tracked targets of a designated color, transformed coordinates of the targets into motor positions, engaged the motors to reorient to aim at the target, and fired paintballs precisely and with reasonable accuracy. With the success a few lessons were learned, the largest being the importance of sizing an adequate motor and balancing the load
+&lt;/p&gt;</content><author><name></name></author><summary type="html">For a mechatronics university course, we had a project to combine our electrical and mechanical knowledge. It was a very broad scope. Our team decided to make an automatic paintball turret, where it would autonomously track and shoot an object. Given how much we spend on it, it worked suprisingly well. In this article, I would like show you a brief overview on what we built and the things we learned.</summary></entry><entry><title type="html">Altitude</title><link href="/altitude.html" rel="alternate" type="text/html" title="Altitude" /><published>2017-01-01T00:00:00-05:00</published><updated>2017-01-01T00:00:00-05:00</updated><id>/altitude</id><content type="html" xml:base="/altitude.html">&lt;p&gt;Altitude is a time-budgeting app making you more productive. &lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&quot;padding-left:7px;&quot; href=&quot;https://github.com/lazydancer/altitude&quot;&gt;Github »&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tools:&lt;/p&gt;
+
+&lt;svg fill=&quot;#61DAFB&quot; width=&quot;48px&quot; height=&quot;48px&quot; style=&quot;padding-left: 8px;&quot; role=&quot;img&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;&lt;title&gt;React&lt;/title&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2.139&quot; /&gt;&lt;path d=&quot;M6.008 16.255l-.472-.12C2.018 15.246 0 13.737 0 11.996s2.018-3.25 5.536-4.139l.472-.119.133.468a23.53 23.53 0 0 0 1.363 3.578l.101.213-.101.213a23.307 23.307 0 0 0-1.363 3.578l-.133.467zM5.317 8.95c-2.674.751-4.315 1.9-4.315 3.046 0 1.145 1.641 2.294 4.315 3.046a24.95 24.95 0 0 1 1.182-3.046A24.752 24.752 0 0 1 5.317 8.95zM17.992 16.255l-.133-.469a23.357 23.357 0 0 0-1.364-3.577l-.101-.213.101-.213a23.42 23.42 0 0 0 1.364-3.578l.133-.468.473.119c3.517.889 5.535 2.398 5.535 4.14s-2.018 3.25-5.535 4.139l-.473.12zm-.491-4.259c.48 1.039.877 2.06 1.182 3.046 2.675-.752 4.315-1.901 4.315-3.046 0-1.146-1.641-2.294-4.315-3.046a24.788 24.788 0 0 1-1.182 3.046z&quot; /&gt;&lt;path d=&quot;M5.31 8.945l-.133-.467C4.188 4.992 4.488 2.494 6 1.622c1.483-.856 3.864.155 6.359 2.716l.34.349-.34.349a23.552 23.552 0 0 0-2.422 2.967l-.135.193-.235.02a23.657 23.657 0 0 0-3.785.61l-.472.119zm1.896-6.63c-.268 0-.505.058-.705.173-.994.573-1.17 2.565-.485 5.253a25.122 25.122 0 0 1 3.233-.501 24.847 24.847 0 0 1 2.052-2.544c-1.56-1.519-3.037-2.381-4.095-2.381zM16.795 22.677c-.001 0-.001 0 0 0-1.425 0-3.255-1.073-5.154-3.023l-.34-.349.34-.349a23.53 23.53 0 0 0 2.421-2.968l.135-.193.234-.02a23.63 23.63 0 0 0 3.787-.609l.472-.119.134.468c.987 3.484.688 5.983-.824 6.854a2.38 2.38 0 0 1-1.205.308zm-4.096-3.381c1.56 1.519 3.037 2.381 4.095 2.381h.001c.267 0 .505-.058.704-.173.994-.573 1.171-2.566.485-5.254a25.02 25.02 0 0 1-3.234.501 24.674 24.674 0 0 1-2.051 2.545z&quot; /&gt;&lt;path d=&quot;M18.69 8.945l-.472-.119a23.479 23.479 0 0 0-3.787-.61l-.234-.02-.135-.193a23.414 23.414 0 0 0-2.421-2.967l-.34-.349.34-.349C14.135 1.778 16.515.767 18 1.622c1.512.872 1.812 3.37.824 6.855l-.134.468zM14.75 7.24c1.142.104 2.227.273 3.234.501.686-2.688.509-4.68-.485-5.253-.988-.571-2.845.304-4.8 2.208A24.849 24.849 0 0 1 14.75 7.24zM7.206 22.677A2.38 2.38 0 0 1 6 22.369c-1.512-.871-1.812-3.369-.823-6.854l.132-.468.472.119c1.155.291 2.429.496 3.785.609l.235.02.134.193a23.596 23.596 0 0 0 2.422 2.968l.34.349-.34.349c-1.898 1.95-3.728 3.023-5.151 3.023zm-1.19-6.427c-.686 2.688-.509 4.681.485 5.254.987.563 2.843-.305 4.8-2.208a24.998 24.998 0 0 1-2.052-2.545 24.976 24.976 0 0 1-3.233-.501z&quot; /&gt;&lt;path d=&quot;M12 16.878c-.823 0-1.669-.036-2.516-.106l-.235-.02-.135-.193a30.388 30.388 0 0 1-1.35-2.122 30.354 30.354 0 0 1-1.166-2.228l-.1-.213.1-.213a30.3 30.3 0 0 1 1.166-2.228c.414-.716.869-1.43 1.35-2.122l.135-.193.235-.02a29.785 29.785 0 0 1 5.033 0l.234.02.134.193a30.006 30.006 0 0 1 2.517 4.35l.101.213-.101.213a29.6 29.6 0 0 1-2.517 4.35l-.134.193-.234.02c-.847.07-1.694.106-2.517.106zm-2.197-1.084c1.48.111 2.914.111 4.395 0a29.006 29.006 0 0 0 2.196-3.798 28.585 28.585 0 0 0-2.197-3.798 29.031 29.031 0 0 0-4.394 0 28.477 28.477 0 0 0-2.197 3.798 29.114 29.114 0 0 0 2.197 3.798z&quot; /&gt;&lt;/svg&gt;
+
+&lt;svg fill=&quot;#764ABC&quot; width=&quot;48px&quot; height=&quot;48px&quot; style=&quot;padding-left: 8px;&quot; role=&quot;img&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;&lt;title&gt;Redux&lt;/title&gt;&lt;path d=&quot;M16.633 16.504c.869-.075 1.543-.84 1.499-1.754-.046-.914-.795-1.648-1.708-1.648h-.061c-.943.031-1.678.824-1.648 1.769.03.479.226.869.494 1.153-1.048 2.038-2.621 3.536-5.004 4.795-1.603.838-3.296 1.154-4.944.929-1.378-.194-2.456-.81-3.116-1.798-.988-1.499-1.078-3.116-.255-4.734.601-1.169 1.499-2.023 2.099-2.443-.15-.389-.33-1.048-.42-1.542-4.436 3.177-3.985 7.521-2.637 9.574 1.004 1.498 3.057 2.456 5.304 2.456.599 0 1.229-.044 1.843-.194 3.896-.749 6.847-3.086 8.54-6.532l.014-.031z&quot; /&gt;&lt;path d=&quot;M21.981 12.758c-2.321-2.727-5.738-4.225-9.634-4.225h-.51c-.253-.554-.837-.899-1.497-.899h-.045c-.943 0-1.678.81-1.647 1.753.03.898.794 1.648 1.708 1.648h.074c.675-.03 1.259-.45 1.498-1.049h.555c2.309 0 4.495.674 6.488 1.992 1.527 1.004 2.622 2.322 3.236 3.896.538 1.288.509 2.547-.045 3.597-.854 1.647-2.293 2.517-4.195 2.517-1.199 0-2.367-.375-2.967-.644-.359.298-.959.793-1.394 1.093 1.318.598 2.652.943 3.94.943 2.922 0 5.093-1.647 5.918-3.236.898-1.798.824-4.824-1.469-7.416l-.014.03z&quot; /&gt;&lt;path d=&quot;M6.49 17.042c.029.899.793 1.648 1.708 1.648h.06c.959-.03 1.693-.823 1.648-1.768 0-.899-.779-1.647-1.693-1.647h-.061c-.06 0-.149 0-.225.029-1.243-2.098-1.768-4.346-1.572-6.771.119-1.828.719-3.417 1.797-4.735.899-1.124 2.592-1.679 3.746-1.708 3.236-.061 4.585 3.971 4.689 5.574l1.498.449c-.345-4.914-3.4-7.492-6.322-7.492-2.742 0-5.273 1.993-6.293 4.915-1.393 3.896-.479 7.641 1.229 10.638-.149.195-.239.539-.209.868z&quot; /&gt;&lt;/svg&gt;
+
+&lt;svg height=&quot;48&quot; width=&quot;48&quot; style=&quot;padding-left: 8px;&quot; viewBox=&quot;0 0 64 64&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;&lt;title&gt;Electron&lt;/title&gt;&lt;g fill=&quot;#47848f&quot; fill-rule=&quot;evenodd&quot;&gt;&lt;path d=&quot;M23.3 13.76c-8.35-1.53-14.97.07-17.6 4.63-1.97 3.4-1.4 7.92 1.36 12.75a.86.86 0 0 0 1.49-.85c-2.5-4.35-2.98-8.25-1.37-11.04 2.2-3.8 8.1-5.21 15.82-3.8a.86.86 0 0 0 .3-1.7zM11.42 37a53.67 53.67 0 0 0 12.79 10.1c12.13 7 25.04 8.87 31.4 4.53a.86.86 0 1 0-.96-1.42c-5.7 3.89-17.96 2.11-29.59-4.6a51.97 51.97 0 0 1-12.37-9.76A.86.86 0 1 0 11.4 37z&quot; /&gt;&lt;path d=&quot;M53.58 35.97c5.47-6.47 7.39-12.98 4.76-17.53-1.94-3.36-6.03-5.13-11.47-5.2a.86.86 0 0 0-.02 1.72c4.89.06 8.42 1.59 10 4.33 2.19 3.79.48 9.59-4.58 15.57a.86.86 0 1 0 1.3 1.1zM39.5 14.04a53.56 53.56 0 0 0-15.28 6.06C11.7 27.33 3.52 38 4.66 45.72a.86.86 0 0 0 1.7-.25c-1-6.86 6.74-16.97 18.72-23.89a51.85 51.85 0 0 1 14.78-5.86.86.86 0 0 0-.36-1.68z&quot; /&gt;&lt;path d=&quot;M19.21 51.08c2.87 8 7.55 12.92 12.82 12.92 3.84 0 7.4-2.62 10.17-7.23a.86.86 0 0 0-1.47-.88c-2.5 4.14-5.55 6.4-8.7 6.4-4.38 0-8.55-4.4-11.2-11.79a.86.86 0 0 0-1.62.58zm26.16-1.56a53.85 53.85 0 0 0 2.28-15.9c0-14.2-4.98-26.45-12.06-29.6a.86.86 0 1 0-.7 1.57c6.32 2.8 11.04 14.43 11.04 28.03 0 5.53-.77 10.82-2.2 15.39a.86.86 0 1 0 1.64.5zM61.52 48.68a4.1 4.1 0 1 0-8.2 0 4.1 4.1 0 0 0 8.2 0zm-1.71 0a2.39 2.39 0 1 1-4.78 0 2.39 2.39 0 0 1 4.78 0zM6.58 52.78a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2zm0-1.71a2.39 2.39 0 1 1 0-4.78 2.39 2.39 0 0 1 0 4.78z&quot; /&gt;&lt;path d=&quot;M32.03 8.2a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2zm0-1.7a2.39 2.39 0 1 1 0-4.78 2.39 2.39 0 0 1 0 4.77zM32.66 36.53a2.97 2.97 0 1 1-1.26-5.81 2.97 2.97 0 0 1 1.26 5.8z&quot; /&gt;&lt;/g&gt;&lt;/svg&gt;
+
+&lt;p&gt;In this project I used React, Redux and Electron. After starting this project in Angular, I changed my path to React. I found Angular to be too rigid and I got to a point where I couldn’t add anything expect the most simple actions. I tried Redux, I would recommend not using it to start a new project. It add more complexity while not offseting the benefits.&lt;/p&gt;
+
+&lt;p&gt;Electron was an interesting test and I would use it in the future. It is great to have the same enviroment over all operating systems and writing in HTML, CSS and Javascript&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/altitude/altitude.png&quot; width=&quot;100%&quot; style=&quot;margin-top:18px&quot; /&gt;
+&lt;img src=&quot;/assets/altitude/work.png&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Altitude is a time-budgeting app making you more productive.</summary></entry></feed>
