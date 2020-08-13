@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://pucula.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pucula.com/" rel="alternate" type="text/html" /><updated>2020-08-12T20:20:42-04:00</updated><id>https://pucula.com/feed.xml</id><entry><title type="html">Pathfinding</title><link href="https://pucula.com/pathfinding/" rel="alternate" type="text/html" title="Pathfinding" /><published>2020-02-01T00:00:00-05:00</published><updated>2020-02-01T00:00:00-05:00</updated><id>https://pucula.com/pathfinding</id><content type="html" xml:base="https://pucula.com/pathfinding/">&lt;p&gt;I’ve run into a challenge were I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them. In this article I wanted to show how I solved this problem using pathfinding. Also looking at the different trade-offs in speed, memory and “solution idealness” of the different approachs to take when pathfinding.&lt;/p&gt;
+
+&lt;h2 id=&quot;random-walk-depth-first&quot;&gt;Random Walk (Depth-First)&lt;/h2&gt;
+
+&lt;p&gt;Each of the following algorithms require two variables. &lt;strong&gt;Visited&lt;/strong&gt;, a list of visited locations, in dark blue in the animations and &lt;strong&gt;Queue&lt;/strong&gt; a list of elements to be visited next, in light blue in the animantions below. To start off with the most simple to explain is random walk. Grab the location from the next in queue, add the neighbours to the front of the queue in random order and repeat until you land on your destination.&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;video autoplay=&quot;&quot; loop=&quot;&quot; style=&quot;display: block; margin: 0 auto;&quot;&gt;
+        &lt;source src=&quot;/assets/pathfinding/depth.webm&quot; type=&quot;video/webm&quot; /&gt;
+    &lt;/video&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 2.&lt;/span&gt; Depth first search. Visited in blue, queue in light blue and discovered path in dark blue.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_to_front&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;neighbours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is an effective algorithm for small problems where any path will do. It has the benefit of being very simple to implement and can be faster to find a solution than a breadth-first search.&lt;/p&gt;
+
+&lt;h2 id=&quot;brute-force-breadth-first&quot;&gt;Brute Force (Breadth-First)&lt;/h2&gt;
+
+&lt;p&gt;If the optimal path is needed, you need to check each possible path and return the first path which finds the destination. This is very similar to brute-force in a combinatoric problem.&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;video autoplay=&quot;&quot; loop=&quot;&quot; style=&quot;display: block; margin: 0 auto;&quot;&gt;
+        &lt;source src=&quot;/assets/pathfinding/breadth.webm&quot; type=&quot;video/webm&quot; /&gt;
+    &lt;/video&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 3.&lt;/span&gt; Breadth-first search. Visited in blue, queue in light blue and discovered path in dark blue.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_to_end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;neighbours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Instead of adding new neighbours to the front of the queue they are put at the end. This ensures we have visited all the neighbours before we introduce new ones.&lt;/p&gt;
+
+&lt;p&gt;This algorithm finds the best path through taking a step in each direction until it lands on the solution.&lt;/p&gt;
+
+&lt;p&gt;To improve the algorithm, each “step” is not always equal. An algorithm where we can change the value of each step is called Dijkstra’s algorithm.&lt;/p&gt;
+
+&lt;h2 id=&quot;flexibility-from-dijkstra&quot;&gt;Flexibility from (Dijkstra)&lt;/h2&gt;
+
+&lt;p&gt;The same as above, we are going to explicitly define how far we have travelled. This allows us to vary the “weight” of moving from one location to another.&lt;/p&gt;
+
+&lt;p&gt;In the code below, I added a weight variable in each element in the queue. This will be used to compare what location to check next.&lt;/p&gt;
+
+&lt;p&gt;In this case, with a step being “1”, the results are exactly the same as breadth-first search. Replacing this value will change which locations are visited first.&lt;/p&gt;
+
+&lt;p&gt;Instead of taking a step in every direction, what if we could take a step in the direction towards our target?&lt;/p&gt;
+
+&lt;h2 id=&quot;with-a-little-help-from-a-heuristic-best-first&quot;&gt;With a Little Help From A Heuristic (Best-First)&lt;/h2&gt;
+
+&lt;p&gt;In this algorithm, we look at all of the neighbours that have been added to the queue and go to the one that is closest to the final solution. Closest refering to the linear distance between the location and the target.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In some cases this is the best solution, but when a wall is between the start and the destination, the solution is not optimal as the path walks into a wall than has to back up.&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;video autoplay=&quot;&quot; loop=&quot;&quot; style=&quot;display: block; margin: 0 auto;&quot;&gt;
+        &lt;source src=&quot;/assets/pathfinding/best.webm&quot; type=&quot;video/webm&quot; /&gt;
+    &lt;/video&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 4.&lt;/span&gt; Heuristic search. Visited in blue, queue in light blue and discovered path in dark blue.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sort_by_distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;neighbours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To change this from Dijkstra’s algorithm, instead of ordering the queue by “weight distance”, you order the queue by distance from the destination with the closest being at the front of the queue.&lt;/p&gt;
+
+&lt;h2 id=&quot;mix-for-taste-a&quot;&gt;Mix For Taste (A*)&lt;/h2&gt;
+
+&lt;p&gt;We can balance the idealness of Dijkstra’s algorithm with the speed of the Best-First search by combining both metrics for ordering the queue.&lt;/p&gt;
+
+&lt;p&gt;When determining the queue order, both the weight from the start and the distance to the destination are used.&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;video autoplay=&quot;&quot; loop=&quot;&quot; style=&quot;display: block; margin: 0 auto;&quot;&gt;
+        &lt;source src=&quot;/assets/pathfinding/astar.webm&quot; type=&quot;video/webm&quot; /&gt;
+    &lt;/video&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 5.&lt;/span&gt; A* search. Visited in blue, queue in light blue and discovered path in dark blue.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sort_by_distance_and_recentness&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;neighbours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This balance directs the search while looking at multiple solutions in that direction to find a close to ideal solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Pathfinding is an important method in connecting two nodes in a network. Networks are found everywhere. From the chemical reaction pathways inside a cell, transportion systems, and to the trade and political networks that shape our world.&lt;/p&gt;
+
+&lt;p&gt;These algorithms give an introduction to the costs and benefits of each to help solve real challenges in these networks. Thank you for reading. If you enjoyed this post, I would recommend checking out my post on &lt;a href=&quot;https://pucula.com/map-colouring.html&quot;&gt;Map Coloring&lt;/a&gt;. Also, I have posted all of the code on &lt;a href=&quot;https://github.com/lazydancer/path-finding&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I’ve run into a challenge were I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them. In this article I wanted to show how I solved this problem using pathfinding. Also looking at the different trade-offs in speed, memory and “solution idealness” of the different approachs to take when pathfinding.</summary></entry><entry><title type="html">Advent of Code</title><link href="https://pucula.com/advent-of-code/" rel="alternate" type="text/html" title="Advent of Code" /><published>2020-01-01T00:00:00-05:00</published><updated>2020-01-01T00:00:00-05:00</updated><id>https://pucula.com/advent-of-code</id><content type="html" xml:base="https://pucula.com/advent-of-code/">&lt;p&gt;I first participated in Advent of Code in 2018. I enjoyed working through the challenges and I learned a lot&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    !
+  -~*~-
+   /!\
+  /%;@\
+ o/@,%\o
+ /%;`@,\
+o/@'%',\o
+'^^^N^^^`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I continue to update this post for each year&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#2019&quot;&gt;2019&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2018&quot;&gt;2018&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2019&quot;&gt;2019&lt;/h2&gt;
+
+&lt;p&gt;I posted my solutions to GitHub: &lt;a href=&quot;https://github.com/lazydancer/Advent-of-Code-2019&quot;&gt;lazydancer/Advent-of-Code-2019&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2018&quot;&gt;2018&lt;/h2&gt;
+
+&lt;p&gt;I enjoy the challenges, as I can learn new how people solve the same question. It’s not common for many people to be solving the same probelm and it can offer a unique opportunity to learn. This year I learned about assembly language and python imports&lt;/p&gt;
+
+&lt;h3 id=&quot;assembly&quot;&gt;Assembly&lt;/h3&gt;
+
+&lt;p&gt;I have always be interested in how computers work, &lt;em&gt;see&lt;/em&gt; &lt;a href=&quot;https://pucula.com/notes/making-a-transistor-from-scratch-part-1.html&quot;&gt;building a transistor from scratch&lt;/a&gt;. I have never had the chance to program in assembly. That changed on &lt;a href=&quot;https://adventofcode.com/2018/day/16&quot;&gt;Day 16&lt;/a&gt;, the challenge was to run a new programming language called elf code. Elf code looks similar to machine code, and example is seen below&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;4 0 2 0
+13 2 0 2
+2 2 3 2
+4 3 2 3
+3 3 2 2
+13 2 1 2
+6 2 1 1
+10 1 2 3
+4 2 3 0
+13 1 0 1
+2 1 1 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The first number is the opcode, which could represent 1 of 16 operations, ‘add’, ‘mul’, ‘mov’. The second and third were inputs and the forth was what register to use for the output&lt;/p&gt;
+
+&lt;p&gt;First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it&lt;/p&gt;
+
+&lt;p&gt;To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware&lt;/p&gt;
+
+&lt;p&gt;Using an intermeddiate step to C, Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17&lt;/p&gt;
+
+&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      &lt;span class=&quot;nf&quot;&gt;jmp&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;l17&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;;  L00: goto *jump_table[0+16+1]; //addi 3 16 3&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;l01:&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;r11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;;  L01: reg[1] = 1; //seti 1 2 1&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;l02:&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;r12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;;  L02: reg[2] = 1; //seti 1 1 2&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;l03:&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r11&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r12&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;imul&lt;/span&gt;      &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rbx&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;cmp&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r14&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;sete&lt;/span&gt;      &lt;span class=&quot;nb&quot;&gt;al&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;;  Grab the flag&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;movzx&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;al&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;;  Move the flag to r15 extends with zeros&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;je&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;l07&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;jmp&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;l08&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;l07:&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;r10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r11&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation&lt;/p&gt;
+
+&lt;p&gt;Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen&lt;/p&gt;
+
+&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;print:&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r10&lt;/span&gt;     
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;; system call for write&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;; file handle 1 is stdout&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;; address of string to output&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rdx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;; number of bytes&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;syscall&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;; invoke operating system to do the write&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;mov&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;; system call for exit&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;xor&lt;/span&gt;       &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;; exit code 0&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;syscall&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;; invoke operating system to exit &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;python-imports&quot;&gt;Python Imports&lt;/h3&gt;
+
+&lt;p&gt;Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expression&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;defaultdict&lt;/strong&gt; - Having a set value for when nothing exist is a very useful feature&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;somedict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;somedict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# KeyError
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;someddict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;someddict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# print int(), thus 0
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;copy&lt;/strong&gt; - Because python calls list by reference this is useful to keep things functional&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;copy&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deepcopy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;dequeue&lt;/strong&gt; - A double-ended queue, this is useful for when rotation is needed with a rotate function&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;networkx&lt;/strong&gt; - This was useful for all types of graph equations. Shortest path was used many times&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;networkx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ...adding nodes...
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;networkx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shortest_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;re&lt;/strong&gt; - This is a very popular library I have tried to avoid it&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r'-?\d+'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">I first participated in Advent of Code in 2018. I enjoyed working through the challenges and I learned a lot</summary></entry><entry><title type="html">Reading List</title><link href="https://pucula.com/reading-list/" rel="alternate" type="text/html" title="Reading List" /><published>2020-01-01T00:00:00-05:00</published><updated>2020-01-01T00:00:00-05:00</updated><id>https://pucula.com/reading-list</id><content type="html" xml:base="https://pucula.com/reading-list/">&lt;p&gt;In 2019, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.&lt;/p&gt;
+
+&lt;h2 id=&quot;infinite-jest-by-david-foster-wallace&quot;&gt;Infinite Jest by David Foster Wallace&lt;/h2&gt;
+
+&lt;p&gt;I would not recommend you read this book, unless you want to. In school, I didn’t read many books, Sparknotes was my friend. Part of me is glad to have finished this book due to the size alone, but that is a horrible reason to read a book. This book won awards in 2009. And I thought it would be good. It definitely changed the way I read. By now I have forgotten most of the book and I hope the good stuff is what remains.&lt;/p&gt;
+
+&lt;p&gt;The book is not a single cohesive story, it’s a mixture of a dozen half-complete ones. The stories circle around the theme of addiction. There is also a lot of unrelated funny events happening. I found the non-linearly of the book interesting, it really separates the view point from the book and the actual events of the story. It made you think about where the words you were reading exists in the context of where and when it occurred.&lt;/p&gt;
+
+&lt;p&gt;Even with the size of the book, the entire story is even larger. There is a whole other side which occurs but is not written down and is implied throughout the book. It is like a story that reads backwards, where you start seeing the story lines come together and it all makes sense in the end but in this case it doesn’t reach a conclusion.&lt;/p&gt;
+
+&lt;p&gt;To add to the disorientation, the book has many references which you need to read the footnotes. The footnotes are long enough to warrant their own footnotes. I also had to use an &lt;a href=&quot;https://infinitejest.wallacewiki.com/david-foster-wallace/index.php?title=Infinite_Jest_Page_by_Page&quot;&gt;Infinite Jest dictionary&lt;/a&gt;. I had the book on my e-reader, the physical book for the footnotes and the laptop open for the dictionary at the same time. It actively makes me think that the author did not want you to understand what was going on so you would put your own story together. Below is except from the Infinite Jest dictionary.&lt;/p&gt;
+
+&lt;h2 id=&quot;merchants-of-doubt-by-naomi-oreskes&quot;&gt;Merchants of Doubt by Naomi Oreskes&lt;/h2&gt;
+
+&lt;p&gt;Merchants of Doubt is about people that cast doubt in science towards the public. An example given in the book is the correlation between smoking and cancer. This correlation was proven in 1929 in Germany, re-proven in 1950 in the UK and was included in a Surgeon General’s Report in the United States in 1964. Tobacco companies claimed that these study lacked credibility and health authorities sided with these claims until 1998. One of the main arguments the “merchants of doubt” used was that a perfect relation could not be found, not all people that smoke got cancer. There is so much room for interpretation and bias in gathering a dataset. Everything is relative and we can trick people and even ourselves.&lt;/p&gt;
+
+&lt;p&gt;I learned a lot about how political movements work and why we think they occur. A small group of people that really care are much more powerful than a large group of people who only have a preference and not a strong belief.&lt;/p&gt;
+
+&lt;p&gt;I found refreshing, is the book didn’t portray these “Merchants of Doubt” as evil. The Merchants of Doubt legitimately thought they were making the world a better place. It’s unfortunate that they had to name names but I think it helped solidify the statements, making it more grounded. A nuclear physicist, with the credentials to match, believed that cigarettes didn’t cause cancer and pushing for more research, when what was needed was to act at that moment.&lt;/p&gt;
+
+&lt;p&gt;There seemed to be a common themes in the opposing view. That more research is needed. People believe that government intervention is not always the best method. Before I thought it was money that motivated these people from large companies that would appose this need for government regulation.&lt;/p&gt;
+
+&lt;p&gt;Another topic brought up in the book, is there a need for equal sides. This was something that I never thought of. Does every decision have two equal sides? As an example for climate change, you could have a member of the scientific community saying that climate change will have long term effects and then the opposition says they want representation and believing there will be no long term effects. When looking from it from someone totally new to the topic, it looks like the scientific community is split. Even with the good indention of the news company. Have a fair representation should not be equal but should align with the consenseis. To compound the issue, science is full of questions, and they don’t try to hide that uncertainty.&lt;/p&gt;
+
+&lt;p&gt;I enjoyed Why We Sleep by Matthew Walker, until I learned that it lied… a lot. The premise of the book is that sleep is good for you, it reduces cancer risk, makes you more alert, makes you live longer. I love my sleep and what was being said made sense and the author has a PhD and many years experience and I thought it was a trusted source.&lt;/p&gt;
+
+&lt;p&gt;From further research it has been found incomplete context was given. In each almost every result the author used the most compelling argument for his case and ignored any information that would have contradicted him. For an example in the part about beauty. The author gives an example. A group was split into 2 one group slept for only 5 hours and the other 8 hours. The result found that when the photos of them were rated. The participates with 8 hours were labeled more beautiful and healthier than the participants with only 5 hours of sleep. What the author failed to mention was at what time the photos were taken. In the study, the participants who slept 8 hours had their picture taken 7 hours after waking where the participants who slept 5 hours had their picture taken 31 hours after they awoke.&lt;/p&gt;
+
+&lt;p&gt;The author of this book lied by leaving out crucial information and context. And this isn’t isolated but is basically the entire book. This book a learned about how to lie without giving false facts. And it showed what was being done in the merchants of doubt. There are facts, the context to the facts and how you present then, adding irrelevant information and leaving out information. It made me change how I think about scientific results.&lt;/p&gt;
+
+&lt;p&gt;This didn’t really fit in the review, but Hank Green’s critic of someone apposing climate change and how masterful you can skew a topic with language. &lt;a href=&quot;https://www.youtube.com/watch?v=_Es4gG9xVf8&quot;&gt;Youtube&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;some-more&quot;&gt;Some more&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Consider Phlebas by Iain Banks:&lt;/strong&gt; Loved the comparison of war in space being like the transition from hand-to-hand to the introduction of guns&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Restaurant at the End of the Universe by Douglas Adams:&lt;/strong&gt; Adams bizarrely introspective books which makes fun of and expands science fiction&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Remains of the Day by Kazuo Ishiguro:&lt;/strong&gt; Amazon’s CEO favorite book. I feel like I didn’t get the intended effect of the book. I will have to return to it later.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Handmaids Tale by Margaret Atwood:&lt;/strong&gt; Felt like a personal diary from a person in dystopian future. You only learn about the universe overtime. I would recommend reading.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How to Fail at Almost Everything and Still Win Big by Scott Adams:&lt;/strong&gt; Although not advice I would take, the story behind Dilbert and his perspective was interesting.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;100 Years of Solitude Gabriel García Márquez:&lt;/strong&gt; I wanted to enjoy this book more. It mixed interesting elements of the natural and unnatural.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Thinking in Systems: A Primer by Donella Meadows:&lt;/strong&gt; Very much an introduction. I don’t remember much of this book.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Philoshopy of Software Design by John Ousterhout:&lt;/strong&gt; I wish this book was longer. I learned about having deep modules and simple interfaces, how to define complexity as dependency and obscurity and also the strategic mindset. He also gave “red flags” to see in your software.&lt;/p&gt;
+
+&lt;h2 id=&quot;2018&quot;&gt;2018&lt;/h2&gt;
+
+&lt;p&gt;I read 34 books in 2018, not 52 as my goal, but this year was most books I ever read.&lt;/p&gt;
+
+&lt;p&gt;I read many interesting biographies of Howard Hughes, Viktor Frankl, Sam Walton, The Wright Brothers, Paul Erdos. I enjoyed non-fiction from Code, Fabless, Ant Encounters, Enlightenment Now, Code Complete 2, Debt: The first 5000 years, Energy and Civilization, Naked Economics and the Goal and Finishing off the Foundation series.&lt;/p&gt;
+
+&lt;p&gt;My favorite book of this year was Do Androids Dream of Electric Sheep? which was made into a movie called Bladerunner. I enjoyed the bizarre atmosphere of the book and its theme of questioning what is real and does it matter&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Prelude to Foundation&lt;/strong&gt; &lt;em&gt;by Isaac Asimov&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;The story follows Hari Seldon in the creation of pychohistory while providing more information of Trantor, the center of the Empire.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;What Money Can’t Buy&lt;/strong&gt; &lt;em&gt;by Michael J. Sandel&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This book is about the moral questions of buying and selling stuff. Should we bet on death (life insurance), paying kids for good grades and classroom advertising. The book showed how creating a market changed the morally of each.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Forward the Foundation&lt;/strong&gt; &lt;em&gt;by Isaac Asimov&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;With the further look into the First Foundation and the creation of the Second Foundation. We were able to get more detail of the First Foundation and the Second Foundation. I loved the Foundation Series and would recommend to read&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;On Writing&lt;/strong&gt; &lt;em&gt;by Stephen King&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;1. Tell the Truth, if in your writing you are holding back then you can not create a connection to the reader. 2. Don’t use adverbs or the passive tense, I will try my best. 3. To be a good writer, you need to read a lot.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Code&lt;/strong&gt; &lt;em&gt;by Charles Petzold&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;After the first few chapters, I expected this book to a math book on the theory of programming and a part of it was. The majority of this book was practical and went on how a computer is designed and built from telephone relays to a high level computer language. This helps take the “magic” out of computers.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Fabless&lt;/strong&gt; &lt;em&gt;by Paul McLellan&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;An interesting book on the semiconductor industry. When starting this book I was expecting more deep dive into the technical aspects of the industry but was more of a history book. I felt some of the “In there own words” sections where just repeating what the author said in the chapter leading up to the excerpt.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Howard Hughes&lt;/strong&gt; &lt;em&gt;by Donald L. Barlett and James B. Steele&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;I didn’t know anything about Howard Hughes before reading this book. It is interesting how much he did with this life being a movie producer, record breaking pilot, airplane designer to name a few. This book had so much detail on Hugh’s actions and it was an interesting perspective from Hugh’s associates&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Do Androids Dream of Electric Sheep?&lt;/strong&gt; &lt;em&gt;by Philip K. Dick&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;The book creates an atmosphere of post-apocalyptic 2020 San Francisco which I seem to get lost in. It is the book’s 50th anniversary. It is interesting how it seems futuristic still. It brings up the question what is the difference between an android and a human.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The Mythical Man-Month&lt;/strong&gt; &lt;em&gt;by Fred Brooks&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This book came out 40 years ago, other then the talk of mainframe computers, I feel this book has held up its principles still. The central principle being, adding manpower to a late software project makes it later. Maybe this could be we greatly underestimate the time needed to learn a new system and the time that is added when there is more people that need to be informed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Ant Encounters&lt;/strong&gt; &lt;em&gt;by Deborah Gordon&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;There is so much information about ants and this book seems to be an introduction to the wider field of how living things interact. It is interesting that with no central control, ants are able to live though the rate in which they interact and the pattern of their encounters. I would recommend this book, it was a nice quick read.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The Man in the High Castle&lt;/strong&gt; &lt;em&gt;by Philip K. Dick&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This book looks at what would have happened if World War II ended differently. It took some time to reorient oneself each “jump” in the book. I really enjoyed this book, and like Do Androids Dream of Electric Sheep looked agian at what is real and what is fake, is there any difference from the two and does it matter.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Man’s Search for Meaning&lt;/strong&gt; &lt;em&gt;by Viktor Frankl&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;Viktor Frankl writes about experiences as an Auschwitz concentration camp inmate during World War II. This was an emotional book to read, when looking at what happened in the concentration camps. Frankl looks at this from a phycologist perspective and the later section of the books presents his psychotherapeutic method. I would recommend this book&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The Hard Thing About Hard Things&lt;/strong&gt; &lt;em&gt;by Ben Horowitz&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This book is about Ben Horowitz experiences as a CEO of many startup companies and he outlines his experiences. This I would not catergorize as a business book and closer to an auto-biography. It offers an in-depth look in to the world of fast growing technology companies.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Evicted&lt;/strong&gt; &lt;em&gt;by Matthew Desmond&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;The book follows half a dozen families and their stuggles. At the same time, it shows the larger picture with the facts of evictions in the usa and the impact it has. It was enlightining to have the landlord’s perpective of this enviroment, bringing up the discussion of explotation and housing being a fundamental human need.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Made in America&lt;/strong&gt; &lt;em&gt;by Sam Walton&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;Learning about Sam Walton and his obsession with retail, from his first stores to the discount stores in rural america. He was extremely competitive and trying out things that haven’t be done before. At the same time taking best practices from his competitors.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Enlightenment Now&lt;/strong&gt; &lt;em&gt;by Steven Pinker&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This was a long book. I read Part I and II but had to abandon it half way though Part III. This book made me think differently about how well we are doing in the world. I really enjoyed the chapter on climate change, in how Pinker goes over how we have taken the news and how it has also been a political issue and how there are divided. It was also interesting to see how the news warps our image of the world and he re-enforces the availiblity bias and confirmation bias.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;A Wrinkle in Time&lt;/strong&gt; &lt;em&gt;by Madeleine L’Engle&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;A fun weird little story&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Code Complete 2&lt;/strong&gt; &lt;em&gt;by Steve McConnell&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;I have been focusing to improving my programming skills. From reviews online, I heard this was the textbook for programmers. I believe it lived up to the hype, many guidelines it recommends I use everyday. I liked that this book went into detail of many elements of project management which can be used out of programming.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Fight Club&lt;/strong&gt; &lt;em&gt;Chuck Palahniuk&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;It was a very interesting analysis of the human psychology. The movie follows the books very closely expect for ending which leave the movie and book with different a message at the end of the book.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Le Petit Nicolas&lt;/strong&gt; &lt;em&gt;René Goscinny&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;Un livre de jeunesse que j’ai lu pour améliorer mon français.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The Subtle Art of Not Giving A F*ck&lt;/strong&gt; &lt;em&gt;by Mark Manson&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;It is an okay book. My favorite part of the book is how when you remove actions and challenges each of us has core values and you have to strive for maintaining these values&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Debt: The First 5000 Years&lt;/strong&gt; &lt;em&gt;by David Graeber&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This was a insightful book that brought up many new ideas. The barter economy never existed. Describing the market economy and human economy. This book was lonng and read like a textbook. It provides a very detailed account of the introduction of money and worth and the different systems that were used until today.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;I, Robot&lt;/strong&gt; &lt;em&gt;by Isaac Asimov&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;I, Robot is a story about when robots came be able to talk and perform a larger variety of tasks. Each chapter seemed to introduce a new and exciting problem which made you think about the ethics of robots and how they relate to people.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Fooled by Randomness&lt;/strong&gt; &lt;em&gt;by Nassim Nicholas Taleb&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This book was a great book to look at how bad humans are at guessing the future. In addition the book looked at the bias everyone has and how they apply in the real world&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Sex, Drugs, and Cocoa Puffs&lt;/strong&gt; &lt;em&gt;by Chuck Klosterman&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;A book of eighteen essays. The book looks into pop culture and how it affects us. The book was released 15 years ago and makes a lot of references I’ve heard of; The Real World, Billy Joel, Saved by the bell but I didn’t experience them like the reader.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Le Petit Prince&lt;/strong&gt; &lt;em&gt;by Antoine de Saint-Exupéry&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;C’est un histoire bizzare. Je pense que je le devrai lire en anglais. J’ai lu pour améliorer mon français.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The Wright Brothers&lt;/strong&gt; &lt;em&gt;by David McCullough&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;An awesome history of the birth of flight. It is interesting to see the contrast between langley with large goveremnt spending and the wright brothers who made money at the bike shop to pay for the development. The Wright brothers were not considered by the US goverenment when they were look to sell there plane.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Reality Is Not What It Seems&lt;/strong&gt; &lt;em&gt;by Carlo Rovelli&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This book went through the history of physics from Greek philosophers to present day. It has been an intersting hearing a simple explaination of modern physics - With two basic theories of quantum mechanics and general relativitity and the attempt to combine these incompatible theories. This book introducted loop quantum gravitiy as the new leading contender.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Seveneves&lt;/strong&gt; &lt;em&gt;by Neal Stephenson&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;The book is about the what would happen if the moon suddenly split apart. This book felt like 2 books, with the first being a scifi novel and the second being a drama. I enjoyed the first half, the second seemed to drag on a bit. It was an interesting thought experiment and covered a large variety of issues that could occur.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Energy and Civilization&lt;/strong&gt; &lt;em&gt;by Vaclav Smil&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;The books puts together a big history of society and its relationship with energy and technology. I enjoyed looking at the energy perspective in biology and the benefits of bipedalism and why we have 2 feet. In addition, agriculture and how the calorie of food per hours of work is an important heuristic for a population density.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Never Split The Difference&lt;/strong&gt; &lt;em&gt;by Chris Voss&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;I try to avoid most business type books, but this book exceeded my expectations. I enjoyed reading Chris Voss’s experience of being a hostage negotiator and hearing how he learnt all of these lessons in the field. The points he shows are actionable and feel very achievable.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The Man Who Loved Only Numbers&lt;/strong&gt; &lt;em&gt;by Paul Hoffman&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;A biography of the famous mathematician Paul Erdos. I really enjoyed this book and hear about Erdos’s life. I also enjoyed hearing about other mathematicians in the book such as Ronald Graham and Carl Friedrich Gauss&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Naked Economics&lt;/strong&gt; &lt;em&gt;by Charles Wheelan&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;A nice introduction to economic thinking. I found the part of determining what makes an economy rich an interesting concept.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The Goal&lt;/strong&gt; &lt;em&gt;by Eliyahu Goldratt&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This was a piece of fiction where a main character is trying to save his plant. It is also a business book to run an efficient business. I have heard a lot about this book and was glad to read it. The main theory of the book is reduce your bottlenecks.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">In 2019, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.</summary></entry><entry><title type="html">2019 Projects</title><link href="https://pucula.com/2019-projects/" rel="alternate" type="text/html" title="2019 Projects" /><published>2019-01-01T00:00:00-05:00</published><updated>2019-01-01T00:00:00-05:00</updated><id>https://pucula.com/2019-projects</id><content type="html" xml:base="https://pucula.com/2019-projects/">&lt;ol&gt;
+  &lt;li&gt;Altitude - A time budgeting app&lt;/li&gt;
+  &lt;li&gt;Parsley for Style - A recipe website&lt;/li&gt;
+  &lt;li&gt;Pictures to Text - A fun ASCII desiginer&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;altitude&quot;&gt;Altitude&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/lazydancer/altitude&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In this project I used React, Redux and Electron. After starting this project in Angular, I changed my path to React. I found Angular to be too rigid and I got to a point where I couldn’t add anything expect the most simple actions. I tried Redux, I would recommend not using it to start a new project. It add more complexity while not offseting the benefits&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/2019-projects/altitude.png&quot; style=&quot;width: 100%; display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 1.&lt;/span&gt; Altitude.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Electron was an interesting test and I would use it in the future. It is great to have the same enviroment over all operating systems and writing in HTML, CSS and Javascript&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/2019-projects/work.png&quot; style=&quot;width: 100%; display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 2.&lt;/span&gt; Altitude.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;parsley-for-style&quot;&gt;Parsley for Style&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/lazydancer/Parsley-for-Style&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This was my first Django app using, a web framework built on top of Python. Although not the prettiest interface Ive ever designed. This had the ability to sign up users and keep a list of users choices&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/2019-projects/home.png&quot; style=&quot;width: 100%; display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 2.&lt;/span&gt; Parsley for Style.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The site was hosted on AWS and used elastic beanstalk service - with EC2 servers, load balancing and S3 for static data. The database, also hosted on AWS as an RDS instance runs a Postgres database and allows flexiblity to develop the app further&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/2019-projects/slow_cooker_sesame_beef.png&quot; style=&quot;width: 100%; display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 2.&lt;/span&gt; Parsley for Style: Slow cooker sesame beef.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;pictures-to-text&quot;&gt;Pictures to Text&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/lazydancer/pictotxt&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;A fun and quick script written in python to convert an image into text. I used pillow and numpy libraries&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step2.png&quot; style=&quot;width: 50%; display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 2.&lt;/span&gt; Pictures to Text.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.gMBy         
+  WgM_        
+  M@DMg_      
+  $BMGDMg     
+   `MgZMMg_   
+    _&amp;amp;lt;V _MMK_ 
+  _1P&quot;`    &quot;gg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Altitude - A time budgeting app Parsley for Style - A recipe website Pictures to Text - A fun ASCII desiginer</summary></entry><entry><title type="html">Rocket or Tower</title><link href="https://pucula.com/rocket-or-tower/" rel="alternate" type="text/html" title="Rocket or Tower" /><published>2018-01-01T00:00:00-05:00</published><updated>2018-01-01T00:00:00-05:00</updated><id>https://pucula.com/rocket-or-tower</id><content type="html" xml:base="https://pucula.com/rocket-or-tower/">&lt;p&gt;Recently I started working on &lt;a href=&quot;https://fast.ai&quot;&gt;fast.ai&lt;/a&gt;, this is my attempt at creating a network.&lt;/p&gt;
+
+&lt;h2 id=&quot;attempt-one&quot;&gt;Attempt One&lt;/h2&gt;
+
+&lt;p&gt;My training set contains 10 rockets and 10 towers&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/rocket-or-tower/tower.png&quot; style=&quot;display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 1.&lt;/span&gt; CN Tower, definately a tower.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using the the 3 line program from the fast.ai library for the precompiled model &lt;a href=&quot;https://github.com/KaimingHe/deep-residual-networks&quot;&gt;resnet&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;0 is more rocket-like, 1 is more building-like&lt;/p&gt;
+
+&lt;p&gt;With having only 10 examples of each. It is amazing how well it did. Only misclassifing the CN tower just barely to being a rocket&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/rocket-or-tower/result.png&quot; style=&quot;width: 100%; display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 2.&lt;/span&gt; Running agaisnt the standard resnet model with only 10 examples leads an already close result
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;attempt-two&quot;&gt;Attempt Two&lt;/h2&gt;
+
+&lt;p&gt;In this attempt, I added 300 more photos for each and added 15 for the validation set. This time adding data augmentation, variable learning rate and unfreezing the resnet model&lt;/p&gt;
+
+&lt;h3 id=&quot;data-augmentation&quot;&gt;Data Augmentation&lt;/h3&gt;
+
+&lt;p&gt;Modify the image slightly to known effects of a camera. This is transformations that shift, zoom and flip the images. These are fed into the learning like any other image&lt;/p&gt;
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/rocket-or-tower/aug.png&quot; style=&quot;width: 100%; display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 3.&lt;/span&gt; Demonstration of the augmentations done to the image to help the classifier, ie you would still call these rockets
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;stochastic-gradient-descent-with-restarts&quot;&gt;Stochastic Gradient Descent with Restarts&lt;/h3&gt;
+
+&lt;p&gt;When a network is learning a function. It needs to start off high and reduce to gain more accuracy. This is included but also is restarted every epoch. This helps generalize the network, by trying avoiding narrow minimums. Creating a learning rate like this…&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/rocket-or-tower/learning.png&quot; style=&quot;display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 4.&lt;/span&gt; Learning rate with restarts
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is improved a little bit more by slowing down the learning rate on the later epochs.&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/rocket-or-tower/learning2.png&quot; style=&quot;display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 5.&lt;/span&gt; Learning rate with delayed restarts
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;training-the-precomputed-model&quot;&gt;Training the precomputed Model&lt;/h3&gt;
+
+&lt;p&gt;Before training was done on the last few layers. This opens the begining layers. Also much lower learning rates are used in decreasing order to the earlier layers&lt;/p&gt;
+
+&lt;h3 id=&quot;result&quot;&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;96.6% accuracy. With one error in classification&lt;/p&gt;
+
+&lt;p&gt;The confusion matrix output, to find what values were misclassified&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/rocket-or-tower/confusion.png&quot; style=&quot;display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 6.&lt;/span&gt; Confusion matrix shows only one rocket misclassified as a tower
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Below it the images it was most uncertain of including the incorrect labeling of the rocket on the bottom left.&lt;/p&gt;
+
+&lt;div class=&quot;figure&quot;&gt;
+    &lt;img src=&quot;/assets/rocket-or-tower/result2.png&quot; style=&quot;width:100%;display: block; margin: 0 auto;&quot; /&gt;
+    &lt;div class=&quot;caption&quot;&gt;
+        &lt;span class=&quot;caption-label&quot;&gt;Figure 7.&lt;/span&gt; Most uncertain, with a much better model it is suprisingly accurate.
+    &lt;/div&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Recently I started working on fast.ai, this is my attempt at creating a network.</summary></entry><entry><title type="html">Automatic Paintball Turret</title><link href="https://pucula.com/automatic-paintball-turret/" rel="alternate" type="text/html" title="Automatic Paintball Turret" /><published>2017-06-01T00:00:00-04:00</published><updated>2017-06-01T00:00:00-04:00</updated><id>https://pucula.com/automatic-paintball-turret</id><content type="html" xml:base="https://pucula.com/automatic-paintball-turret/">&lt;p&gt;For a mechatronics university course, we had a project to combine our electrical and mechanical knowledge. It was a very broad scope. Our team decided to make an automatic paintball turret, where it would autonomously track and shoot an object. Given how much we spend on it, it worked suprisingly well. In this article, I would like show you a brief overview on what we built and the things we learned.&lt;/p&gt;
+
+&lt;p&gt;We broke the work into 2 parts&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Mechanical&lt;/strong&gt;, which would hold the paintball gun and be able to move it around. It needed to rotate in 3D space, around 90 deg field of view is good enough&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Software&lt;/strong&gt; for us to know how to move the turret and when it knows to shoot. This was more on the electronics and software side.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;mechanical&quot;&gt;Mechanical&lt;/h2&gt;
+
+&lt;p&gt;In order for the system to orient itself to aim at targets within it’s range, two rotational degrees of freedom were required. The first degree of freedom, a rotation about the vertical axis, will be referred to as pan. This aims the barrel of the paintball gun left or right. The second degree of freedom, a rotation about the horizontal axis, will be referred to as tilt. This aims the barrel of the gun up or down. To achieve these degrees of freedom, two motors were required to power the system. To avoid gear alignment and the need for optical encoders, direct drive servo motors were desirable.&lt;/p&gt;
+
+&lt;p&gt;For a smooth pan rotation, it was desirable to remove any axial loads acting on the pan motor. For this reason, the weight of the assembly was supported on a large lazy susan bearing oriented for pan rotation. This lazy susan was rated well over the required weight and the square shape made for very easy mounting. The motor was mounted underneath in a non-load- bearing method.&lt;/p&gt;
+
+&lt;p&gt;For a smooth tilt rotation, two lubricated bearings were selected to bear any radial loads due to weight, inertia, and recoil that would otherwise transfer directly to the motor. These bearings were sealed to prevent the possible intrusion of paint or dirt and flanged to make for easier mounting. An affordable half inch rod was selected to support all loads. To mount the motor to the shaft, horns were employed to simplify construction and minimize cost of the prototype.&lt;/p&gt;
+
+&lt;p&gt;The housing was made out of ½” plywood. This selection made manufacturing simple, eliminated the need for a machine shop, and kept the housing relatively light. Before mounting the horns to the housing, the housing was suspended and with the use of a plumb the center of gravity was found to make the movement as smooth as possible. The entire assembly was mounted on a tripod constructed of ¾” schedule 40 steel piping. This allowed for flexibility in design with readily available materials. The weight of the tripod also provided for a low and stable centre of gravity. If additional mass was required the piping could be filled with sand.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-|- (Gun) -|-
+ |         |
+ -----------
+ (Lazy Susan)
+ ------------
+   (Tripod)
+   /  |   \
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;p&gt;Camera -&amp;gt; Computer -&amp;gt; Arduino -&amp;gt; Stepper Controller -&amp;gt; Stepper Motors -&amp;gt; Turret&lt;/p&gt;
+
+&lt;p&gt;We used a webcam which was attached to the base of the paintball gun holder. The camera data was sent to the computer over usb. The compyter was runing a python program with opencv library. The opencv did the heavy lifting of finding a color and selecting the “glob” with the most area of the camera and found the center, this was the target. We then sent the information to the arduino which converted the message to the stepper motors changing the direction of the paintball gun.&lt;/p&gt;
+
+&lt;p&gt;The motor control system receives its input from either the video processing system or the joystick. An Arduino microcontroller receives serial position information over a USB link from PC processing the video. This takes the form of the ASCII character p for pan or t for tilt, followed by a step number between 0 and 1024 to signify the position between 0 and 320 degrees, finalized by a newline character ‘\n’. An example is p200/n, telling the pan motor to reach 62.5 degrees. The microcontroller ensures the position information is valid then calculates the time the motor has to move to the new position. This was calibrated as 2 milli seconds per change in step. Continuing the example, if pan started at position 300, it would have 200 milliseconds to move to position 200. The Herkulex DRS-0101 motors contain microcontrollers which plot a trapezoidal path between their current and final position. This reduces their peak power draw by ramping up, leveling off, then ramping down near the final position. The internal PID control is further explained in section 3.5. The DRS-0101 communicates over serial communication channel. The original Arduino library written by Alessandro Giacomel from Italy. Support was added for Arduino Due through additional control statements for the different build sections. The Arduino code written for this project will now build for Due, Uno, and all previous Arduinos which support either hardware UART Serial or SoftwareSerial.h.&lt;/p&gt;
+
+&lt;p&gt;Target tracking was done by taking visual information from a webcam, processing this visual information and sending a message to the Arduino for the pan and tilt of the servos. The following paragraphs will break down the system that connects these elements. Using the python programming language and opencv, a set of various computer vision functions. The program is set up into 2 parts: initialization; and a loop that runs continuously during operation of the turret.&lt;/p&gt;
+
+&lt;h3 id=&quot;motor-pid-controller-tuning&quot;&gt;Motor PID Controller Tuning&lt;/h3&gt;
+
+&lt;p&gt;The HerculeX DRS-0101 comes with a built in PID controller to improve motor control performance. Tuning this controller allowed for better response time, a reduction in overshoot and oscillation, and a minimized steady state error. A PID controller receives an error signal, in this case the difference between the current motor position and the desired motor position, and uses this error to send an ideal output to the motor.&lt;/p&gt;
+
+&lt;p&gt;The equation defining the output of a PID controller can be defined as Where e(t) is the error signal, K p is the proportional constant, K i is the integral constant, K d is the derivative constant, and u(t) is the output signal to the motor. The proportional constant, K p , affects the output to the motor based on the current error signal. Increasing this constant will increase the response time of the system but possibly result in overshoot and oscillations.&lt;/p&gt;
+
+&lt;p&gt;The integral constant, K i , affects the output based on the current error signal and the duration of error. Meaning that it affects the output based on past errors. Increasing this constant helps to eliminate offset in the steady state error but can lead to a lag in the response. The derivative constant, K d , controls the output based on the slope of the error. In other words, it affects the output to the motor based on future predicted errors. Increasing this constant results in a faster response and improves settling time but is sensitive to high frequencies in the system, for this reason, a low pass filter is required. In this case, the inertia of the system acts as a low pass filter.&lt;/p&gt;
+
+&lt;p&gt;As mentioned, the HerculeX motors used in the system have built in PID controllers. The Servo Manager Kit software allows for the adjustment of position K p , position K i , and position K d constants of the motors. Originally, it was planned to employ the Ziegler-Nichols rules for tuning the PID controllers. These are experimental methods for determining PID constants by observing the step response of the system with both integral and derivative constants set to zero&lt;/p&gt;
+
+&lt;p&gt;Note that on all vertical axes, the position is in the step units of the motor. After observing the system’s response, it seemed satisfactory for our purposes. The system was capable of settling within one second in all cases with very minimal overshoot. For this reason, additional tuning was not done.&lt;/p&gt;
+
+&lt;h3 id=&quot;firing-control&quot;&gt;Firing control&lt;/h3&gt;
+
+&lt;p&gt;A key design choice made early in the project was selecting a paintball gun with an electronic trigger. This allowed the project to electronically trip the trigger instead of building an additional mechanical system to depress the trigger. Below in Figure 8 is a circuit diagram of the microcontroller and circuit within the Smart Parts Ion PaintBall Gun. Highlighted with the arrow is the mechanical micro switch trigger mechanism. When the switch is depressed pin 15 of the ATMega48v senses connection to ground from the NC connection through the switch. The spring loaded microswitch returns to open when not depressed. The microcontroller will only fire on the falling edge, leaving the trigger depressed will not allow the gun to fire until the microcontroller senses pin high again.&lt;/p&gt;
+
+&lt;p&gt;The Arduino Uno used in the final design operates at 5v, while the paintball gun at 3.3v. To compensate for this difference, a voltage divider (as seen in Figure 9) was designed. This was an effective design as power draw by the paintball gun was nonexistent and the Arduino was wall powered, thus losses through the resistors were deemed acceptable.&lt;/p&gt;
+
+&lt;p&gt;When you want to aim something but only have the perspective from another object is difficult.We wanted to take the webcam image and point the gun at a point in which the camera sees.&lt;/p&gt;
+
+&lt;p&gt;First, I tried the simplest approach and assumed they saw the samething. The shots were off by a lot and it was most noticable on the edges of the frame.&lt;/p&gt;
+
+&lt;p&gt;We needed to get the target in 3D space. First convert the 2D image seen from the camera. It is a 640 x 480 output, from an online source it was found the FOV was 60 Deg and from the aspect ration of 4:3. X had a view of 48 Deg and the y had a view of 36 Deg&lt;/p&gt;
+
+&lt;p&gt;The next we had to place this point in 3D space, we are missing a distance. Don’t tell any one we just used a constant (10 m). Most things we were going to shot where going to be far enough to avoid rebound and it would not be accurate enough to hit anything further.&lt;/p&gt;
+
+&lt;p&gt;Now with spheical cordiantes now in spheical corrdiantes we convert to cartistain to move our origin to get the position reative to the gun. Getting it is simple as adding the difference in the distance between the camera and the gun, shifting the coordinate system&lt;/p&gt;
+
+&lt;p&gt;We are not done yet. The motors are looking for angle to be at. We do one more coordinate transmation and send the horizontal angle to the horizontal servo motor and the vertial to the vertial motor.&lt;/p&gt;
+
+&lt;h3 id=&quot;it-takes-time-to-do-things&quot;&gt;It takes time to do things&lt;/h3&gt;
+
+&lt;p&gt;It takes time for the motor to move and even get up to speed and It takes tiem for the projectile to reach its moving target. We needed to predict we there object will be and in what direction we needed to shot to hit it.&lt;/p&gt;
+
+&lt;p&gt;Built in the coordinate transformation function is a target prediction that can be used to estimate where the target will be in a defined period of time. It is using simple linear extrapolation of the position based the targets current velocity, illustrated in Figure 5.&lt;/p&gt;
+
+&lt;p&gt;Figure 5: Linear extrapolation of a velocity vector&lt;/p&gt;
+
+&lt;p&gt;The velocity is estimated by comparing the current and previous frame and observing how far the centres of the object have moved. Using this distance and the time elapsed, the velocity of the object can be found. To predict the next position the current position is taken and added to the velocity times a defined period of ‘leading’ time which represents how far ahead we would like to predict. Longer periods of leading time can be used to track fast moving or long-distance targets. However, accuracy will likely decrease with longer leading times.&lt;/p&gt;
+
+&lt;p&gt;We had to make some comprimises in our code, to bring on the code. We started trying to do most of the calculatoin on the arduino. That ended quickly when we wanted to use the opencv library.&lt;/p&gt;
+
+&lt;p&gt;We had a laptop which was already getting up there in age being 6 years old at the time. It could only process 1 frame per second. We reduced the complexity of the calcultion, reduced the camera resolutoin by half.&lt;/p&gt;
+
+&lt;p&gt;The first step is to retrieve a frame from the camera. The camera being used is the Logitech C270 HD Webcam, with a frame displaying 640 by 480 pixels. This gives a total pixel count of 640*480 = 307200 pixels. Each pixel contains 3 numbers to define its state. The frame uses RGB(red, green and blue), each colour is a number between 0 and 255 which fits in one byte. The frame is written to a file and blurred slightly to reduce noise and make contours of greater uniformity.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;During field testing, the compressed air line and paintballs were added to the paintball sentry. As this additional mass was not accounted for during initial testing and motor tuning, the tilt servo motor was overloaded causing it to stall and eventually caused internal gear damage. Future designs should account for masses added to the gun during use. Additionally, alternate housing designs should be considered to reduce weight.&lt;/p&gt;
+
+&lt;p&gt;Future projects should consider using the HerkuleX motor line as their serial communication and internal PID control made for excellent prototyping.&lt;/p&gt;
+
+&lt;p&gt;A functional paintball sentry turret was successfully constructed. It successfully tracked targets of a designated color, transformed coordinates of the targets into motor positions, engaged the motors to reorient to aim at the target, and fired paintballs precisely and with reasonable accuracy. With the success a few lessons were learned, the largest being the importance of sizing an adequate motor and balancing the load&lt;/p&gt;</content><author><name></name></author><summary type="html">For a mechatronics university course, we had a project to combine our electrical and mechanical knowledge. It was a very broad scope. Our team decided to make an automatic paintball turret, where it would autonomously track and shoot an object. Given how much we spend on it, it worked suprisingly well. In this article, I would like show you a brief overview on what we built and the things we learned.</summary></entry></feed>

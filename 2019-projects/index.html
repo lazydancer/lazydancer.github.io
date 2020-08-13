@@ -1,0 +1,139 @@
+<html>
+<head>
+    <title>2019 Projects - James Pucula</title>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+
+    <meta name='description' content='James Pucula'>
+    <meta name='keywords' content='static, writing'>
+    <meta name='author' content='James Pucula'>
+
+    <link href='/css/blog.css' rel='stylesheet'/>
+    <link href='/css/trac.css' rel='stylesheet'/>
+    <link href='/css/markdown.css' rel='stylesheet'/>
+
+    <script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  jax: ['input/TeX', 'output/HTML-CSS'],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+    extensions: ['color.js']
+  },
+  messageStyle: 'none',
+  'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'] }
+});
+</script>
+
+<script src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML' type='text/javascript'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+</head>
+<body>
+<div class='content'>
+    <div class='nav'>
+    <ul class='wrap'>
+        <li><a href='/'><img src='/assets/logo.png'></img></a></a></li>
+    </ul>
+</div>
+    <div class='front-matter'>
+        <div class='wrap'>
+            <h1>2019 Projects</h1>
+            <h4>An article of things I worked on in 2019. I didn't think it justified its own post, but I would like to share</h4>
+            <div class='bylines'>
+                <div class='byline'>
+                    <h3>Published</h3>
+                    <p>01 September 2017</p>
+                </div>
+                <div class='byline'>
+                    <h3>Updated</h3>
+                    <p>01 June 2020</p>
+                </div>
+            </div>
+            <div class='clear'></div>
+        </div>
+    </div>
+    <div class='wrap article'>
+        <ol>
+  <li>Altitude - A time budgeting app</li>
+  <li>Parsley for Style - A recipe website</li>
+  <li>Pictures to Text - A fun ASCII desiginer</li>
+</ol>
+
+<h2 id="altitude">Altitude</h2>
+
+<p><a href="https://github.com/lazydancer/altitude">Github</a></p>
+
+<p>In this project I used React, Redux and Electron. After starting this project in Angular, I changed my path to React. I found Angular to be too rigid and I got to a point where I couldn’t add anything expect the most simple actions. I tried Redux, I would recommend not using it to start a new project. It add more complexity while not offseting the benefits</p>
+
+<div class="figure">
+    <img src="/assets/2019-projects/altitude.png" style="width: 100%; display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 1.</span> Altitude.
+    </div>
+</div>
+
+<p>Electron was an interesting test and I would use it in the future. It is great to have the same enviroment over all operating systems and writing in HTML, CSS and Javascript</p>
+
+<div class="figure">
+    <img src="/assets/2019-projects/work.png" style="width: 100%; display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 2.</span> Altitude.
+    </div>
+</div>
+
+<h2 id="parsley-for-style">Parsley for Style</h2>
+
+<p><a href="https://github.com/lazydancer/Parsley-for-Style">Github</a></p>
+
+<p>This was my first Django app using, a web framework built on top of Python. Although not the prettiest interface Ive ever designed. This had the ability to sign up users and keep a list of users choices</p>
+
+<div class="figure">
+    <img src="/assets/2019-projects/home.png" style="width: 100%; display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 2.</span> Parsley for Style.
+    </div>
+</div>
+
+<p>The site was hosted on AWS and used elastic beanstalk service - with EC2 servers, load balancing and S3 for static data. The database, also hosted on AWS as an RDS instance runs a Postgres database and allows flexiblity to develop the app further</p>
+
+<div class="figure">
+    <img src="/assets/2019-projects/slow_cooker_sesame_beef.png" style="width: 100%; display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 2.</span> Parsley for Style: Slow cooker sesame beef.
+    </div>
+</div>
+
+<h2 id="pictures-to-text">Pictures to Text</h2>
+
+<p><a href="https://github.com/lazydancer/pictotxt">Github</a></p>
+
+<p>A fun and quick script written in python to convert an image into text. I used pillow and numpy libraries</p>
+
+<div class="figure">
+    <img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/step2.png" style="width: 50%; display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 2.</span> Pictures to Text.
+    </div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.gMBy         
+  WgM_        
+  M@DMg_      
+  $BMGDMg     
+   `MgZMMg_   
+    _&amp;lt;V _MMK_ 
+  _1P"`    "gg
+</code></pre></div></div>
+
+
+    </div>
+    <div id='bibliography'>
+        <div class='wrap'>
+            <ol class="bibliography"></ol>
+        </div>
+    </div>
+</div>
+</body>
+</html>
