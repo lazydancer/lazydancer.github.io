@@ -57,7 +57,7 @@ MathJax.Hub.Config({
     <div class='wrap article'>
         <p>I’ve run into a challenge were I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them. In this article I wanted to show how I solved this problem using pathfinding. Also looking at the different trade-offs in speed, memory and “solution idealness” of the different approachs to take when pathfinding.</p>
 
-<h2 id="random-walk-depth-first">Random Walk (Depth-First)</h2>
+<h2 id="random-walk-depth-first">Random Walk</h2>
 
 <p>Each of the following algorithms require two variables. <strong>Visited</strong>, a list of visited locations, in dark blue in the animations and <strong>Queue</strong> a list of elements to be visited next, in light blue in the animantions below. To start off with the most simple to explain is random walk. Grab the location from the next in queue, add the neighbours to the front of the queue in random order and repeat until you land on your destination.</p>
 
