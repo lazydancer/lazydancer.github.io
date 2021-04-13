@@ -1,0 +1,164 @@
+<html>
+<head>
+    <title>Simulating Light - James Pucula</title>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+
+    <meta name='description' content='James Pucula'>
+    <meta name='keywords' content='static, writing'>
+    <meta name='author' content='James Pucula'>
+
+    <link href='/css/blog.css' rel='stylesheet'/>
+    <link href='/css/trac.css' rel='stylesheet'/>
+    <link href='/css/markdown.css' rel='stylesheet'/>
+
+    <script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  jax: ['input/TeX', 'output/HTML-CSS'],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+    extensions: ['color.js']
+  },
+  messageStyle: 'none',
+  'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'] }
+});
+</script>
+
+<script src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML' type='text/javascript'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+</head>
+<body>
+<div class='content'>
+    <div class='nav'>
+    <ul class='wrap'>
+        <li><a href='/'><img src='/assets/logo.png'></img></a></a></li>
+    </ul>
+</div>
+    <div class='front-matter'>
+        <div class='wrap'>
+            <h1>Simulating Light</h1>
+            <h4>A look into modelling light using ray tracing</h4>
+            <div class='bylines'>
+                <div class='byline'>
+                    <h3>Published</h3>
+                    <p>11 April 2021</p>
+                </div>
+                <div class='byline'>
+                    <h3>Updated</h3>
+                    <p>11 April 2021</p>
+                </div>
+            </div>
+            <div class='clear'></div>
+        </div>
+    </div>
+    <div class='wrap article'>
+        <p>As a learning exercise I went through <strong>Peter Shirley’s</strong> <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing in One Weekend</a>. I’m always impressed that computer graphics can be done is such few lines of code when you don’t need to worry about processing speed. In this post I hope to go over a few things I learned.</p>
+
+<div class="figure">
+    <img src="/assets/simulating-light/Untitled.png" style="display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 1.</span> Ray tracering in Rust
+    </div>
+</div>
+
+<p>I love that the problem is just big enough where you need to start breaking things apart to keep the program manageable leaving many choices for such a relatively small program, but you have the option to extend it as far as you want. Also I just enjoy the output of the result. It is so satisfying to see an image generated just from code. To see what your collision detection are used for. To see what the matrix maps transformed into something that looks cool.</p>
+
+<p>This is actually the 3rd ray tracer I’ve written. The 1st one I wrote was in Python, that was was too slow, the 2nd was with Python with Numpy, it was faster but with some confusing linear maps and the third is Rust. In this post I hope to tell you things I’ve learned and hopefully you’ll try writing your own light simulator.</p>
+
+<h2 id="python">Python</h2>
+
+<p>Python is an awesome language I use everyday in a variety of tasks and most of the time the speed of the language is not the bottleneck. Python became the bottleneck even after optimizing as much as I could without reverting to C calls. I knew I was fighting an uphill battle and without large algorithm improvements I couldn’t squeeze any more out of it without changing the base datatype.</p>
+
+<h2 id="numpy">Numpy</h2>
+
+<p>Numpy is python library which stores and operates on highly optimized multi-dimensional arrays. This combined with linear functions makes it very fast. Using the CPU’s linear accelerators such as BLAS and LAPACK. In the future I wish to try against with GPU, there doesn’t seem to be much support outside of the CUDA API.</p>
+
+<p>Writing linear maps was a difficult but good learning experience. Some things I learned but might only apply to this narrow case</p>
+
+<ul>
+  <li>Index masks are faster than boolean masks</li>
+  <li>Vectorization is key but can make things confusing. This was the first time I heard of the Einstein summation notation “np.einsum(‘ij, ij-&gt;i’, m, directions)”</li>
+  <li>32-bit float was the fastest, 64-bit float was slower, 16-bit float slowest</li>
+</ul>
+
+<p>And the results looked okay:</p>
+
+<div class="figure">
+    <img src="/assets/simulating-light/Untitled 1.png" style="display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 2.</span> Ray tracer in Numpy
+    </div>
+</div>
+
+<h2 id="rust">Rust</h2>
+
+<p>I wanted to rewrite it in a faster language, and Rust seemed like a good option.</p>
+
+<p>Taking 5,000 rays per pixel I created this image in 12 minutes. I also learned a lot about Rust structure and writing it effectively. Here is the build up looks like</p>
+
+<div class="figure">
+    <img src="/assets/simulating-light/Untitled 2.png" style="display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 4.</span>219 ms - 1 ray per pixel - 275,800 rays
+    </div>
+</div>
+
+<div class="figure">
+    <img src="/assets/simulating-light/Untitled 3.png" style="display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 4.</span>1 s - 7 rays per pixel - 1,930,600 rays
+    </div>
+</div>
+
+<div class="figure">
+    <img src="/assets/simulating-light/Untitled 4.png" style="display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 4.</span>10 s - 85 rays per pixel - 23,443,000 rays
+    </div>
+</div>
+
+<div class="figure">
+    <img src="/assets/simulating-light/Untitled 5.png" style="display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 4.</span>116s - 1000 rays per pixel - 275,800,000 rays
+    </div>
+</div>
+
+<div class="figure">
+    <img src="/assets/simulating-light/Untitled.png" style="display: block; margin: 0 auto;" />
+    <div class="caption">
+        <span class="caption-label">Figure 4.</span>1124s (18.7 mins) - 10,000 rays per pixel - 2,758,000,000 rays
+    </div>
+</div>
+
+<p>Writing these ray tracers made me realize why ray tracing isn’t the default compared to rasterized rendering even though it could look better and easier to program. Tbuthere is such a large speed boost when using rasterized rendering that you’ll always be able bigger in game worlds, more polygons. Computers are fast for doing numerical operations but also the world is full of large numbers too. A 100W light bulb would output 10^20 photons (assume 100% efficient, 600 nm light). The latest graphics card can achieve around 10^13 floating operations per second, which is crazy fast, but still 7 orders of magnitude for each photon to have 1 operation. There are many things that can be done to speed it up and we don’t need to simulate all of them.</p>
+
+<p>I’m excited to continue learning more about ray tracers and things like:</p>
+
+<ul>
+  <li>GPU acceleration</li>
+  <li>Neural network denoising</li>
+  <li>Optimized collision detection (ex. AABB)</li>
+  <li>Improved sampling methods (ex. PDFs)</li>
+</ul>
+
+<p><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">https://raytracing.github.io/books/RayTracingInOneWeekend.html</a></p>
+
+<p><a href="https://www.scratchapixel.com/">https://www.scratchapixel.com/</a></p>
+
+<p><a href="https://bheisler.github.io/post/writing-raytracer-in-rust-part-1/">https://bheisler.github.io/post/writing-raytracer-in-rust-part-1/</a></p>
+
+<p><a href="https://www.shadertoy.com/">https://www.shadertoy.com/</a></p>
+
+    </div>
+    <div id='bibliography'>
+        <div class='wrap'>
+            <ol class="bibliography"></ol>
+        </div>
+    </div>
+</div>
+</body>
+</html>
