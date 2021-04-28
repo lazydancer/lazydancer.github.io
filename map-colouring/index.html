@@ -51,9 +51,8 @@
   <main>
 <p>Map colouring is a puzzle where you assign different colours to different features ( in this case counties ) on a map with the goal of having no 2 colours share a border. It was first introducted in 1852 to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colours were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</p>
 
-<div class="centerImage">
 <img src="English_ceremonial_counties_1998.svg" style="max-width: 500px;" /> 
-</div>
+
 
 <p>This problem is called the <a href="https://en.wikipedia.org/wiki/Four_color_theorem">Four color theorem</a> and was the first major theorem to be proved using a computer in 1976.</p>
 
@@ -67,43 +66,11 @@
 
 <p>I would start by trying every single combination and returning the best solution. Computers are great with numbers and I want to be lazy. But looking at the table above there is no way to complete this in a reasonable time.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Nodes</th>
-      <th>Colours</th>
-      <th>Number of States</th>
-      <th>Time to Solve*</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Small Example</td>
-      <td>20</td>
-      <td>3</td>
-      <td>3,486,784,401 or 10^9</td>
-      <td>2 seconds</td>
-    </tr>
-    <tr>
-      <td>Counties of England</td>
-      <td>83</td>
-      <td>4</td>
-      <td>10^50</td>
-      <td>10^36 years</td>
-    </tr>
-    <tr>
-      <td>Countries of the World</td>
-      <td>195</td>
-      <td>4</td>
-      <td>10^117</td>
-      <td>10^103 years</td>
-    </tr>
-  </tbody>
-</table>
+<p>Small Example, 20 Nodes, 3 Colours, has 3,486,784,401 possible states or 19^9. <strong>2 seconds to solve</strong>*</p> 
+
+<p>Counties of England, 83 Nodes, 4 Colours, has 10^50 possible states<strong>10^36 years to solve</strong>*</p> 
 
 <p>*Assuming 2GHz computer, very optimistically checking 1 combination a cycle</p>
-
 
 
 <p>We need another way</p>

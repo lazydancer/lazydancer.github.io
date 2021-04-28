@@ -61,27 +61,27 @@
 
 <p>I made a data structure called Page which has the file path and date.</p>
 
-<pre><code>data Page = Page { title :: FilePath    -- Path to words
+<code>data Page = Page { title :: FilePath    -- Path to words
         , static  :: [FilePath]  -- List of static files 
     , date    :: [String]    -- Month,day,year
    } deriving (Show) &lt;/code&gt;&lt;/pre&gt;
-</code></pre>
+</code>
 
 <h3 id="create-and-order-pages">Create and order pages</h3>
 
 <p>Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file creates a list of extra js or css files linked to the article. This offered some flexiblility to have custom assets for an article</p>
 
-<pre><code>getPages :: [FilePath] -&gt; IO [Page]
+<code>getPages :: [FilePath] -&gt; IO [Page]
 getPages = mapM (\x -&gt; do static &lt;- getStatic ("Articles/" ++ x)
                       date &lt;- getPageDate ("Articles/" ++ x ++ "/words.md")
                       return (Page x static date))
-</code></pre>
+</code>
 
 <h3 id="create-html-from-template-and-pages">Create html from template and pages</h3>
 
 <p>To write a page required a template in the form of a HTML and a Page from above. Pandoc library converted the markdown text files to HTML</p>
 
-<pre><code>writePage :: String -&gt; Page -&gt; IO ()
+<code>writePage :: String -&gt; Page -&gt; IO ()
 writePage template page = do
     let year = last $ date page  
 
@@ -91,19 +91,19 @@ writePage template page = do
     let html = writeHtmlString (siteOptions template) pandocArt
     createDirectoryIfMissing True $ "Output/" ++ year ++ "/" ++ urlTitle 
     writeFile ("Output/" ++ year ++ "/" ++ urlTitle ++ "/index.html") html
-</code></pre>
+</code>
 
 <h3 id="write-table-of-contentsh2">Write table of contents</h3>
 
 <p>The table of contents also use the template but also include some html to make it look pretty</p>
 
-<pre><code>writeTOC :: String -&gt; [Page] -&gt; IO ()
+<code>writeTOC :: String -&gt; [Page] -&gt; IO ()
 writeTOC template pages = do
     list &lt;- mapM getItem pages 
     let html = writeHtmlString (siteOptions template) (tocWrap list) 
     createDirectoryIfMissing True $ "Output/archives" 
     writeFile "Output/archives/index.html" html 
-</code></pre>
+</code>
 
 <p>That is most likely 80% of the functions of the studio. With most other things being moving files around. Thank you for reading. You can find the code <a href="https://github.com/lazydancer/studio">here</a></p>  </main>
   </body>

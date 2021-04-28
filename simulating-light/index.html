@@ -51,7 +51,7 @@
   <main>
 <h1 id="simulating-light">Simulating Light</h1>
 <p>As a learning exercise I went through Peter Shirley&#39;s <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing in One Weekend</a>. I&#39;m always impressed that computer graphics can be done is such few lines of code when you don&#39;t need to worry about processing speed. In this post I hope to go over a few things I learned.</p>
-<p><img src="Untitled.png" alt="Untitled.png"></p>
+<img src="Untitled.png" alt="Untitled.png">
 <p>I love that the problem is just big enough where you need to start breaking things apart to keep the program manageable leaving many choices for such a relatively small program, but you have the option to extend it as far as you want.  Also I just enjoy the output of the result. It is so satisfying to see an image generated just from code. To see what your collision detection are used for. To see what the matrix maps transformed into something that looks cool. </p>
 <p>This is actually the 3rd ray tracer I&#39;ve written. The 1st one I wrote was in Python, that was was too slow, the 2nd was with Python with Numpy, it was faster but with some confusing linear maps and the third is Rust. In this post I hope to tell you things I&#39;ve learned and hopefully you&#39;ll try writing your own light simulator.</p>
 <h2 id="python">Python</h2>
@@ -65,19 +65,19 @@
 <li>32-bit float was the fastest, 64-bit float was slower, 16-bit float slowest</li>
 </ul>
 <p>And the results looked okay:</p>
-<p><img src="Untitled%201.png" alt="Untitled%201.png"></p>
+<img src="Untitled%201.png" alt="Untitled%201.png">
 <h2 id="rust">Rust</h2>
 <p>I wanted to rewrite it in a faster language. I have started working it in Rust. </p>
 <p>Taking 5,000 rays per pixel I created this image in 12 minutes. I also learned a lot about Rust structure and writing it effectively. Here is the build up looks like</p>
-<p><img src="Untitled%202.png" alt="Untitled%202.png"></p>
+<img src="Untitled%202.png" alt="Untitled%202.png">
 <p>219 ms - 1 ray per pixel - 275,800 rays</p>
-<p><img src="Untitled%203.png" alt="Untitled%203.png"></p>
+<img src="Untitled%203.png" alt="Untitled%203.png">
 <p>1 s - 7 rays per pixel - 1,930,600 rays</p>
-<p><img src="Untitled%204.png" alt="Untitled%204.png"></p>
+<img src="Untitled%204.png" alt="Untitled%204.png">
 <p>10 s - 85 rays per pixel - 23,443,000 rays</p>
-<p><img src="Untitled%205.png" alt="Untitled%205.png"></p>
+<img src="Untitled%205.png" alt="Untitled%205.png">
 <p>116s - 1000 rays per pixel - 275,800,000 rays</p>
-<p><img src="Untitled.png" alt="Untitled.png"></p>
+<img src="Untitled.png" alt="Untitled.png">
 <p>1124s (18.7 mins) - 10,000 rays per pixel - 2,758,000,000 rays</p>
 <p>Writing these ray tracers made me realize why ray tracing isn&#39;t the default compared to rasterized rendering even though it could look better and easier to program.  Tbuthere is such a large speed boost when using rasterized rendering that you&#39;ll always be able bigger in game worlds, more polygons. Computers are fast for doing numerical operations but also the world is full of fathomibly large numbers too. A 100W light bulb would output 10^20 photons (assume 100% efficient, 600 nm light). The latest graphics card can achieve around 10^13 floating operations per second, which is crazy fast, but still 7 orders of magnitude for each photon to have it&#39;s own operation. There are many things that can be done to speed it up and we don&#39;t need to simulate all of them.  </p>
 <p>I&#39;m excited to continue learning more about ray tracers and this things like:</p>
