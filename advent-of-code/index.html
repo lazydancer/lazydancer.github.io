@@ -1,92 +1,188 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Advent of Code - James Pucula</title>
-    <meta charset='UTF-8'>
-    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name='description' content='James Pucula'>
-    <meta name='keywords' content='static, writing'>
-    <meta name='author' content='James Pucula'>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-    <link href='/css/blog.css' rel='stylesheet'/>
-    <link href='/css/trac.css' rel='stylesheet'/>
-    <link href='/css/markdown.css' rel='stylesheet'/>
+  <title>James Pucula - Advent Of Code</title>
+  <link rel = "stylesheet" type="text/css" href="/style.css"/>
 
-    <script type='text/x-mathjax-config'>
-MathJax.Hub.Config({
-  jax: ['input/TeX', 'output/HTML-CSS'],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-    extensions: ['color.js']
-  },
-  messageStyle: 'none',
-  'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'] }
-});
-</script>
-
-<script src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML' type='text/javascript'></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 </head>
 <body>
-<div class='content'>
-    <div class='nav'>
-    <ul class='wrap'>
-        <li><a href='/'><img src='/assets/logo.png'></img></a></a></li>
+  <header>
+        <a href="/">
+  <img width=64 height=64 src="data:image/png;base64,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"></a>
+  </header>
+  <nav><div class='site-nav'>
+    <section>
+      <h3>Projects</h3>
+        <ul class="nobull">
+        <li><a href="/pictures-to-text">Pictures to Text</a></li>
+        <li><a href="/parsley-for-style">Parsley for Style</a></li>
+        <li><a href="/altitude">Altitude</a></li>
+        <li><a href="/automatic-paintball-turret">Automatic Paintball Turret</a></li>
+        <li><a href="/studio">Studio</a></li>
+      </ul>
+    </section>
+    <section>
+    <h3>Articles</h3>
+    <ul class="nobull">
+      <li><a href="/simulating-light">Simulating Light</a></li>
+      <li><a href="/pathfinding">Path Finding</a></li>
+      <li><a href="/advent-of-code">Advent of Code</a></li>
+      <li><a href="/map-colouring">Map Colouring</a></li>
+      <li><a href="/rocket-or-tower">Rocket or Tower</a></li>
     </ul>
-</div>
-    <div class='front-matter'>
-        <div class='wrap'>
-            <h1>Advent of Code</h1>
-            <h4>I take part in a yearly coding challenge in december, posting my solutions</h4>
-            <div class='bylines'>
-                <div class='byline'>
-                    <h3>Published</h3>
-                    <p>01 December 2019</p>
-                </div>
-                <div class='byline'>
-                    <h3>Updated</h3>
-                    <p>01 January 2020</p>
-                </div>
-            </div>
-            <div class='clear'></div>
-        </div>
-    </div>
-    <div class='wrap article'>
-        <p>I first participated in Advent of Code in 2018. I enjoyed working through the challenges and I learned a lot</p>
+    </section>
+    <section>
+    <h3>Misc</h3>
+    <ul class="nobull">
+      <li><a href="/about">About</a></li>
+      <li><a href="/log">Log</a></li>
+    </ul>
+    </section>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    !
-  -~*~-
+
+  </nav>
+  </section></div></nav>
+  <main>
+<pre class="highlight"><code>  -~*~-
    /!\
   /%;@\
  o/@,%\o
  /%;`@,\
 o/@'%',\o
-'^^^N^^^`
-</code></pre></div></div>
+'^^^N^^^`</code></pre>
 
-<p>I continue to update this post for each year</p>
+
+<p>Race to find the solution to problems as fast as you can using any lanaguage resource you can. I participated in Advent of Code since 2018, but unfortunately missed 2020</p>
 
 <ul>
   <li><a href="#2019">2019</a></li>
   <li><a href="#2018">2018</a></li>
 </ul>
 
+
 <h2 id="2019">2019</h2>
 
-<p>I posted my solutions to GitHub: <a href="https://github.com/lazydancer/Advent-of-Code-2019">lazydancer/Advent-of-Code-2019</a></p>
+<p>In 2018 my goal was to complete all the problems. This year I will focus on writing clean code and writing more about my experience.</p>
+
+<p>You can find all of these solutions on Github: <a href="https://github.com/lazydancer/Advent-of-Code-2019">lazydancer/Advent-of-Code-2019</a></p>
+ 
+<ul>
+    <li><a href="#1">Day 1</a></li>
+    <li><a href="#2">Day 2</a></li>
+    <li><a href="#3">Day 3</a></li>
+    <li><a href="#4">Day 4</a></li>
+    <li><a href="#5">Day 5</a></li>
+    <li><a href="#6">Day 6</a></li>
+    <li><a href="#7">Day 7</a></li>
+    <li><a href="#8">Day 8</a></li>
+    <li><a href="#9">Day 9</a></li>
+    <li><a href="#10">Day 10</a></li>
+</ul>
+
+<div id="1"></div>
+
+<h3>Day 1: The Tyranny of the Rocket Equation</h3>
+
+<p>For Part 1, we simply need to divide each module weight by 3 and substact 2. The only thing in my code that is unusally is the '//' which is an integer divide. It acts as a round down function.</p>
+
+<p>For Part 2, we need to account for the extra weight of the fuel. This is done with a while loop where it looks for values which would add more fuel. When the fuel get less than 8.9999... the result will be 0.</p>
+
+<p>The tyranny of the rocket equation relates to the ideal rocket equation. Which is interesting to derive. We have the follow the rule of conservation of momentum where the momentum in a closed system needs to remain constant.</p>
+
+<div style="margin: 0 auto; max-width: 405px">
+<img src="Var_mass_system.svg"/> 
+</div>
+
+<p>All this simplifies to... mdv = v_exhaust * dm</p>
+
+<p>This makes sense the change in the momentum of the ship is the change in mass of the ship times the exhaust speed</p>
+
+<p>Rearranging and integrating both sides with respect to time and knowing 1/x integrates to ln(x) and ln(a) - ln(b) = ln(a/b). Finds the ideal rocket equation.</p>
+
+<p>v_final - v_inital = v-exhaust * ln(m_inital / m_final)</p>
+
+<div id="2"></div>
+<h3>Day 2: 1202 Program Alarm</h3>
+
+<p>For part 1, we need a run program which would set the pointer every 4 numbers. This is done with a simple for loop but not robust if another size of jump is needed.</p>
+
+<p>For part 2, we iterate over the program to find when a result is a desired number. The inputs are changed till the result is given. With only 100 possible values for the two. Leads to only 10,000 combinations and since order matters we look at the permutations using the builtin itertools module.</p>
+
+
+<div id="3"></div>
+<h3>Day 3: Crossed Wires</h3>
+
+<p>This one was done in Rust</p>
+
+<p>For Part 1, we can find the path in which each wire takes, creating a vector of locations. Finding where the two wires interset is looking at where both wire end at a location. We can use a set data type to find the union, in this case a HashSet finding an intersection.</p>
+
+<p>For Part 2, we look for the shortest manhattan distance along the path of the wires. </p>
+
+
+<div id="4"></div>
+<h3>Day 4: Secure Container</h3>
+
+<p>Part 1, we can find adjancent cells by taking a copy, shifting it by one and comparing against the original.</p>
+
+<p>Part 2, we can use a BTreeMap and count all of the numbers given finding if any are equal to 2.</p>
+
+<div id="5"></div>
+<h3>Day 5: Sunny with a Chance of Asteroids</h3>
+
+<p>Back to python</p>
+
+<p>Part 1, Using the old code from day 2, we had to introduce a new functions like input and ouput. The INPUT variable I made a global constant</p>
+
+<p>Part 2, even more functions were added and we needed to separate the pointer from the for loop and introduced more functions</p>
+
+<div id="6"></div>
+<h3>Day 6: Universal Orbit Map</h3>
+
+<p>For part 1, we can set up a map which looks at what planet it orbits. For each planet going down the chain to the base. Finding the base is done by taking the differnce between two sets. The 'guide' is a hashmap for really quick lookup values</p>
+
+<p>For part 2, we can find the path of YOU and SAN back to the base element and the paths will be common until a divergent step. Add up the remain elements that aren't common to find the paths between them.</p>
+
+<div id="7"></div>
+<h3>Day 7: Amplification Circuit</h3>
+
+<p>For part 1, we can use the itertools library and use the permutations function to get the result of the max</p>
+
+<p>For part 2, I didn't get it done in the time I had. I think you need to keep the state of the program. I will come back to this, I will try to create a stateful ampifier class</p>
+
+<div id="8"></div>
+<h3>Day 8: Space Image Format</h3>
+
+<p>For part 1, we can split the transmission into different chunks and count the layer with the fews 0 by using the min and count function</p>
+
+<p>For part 2, we just send to a function which returns 1 or 0 the first layer it sees them</p>
+
+<div id="9"></div>
+<h3>Day 9: Sensor Boost</h3>
+
+<p>After debugging for a while, I have left this one where it is. I hope to come back to this challenge</p>
+
+<div id="10"></div>
+<h3>Day 10: Monitoring Station</h3>
+
+<p>For part one I selected an asteroid to check if it had the most lines of sight by creating an expanding box from the asteroid and using any asteroids as casting shadows on the ones behind it</p>
+
 
 <h2 id="2018">2018</h2>
 
-<p>I enjoy the challenges, as I can learn new how people solve the same question. It’s not common for many people to be solving the same probelm and it can offer a unique opportunity to learn. This year I learned about assembly language and python imports</p>
+<p>[Advent of Code](https://adventofcode.com/) is an annual programming competition to complete 25 challenges in December. It's a way grow as a programmer, through solving problems and reveiwing others code. In this article I will cover two things I learned about this year and try to convince you to join next years competition.</p>
 
-<h3 id="assembly">Assembly</h3>
+<h3>1. Assembly Language</h3>
 
-<p>I have always be interested in how computers work, <em>see</em> <a href="https://pucula.com/notes/making-a-transistor-from-scratch-part-1.html">building a transistor from scratch</a>. I have never had the chance to program in assembly. That changed on <a href="https://adventofcode.com/2018/day/16">Day 16</a>, the challenge was to run a new programming language called elf code. Elf code looks similar to machine code, and example is seen below</p>
+<p>I have always be interested in how computers work, *see* [building a transistor from scratch](https://pucula.com/notes/making-a-transistor-from-scratch-part-1.html). I have never had the chance to program in assembly. That changed on [Day 16](https://adventofcode.com/2018/day/16), the challenge was to run a new programming language called elf code. Elf code looked almost identical to assembly.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 0 2 0
+<div class="highlight"><pre class="highlight"><code>
+4 0 2 0
 13 2 0 2
 2 2 3 2
 4 3 2 3
@@ -97,92 +193,90 @@ o/@'%',\o
 4 2 3 0
 13 1 0 1
 2 1 1 1
-</code></pre></div></div>
+</code></pre>
+</div>
 
-<p>The first number is the opcode, which could represent 1 of 16 operations, ‘add’, ‘mul’, ‘mov’. The second and third were inputs and the forth was what register to use for the output</p>
+<p>The first number is the opcode, which could represent 1 of 16 operations, 'add', 'mul', 'mov'. The second and third were inputs and the forth was what register to use for the output.</p>
 
-<p>First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it</p>
+<p>First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it.</p>
 
-<p>To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware</p>
+<p>To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware.</p>
 
-<p>Using an intermeddiate step to C, Below is a snippet of the assembly. ‘;’ is a comment. The ‘l01’, ‘l02’, ‘l03’ and ‘l07’ are labels. For example the first command is jmp l17, which is jump to label l17</p>
+<p>Using an intermeddiate step to C, Below is a snippet of the assembly. ';' is a comment. The 'l01', 'l02', 'l03' and 'l07' are labels. For example the first command is jmp l17, which is jump to label l17.</p>
 
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="nf">jmp</span>       <span class="nv">l17</span>           <span class="c1">;  L00: goto *jump_table[0+16+1]; //addi 3 16 3</span>
-<span class="nl">l01:</span>  <span class="nf">mov</span>       <span class="nv">r11</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">;  L01: reg[1] = 1; //seti 1 2 1</span>
-<span class="nl">l02:</span>  <span class="nf">mov</span>       <span class="nv">r12</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">;  L02: reg[2] = 1; //seti 1 1 2</span>
-<span class="nl">l03:</span>  <span class="nf">mov</span>       <span class="nb">rax</span><span class="p">,</span> <span class="nv">r11</span>      <span class="c1">;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5</span>
-      <span class="nf">mov</span>       <span class="nb">rbx</span><span class="p">,</span> <span class="nv">r12</span>      <span class="c1">;</span>
-      <span class="nf">imul</span>      <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>      <span class="c1">;</span>
-      <span class="nf">mov</span>       <span class="nv">r15</span><span class="p">,</span> <span class="nb">rax</span>      <span class="c1">;</span>
-      <span class="nf">cmp</span>       <span class="nv">r15</span><span class="p">,</span> <span class="nv">r14</span>      <span class="c1">;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5</span>
-      <span class="nf">sete</span>      <span class="nb">al</span>            <span class="c1">;  Grab the flag</span>
-      <span class="nf">movzx</span>     <span class="nv">r15</span><span class="p">,</span> <span class="nb">al</span>       <span class="c1">;  Move the flag to r15 extends with zeros</span>
-      <span class="nf">je</span>        <span class="nv">l07</span>           <span class="c1">;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3</span>
-      <span class="nf">jmp</span>       <span class="nv">l08</span>           <span class="c1">;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3</span>
-<span class="nl">l07:</span>  <span class="nf">add</span>       <span class="nv">r10</span><span class="p">,</span> <span class="nv">r11</span>      <span class="c1">;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0</span>
-</code></pre></div></div>
+<pre><code>
+      jmp       l17           ;  L00: goto *jump_table[0+16+1]; //addi 3 16 3
+l01:  mov       r11, 1        ;  L01: reg[1] = 1; //seti 1 2 1
+l02:  mov       r12, 1        ;  L02: reg[2] = 1; //seti 1 1 2
+l03:  mov       rax, r11      ;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5
+      mov       rbx, r12      ;
+      imul      rax, rbx      ;
+      mov       r15, rax      ;
+      cmp       r15, r14      ;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5
+      sete      al            ;  Grab the flag
+      movzx     r15, al       ;  Move the flag to r15 extends with zeros
+      je        l07           ;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3
+      jmp       l08           ;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3
+l07:  add       r10, r11      ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
+</code></pre>
 
-<p>In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation</p>
+<p>In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation.</p>
 
-<p>Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen</p>
+<p>Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen.</p>
 
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">print:</span>
-      <span class="nf">mov</span>       <span class="p">[</span><span class="nv">value</span><span class="p">],</span> <span class="nv">r10</span>     
-      <span class="nf">mov</span>       <span class="nb">rax</span><span class="p">,</span> <span class="mi">1</span>           <span class="c1">; system call for write</span>
-      <span class="nf">mov</span>       <span class="nb">rdi</span><span class="p">,</span> <span class="mi">1</span>           <span class="c1">; file handle 1 is stdout</span>
-      <span class="nf">mov</span>       <span class="nb">rsi</span><span class="p">,</span> <span class="nv">value</span>       <span class="c1">; address of string to output</span>
-      <span class="nf">mov</span>       <span class="nb">rdx</span><span class="p">,</span> <span class="mi">8</span>           <span class="c1">; number of bytes</span>
-      <span class="nf">syscall</span>                    <span class="c1">; invoke operating system to do the write</span>
-      <span class="nf">mov</span>       <span class="nb">rax</span><span class="p">,</span> <span class="mi">60</span>          <span class="c1">; system call for exit</span>
-      <span class="nf">xor</span>       <span class="nb">rdi</span><span class="p">,</span> <span class="nb">rdi</span>         <span class="c1">; exit code 0</span>
-      <span class="nf">syscall</span>                    <span class="c1">; invoke operating system to exit </span>
-</code></pre></div></div>
+<pre><code>print:
+      mov       [value], r10     
+      mov       rax, 1           ; system call for write
+      mov       rdi, 1           ; file handle 1 is stdout
+      mov       rsi, value       ; address of string to output
+      mov       rdx, 8           ; number of bytes
+      syscall                    ; invoke operating system to do the write
+      mov       rax, 60          ; system call for exit
+      xor       rdi, rdi         ; exit code 0
+      syscall                    ; invoke operating system to exit 
+</code></pre>
 
-<h3 id="python-imports">Python Imports</h3>
+<p>All the code can be found on my [github](https://github.com/lazydancer/Advent-of-Code-2018/tree/master/Day%2019)</p>
 
-<p>Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expression</p>
+<h3> 2. Python Imports</h3>
+
+<p>Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expressions</p>
 
 <p><strong>defaultdict</strong> - Having a set value for when nothing exist is a very useful feature</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">somedict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">somedict</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># KeyError
-</span>
-<span class="n">someddict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">someddict</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># print int(), thus 0
-</span></code></pre></div></div>
+<pre><code>somedict = {}
+print(somedict[3]) # KeyError
+
+someddict = defaultdict(int)
+print(someddict[3]) # print int(), thus 0</code></pre>
 
 <p><strong>copy</strong> - Because python calls list by reference this is useful to keep things functional</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">copy</span>
-<span class="n">copy</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">copy</span><span class="p">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></div>
+<pre><code>import copy
+copy.copy(x)
+copy.deepcopy(x)</code></pre>
+
 
 <p><strong>dequeue</strong> - A double-ended queue, this is useful for when rotation is needed with a rotate function</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">d</span><span class="p">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div></div>
+<pre><code>d = deque(xrange(10))
+d.rotate(2)</code></pre>
+**networkx** - This was useful for all types of graph equations. Shortest path was used many times
 
-<p><strong>networkx</strong> - This was useful for all types of graph equations. Shortest path was used many times</p>
+<pre><code>graph = networkx.Graph()
+# ...adding nodes...
+result = networkx.shortest_path(graph)</code></pre>
+<p><strong>re</strong> - This is a very popular library I have tried to avoid it.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">graph</span> <span class="o">=</span> <span class="n">networkx</span><span class="p">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="c1"># ...adding nodes...
-</span><span class="n">result</span> <span class="o">=</span> <span class="n">networkx</span><span class="p">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-</code></pre></div></div>
-<p><strong>re</strong> - This is a very popular library I have tried to avoid it</p>
+<p><i>Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.</i></p>
 
-<p><em>Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems</em></p>
+<pre><code>
+list(map(int, re.findall(r'-?\d+', line)))
+</code></pre>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r'-?\d+'</span><span class="p">,</span> <span class="n">line</span><span class="p">)))</span>
-</code></pre></div></div>
+<p>During the challenge, I read as much as I coded. Reading other peoples code was enlightening. You saw how they approached the problem and what trade-offs they chose.</p>
 
-    </div>
-    <div id='bibliography'>
-        <div class='wrap'>
-            <ol class="bibliography"></ol>
-        </div>
-    </div>
-</div>
-</body>
+<p>Thank you <a href="http://was.tl/">Eric Wastl</a> for creating advent of code and everybody that shared their solutions online. I learned a lot.</p>
+  </main>
+  </body>
 </html>

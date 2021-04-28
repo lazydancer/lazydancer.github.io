@@ -1,80 +1,102 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Pathfinding - James Pucula</title>
-    <meta charset='UTF-8'>
-    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name='description' content='James Pucula'>
-    <meta name='keywords' content='static, writing'>
-    <meta name='author' content='James Pucula'>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-    <link href='/css/blog.css' rel='stylesheet'/>
-    <link href='/css/trac.css' rel='stylesheet'/>
-    <link href='/css/markdown.css' rel='stylesheet'/>
+  <title>James Pucula - Pathfinding</title>
+  <link rel = "stylesheet" type="text/css" href="/style.css"/>
 
-    <script type='text/x-mathjax-config'>
-MathJax.Hub.Config({
-  jax: ['input/TeX', 'output/HTML-CSS'],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-    extensions: ['color.js']
-  },
-  messageStyle: 'none',
-  'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'] }
-});
-</script>
-
-<script src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML' type='text/javascript'></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 </head>
 <body>
-<div class='content'>
-    <div class='nav'>
-    <ul class='wrap'>
-        <li><a href='/'><img src='/assets/logo.png'></img></a></a></li>
+  <header>
+        <a href="/">
+  <img width=64 height=64 src="data:image/png;base64,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"></a>
+  </header>
+  <nav><div class='site-nav'>
+    <section>
+      <h3>Projects</h3>
+        <ul class="nobull">
+        <li><a href="/pictures-to-text">Pictures to Text</a></li>
+        <li><a href="/parsley-for-style">Parsley for Style</a></li>
+        <li><a href="/altitude">Altitude</a></li>
+        <li><a href="/automatic-paintball-turret">Automatic Paintball Turret</a></li>
+        <li><a href="/studio">Studio</a></li>
+      </ul>
+    </section>
+    <section>
+    <h3>Articles</h3>
+    <ul class="nobull">
+      <li><a href="/simulating-light">Simulating Light</a></li>
+      <li><a href="/pathfinding">Path Finding</a></li>
+      <li><a href="/advent-of-code">Advent of Code</a></li>
+      <li><a href="/map-colouring">Map Colouring</a></li>
+      <li><a href="/rocket-or-tower">Rocket or Tower</a></li>
     </ul>
-</div>
-    <div class='front-matter'>
-        <div class='wrap'>
-            <h1>Pathfinding</h1>
-            <h4>A quick intro to pathfinding with videos</h4>
-            <div class='bylines'>
-                <div class='byline'>
-                    <h3>Published</h3>
-                    <p>30 May 2019</p>
-                </div>
-                <div class='byline'>
-                    <h3>Updated</h3>
-                    <p>01 June 2020</p>
-                </div>
-            </div>
-            <div class='clear'></div>
-        </div>
-    </div>
-    <div class='wrap article'>
-        <p>I’ve run into a challenge were I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them. In this article I wanted to show how I solved this problem using pathfinding. Also looking at the different trade-offs in speed, memory and “solution idealness” of the different approachs to take when pathfinding.</p>
+    </section>
+    <section>
+    <h3>Misc</h3>
+    <ul class="nobull">
+      <li><a href="/about">About</a></li>
+      <li><a href="/log">Log</a></li>
+    </ul>
+    </section>
 
-<h2 id="random-walk-depth-first">Random Walk</h2>
 
-<p>Each of the following algorithms require two variables. <strong>Visited</strong>, a list of visited locations, in dark blue in the animations and <strong>Queue</strong> a list of elements to be visited next, in light blue in the animantions below. To start off with the most simple to explain is random walk. Grab the location from the next in queue, add the neighbours to the front of the queue in random order and repeat until you land on your destination.</p>
+  </nav>
+  </section></div></nav>
+  <main>
+<p>I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.</p>
 
-<div class="figure">
-    <video autoplay="" loop="" style="display: block; margin: 0 auto;">
-        <source src="/assets/pathfinding/depth.webm" type="video/webm" />
-    </video>
-    <div class="caption">
-        <span class="caption-label">Figure 2.</span> Depth first search. Visited in blue, queue in light blue and discovered path in dark blue.
-    </div>
+<div class="centerImage">
+<img src="BlockConnect.svg" style="max-width: 500px;" /> 
 </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="p">:</span>
-    <span class="n">vertex</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="nb">next</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">vertex</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">destination</span><span class="p">:</span> <span class="k">return</span> <span class="n">vertex</span><span class="p">.</span><span class="n">path</span>
-    <span class="n">queue</span><span class="p">.</span><span class="n">add_to_front</span><span class="p">(</span><span class="n">vertex</span><span class="p">.</span><span class="n">neighbours</span><span class="p">)</span>
-    <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+<p>In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and “solution idealness” of the different approachs to take when pathfinding.</p>
+
+<h2 id="common-elements">Common Elements</h2>
+
+<p>Each of the following algorithms require two variables.</p>
+
+<p>The first is a list of visited locations. I’ll call this <strong>visited</strong> and it’s coloured <strong>Blue</strong> below.</p>
+
+<p>The second is a list which contains locations to check. I’ll call this <strong>queue</strong>. For each element of the queue there will be the location and the path which lead to the location. Order is imporant, so this is best represented as a list of tuple elements. This is coloured <strong>Light Blue</strong> below.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="n">board</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="p">[</span><span class="n">board</span><span class="o">.</span><span class="n">start</span><span class="p">])]</span>
+</code></pre></div></div>
+
+<p><strong>Examples</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">visited</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
+<span class="n">queue</span> <span class="o">=</span> <span class="p">[((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+         <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+         <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)])]</span>
+</code></pre></div></div>
+<h2 id="random-walk-depth-first">Random Walk (Depth-First)</h2>
+
+<p>Grab the location from the next in queue, add the neighbours to the front of the queue in random order. Grab the location from the next in queue, add the neighbours to the front of the queue in random order. Repeat till you land on your destination or your queue is empty.</p>
+
+<video autoplay="" loop="">
+
+<source src="depth.webm" type="video/webm" />
+
+</video>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="n">queue</span> <span class="o">!=</span> <span class="p">[]:</span> 
+    <span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> 
+ 
+    <span class="k">if</span> <span class="n">vertex</span> <span class="o">==</span> <span class="n">board</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">board</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+ 
+    <span class="k">for</span> <span class="n">neighbour</span> <span class="ow">in</span> <span class="n">add_neighbours</span><span class="p">(</span><span class="n">vertex</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">neighbour</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">neighbour</span><span class="p">]))</span>
+
+    <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>This is an effective algorithm for small problems where any path will do. It has the benefit of being very simple to implement and can be faster to find a solution than a breadth-first search.</p>
@@ -83,23 +105,40 @@ MathJax.Hub.Config({
 
 <p>If the optimal path is needed, you need to check each possible path and return the first path which finds the destination. This is very similar to brute-force in a combinatoric problem.</p>
 
-<div class="figure">
-    <video autoplay="" loop="" style="display: block; margin: 0 auto;">
-        <source src="/assets/pathfinding/breadth.webm" type="video/webm" />
-    </video>
-    <div class="caption">
-        <span class="caption-label">Figure 3.</span> Breadth-first search. Visited in blue, queue in light blue and discovered path in dark blue.
-    </div>
-</div>
+<video autoplay="" loop="">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="p">:</span>
-    <span class="n">vertex</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="nb">next</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">vertex</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">destination</span><span class="p">:</span> <span class="k">return</span> <span class="n">vertex</span><span class="p">.</span><span class="n">path</span>
-    <span class="n">queue</span><span class="p">.</span><span class="n">add_to_end</span><span class="p">(</span><span class="n">vertex</span><span class="p">.</span><span class="n">neighbours</span><span class="p">)</span>
-    <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
-</code></pre></div></div>
+<source src="breadth.webm" type="video/webm" />
+
+</video>
 
 <p>Instead of adding new neighbours to the front of the queue they are put at the end. This ensures we have visited all the neighbours before we introduce new ones.</p>
+
+<!--
+```python
+while queue != []:
+    (vertex, path) = queue.pop() 
+
+    if vertex == board.end:
+        return path + [board.end]
+
+    for neighbour in add_neighbours(vertex):
+        queue.insert(0, (neighbour, path + [neighbour]))
+
+    visited.append(vertex)
+```
+-->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k" style="opacity: 0.3;">while</span> <span class="n" style="opacity: 0.3;">queue</span> <span class="o" style="opacity: 0.3;">!=</span> <span class="p" style="opacity: 0.3;">[]:</span>
+    <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span><span class="p" style="opacity: 0.3;">)</span> <span class="o" style="opacity: 0.3;">=</span> <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">pop</span><span class="p" style="opacity: 0.3;">()</span> 
+
+    <span class="k" style="opacity: 0.3;">if</span> <span class="n" style="opacity: 0.3;">vertex</span> <span class="o" style="opacity: 0.3;">==</span> <span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">:</span>
+        <span class="k" style="opacity: 0.3;">return</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">]</span>
+
+    <span class="k" style="opacity: 0.3;">for</span> <span class="n" style="opacity: 0.3;">neighbour</span> <span class="ow" style="opacity: 0.3;">in</span> <span class="n" style="opacity: 0.3;">add_neighbours</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">):</span>
+        <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 1;">insert</span><span class="p" style="opacity: 0.3;">(</span><span class="mi">0</span><span class="p">,</span> <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">]))</span>
+
+    <span class="n" style="opacity: 0.3;">visited</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">append</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">)</span>
+</code></pre></div></div>
 
 <p>This algorithm finds the best path through taking a step in each direction until it lands on the solution.</p>
 
@@ -113,73 +152,139 @@ MathJax.Hub.Config({
 
 <p>In this case, with a step being “1”, the results are exactly the same as breadth-first search. Replacing this value will change which locations are visited first.</p>
 
+<!--
+```python
+while queue != []:
+    queue = sorted(queue, lambda x: x[2], reverse=True)
+    
+    (vertex, path, weight) = queue.pop() 
+
+    if vertex == board.end:
+        return path + [board.end]
+
+    for neighbour in add_neighbours(vertex):
+        queue.insert(0, (neighbour, path + [neighbour], weight + 1))
+
+    visited.append(vertex)
+```
+-->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k" style="opacity: 0.3;">while</span> <span class="n" style="opacity: 0.3;">queue</span> <span class="o" style="opacity: 0.3;">!=</span> <span class="p" style="opacity: 0.3;">[]:</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    
+    <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span><span class="p">,</span> <span class="n">weight</span><span class="p" style="opacity: 0.3;">)</span> <span class="o" style="opacity: 0.3;">=</span> <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">pop</span><span class="p" style="opacity: 0.3;">()</span> 
+
+    <span class="k" style="opacity: 0.3;">if</span> <span class="n" style="opacity: 0.3;">vertex</span> <span class="o" style="opacity: 0.3;">==</span> <span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">:</span>
+        <span class="k" style="opacity: 0.3;">return</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">]</span>
+
+    <span class="k" style="opacity: 0.3;">for</span> <span class="n" style="opacity: 0.3;">neighbour</span> <span class="ow" style="opacity: 0.3;">in</span> <span class="n" style="opacity: 0.3;">add_neighbours</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">):</span>
+        <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">insert</span><span class="p" style="opacity: 0.3;">(</span><span class="mi" style="opacity: 0.3;">0</span><span class="p" style="opacity: 0.3;">,</span> <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">]</span><span class="p">,</span> <span class="n">weight</span> <span class="o">+</span> <span class="mi">1</span><span class="p" style="opacity: 0.3;">))</span>
+
+    <span class="n" style="opacity: 0.3;">visited</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">append</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">)</span>
+</code></pre></div></div>
+
 <p>Instead of taking a step in every direction, what if we could take a step in the direction towards our target?</p>
 
 <h2 id="with-a-little-help-from-a-heuristic-best-first">With a Little Help From A Heuristic (Best-First)</h2>
 
 <p>In this algorithm, we look at all of the neighbours that have been added to the queue and go to the one that is closest to the final solution. Closest refering to the linear distance between the location and the target.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="p">((</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>distance(a, b) = ((b[0] - a[0]), (b[1] - a[1]))
 </code></pre></div></div>
 
 <p>In some cases this is the best solution, but when a wall is between the start and the destination, the solution is not optimal as the path walks into a wall than has to back up.</p>
 
-<div class="figure">
-    <video autoplay="" loop="" style="display: block; margin: 0 auto;">
-        <source src="/assets/pathfinding/best.webm" type="video/webm" />
-    </video>
-    <div class="caption">
-        <span class="caption-label">Figure 4.</span> Heuristic search. Visited in blue, queue in light blue and discovered path in dark blue.
-    </div>
-</div>
+<video autoplay="" loop="">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="p">:</span>
-    <span class="n">queue</span> <span class="o">=</span> <span class="n">sort_by_distance</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
-    <span class="n">vertex</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="nb">next</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">vertex</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">destination</span><span class="p">:</span> <span class="k">return</span> <span class="n">vertex</span><span class="p">.</span><span class="n">path</span>
-    <span class="n">queue</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">vertex</span><span class="p">.</span><span class="n">neighbours</span><span class="p">)</span>
-    <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
-</code></pre></div></div>
+<source src="best.webm" type="video/webm" />
+
+</video>
 
 <p>To change this from Dijkstra’s algorithm, instead of ordering the queue by “weight distance”, you order the queue by distance from the destination with the closest being at the front of the queue.</p>
+
+<!--
+```python
+while queue != []:
+    queue = sorted(queue, lambda x: distance(x[0], board.end), reverse=True)
+
+    (vertex, path, weight) = queue.pop() 
+
+    if vertex == board.end:
+        return path + [board.end]
+
+    for neighbour in add_neighbours(vertex):
+        queue.insert(0, (neighbour, path + [neighbour], weight + 1))
+
+    visited.append(vertex)
+```
+-->
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k" style="opacity: 0.3;">while</span> <span class="n" style="opacity: 0.3;">queue</span> <span class="o" style="opacity: 0.3;">!=</span> <span class="p" style="opacity: 0.3;">[]:</span>
+    <span class="n" style="opacity: 0.3;">queue</span> <span class="o" style="opacity: 0.3;">=</span> <span class="nb" style="opacity: 0.3;">sorted</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">queue</span><span class="p" style="opacity: 0.3;">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">distance</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">board</span><span class="o">.</span><span class="n">end</span><span class="p">),</span> <span class="n" style="opacity: 0.3;">reverse</span><span class="o" style="opacity: 0.3;">=</span><span class="bp" style="opacity: 0.3;">True</span><span class="p" style="opacity: 0.3;">)</span>
+
+    <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">weight</span><span class="p" style="opacity: 0.3;">)</span> <span class="o" style="opacity: 0.3;">=</span> <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">pop</span><span class="p" style="opacity: 0.3;">()</span> 
+
+    <span class="k" style="opacity: 0.3;">if</span> <span class="n" style="opacity: 0.3;">vertex</span> <span class="o" style="opacity: 0.3;">==</span> <span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">:</span>
+        <span class="k" style="opacity: 0.3;">return</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">]</span>
+
+    <span class="k" style="opacity: 0.3;">for</span> <span class="n" style="opacity: 0.3;">neighbour</span> <span class="ow" style="opacity: 0.3;">in</span> <span class="n" style="opacity: 0.3;">add_neighbours</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">):</span>
+        <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">insert</span><span class="p" style="opacity: 0.3;">(</span><span class="mi" style="opacity: 0.3;">0</span><span class="p" style="opacity: 0.3;">,</span> <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">]</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">weight</span> <span class="o" style="opacity: 0.3;">+</span> <span class="mi" style="opacity: 0.3;">1</span><span class="p" style="opacity: 0.3;">))</span>
+
+    <span class="n" style="opacity: 0.3;">visited</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">append</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">)</span>
+</code></pre></div></div>
 
 <h2 id="mix-for-taste-a">Mix For Taste (A*)</h2>
 
 <p>We can balance the idealness of Dijkstra’s algorithm with the speed of the Best-First search by combining both metrics for ordering the queue.</p>
 
+<video autoplay="" loop="">
+
+<source src="astar.webm" type="video/webm" />
+
+</video>
+
 <p>When determining the queue order, both the weight from the start and the distance to the destination are used.</p>
 
-<div class="figure">
-    <video autoplay="" loop="" style="display: block; margin: 0 auto;">
-        <source src="/assets/pathfinding/astar.webm" type="video/webm" />
-    </video>
-    <div class="caption">
-        <span class="caption-label">Figure 5.</span> A* search. Visited in blue, queue in light blue and discovered path in dark blue.
-    </div>
-</div>
+<!--
+```python
+while queue != []:
+    queue = sorted(queue, lambda x: x[2] + distance(x[0], board.end), reverse=True)
+    (vertex, path, weight) = queue.pop() 
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="p">:</span>
-    <span class="n">queue</span> <span class="o">=</span> <span class="n">sort_by_distance_and_recentness</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
-    <span class="n">vertex</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="nb">next</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">vertex</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">destination</span><span class="p">:</span> <span class="k">return</span> <span class="n">vertex</span><span class="p">.</span><span class="n">path</span>
-    <span class="n">queue</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">vertex</span><span class="p">.</span><span class="n">neighbours</span><span class="p">)</span>
-    <span class="n">visited</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+    if vertex == board.end:
+        return path + [board.end]
+
+    for neighbour in add_neighbours(vertex):
+        queue.insert(0, (neighbour, path + [neighbour], weight + 1))
+
+    visited.append(vertex)
+```
+-->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k" style="opacity: 0.3;">while</span> <span class="n" style="opacity: 0.3;">queue</span> <span class="o" style="opacity: 0.3;">!=</span> <span class="p" style="opacity: 0.3;">[]:</span>
+    <span class="n" style="opacity: 0.3;">queue</span> <span class="o" style="opacity: 0.3;">=</span> <span class="nb" style="opacity: 0.3;">sorted</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">queue</span><span class="p" style="opacity: 0.3;">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">distance</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">board</span><span class="o">.</span><span class="n">end</span><span class="p">), </span><span class="n" style="opacity: 0.3;">reverse</span><span class="o" style="opacity: 0.3;">=</span><span class="bp" style="opacity: 0.3;">True</span><span class="p" style="opacity: 0.3;">)</span>
+
+    <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">weight</span><span class="p" style="opacity: 0.3;">)</span> <span class="o" style="opacity: 0.3;">=</span> <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">pop</span><span class="p" style="opacity: 0.3;">()</span> 
+
+    <span class="k" style="opacity: 0.3;">if</span> <span class="n" style="opacity: 0.3;">vertex</span> <span class="o" style="opacity: 0.3;">==</span> <span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">:</span>
+        <span class="k" style="opacity: 0.3;">return</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">]</span>
+
+    <span class="k" style="opacity: 0.3;">for</span> <span class="n" style="opacity: 0.3;">neighbour</span> <span class="ow" style="opacity: 0.3;">in</span> <span class="n" style="opacity: 0.3;">add_neighbours</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">):</span>
+        <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">insert</span><span class="p" style="opacity: 0.3;">(</span><span class="mi" style="opacity: 0.3;">0</span><span class="p" style="opacity: 0.3;">,</span> <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">]</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">weight</span> <span class="o" style="opacity: 0.3;">+</span> <span class="mi" style="opacity: 0.3;">1</span><span class="p" style="opacity: 0.3;">))</span>
+
+    <span class="n" style="opacity: 0.3;">visited</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">append</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">)</span>
 </code></pre></div></div>
 
 <p>This balance directs the search while looking at multiple solutions in that direction to find a close to ideal solution.</p>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="graph-theory-and-networks">Graph Theory and Networks</h2>
 
 <p>Pathfinding is an important method in connecting two nodes in a network. Networks are found everywhere. From the chemical reaction pathways inside a cell, transportion systems, and to the trade and political networks that shape our world.</p>
 
-<p>These algorithms give an introduction to the costs and benefits of each to help solve real challenges in these networks. Thank you for reading. If you enjoyed this post, I would recommend checking out my post on <a href="https://pucula.com/map-colouring.html">Map Coloring</a>. Also, I have posted all of the code on <a href="https://github.com/lazydancer/path-finding">github</a></p>
+<p>These algorithms give an introduction to the costs and benefits of each to help solve real challenges in these networks.</p>
 
-    </div>
-    <div id='bibliography'>
-        <div class='wrap'>
-            <ol class="bibliography"></ol>
-        </div>
-    </div>
-</div>
-</body>
+<p>Thank you for reading.</p>
+
+<p>If you enjoyed this post, I would recommend checking out my post on <a href="/map-colouring">Map Coloring</a>. Also, I have posted all of the code on <a href="https://github.com/lazydancer/path-finding">github</a></p>
+  </main>
+  </body>
 </html>

@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>James Pucula - Rocket Or Tower</title>
+  <title>James Pucula - Log</title>
   <link rel = "stylesheet" type="text/css" href="/style.css"/>
 
 </head>
@@ -49,59 +49,14 @@
   </nav>
   </section></div></nav>
   <main>
-<p>Recently I started working on <a href="https://fast.ai">fast.ai</a>, this is my attempt at creating a network.</p>
+<ul>
+	<li><a href="#2021-04">2021-04</a></li>
+</ul>
 
-<h2>Attempt One</h2>
-
-<p>My training set contains 10 rockets and 10 towers</p>
-
-<img src="tower.png" />
-
-<p>Using the the 3 line program from the fast.ai library for the precompiled model <a href="https://github.com/KaimingHe/deep-residual-networks">resnet</a>
-
-<p>0 is more rocket-like, 1 is more building-like</p>
-
-<p>With having only 10 examples of each. It is amazing how well it did. Only misclassifing the CN tower just barely to being a rocket
-
-<img src="result.png" width="722px" />
-
-<h2>Attempt Two</h2>
-
-<p>I added a lot more photos to about 300 each for training and 15 for the validation
-
-<p>This time adding data augmentation, variable learning rate and unfreezing the model
-
-<h3>Data Augmentation</h3>
-
-<p>Modify the image slightly to known effects of a camera. This is transformations that shift, zoom and flip the images. These are fed into the learning like any other image
-
-<img src="aug.png" />
-
-<h3>Stochastic Gradient Descent with Restarts</h3>
-
-<p>When a network is learning a function. It needs to start off high and reduce to gain more accuracy. This is included but also is restarted every epoch. This helps generalize the network, by trying avoiding narrow minimums. Creating a learning rate like this...</p>
-
-<img src="learning.png" />
-
-<p>This is improved a little bit more by slowing down the learning rate on the later epochs.
-
-<img src="learning2.png" />
-
-<h3>Training the precomputed Model</h3>
-
-<p>Before training was done on the last few layers. This opens the begining layers. Also much lower learning rates are used in decreasing order to the earlier layers
-
-<h3>Result</h3>
-
-<p>96.6% accuracy. With one error in classification
-
-<p>The confusion matrix output, to find what values were misclassified</p>
-
-<img src="confusion.png" />
-
-<p>Below it the images it was most uncertain of including the incorrect labeling of the rocket on the bottom left
-
-<img src="result2.png" width="722px"/>
+<h2 id="2021-04">2021-04</h2>
+<p>
+	Welcome to the new version of the site! I always swing from a full CMS that's to complex to fully HTML that's too simple. I hope I have got the right balance this time using a custom python script to apply templates and writing the projects/articles/log in html. This revision was heavily inspired by <a href="https://100r.co">100 rabbits</a>
+</p>
   </main>
   </body>
 </html>

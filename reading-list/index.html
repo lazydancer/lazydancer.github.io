@@ -1,63 +1,59 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Reading List - James Pucula</title>
-    <meta charset='UTF-8'>
-    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name='description' content='James Pucula'>
-    <meta name='keywords' content='static, writing'>
-    <meta name='author' content='James Pucula'>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-    <link href='/css/blog.css' rel='stylesheet'/>
-    <link href='/css/trac.css' rel='stylesheet'/>
-    <link href='/css/markdown.css' rel='stylesheet'/>
+  <title>James Pucula - Reading List</title>
+  <link rel = "stylesheet" type="text/css" href="/style.css"/>
 
-    <script type='text/x-mathjax-config'>
-MathJax.Hub.Config({
-  jax: ['input/TeX', 'output/HTML-CSS'],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-    extensions: ['color.js']
-  },
-  messageStyle: 'none',
-  'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'] }
-});
-</script>
-
-<script src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML' type='text/javascript'></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 </head>
 <body>
-<div class='content'>
-    <div class='nav'>
-    <ul class='wrap'>
-        <li><a href='/'><img src='/assets/logo.png'></img></a></a></li>
+  <header>
+        <a href="/">
+  <img width=64 height=64 src="data:image/png;base64,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"></a>
+  </header>
+  <nav><div class='site-nav'>
+    <section>
+      <h3>Projects</h3>
+        <ul class="nobull">
+        <li><a href="/pictures-to-text">Pictures to Text</a></li>
+        <li><a href="/parsley-for-style">Parsley for Style</a></li>
+        <li><a href="/altitude">Altitude</a></li>
+        <li><a href="/automatic-paintball-turret">Automatic Paintball Turret</a></li>
+        <li><a href="/studio">Studio</a></li>
+      </ul>
+    </section>
+    <section>
+    <h3>Articles</h3>
+    <ul class="nobull">
+      <li><a href="/simulating-light">Simulating Light</a></li>
+      <li><a href="/pathfinding">Path Finding</a></li>
+      <li><a href="/advent-of-code">Advent of Code</a></li>
+      <li><a href="/map-colouring">Map Colouring</a></li>
+      <li><a href="/rocket-or-tower">Rocket or Tower</a></li>
     </ul>
-</div>
-    <div class='front-matter'>
-        <div class='wrap'>
-            <h1>Reading List</h1>
-            <h4>An article which I update each year on what I read</h4>
-            <div class='bylines'>
-                <div class='byline'>
-                    <h3>Published</h3>
-                    <p>01 September 2020</p>
-                </div>
-                <div class='byline'>
-                    <h3>Updated</h3>
-                    <p>01 June 2020</p>
-                </div>
-            </div>
-            <div class='clear'></div>
-        </div>
-    </div>
-    <div class='wrap article'>
-        <p>In 2019, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.</p>
+    </section>
+    <section>
+    <h3>Misc</h3>
+    <ul class="nobull">
+      <li><a href="/about">About</a></li>
+      <li><a href="/log">Log</a></li>
+    </ul>
+    </section>
+
+
+  </nav>
+  </section></div></nav>
+  <main>
+<p>In 2019, I made a New Year’s resolution to write a website post once a month and read 35 books. I didn’t complete either. Below is a review of the books I read last year and my thoughts of them.</p>
 
 <h2 id="infinite-jest-by-david-foster-wallace">Infinite Jest by David Foster Wallace</h2>
+
+<img src="Infinite_jest_cover.jpg" width="197px" />
 
 <p>I would not recommend you read this book, unless you want to. In school, I didn’t read many books, Sparknotes was my friend. Part of me is glad to have finished this book due to the size alone, but that is a horrible reason to read a book. This book won awards in 2009. And I thought it would be good. It definitely changed the way I read. By now I have forgotten most of the book and I hope the good stuff is what remains.</p>
 
@@ -69,7 +65,9 @@ MathJax.Hub.Config({
 
 <h2 id="merchants-of-doubt-by-naomi-oreskes">Merchants of Doubt by Naomi Oreskes</h2>
 
-<p>Merchants of Doubt is about people that cast doubt in science towards the public. An example given in the book is the correlation between smoking and cancer. This correlation was proven in 1929 in Germany, re-proven in 1950 in the UK and was included in a Surgeon General’s Report in the United States in 1964. Tobacco companies claimed that these study lacked credibility and health authorities sided with these claims until 1998. One of the main arguments the “merchants of doubt” used was that a perfect relation could not be found, not all people that smoke got cancer. There is so much room for interpretation and bias in gathering a dataset. Everything is relative and we can trick people and even ourselves.</p>
+<img src="Merchants_of_DOUBT.jpg" />
+
+<p>Merchants of Doubt is about people that cast doubt in science towards the public. An example given in the book is the correlation between smoking and cancer. This correlation was proven in 1929 in Germany, re-proven in 1950 in the UK and was included in a Surgeon General’s Report in the United States in 1964.  Tobacco companies claimed that these study lacked credibility and health authorities sided with these claims until 1998. One of the main arguments the “merchants of doubt” used was that a perfect relation could not be found, not all people that smoke got cancer. There is so much room for interpretation and bias in gathering a dataset. Everything is relative and we can trick people and even ourselves.</p>
 
 <p>I learned a lot about how political movements work and why we think they occur. A small group of people that really care are much more powerful than a large group of people who only have a preference and not a strong belief.</p>
 
@@ -87,211 +85,223 @@ MathJax.Hub.Config({
 
 <p>This didn’t really fit in the review, but Hank Green’s critic of someone apposing climate change and how masterful you can skew a topic with language. <a href="https://www.youtube.com/watch?v=_Es4gG9xVf8">Youtube</a></p>
 
-<h2 id="some-more">Some more</h2>
+<h2>Some more</h2>
 
-<p><strong>Consider Phlebas by Iain Banks:</strong> Loved the comparison of war in space being like the transition from hand-to-hand to the introduction of guns</p>
+<p><strong>Consider Phlebas by Iain Banks: </strong>Loved the comparison of war in space being like the transition from hand-to-hand to the introduction of guns</p>
 
-<p><strong>The Restaurant at the End of the Universe by Douglas Adams:</strong> Adams bizarrely introspective books which makes fun of and expands science fiction</p>
+<p><strong>The Restaurant at the End of the Universe by Douglas Adams: </strong>Adams bizarrely introspective books which makes fun of and expands science fiction</p>
 
-<p><strong>The Remains of the Day by Kazuo Ishiguro:</strong> Amazon’s CEO favorite book. I feel like I didn’t get the intended effect of the book. I will have to return to it later.</p>
+<p><strong>The Remains of the Day by Kazuo Ishiguro: </strong>Amazon’s CEO favorite book. I feel like I didn’t get the intended effect of the book. I will have to return to it later.
+<//p>
 
-<p><strong>The Handmaids Tale by Margaret Atwood:</strong> Felt like a personal diary from a person in dystopian future. You only learn about the universe overtime. I would recommend reading.</p>
+<p><strong>The Handmaids Tale by Margaret Atwood: </strong>Felt like a personal diary from a person in dystopian future. You only learn about the universe overtime. I would recommend reading.</p>
 
-<p><strong>How to Fail at Almost Everything and Still Win Big by Scott Adams:</strong> Although not advice I would take, the story behind Dilbert and his perspective was interesting.</p>
+<p><strong>How to Fail at Almost Everything and Still Win Big by Scott Adams: </strong>Although not advice I would take, the story behind Dilbert and his perspective was interesting.</p>
 
-<p><strong>100 Years of Solitude Gabriel García Márquez:</strong> I wanted to enjoy this book more. It mixed interesting elements of the natural and unnatural.</p>
+<p><strong>100 Years of Solitude Gabriel García Márquez: </strong>I wanted to enjoy this book more. It mixed interesting elements of the natural and unnatural.</p>
 
-<p><strong>Thinking in Systems: A Primer by Donella Meadows:</strong> Very much an introduction. I don’t remember much of this book.</p>
+<p><strong>Thinking in Systems: A Primer by Donella Meadows: </strong>Very much an introduction. I don’t remember much of this book.</p>
 
-<p><strong>Philoshopy of Software Design by John Ousterhout:</strong> I wish this book was longer. I learned about having deep modules and simple interfaces, how to define complexity as dependency and obscurity and also the strategic mindset. He also gave “red flags” to see in your software.</p>
+<p><strong>Philoshopy of Software Design by John Ousterhout: </strong>I wish this book was longer. I learned about having deep modules and simple interfaces, how to define complexity as dependency and obscurity and also the strategic mindset. He also gave “red flags” to see in your software.</p>
 
-<h2 id="2018">2018</h2>
+<h1 id="2018">2018</h1>
 
 <p>I read 34 books in 2018, not 52 as my goal, but this year was most books I ever read.</p>
 
-<p>I read many interesting biographies of Howard Hughes, Viktor Frankl, Sam Walton, The Wright Brothers, Paul Erdos. I enjoyed non-fiction from Code, Fabless, Ant Encounters, Enlightenment Now, Code Complete 2, Debt: The first 5000 years, Energy and Civilization, Naked Economics and the Goal and Finishing off the Foundation series.</p>
+<p>I read many interesting biographies of Howard Hughes, Viktor Frankl, Sam Walton, The Wright Brothers, Paul Erdos.  I enjoyed non-fiction from Code, Fabless, Ant Encounters, Enlightenment Now, Code Complete 2, Debt: The first 5000 years, Energy and Civilization, Naked Economics and the Goal and Finishing off the Foundation series.</p>
 
 <p>My favorite book of this year was Do Androids Dream of Electric Sheep? which was made into a movie called Bladerunner. I enjoyed the bizarre atmosphere of the book and its theme of questioning what is real and does it matter</p>
 
-<ul>
-  <li>
-    <p><strong>Prelude to Foundation</strong> <em>by Isaac Asimov</em></p>
+<li><b>Prelude to Foundation</b> <i>by Isaac Asimov</i><p>
+The story follows Hari Seldon in the creation
+of pychohistory while providing more information of Trantor, the center
+of the Empire.
+</p>
+</li>
+<li><b>What Money Can't Buy</b> <i>by Michael J. Sandel</i><p>
+This book is about the moral questions of buying and selling stuff.
+Should we bet on death (life insurance), paying kids for good
+grades and classroom advertising.
+The book showed how creating a market changed the morally of each.
+</p>
+</li>
+<li><b>Forward the Foundation</b> <i>by Isaac Asimov</i><p>
+With the further look into the First Foundation and the creation of the Second Foundation.
+We were able to get more detail of the First Foundation and the Second Foundation. I loved
+the Foundation Series and would recommend to read
+</p>
+</li>
+<li><b>On Writing</b> <i> by Stephen King</i><p>
+1. Tell the Truth, if in your writing you are holding back then you can not create a connection to the reader.
+2. Don't use adverbs or the passive tense, I will try my best.
+3. To be a good writer, you need to read a lot.
+</p>
+</li>
+<li><b>Code</b> <i> by Charles Petzold</i><p>
+After the first few chapters, I expected this book to a math book on the
+theory of programming and a part of it was. The majority of this book was practical and went on how a computer
+is designed and built from telephone relays to a high level computer language. This helps take the "magic" out of computers.
+</p>
+</li>
+<li><b>Fabless</b> <i>by Paul McLellan</i><p>
+An interesting book on the semiconductor industry. When starting this
+book I was expecting more deep dive into the technical aspects of the industry but was more of a history book.
+I felt some of the "In there own words" sections where just repeating
+what the author said in the chapter leading up to the excerpt.
+</p>
+</li>
+<li><b>Howard Hughes</b> <i>by Donald L. Barlett and James B. Steele</i><p>
+I didn't know anything about Howard Hughes before reading this book.
+It is interesting how much he did with this life being a movie producer, record breaking pilot, airplane designer
+to name a few. This book had so much detail on Hugh's actions and it was an interesting perspective from Hugh's associates
+</p>
+</li>
+<li><b>Do Androids Dream of Electric Sheep?</b> <i>by Philip K. Dick</i><p>
+The book creates an atmosphere of post-apocalyptic 2020 San Francisco which I seem to get lost in.
+It is the book's 50th anniversary. It is interesting how it seems futuristic still. It brings up the question
+what is the difference between an android and a human.
+</p>
+</li>
+<li><b>The Mythical Man-Month</b> <i>by Fred Brooks</i><p>
+This book came out 40 years ago, other then the talk of mainframe computers, I feel this book has held up its
+principles still. The central principle being, adding manpower to a late software project makes it later.
+Maybe this could be we greatly underestimate the time needed to learn a new system and the time that is
+added when there is more people that need to be informed.
+</p>
+</li>
+<li><b>Ant Encounters</b> <i>by Deborah Gordon</i><p>
+There is so much information about ants and this book seems to be an introduction to the wider field of how
+living things interact. It is interesting that with no central control, ants are able to live though the rate
+in which they interact and the pattern of their encounters. I would recommend this book, it was a nice quick read.
+</p>
+</li>
+<li><b>The Man in the High Castle</b> <i>by Philip K. Dick</i><p>
+This book looks at what would have happened if World War II ended differently. It took some time to reorient
+oneself each "jump" in the book. I really enjoyed this book, and like Do Androids Dream of Electric Sheep looked agian at what is real and what is fake,
+is there any difference from the two and does it matter.
+</p>
+</li>
+<li><b>Man's Search for Meaning</b> <i>by Viktor Frankl</i><p>
+Viktor Frankl writes about experiences as an Auschwitz concentration camp inmate during World War II. This was an emotional
+book to read, when looking at what happened in the concentration camps. Frankl looks at this from a phycologist perspective
+and the later section of the books presents his psychotherapeutic method. I would recommend this book
+</p>
+</li>
+<li><b>The Hard Thing About Hard Things</b> <i>by Ben Horowitz</i><p>
+This book is about Ben Horowitz experiences as a CEO of many startup companies and he outlines his experiences.
+This I would
+not catergorize as a business book and closer to an auto-biography. It offers an in-depth look in to the world of fast
+growing technology companies.
+</p>
+</li>
+<li><b>Evicted</b> <i>by Matthew Desmond</i><p>
+The book follows half a dozen families and their stuggles.
+At the same time, it shows the larger picture with the facts of evictions in the usa and the impact it has.
+It was enlightining to have the landlord's perpective of this enviroment, bringing up the discussion of explotation and
+housing being a fundamental human need.
+</p>
+</li>
+<li><b>Made in America</b> <i>by Sam Walton</i><p>
+Learning about Sam Walton and his obsession with retail, from his first stores to the discount stores in
+rural america. He was extremely competitive and trying out things that haven't be done before. At the same time
+taking best practices from his competitors.
+</p>
+</li>
+<li><b>Enlightenment Now</b> <i>by Steven Pinker</i><p>
+This was a long book. I read Part I and II but had to abandon it half way though Part III. This book made me think
+differently about how well we are doing in the world. I really enjoyed the chapter on climate change, in how
+Pinker goes over how we have taken the news and how it has also been a political issue and how there are divided.
+It was also interesting to see how the news warps our image of the world and he re-enforces the availiblity bias
+and confirmation bias.
+</p>
+</li>
+<li><b>A Wrinkle in Time</b> <i>by Madeleine L'Engle</i><p>
+A fun weird little story
+</p>
+</li>
+<li><b>Code Complete 2</b> <i>by Steve McConnell</i><p>
+I have been focusing to improving my programming skills. From reviews online, I heard this was the textbook for programmers.
+I believe it lived up to the hype, many guidelines it recommends I use everyday. I liked that this book went into detail of many
+elements of project management which can be used out of programming.
+</p>
+</li>
+<li><b>Fight Club</b> <i>Chuck Palahniuk</i><p>
+It was a very interesting analysis of the human psychology. The movie follows the books very closely expect
+for ending which leave the movie and book with different a message at the end of the book.
+</p>
+</li>
+<li><b>Le Petit Nicolas</b> <i>René Goscinny</i><p>
+Un livre de jeunesse que j'ai lu pour améliorer mon français.
+</p>
+</li>
 
-    <p>The story follows Hari Seldon in the creation of pychohistory while providing more information of Trantor, the center of the Empire.</p>
-  </li>
-  <li>
-    <p><strong>What Money Can’t Buy</strong> <em>by Michael J. Sandel</em></p>
+<li><b>The Subtle Art of Not Giving A F*ck</b> <i>by Mark Manson</i><p>
+It is an okay book. My  favorite part of the book is how when
+you remove actions and challenges each of us has core values and you have to strive for maintaining these values
+</p>
+</li>
+<li><b>Debt: The First 5000 Years</b> <i>by David Graeber</i><p>
+This was a insightful book that brought up many new ideas. The barter economy
+never existed. Describing the market economy and human economy.
+This book was lonng and read like a textbook. It
+provides a very detailed account of the introduction of money and worth and the different systems that were used until
+today.
+</p>
+</li>
+<li><b>I, Robot</b> <i>by Isaac Asimov</i><p>
+I, Robot is a  story about when robots came be able to talk and perform a larger variety of tasks. Each chapter seemed to introduce
+a new and exciting problem which made you think about the ethics of robots and how they relate to people.
+</p>
+</li>
 
-    <p>This book is about the moral questions of buying and selling stuff. Should we bet on death (life insurance), paying kids for good grades and classroom advertising. The book showed how creating a market changed the morally of each.</p>
-  </li>
-  <li>
-    <p><strong>Forward the Foundation</strong> <em>by Isaac Asimov</em></p>
+<li><b>Fooled by Randomness</b> <i>by Nassim Nicholas Taleb</i><p>
+This book was a great book to look at how bad humans are at guessing the future.
+In addition the book looked at the bias everyone has and how they apply in the real world
+</p>
+</li>
+<li><b>Sex, Drugs, and Cocoa Puffs</b> <i>by Chuck Klosterman</i><p>
+A book of eighteen essays. The book looks into pop culture and how it affects us.
+The book was released 15 years ago and makes a lot of references I've heard of; The Real World, Billy Joel, Saved by the bell but I didn't experience them like the reader.
+</p>
+</li>
+<li><b>Le Petit Prince</b> <i>by Antoine de Saint-Exupéry</i><p>
+C'est un histoire bizzare. Je pense que je le devrai lire en anglais. J'ai lu pour améliorer mon français.
+</p>
+</li>
+<li><b>The Wright Brothers</b> <i>by David McCullough</i><p>
+An awesome history of the birth of flight. It is interesting to see the contrast between langley with large goveremnt spending and the wright brothers who made money at the bike shop to pay for the development. The Wright brothers were not considered by the US goverenment when they were look to sell there plane.
+</p>
+</li>
+<li><b>Reality Is Not What It Seems</b> <i>by Carlo Rovelli</i><p>
+This book went through the history of physics from Greek philosophers to present day. It has been an intersting hearing a simple explaination of modern physics - With two basic theories of quantum mechanics and general relativitity and the attempt to combine these incompatible theories. This book introducted loop quantum gravitiy as the new leading contender.
+</p>
+</li>
 
-    <p>With the further look into the First Foundation and the creation of the Second Foundation. We were able to get more detail of the First Foundation and the Second Foundation. I loved the Foundation Series and would recommend to read</p>
-  </li>
-  <li>
-    <p><strong>On Writing</strong> <em>by Stephen King</em></p>
+<li><b>Seveneves</b> <i>by Neal Stephenson</i><p>
+The book is about the what would happen if the moon suddenly split apart. This book felt like 2 books, with the first being a scifi novel and the second being a drama. I enjoyed the first half, the second seemed to drag on a bit. It was an interesting thought experiment and covered a large variety of issues that could occur.
+</p>
+</li>
 
-    <p>1. Tell the Truth, if in your writing you are holding back then you can not create a connection to the reader. 2. Don’t use adverbs or the passive tense, I will try my best. 3. To be a good writer, you need to read a lot.</p>
-  </li>
-  <li>
-    <p><strong>Code</strong> <em>by Charles Petzold</em></p>
-
-    <p>After the first few chapters, I expected this book to a math book on the theory of programming and a part of it was. The majority of this book was practical and went on how a computer is designed and built from telephone relays to a high level computer language. This helps take the “magic” out of computers.</p>
-  </li>
-  <li>
-    <p><strong>Fabless</strong> <em>by Paul McLellan</em></p>
-
-    <p>An interesting book on the semiconductor industry. When starting this book I was expecting more deep dive into the technical aspects of the industry but was more of a history book. I felt some of the “In there own words” sections where just repeating what the author said in the chapter leading up to the excerpt.</p>
-  </li>
-  <li>
-    <p><strong>Howard Hughes</strong> <em>by Donald L. Barlett and James B. Steele</em></p>
-
-    <p>I didn’t know anything about Howard Hughes before reading this book. It is interesting how much he did with this life being a movie producer, record breaking pilot, airplane designer to name a few. This book had so much detail on Hugh’s actions and it was an interesting perspective from Hugh’s associates</p>
-  </li>
-  <li>
-    <p><strong>Do Androids Dream of Electric Sheep?</strong> <em>by Philip K. Dick</em></p>
-
-    <p>The book creates an atmosphere of post-apocalyptic 2020 San Francisco which I seem to get lost in. It is the book’s 50th anniversary. It is interesting how it seems futuristic still. It brings up the question what is the difference between an android and a human.</p>
-  </li>
-  <li>
-    <p><strong>The Mythical Man-Month</strong> <em>by Fred Brooks</em></p>
-
-    <p>This book came out 40 years ago, other then the talk of mainframe computers, I feel this book has held up its principles still. The central principle being, adding manpower to a late software project makes it later. Maybe this could be we greatly underestimate the time needed to learn a new system and the time that is added when there is more people that need to be informed.</p>
-  </li>
-  <li>
-    <p><strong>Ant Encounters</strong> <em>by Deborah Gordon</em></p>
-
-    <p>There is so much information about ants and this book seems to be an introduction to the wider field of how living things interact. It is interesting that with no central control, ants are able to live though the rate in which they interact and the pattern of their encounters. I would recommend this book, it was a nice quick read.</p>
-  </li>
-  <li>
-    <p><strong>The Man in the High Castle</strong> <em>by Philip K. Dick</em></p>
-
-    <p>This book looks at what would have happened if World War II ended differently. It took some time to reorient oneself each “jump” in the book. I really enjoyed this book, and like Do Androids Dream of Electric Sheep looked agian at what is real and what is fake, is there any difference from the two and does it matter.</p>
-  </li>
-  <li>
-    <p><strong>Man’s Search for Meaning</strong> <em>by Viktor Frankl</em></p>
-
-    <p>Viktor Frankl writes about experiences as an Auschwitz concentration camp inmate during World War II. This was an emotional book to read, when looking at what happened in the concentration camps. Frankl looks at this from a phycologist perspective and the later section of the books presents his psychotherapeutic method. I would recommend this book</p>
-  </li>
-  <li>
-    <p><strong>The Hard Thing About Hard Things</strong> <em>by Ben Horowitz</em></p>
-
-    <p>This book is about Ben Horowitz experiences as a CEO of many startup companies and he outlines his experiences. This I would not catergorize as a business book and closer to an auto-biography. It offers an in-depth look in to the world of fast growing technology companies.</p>
-  </li>
-  <li>
-    <p><strong>Evicted</strong> <em>by Matthew Desmond</em></p>
-
-    <p>The book follows half a dozen families and their stuggles. At the same time, it shows the larger picture with the facts of evictions in the usa and the impact it has. It was enlightining to have the landlord’s perpective of this enviroment, bringing up the discussion of explotation and housing being a fundamental human need.</p>
-  </li>
-  <li>
-    <p><strong>Made in America</strong> <em>by Sam Walton</em></p>
-
-    <p>Learning about Sam Walton and his obsession with retail, from his first stores to the discount stores in rural america. He was extremely competitive and trying out things that haven’t be done before. At the same time taking best practices from his competitors.</p>
-  </li>
-  <li>
-    <p><strong>Enlightenment Now</strong> <em>by Steven Pinker</em></p>
-
-    <p>This was a long book. I read Part I and II but had to abandon it half way though Part III. This book made me think differently about how well we are doing in the world. I really enjoyed the chapter on climate change, in how Pinker goes over how we have taken the news and how it has also been a political issue and how there are divided. It was also interesting to see how the news warps our image of the world and he re-enforces the availiblity bias and confirmation bias.</p>
-  </li>
-  <li>
-    <p><strong>A Wrinkle in Time</strong> <em>by Madeleine L’Engle</em></p>
-
-    <p>A fun weird little story</p>
-  </li>
-  <li>
-    <p><strong>Code Complete 2</strong> <em>by Steve McConnell</em></p>
-
-    <p>I have been focusing to improving my programming skills. From reviews online, I heard this was the textbook for programmers. I believe it lived up to the hype, many guidelines it recommends I use everyday. I liked that this book went into detail of many elements of project management which can be used out of programming.</p>
-  </li>
-  <li>
-    <p><strong>Fight Club</strong> <em>Chuck Palahniuk</em></p>
-
-    <p>It was a very interesting analysis of the human psychology. The movie follows the books very closely expect for ending which leave the movie and book with different a message at the end of the book.</p>
-  </li>
-  <li>
-    <p><strong>Le Petit Nicolas</strong> <em>René Goscinny</em></p>
-
-    <p>Un livre de jeunesse que j’ai lu pour améliorer mon français.</p>
-  </li>
-  <li>
-    <p><strong>The Subtle Art of Not Giving A F*ck</strong> <em>by Mark Manson</em></p>
-
-    <p>It is an okay book. My favorite part of the book is how when you remove actions and challenges each of us has core values and you have to strive for maintaining these values</p>
-  </li>
-  <li>
-    <p><strong>Debt: The First 5000 Years</strong> <em>by David Graeber</em></p>
-
-    <p>This was a insightful book that brought up many new ideas. The barter economy never existed. Describing the market economy and human economy. This book was lonng and read like a textbook. It provides a very detailed account of the introduction of money and worth and the different systems that were used until today.</p>
-  </li>
-  <li>
-    <p><strong>I, Robot</strong> <em>by Isaac Asimov</em></p>
-
-    <p>I, Robot is a story about when robots came be able to talk and perform a larger variety of tasks. Each chapter seemed to introduce a new and exciting problem which made you think about the ethics of robots and how they relate to people.</p>
-  </li>
-  <li>
-    <p><strong>Fooled by Randomness</strong> <em>by Nassim Nicholas Taleb</em></p>
-
-    <p>This book was a great book to look at how bad humans are at guessing the future. In addition the book looked at the bias everyone has and how they apply in the real world</p>
-  </li>
-  <li>
-    <p><strong>Sex, Drugs, and Cocoa Puffs</strong> <em>by Chuck Klosterman</em></p>
-
-    <p>A book of eighteen essays. The book looks into pop culture and how it affects us. The book was released 15 years ago and makes a lot of references I’ve heard of; The Real World, Billy Joel, Saved by the bell but I didn’t experience them like the reader.</p>
-  </li>
-  <li>
-    <p><strong>Le Petit Prince</strong> <em>by Antoine de Saint-Exupéry</em></p>
-
-    <p>C’est un histoire bizzare. Je pense que je le devrai lire en anglais. J’ai lu pour améliorer mon français.</p>
-  </li>
-  <li>
-    <p><strong>The Wright Brothers</strong> <em>by David McCullough</em></p>
-
-    <p>An awesome history of the birth of flight. It is interesting to see the contrast between langley with large goveremnt spending and the wright brothers who made money at the bike shop to pay for the development. The Wright brothers were not considered by the US goverenment when they were look to sell there plane.</p>
-  </li>
-  <li>
-    <p><strong>Reality Is Not What It Seems</strong> <em>by Carlo Rovelli</em></p>
-
-    <p>This book went through the history of physics from Greek philosophers to present day. It has been an intersting hearing a simple explaination of modern physics - With two basic theories of quantum mechanics and general relativitity and the attempt to combine these incompatible theories. This book introducted loop quantum gravitiy as the new leading contender.</p>
-  </li>
-  <li>
-    <p><strong>Seveneves</strong> <em>by Neal Stephenson</em></p>
-
-    <p>The book is about the what would happen if the moon suddenly split apart. This book felt like 2 books, with the first being a scifi novel and the second being a drama. I enjoyed the first half, the second seemed to drag on a bit. It was an interesting thought experiment and covered a large variety of issues that could occur.</p>
-  </li>
-  <li>
-    <p><strong>Energy and Civilization</strong> <em>by Vaclav Smil</em></p>
-
-    <p>The books puts together a big history of society and its relationship with energy and technology. I enjoyed looking at the energy perspective in biology and the benefits of bipedalism and why we have 2 feet. In addition, agriculture and how the calorie of food per hours of work is an important heuristic for a population density.</p>
-  </li>
-  <li>
-    <p><strong>Never Split The Difference</strong> <em>by Chris Voss</em></p>
-
-    <p>I try to avoid most business type books, but this book exceeded my expectations. I enjoyed reading Chris Voss’s experience of being a hostage negotiator and hearing how he learnt all of these lessons in the field. The points he shows are actionable and feel very achievable.</p>
-  </li>
-  <li>
-    <p><strong>The Man Who Loved Only Numbers</strong> <em>by Paul Hoffman</em></p>
-
-    <p>A biography of the famous mathematician Paul Erdos. I really enjoyed this book and hear about Erdos’s life. I also enjoyed hearing about other mathematicians in the book such as Ronald Graham and Carl Friedrich Gauss</p>
-  </li>
-  <li>
-    <p><strong>Naked Economics</strong> <em>by Charles Wheelan</em></p>
-
-    <p>A nice introduction to economic thinking. I found the part of determining what makes an economy rich an interesting concept.</p>
-  </li>
-  <li>
-    <p><strong>The Goal</strong> <em>by Eliyahu Goldratt</em></p>
-
-    <p>This was a piece of fiction where a main character is trying to save his plant. It is also a business book to run an efficient business. I have heard a lot about this book and was glad to read it. The main theory of the book is reduce your bottlenecks.</p>
-  </li>
-</ul>
-
-    </div>
-    <div id='bibliography'>
-        <div class='wrap'>
-            <ol class="bibliography"></ol>
-        </div>
-    </div>
-</div>
-</body>
+<li><b>Energy and Civilization</b> <i>by Vaclav Smil</i><p>
+The books puts together a big history of society and its relationship with energy and technology. I enjoyed looking at the energy perspective in biology and the benefits of bipedalism and why we have 2 feet. In addition, agriculture and how the calorie of food per hours of work is an important heuristic for a population density.
+</p>
+</li>
+<li><b>Never Split The Difference</b> <i>by Chris Voss</i><p>
+I try to avoid most business type books, but this book exceeded my expectations. I enjoyed reading Chris Voss's experience of being a hostage negotiator and hearing how he learnt all of these lessons in the field. The points he shows are actionable and feel very achievable. 
+</p>
+</li>
+<li><b>The Man Who Loved Only Numbers</b> <i>by Paul Hoffman</i><p>
+A biography of the famous mathematician Paul Erdos. I really enjoyed this book and hear about Erdos's life. I also enjoyed hearing about other mathematicians in the book such as Ronald Graham and Carl Friedrich Gauss
+</p>
+</li>
+<li><b>Naked Economics</b> <i>by Charles Wheelan</i><p>
+A nice introduction to economic thinking. I found the part of determining what makes an economy rich an interesting concept.
+</p>
+</li>
+<li><b>The Goal</b> <i>by Eliyahu Goldratt</i><p>
+This was a piece of fiction where a main character is trying to save his plant. It is also a business book to run an efficient business. I have heard a lot about this book and was glad to read it. The main theory of the book is reduce your bottlenecks.
+</p>
+</li>
+  </main>
+  </body>
 </html>
