@@ -20,6 +20,7 @@
     <section>
       <h3>Projects</h3>
         <ul class="nobull">
+        <li><a href="/arrows">Arrows</a></li>
         <li><a href="/pictures-to-text">Pictures to Text</a></li>
         <li><a href="/parsley-for-style">Parsley for Style</a></li>
         <li><a href="/altitude">Altitude</a></li>
@@ -49,7 +50,7 @@
   </nav>
   </section></div></nav>
   <main>
-<img src="https://raw.githubusercontent.com/lazydancer/pictotxt/master/examples/movie.gif" alt="pictotxt" />
+<img src="cat_example.gif" />
 
 <p>A fun little weekend project, I created a program which converted a picture into text. To complete this I used jupyter notebook, found below. The code is avaliable on <a href="https://github.com/lazydancer/pictotxt">github</a>.</p>
 
@@ -62,14 +63,27 @@
   <li><strong>Calc</strong> - the images and font characters are compared to find the best match</li>
 </ol>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">skimage.util.shape</span> <span class="kn">import</span> <span class="n">view_as_blocks</span>
-</code></pre></div></div>
-<h2 id="image">Image</h2>
+<code>def show_image(path):
+    image = Image.open(path)
+    image = image.convert('L')
+    d = list(image.getdata())
+    image_2D = np.reshape(d, (image.height, image.width))
+    plt.imshow(image_2D, cmap='gray')
+
+show_image('download.png')
+</code>
 
 <p>First thing is import the image. As an example I use the finch. Most of the following code is to convert the image from a PIL array to numpy’s 2D narray and use matlibplot plot function.</p>
+
+<code>def show_image(path):
+    image = Image.open(path)
+    image = image.convert('L')
+    d = list(image.getdata())
+    image_2D = np.reshape(d, (image.height, image.width))
+    plt.imshow(image_2D, cmap='gray')
+
+show_image('download.png')
+</code> 
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show_image</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -87,46 +101,46 @@
 
 <p>The next step is taking the imported image and converting it into character sized images. The heart of the following methods are the <strong>view_as_blocks</strong>. The function fails if there is an overlap with the  edge of the imported image. The function <strong>trim_image</strong> is there to remove the excess before it sent in to <strong>view_as_blocks</strong>. The result can be seen below.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">trim_image</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span><span class="p">):</span>
-    <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">trim_height</span> <span class="o">=</span> <span class="n">height</span> <span class="o">%</span> <span class="n">size_y</span>
-    <span class="n">trim_width</span> <span class="o">=</span> <span class="n">width</span> <span class="o">%</span> <span class="n">size_x</span>
+<code>def trim_image(matrix, size_x, size_y):
+    height, width = matrix.shape
+    trim_height = height % size_y
+    trim_width = width % size_x
     
-    <span class="k">if</span> <span class="n">trim_height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[:</span><span class="o">-</span><span class="n">trim_height</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+    if trim_height > 0:
+        matrix = matrix[:-trim_height,...]
     
-    <span class="k">if</span> <span class="n">trim_width</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,:</span><span class="o">-</span><span class="n">trim_width</span><span class="p">]</span>
+    if trim_width > 0:
+        matrix = matrix[...,:-trim_width]
     
-    <span class="k">return</span> <span class="n">matrix</span>
+    return matrix
     
-<span class="k">def</span> <span class="nf">get_image_slices</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">char_width</span><span class="p">,</span> <span class="n">char_height</span><span class="p">):</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s">'L'</span><span class="p">)</span> <span class="c1">#greyscale
-</span>    
-    <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getdata</span><span class="p">())</span>
-    <span class="n">image_2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">))</span>
+def get_image_slices(image_path, char_width, char_height):
+    image = Image.open(image_path)
+    image = image.convert('L') #greyscale
     
-    <span class="n">image_2D</span> <span class="o">=</span> <span class="n">trim_image</span><span class="p">(</span><span class="n">image_2D</span><span class="p">,</span> <span class="n">char_width</span><span class="p">,</span> <span class="n">char_height</span><span class="p">)</span>
-    <span class="n">image_slices</span> <span class="o">=</span> <span class="n">view_as_blocks</span><span class="p">(</span><span class="n">image_2D</span><span class="p">,</span> <span class="n">block_shape</span><span class="o">=</span><span class="p">(</span><span class="n">char_height</span><span class="p">,</span><span class="n">char_width</span><span class="p">))</span>
+    data = list(image.getdata())
+    image_2D = np.reshape(data, (image.height, image.width))
     
-    <span class="k">return</span> <span class="n">image_slices</span>
-</code></pre></div></div>
+    image_2D = trim_image(image_2D, char_width, char_height)
+    image_slices = view_as_blocks(image_2D, block_shape=(char_height,char_width))
+    
+    return image_slices
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">char_width</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">char_height</span> <span class="o">=</span> <span class="mi">18</span>
-<span class="n">image_slices</span> <span class="o">=</span> <span class="n">get_image_slices</span><span class="p">(</span><span class="s">'download.png'</span><span class="p">,</span> <span class="n">char_width</span><span class="p">,</span> <span class="n">char_height</span><span class="p">)</span>
+char_width = 10
+char_height = 18
+image_slices = get_image_slices('download.png', char_width, char_height)
 
 
-<span class="n">images</span> <span class="o">=</span> <span class="n">image_slices</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-            <span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">nb_across</span> <span class="o">=</span> <span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">nb_down</span> <span class="o">=</span> <span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">img</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">nb_across</span><span class="p">,</span> <span class="n">nb_down</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-</code></pre></div></div>
+images = image_slices.reshape(image_slices.shape[0]*image_slices.shape[1],
+            image_slices.shape[2], image_slices.shape[3])
+nb_across = image_slices.shape[0]
+nb_down = image_slices.shape[1]
+plt.figure()
+for i, img in enumerate(images):
+    plt.subplot(nb_across, nb_down, i+1)
+    plt.imshow(img, cmap='gray', vmin=0, vmax=255)
+</code>
+
 <p>Output:</p>
 <div class="centerImage">
 <img src="download2.png" style="max-width: 500px;" /> 
@@ -136,35 +150,33 @@
 
 <p>Now we have the images, we can match characters to them. First we need to get images of the font to compare. We will be using the ascii character set, this is found in the <strong>string.printable</strong> function.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">font_images</span><span class="p">():</span>
-    <span class="n">fnt</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="s">'fonts/SFMono-Regular.otf'</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-    <span class="kn">import</span> <span class="nn">string</span>
-    <span class="n">letters</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<code>def font_images():
+    fnt = ImageFont.truetype('fonts/SFMono-Regular.otf', 15)
+    import string
+    letters = string.printable
+    results = []
 
-    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-        <span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">letter</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fnt</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s">'L'</span><span class="p">)</span> <span class="c1">#greyscale
-</span>        
-        <span class="n">d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">getdata</span><span class="p">())</span>
-        <span class="n">image_2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span><span class="p">))</span>
+    for letter in letters:
+        img = Image.new('RGB', (10, 18), color=(255,255,255))
+        d = ImageDraw.Draw(img)
+        d.text((0,0),letter, font=fnt, fill=(0,0,0))
+        img = img.convert('L') #greyscale
         
-        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_2D</span><span class="p">)</span>
+        d = list(img.getdata())
+        image_2D = np.reshape(d, (img.height, img.width))
         
-    <span class="k">return</span> <span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        results.append(image_2D)
+        
+    return (letters, np.stack(results, axis=0))
 
-</code></pre></div></div>
+letters_idx, letters = font_images()
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">letters_idx</span><span class="p">,</span> <span class="n">letters</span> <span class="o">=</span> <span class="n">font_images</span><span class="p">()</span>
-</code></pre></div></div>
+plt.figure(figsize=(60,60))
+for i, img in enumerate(letters):
+    plt.subplot(20, 20, i+1)
+    plt.imshow(img, cmap='gray', vmin=0, vmax=255)
+</code>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">60</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">img</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">letters</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-</code></pre></div></div>
 <p>Output:</p>
 <div class="centerImage">
 <img src="download3.png" style="max-width: 500px;" /> 
@@ -180,42 +192,40 @@
 
 <p>where A and B are matricis of the same size. We want the lowest score as that will be the smallest difference. I guess I could have inverted it so we were looking for the max or I could have called it the loss function.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solve_section</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">letters</span><span class="p">):</span>
-    <span class="n">min_score</span> <span class="o">=</span> <span class="mi">1000000</span>
-    <span class="n">min_letter</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="mi">0</span>
+<code>def solve_section(section, letters):
+    min_score = 1000000
+    min_letter = None
+    id = 0
     
-    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
-        <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">letter</span> <span class="o">-</span> <span class="n">section</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="n">min_score</span><span class="p">:</span>
-            <span class="n">min_score</span> <span class="o">=</span> <span class="n">score</span>
-            <span class="n">min_letter</span> <span class="o">=</span> <span class="n">letter</span>
-            <span class="n">min_id</span> <span class="o">=</span> <span class="nb">id</span>
-        <span class="nb">id</span> <span class="o">+=</span> <span class="mi">1</span>
+    for letter in letters:
+        score = np.sum(np.absolute(letter - section))
+        if score < min_score:
+            min_score = score
+            min_letter = letter
+            min_id = id
+        id += 1
             
-    <span class="k">return</span> <span class="p">(</span><span class="n">min_id</span><span class="p">,</span> <span class="n">min_letter</span><span class="p">)</span>
-</code></pre></div></div>
+    return (min_id, min_letter)
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">sections</span><span class="p">,</span> <span class="n">letters</span><span class="p">):</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sections</span><span class="p">:</span>
-        <span class="nb">id</span><span class="p">,</span> <span class="n">min_letter</span> <span class="o">=</span> <span class="n">solve_section</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">letters</span><span class="p">)</span>
-        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">min_letter</span><span class="p">)</span>
-        <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+def solve(sections, letters):
+    results = []
+    ids = []
+    for s in sections:
+        id, min_letter = solve_section(s, letters)
+        results.append(min_letter)
+        ids.append(id)
 
-    <span class="k">return</span> <span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-</code></pre></div></div>
+    return (ids, np.stack(results, axis=0))
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ids</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">letters</span><span class="p">)</span>
-</code></pre></div></div>
+ids, result = solve(f, letters)
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+fig = plt.figure(figsize=(20, 20))
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)):</span>
-    <span class="n">sub</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">sub</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-</code></pre></div></div>
+for i in range(len(result)):
+    sub = fig.add_subplot(image_slices.shape[0], image_slices.shape[1], i+1)
+    sub.imshow(result[i], cmap='gray', vmin=0, vmax=255)
+</code>
+
 <p>Output:</p>
 <div class="centerImage">
 <img src="download5.png" style="max-width: 500px;" /> 
@@ -223,26 +233,27 @@
 
 <p>Now we can finish it by collecting the characters and printing</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result_string</span> <span class="o">=</span> <span class="s">""</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">:</span>
-    <span class="n">result_string</span> <span class="o">+=</span> <span class="n">letters_idx</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">image_slices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">result_string</span> <span class="o">+=</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></div></div>
+<code>result_string = ""
+i = 1
+for id in ids:
+    result_string += letters_idx[id]
+    if i % image_slices.shape[1] == 0:
+        result_string += '\n'
+    i += 1
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">result_string</span><span class="p">)</span>
-</code></pre></div></div>
+print(result_string)
+</code>
+
 <p>Output:</p>
-<div class="highlighter-rouge"><div class="highlight" style="line-height:1;"><pre class="highlight" style="font-size: 11px;"><code>.gMBy         
+
+<code>.gMBy         
   WgM_        
   M@DMg_      
   $BMGDMg     
    `MgZMMg_   
     _&lt;V _MMK_ 
   _1P"`    "gg
-</code></pre></div></div>
+</code>
   </main>
   </body>
 </html>

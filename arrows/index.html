@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>James Pucula - Home</title>
+  <title>James Pucula - Arrows</title>
   <link rel = "stylesheet" type="text/css" href="/style.css"/>
 
 </head>
@@ -50,6 +50,124 @@
   </nav>
   </section></div></nav>
   <main>
-  </main>
+<style>
+:root {
+  color-scheme: light dark; /* both supported */
+}
+</style>
+
+<video width="700" autoplay="" loop="" muted="" playsinline="">
+    <source src="output.webm" type="video/webm" />
+</video>
+
+
+<p>I'm amazed how simple rules create unique and complex behaviour. <b>Arrows</b> was built to attempt to show that  building something like a computer</p>
+
+<span>There are 3 arrows:</span>
+  <ul>
+    <li>normal <b> →</b></li>
+    <li>invert <b> »</b></li>
+    <li>divide <b> ↔</b></li>
+  </ul>
+
+<p>These arrows can be combined to make logic gates. The simplest gates are the <em>OR</em> gate by pointing 2 arrows to the same spot. The <em>NOT</em> gate is the invert arrow. We could create any boolean expression from these two logic gates, but having <em>AND</em> and <em>XOR</em> gates make things easier to build</p>
+
+<p>We can make an <em>AND</em> gate with <em>NOT</em> and <em>OR</em> gatse using DeMorgan's Law. This is visualized below, the A and B regions enclosed in an a circle representing the entire domain</p>
+
+<img src="aandb2.png" style="width:500px"/>
+
+<p>Going from left to right: <em>NOT</em> A, <em>NOT</em> B, <em>OR</em> previous two, <em>NOT</em> previous one</p>
+
+<p>The final result of the process above is <em>NOT</em> ((<em>NOT</em> A) OR (<em>NOT</em> B)). This is equivalent to an <em>AND</em> gate. Converted to arrows give us the following</p>
+
+
+<img src="and.png" style="width:87px;"/>
+
+<p>The <em>XOR</em> is a little bit more difficult to create. From here I started see the most difficult part of this to solve. There's no easy way to cross lines. In a real chip, there is various levels for wires to go around each other but here in 2D, that's not possible. I'll show my partial solution later. Being lazy I found a <em>XOR</em> gate made of <em>NOR</em> gates and does not overlap.</p> 
+
+<img src="xor_v2.svg" style="height: 150px; margin-right: 160px"/>
+
+<img src="xor.png" style="width:96px"/>
+
+<p>Now we have the basic gates we can combine them to make a simple adder</p>
+
+<h2>Adding Machine</h2>
+
+<p>A useful thing for computers to do is addition. This can be seen in a computer's arithmetic logic unit which is a central part of the a computer's cpu.</p>
+
+<p>We can start builing an adder. The truth table is below:</p>
+
+ <table style="width:100%">
+  <tr>
+    <th>Input A</th>
+    <th>Input B</th>
+    <th>Ouput Sum</th>
+    <th>Ouput Carray</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+</table> 
+
+<p>When googling a half adder design, the following is the most common solution. We can't implement this directly as there's no way for us to make the line cross, in red below</p>
+
+<img src="adder.svg" style="height: 130px"/>
+
+<p>To get this to work. I cross lines by taking the XOR of the XOR. I found that the following works: A = XOR(XOR(A, B), B). This function is seen in the arrows below</p>
+
+
+<img src="adder - updated.svg" style="height: 150px"/>
+
+<p>There is difficulty in creating these as it takes a lot of arrows to have the “lines” cross. I think I would be fun to work on a line reduction function that could take a binary function and reduce the number of “line” crosses or where it would be cheaper than using 3 xors.</p>
+
+<p>I'm sure there is a way to solve this on a boolean alegbra side. Even a function that takes a boolen expression and outputs the number of line crosses would allow that to be used in an optimizer function</p>
+
+<p>Coverted into arrows:</p>
+
+<img src="half_adder.png" style="width: 319px"/>
+
+<p>Right now we just built a half-adder where the input in missing a carry. We can fix that by adding that. Below is a way of doing that with two half adders and an or gate</p>
+
+<img src="full_adder_2.svg"/>
+
+<p>Using the half adders is useful as we don't have to design another circuit and we can just put half-adder blocks into the new design</p> 
+
+<img src="full_adder.png" style="width: 642px"/>
+
+<p>And finally we can combine 4 full adders to make a 4-bit adder</p>
+
+<img src="4bit adder.png" />
+
+
+<p>I enjoyed making this and it was a fun challenge. I also learned lots. I hope to pick it up again and try again to make a simple computer. I sure everything could be much smaller and faster than it is. </p>
+
+<p>The game logic runs in Rust with help from ggez; a window management, 2D graphics and event handling library. Written in rust allows for fast simulations of a large number of options. The Rust library is used through a C interface using ccfi in python.
+
+<p>The Python side is where the arrows are being placed. A “Board” object is to rust to be displayed and run. In addition it contains higher level drafter, where more complex boards can be designed. Right now in the drafter, there is a topological function to arrange sub-blocks and a basic router for wires using breadth first search. Some of these I dropped but having the flexibility of trying different things quick is important</p>
+
+<p>If you would like to take a look and run it, it's avalible on github</p>
+
+</div>  </main>
   </body>
 </html>

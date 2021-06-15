@@ -1,0 +1,32 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530.58 154.5">
+  <defs>
+    <style>
+      .cls-1,.cls-2{fill:#fff;stroke:#000;stroke-width:2px}.cls-1{stroke-miterlimit:10}.cls-2{stroke-linecap:round;stroke-linejoin:round}.cls-3{font-size:12px;font-family:sans-serif}.cls-4{letter-spacing:1em}.cls-5{letter-spacing:1em}.cls-6{letter-spacing:1em}.cls-7{letter-spacing:1em}
+    </style>
+  </defs>
+  <path class="cls-1" d="M80.4 57.5h87v96h-87zM218.9 1h87v96h-87z"/>
+  <path class="cls-2" d="M407.36 124c26 0 40 0 57 22-17 22-29 22-57 22 9-21 9-24 0-44z" transform="translate(-19.1 -23)"/>
+  <path class="cls-2" d="M445.73 123.05h34.17"/>
+  <path class="cls-1" d="M166.9 134.34h225.63M348.76 112.34h43.77M305.74 76.04h43.78M348.63 112.93V75M166.73 76.81h52.17M44.9 24.46h173.94M44.9 76.46h35.94M44.79 134.46h35.94M305.79 24.46h173.94"/>
+  <text class="cls-3" transform="translate(488.07 126.81)">
+    Carry
+  </text>
+  <text class="cls-3" transform="translate(231.11 49.99)">
+    Half Adder
+  </text>
+  <text class="cls-3" transform="translate(92.24 107.98)">
+    Half Adder
+  </text>
+  <text class="cls-3" transform="translate(488.11 27.99)">
+    Add
+  </text>
+  <text class="cls-3" transform="translate(8 26.98)">
+    Carry
+  </text>
+  <text class="cls-3" transform="translate(32.02 79.99)">
+    A
+  </text>
+  <text class="cls-3" transform="translate(32.7 137.98)">
+    B
+  </text>
+</svg>
