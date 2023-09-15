@@ -27,26 +27,17 @@
 </video>
 
 
-<p>I'm amazed how simple rules create unique and complex behaviours. The following arrows could be combined to make larger logic gates and eventually a computer</p>
+<p>The beauty of simple rules creating complex and unique behaviors never ceases to amaze me. In this post, I will be discussing how basic arrows can be combined to create larger logic gates and eventually an adding machine</p>
 
-<span>There are 3 arrows:</span>
-  <ul>
-    <li>normal <b> →</b></li>
-    <li>invert <b> »</b></li>
-    <li>divide <b> ↔</b></li>
-  </ul>
+<p>We will be working with three types of arrows: the normal arrow (<b>→</b>), the invert arrow (<b>»</b>), and the divide arrow (<b>↔</b>). By combining these arrows, we can create a variety of logic gates, including the OR gate and the NOT gate. While these two gates allow us to create any Boolean expression, having AND and XOR gates makes building even easier</p>
 
-<p>These arrows can be combined to make logic gates. The simplest gates are the <em>OR</em> gate by pointing 2 arrows to the same spot. The <em>NOT</em> gate is the invert arrow. We could create any boolean expression from these two logic gates, but having <em>AND</em> and <em>XOR</em> gates make things easier to build</p>
-
-<p>We can make an <em>AND</em> gate with <em>NOT</em> and <em>OR</em> gates using DeMorgan's Law. <em>AND</em> is equivenlent to <em>NOT</em> ((<em>NOT</em> A) OR (<em>NOT</em> B)). Converting this into arrows gives us the following</p>
+<p>Using DeMorgan's Law, we can create an AND gate using NOT and OR gates. This is equivalent to NOT ((NOT A) OR (NOT B)), and when translated to arrows, it looks like this.</p> 
 
 <img src="and.png" style="width:87px;"/>
 
-<p>The <em>XOR</em> is a little bit more difficult to create and introduced a challenge working with arrows - There's no easy way to cross lines. In a real chip, there is various levels for wires to go around each other but here in 2D, that's not possible. I'll show my partial solution later but being lazy, I found a <em>XOR</em> gate made of <em>NOR</em> gates and does not overlap.</p> 
+<p>The XOR gate is a bit more challenging to create when working with arrows. One of the difficulties is that there is no easy way to cross lines. In a real chip, there are various levels for wires to go around each other, but in a 2D representation like this, that is not possible. Later in the post, I will share my partial solution for creating a XOR gate with arrows. However, I must admit, I took the lazy route and found a solution that uses NOR gates and does not overlap.</p>
 
 <img src="xor_v2.svg" style="height: 150px; margin-right: 160px"/>
-
-which translates to:
 
 <img src="xor.png" style="width:96px"/>
 
@@ -117,7 +108,6 @@ which translates to:
 <p>And finally we can combine 4 full adders to make a 4-bit adder</p>
 
 <img src="4bit adder.png" />
-
 
 <p>I enjoyed making this and it was a fun challenge. I also learned lots. I hope to pick it up again and try again to make a simple computer. I sure everything could be much smaller and faster than it is. </p>
 
