@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>James Pucula - Home</title>
+  <title>James Pucula - Idk Logo Animation</title>
 
   <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');</style>
   <link rel = "stylesheet" type="text/css" href="/style.css"/>
@@ -20,89 +20,33 @@
   </header>
 
   <main>
-<style>
-  main {
-    max-width: 1000px;
-  }
-</style>
+<h1>idk Logo Animation</h1>
 
-<h1>Hi, I'm James</h1>
+<p>It's been a while since my last post, but today I want to walk you through the process of creating a logo animation for "idk." In this brief post, I'll share the steps I took to bring this logo to life.</p>
 
-<div class='about'>
-  <p>I am an engineer working in the energy field. I am passionate about using data analysis, simulation and numerical optimization to solve complex problems and share what I learn</p>
-</div>
+<img src="logo.svg" width="91px"/>
 
-<div class='site-nav'>
-  <div class='projects'>
-    <h3>Projects</h3>
-    <ul class="nobull">
-      <li>
-        <a href="/arrows">Arrows</a>
-        <p>A game that utilizes cellular automata, in which gates are represented by arrows and can be combined to create a functioning computer</p>
-      </li>
-      <li>
-        <a href="/pictures-to-text">Pictures to Text</a>
-        <p>A tool for converting an image into text art</p>
-      </li>
-      <li>
-        <a href="/parsley-for-style">Parsley for Style</a>
-        <p>A web appliction for suggesting food recipes and a tool for a creating grocery list from those recipes</p>
-      </li>
-      <li>
-        <a href="/altitude">Altitude</a>
-        <p>A single-page application built using React and Redux, designed to help users keep track of thier daily activities</p>
-      </li>
-      <li>
-        <a href="/automatic-paintball-turret">Automatic Paintball Turret</a>
-        <p>As a part of a university mechatronics course, I designed and constructed a turret that is able to track and follow a designated target</p>
-      </li>
-      <li>
-        <a href="/studio">Studio</a>
-        <p>A tool for generating static websites, implemented using the Haskell programming language</p>
-      </li>
-    </ul>
-    </div>
-    <div class='articles'>
-      <h3>Articles</h3>
-      <ul class="nobull">
-        <li>
-          <a href="/idk-logo-animation">idk Logo Animation</a>
-          <p>Crafting a logo animation for idk <span class="date">2023-07</span></p>
-        </li>
-        <li>
-          <a href="/simulating-light">Simulating Light</a>
-          <p>Implementing a ray tracer using multiple methods <span class="date">2020-08</span></p>
-        </li>
-        <li>
-          <a href="/pathfinding">Pathfinding</a>
-          <p>Comparing methods in pathfinding and their different trade-offs in speed, memory and optimality of the solution <span class="date">2020-04</span></p>
-        </li>
-        <li>
-          <a href="/advent-of-code">Advent of Code</a>
-          <p>An annual coding event, in which participants are challenged to find solutions to a given problem as quickly as possible <span class="date">2020-01</span></p>
-        </li>
-        <li>
-          <a href="/map-colouring">Map Colouring</a>
-          <p>Map coloring is a puzzle of assigning colours to regions on a map with no 2 adjacent regions having the same colour, it's a problem of discrete optimization <span class="date">2019-09</span></p>
-        </li>
-        <li>
-          <a href="/rocket-or-tower">Rocket or Tower</a>
-          <p>Creating a neural network using ResNet34 trained to classify images between rockets and towers <span class="date">2019-04</span></p>
-        </li>
-      </ul>
-    </div>
-    <div class='misc'>
-    <h3>Misc</h3>
-    <ul class="nobull">
-      <li><a href="/log">Log</a></li>
-    </ul>
-    </div>
-  </div>
+<h2>Preparing the Grid</h2>
+
+<p>To kick things off, we need to represent the logo within a grid and then render it. For this task, we'll be using Python along with the Pillow library. The idea here is to start with all the grid elements in their initial scattered state and then animate each element one by one to form the logo. While using logic to automate this process might be an option, I found that manually crafting the animation is more intuitive and feasible.</p>
+
+<img src="first.gif" />
+
+<h2>Enhancing Animation Smoothness</h2>
+
+<p>In the initial stages, our animation may appear somewhat jittery since we're merely capturing images of the evolving grid. To enhance the quality of the animation, we'll animate the movement of individual elements. This can be achieved by computing the differences between the current grid and the subsequent one, and then smoothly transitioning the elements. We'll employ a for loop to iterate through various steps of this process.</p>
+
+<img src="third.gif" />
 
 
-  <style>
+<h2>Final Touches</h2>
 
-  </style>
-  </main>
+<p>At this stage, our animation comprises approximately 200 frames and features a limited color palette. This presents a prime opportunity for optimization. Using an optimizer, we've dramatically reduced the file size, shrinking it from 122.7 kB to a mere 13.2 kB. While the colors may exhibit slight variations post-optimization, this is an acceptable trade-off given the significant file size reduction.
+
+To wrap up the process, we've ensured the animation is correctly sized, and any issues with transparency have been resolved by placing it on a white background.</p>
+
+<img src="fourth.gif" />
+
+<p>Thanks for reading.</p>  </main>
   </body>
 </html>

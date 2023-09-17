@@ -31,8 +31,8 @@ span.date { color: grey; }
 main { padding: 45px; float:left; max-width:700px;}
 main > img { max-width: 700px }
 main > h1 { font-size:2rem; font-weight: 600; padding-bottom:100px}
-main > h2 { font-size:30px; text-transform: capitalize}
-main > h3 { font-size:20px; text-transform: capitalize}
+main > h2 { font-size:28px; font-weight: 600; text-transform: capitalize}
+main > h3 { font-size:18px; font-weight: 600; text-transform: capitalize}
 p { line-height: 25px; font-size:16px}
 main > ul { line-height: 25px;}
 
