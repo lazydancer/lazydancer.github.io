@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>James Pucula - Home</title>
+  <title>James Pucula - Idk</title>
 
   <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');</style>
   <link rel = "stylesheet" type="text/css" href="/style.css"/>
@@ -20,97 +20,19 @@
   </header>
 
   <main>
-<style>
-  main {
-    max-width: 1000px;
-  }
-</style>
+2023-01-28
+idk
 
-<h1>Hi, I'm James</h1>
-
-<div class='about'>
-  <p>I am a software engineer working in the energy field. I am passionate about using data analysis, simulation and numerical optimization to solve complex problems and share what I learn</p>
-</div>
-
-<div class='site-nav'>
-  <div class='projects'>
-    <h3>Projects</h3>
-    <ul class="nobull">
-      <li>
-        <a href="/idk">idk</a>
-        <p>Minecraft inventory bot. Deposit and withdraw items from storage.</p>
-      </li>
-      <li>
-        <a href="/arrows">Arrows</a>
-        <p>A game that utilizes cellular automata, in which gates are represented by arrows and can be combined to create a functioning computer</p>
-      </li>
-      <li>
-        <a href="/pictures-to-text">Pictures to Text</a>
-        <p>A tool for converting an image into text art</p>
-      </li>
-      <li>
-        <a href="/parsley-for-style">Parsley for Style</a>
-        <p>A web appliction for suggesting food recipes and a tool for a creating grocery list from those recipes</p>
-      </li>
-      <li>
-        <a href="/altitude">Altitude</a>
-        <p>A single-page application built using React and Redux, designed to help users keep track of thier daily activities</p>
-      </li>
-      <li>
-        <a href="/automatic-paintball-turret">Automatic Paintball Turret</a>
-        <p>As a part of a university mechatronics course, I designed and constructed a turret that is able to track and follow a designated target</p>
-      </li>
-      <li>
-        <a href="/studio">Studio</a>
-        <p>A tool for generating static websites, implemented using the Haskell programming language</p>
-      </li>
-    </ul>
-    </div>
-    <div class='articles'>
-      <h3>Articles</h3>
-      <ul class="nobull">
-        <li>
-          <a href="/vggnet">Visualizing VGGNet Activations</a>
-          <p>Visual analysis of VGGNet activations using the CIFAR-10 dataset, revealing the complexities of image classification <span class="date">2023-11</span></p>
-        </li>
-        <li>
-          <a href="/idk-logo-animation">idk Logo Animation</a>
-          <p>Crafting a logo animation for idk <span class="date">2023-07</span></p>
-        </li>
-        <li>
-          <a href="/simulating-light">Simulating Light</a>
-          <p>Implementing a ray tracer using multiple methods <span class="date">2020-08</span></p>
-        </li>
-        <li>
-          <a href="/pathfinding">Pathfinding</a>
-          <p>Comparing methods in pathfinding and their different trade-offs in speed, memory and optimality of the solution <span class="date">2020-04</span></p>
-        </li>
-        <li>
-          <a href="/advent-of-code">Advent of Code</a>
-          <p>An annual coding event, in which participants are challenged to find solutions to a given problem as quickly as possible <span class="date">2020-01</span></p>
-        </li>
-        <li>
-          <a href="/map-colouring">Map Colouring</a>
-          <p>Map coloring is a puzzle of assigning colours to regions on a map with no 2 adjacent regions having the same colour, it's a problem of discrete optimization <span class="date">2019-09</span></p>
-        </li>
-        <li>
-          <a href="/rocket-or-tower">Rocket or Tower</a>
-          <p>Creating a neural network using ResNet34 trained to classify images between rockets and towers <span class="date">2019-04</span></p>
-        </li>
-      </ul>
-    </div>
-    <div class='misc'>
-    <h3>Misc</h3>
-    <!-- <ul class="nobull">
-      <li><a href="/log">Log</a></li>
-    </ul> -->
-    </div>
-  </div>
-
-
-  <style>
-
-  </style>
+<h1 id="building-an-automated-storage-system-in-minecraft">idk: Building an Automated Storage System in Minecraft</h1>
+<p>Minecraft is a sandbox game which presents areas for creative problem-solving. One is management of items. Traditionally, players use chests with item-specific labels to organize their resources. However, I aimed to automate storage management, especially in a multiplayer server setting. This blog post details the journey of developing an automated storage system in Minecraft, combining bot programming, and a touch of web development.</p>
+<p>The primary goal was to simplify the storage interaction process for players. For depositing items, players could simply throw their items into a chest, and the bot would then manage these items. The withdrawal process required more thought. Initially, I considered using signs or in-game books for item requests but eventually settled on a more robust approach: a website interface. This interface allows players to visually manage their inventory and place requests, thereby streamlining the interaction with the storage system.</p>
+<p>The storage design focused on efficiency. A straightforward layout with rows of chests, each six chests high, was chosen for its simplicity and expandability. This design ensures the bot has minimal travel distance to access any item, optimizing retrieval times.</p>
+<p>The bot, at its core, is a pathfinding entity. It utilizes a sparse map representation and a breadth-first search algorithm to find the shortest path to its destination. Its inventory management is capable of handling multiple items at once, whether in full stacks or single units.</p>
+<p>To track the inventory, I implemented a database system. Each stack of items is assigned an ID, count, and location. The database is dynamically updated with each transaction, whether the bot is depositing or retrieving items, or when players add or remove items from the system.</p>
+<p>A significant challenge arose when dealing with large deposits and withdrawals - the primary use case for this storage system. To address this, I integrated the use of Shulker Boxes, which significantly increase storage capacity. However, managing Shulker Boxes added complexity, given their unique interaction requirements.</p>
+<p>Despite the initial hurdles, integrating Shulker Boxes proved beneficial. It not only expanded the storage capacity significantly but also introduced an interesting problem-solving dimension to the project. The bot had to be capable of intelligently handling these boxes, whether it was retrieving items from them or managing their placement in the storage system.</p>
+<p>This project was not only about building an automated system in a game but also a significant learning experience in software development. It was my first time using TypeScript and Svelte, marking it as one of my largest publicly available projects. The project leveraged the Mineflayer library, which greatly facilitated communication with the Minecraft server.</p>
+<p>The automated storage system in Minecraft was a challenging yet rewarding project. It pushed the boundaries of what&#39;s possible within the game, combining various disciplines of software development. As I revisit and further develop this project, I&#39;m reminded of the unique challenges and learnings it presented. Whether it&#39;s dealing with Shulker Boxes or optimizing bot pathfinding, each aspect of this project contributed to my growth as a developer and problem-solver.</p>
   </main>
   </body>
 </html>
