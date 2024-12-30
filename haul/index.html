@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-  <title>James Pucula - Home</title>
+  <title>James Pucula - Haul</title>
 
   <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');</style>
   <link rel = "stylesheet" type="text/css" href="/style.css"/>
@@ -20,101 +20,46 @@
   </header>
 
   <main>
-<style>
-  main {
-    max-width: 1000px;
-  }
-</style>
+<h1 id="title">haul: Route planner for EVE Online</h1>
 
-<h1>Hi, I'm James</h1>
+<p>EVE Online, often nicknamed "spreadsheets in space," is a multiplayer game where you explore, fight, and trade in a persistent universe. I’m still learning its complex systems.</p>
 
-<div class='about'>
-  <p>I am a software engineer working in the energy field. I am passionate about using data analysis, simulation and numerical optimization to solve complex problems and share what I learn</p>
-</div>
+<h2>Hauling Basics</h2>
 
-<div class='site-nav'>
-  <div class='projects'>
-    <h3>Projects</h3>
-    <ul class="nobull">
-      <li>
-        <a href="/haul">haul</a>
-        <p>Route planner and automation tool designed for EVE Online </p>
-      </li>
-      <li>
-        <a href="/idk">idk</a>
-        <p>Minecraft inventory bot. Deposit and withdraw items from storage.</p>
-      </li>
-      <li>
-        <a href="/arrows">Arrows</a>
-        <p>A game that utilizes cellular automata, in which gates are represented by arrows and can be combined to create a functioning computer</p>
-      </li>
-      <li>
-        <a href="/pictures-to-text">Pictures to Text</a>
-        <p>A tool for converting an image into text art</p>
-      </li>
-      <li>
-        <a href="/parsley-for-style">Parsley for Style</a>
-        <p>A web appliction for suggesting food recipes and a tool for a creating grocery list from those recipes</p>
-      </li>
-      <li>
-        <a href="/altitude">Altitude</a>
-        <p>A single-page application built using React and Redux, designed to help users keep track of thier daily activities</p>
-      </li>
-      <li>
-        <a href="/automatic-paintball-turret">Automatic Paintball Turret</a>
-        <p>As a part of a university mechatronics course, I designed and constructed a turret that is able to track and follow a designated target</p>
-      </li>
-      <li>
-        <a href="/studio">Studio</a>
-        <p>A tool for generating static websites, implemented using the Haskell programming language</p>
-      </li>
-    </ul>
-    </div>
-    <div class='articles'>
-      <h3>Articles</h3>
-      <ul class="nobull">
-        <li>
-          <a href="/vggnet">Visualizing VGGNet Activations</a>
-          <p>Visual analysis of VGGNet activations using the CIFAR-10 dataset, revealing the complexities of image classification <span class="date">2023-11</span></p>
-        </li>
-        <li>
-          <a href="/idk-logo-animation">idk Logo Animation</a>
-          <p>Crafting a logo animation for idk <span class="date">2023-07</span></p>
-        </li>
-        <li>
-          <a href="/simulating-light">Simulating Light</a>
-          <p>Implementing a ray tracer using multiple methods <span class="date">2020-08</span></p>
-        </li>
-        <li>
-          <a href="/pathfinding">Pathfinding</a>
-          <p>Comparing methods in pathfinding and their different trade-offs in speed, memory and optimality of the solution <span class="date">2020-04</span></p>
-        </li>
-        <li>
-          <a href="/advent-of-code">Advent of Code</a>
-          <p>An annual coding event, in which participants are challenged to find solutions to a given problem as quickly as possible <span class="date">2020-01</span></p>
-        </li>
-        <li>
-          <a href="/map-colouring">Map Colouring</a>
-          <p>Map coloring is a puzzle of assigning colours to regions on a map with no 2 adjacent regions having the same colour, it's a problem of discrete optimization <span class="date">2019-09</span></p>
-        </li>
-        <li>
-          <a href="/rocket-or-tower">Rocket or Tower</a>
-          <p>Creating a neural network using ResNet34 trained to classify images between rockets and towers <span class="date">2019-04</span></p>
-        </li>
-      </ul>
-    </div>
-    <div class='misc'>
-    <h3>Misc</h3>
-    <!-- <ul class="nobull">
-      <li><a href="/log">Log</a></li>
-    </ul> -->
-    </div>
-  </div>
+<p>Hauling covers everything from small arbitrage to massive fleet operations. This project focuses on smaller, informal opportunities in high-security space (high-sec). Key factors for choosing a ship include cargo capacity, align time, warp speed, hitpoints, and cost. Modifications can enhance these traits further.</p>
+
+<p>This tool was designed around the Sunesis, a special edition ship given annually. With a 600m³ cargo hold, sub-2-second align time, 4 AU/s warp speed, ~10k HP, and a price of 20 million ISK, it’s perfect for high-sec hauling.</p>
+
+<h2>Risks in High-Sec</h2>
+
+<p>High-sec hauling isn’t without risks. Gatecamps and attacks at stations are common. The Sunesis’s sub-2-second align time makes it hard to lock onto, and its HP lets it survive one or two smartbomb rounds. Kill reports posted online help track hotspots, allowing me to adjust risk assessments dynamically. Ahbazon, a major system on the Jita-Amarr route, is a frequent pinch point requiring constant vigilance.</p>
+
+<h2>Major Trade Hubs and Routes</h2>
+
+<p>EVE’s economy revolves around five trade hubs: Jita (the largest), Amarr, Dodixie, Hek, and Rens. Hauling often involves buying at smaller stations to sell in Jita or distributing Jita’s goods to other hubs.</p>
+
+<p>Using a custom map, I calculated the fastest routes between these hubs, factoring in time and risk. Despite Ahbazon’s risks, it’s the quickest route to Amarr. Another insight was that intra-system travel (within a solar system) is often slower than inter-system travel due to warp mechanics. Warp speed depends on factors like inertia and sub-warp velocity, while jump times are fixed.</p>
 
 
-  <style>
+<img src="map.png"/>
 
-  </style>
+<h2>Finding Arbitrage Opportunities</h2>
+
+<p>To find trades, I downloaded all high-sec buy and sell orders. After filtering for cargo below 800m³, I removed unprofitable options using a fixed transport cost. The remaining items were ranked by profit per cubic meter (profit/m³) and per ISK invested (profit/capital). From this, I generated optimized routes to buy and sell within cargo limits.</p>
+
+<p>This process ran once to build an itinerary. Dynamic updates would be interesting, but I kept it simple. Market data updates every five minutes, and I initially included a sniping feature for high-profit trades. These were too competitive, so I later disabled it.</p>
+
+<p>To speed things up, I precalculated all station paths. This worked well for steady routes but required manual risk updates. Automating this would be a worthwhile improvement.</p>
+
+<p>Losing a Sunesis isn’t costly (20m ISK), but valuable cargo raises stakes. I capped cargo value at 100m ISK to balance profit and risk.</p>
+
+<h2>Lessons Learned</h2>
+
+<p>This project was a rewarding challenge. I learned OAuth 2.0, which I later applied professionally, and improved my methods for identifying arbitrage, optimizing routes, and caching data efficiently.</p>
+
+<p>Creating a trade hub map was especially tricky. Travel times often violated the triangle inequality, requiring overlapping lines for accuracy. Even simplified to five hubs, the graph still had an overlapping line.</p>
+
+<p>Building this tool was a fun dive into EVE Online’s economy and logistics. It combined game mechanics, data analysis, and problem-solving in a satisfying way. There’s still room to improve, like automating risk updates or refining maps, but this project was a great learning experience</p>
   </main>
   </body>
 </html>
