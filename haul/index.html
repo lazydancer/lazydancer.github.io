@@ -20,46 +20,155 @@
   </header>
 
   <main>
-<h1 id="title">haul: Route planner for EVE Online</h1>
+<script type="text/javascript" async
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 
-<p>EVE Online, often nicknamed "spreadsheets in space," is a multiplayer game where you explore, fight, and trade in a persistent universe. I’m still learning its complex systems.</p>
+<h1 id="title">haul: Route Planner for EVE Online</h1>
 
-<h2>Hauling Basics</h2>
+<img src="hauler_route_planner.png" />
 
-<p>Hauling covers everything from small arbitrage to massive fleet operations. This project focuses on smaller, informal opportunities in high-security space (high-sec). Key factors for choosing a ship include cargo capacity, align time, warp speed, hitpoints, and cost. Modifications can enhance these traits further.</p>
+<p>
+  <a href="https://github.com/lazydancer/haul">View on GitHub</a>
+</p>
 
-<p>This tool was designed around the Sunesis, a special edition ship given annually. With a 600m³ cargo hold, sub-2-second align time, 4 AU/s warp speed, ~10k HP, and a price of 20 million ISK, it’s perfect for high-sec hauling.</p>
+<p>
+  I would like to share with you <strong>haul</strong> (Hyperspace Asset Unloading and Loading), a route optimization and trade automation tool I developed specifically for the virtual economy of the EVE Online. In this article, I'll walk you through the methodologies, algorithms, and technical implementations behind haul, highlighting key aspects such as route optimization, arbitrage detection, risk assessment, and performance optimizations I included in the project.
+</p>
 
-<h2>Risks in High-Sec</h2>
+<h2>Route Optimization Algorithm</h2>
 
-<p>High-sec hauling isn’t without risks. Gatecamps and attacks at stations are common. The Sunesis’s sub-2-second align time makes it hard to lock onto, and its HP lets it survive one or two smartbomb rounds. Kill reports posted online help track hotspots, allowing me to adjust risk assessments dynamically. Ahbazon, a major system on the Jita-Amarr route, is a frequent pinch point requiring constant vigilance.</p>
+<h3>Key Factors for Optimization</h3>
+<p>When creating haul, I identified several critical factors that significantly impact successful asset transportation in EVE Online:</p>
+<ul>
+  <li><strong>Warp Speed</strong>: This defines travel duration within solar systems, measured in astronomical units per second (AU/s). Faster warp speeds drastically reduce overall travel times.</li>
+  <li><strong>Align Time</strong>: The delay between initiating warp and actual warp engagement. Ships with align times under two seconds reduce vulnerability, enhancing safety.</li>
+  <li><strong>Cargo Capacity</strong>: This influences the maximum trade volume per journey, directly affecting profitability.</li>
+  <li><strong>Risk Assessment</strong>: A thorough examination of solar system security ratings, historical attacks, and known hotspots to maintain safe travel routes.</li>
+</ul>
 
-<h2>Major Trade Hubs and Routes</h2>
+<h3>Route Calculation Implementation</h3>
+<p>
+  To ensure efficient navigation, haul uses Dijkstra's shortest path algorithm, enhanced with a custom heuristic I designed to integrate multiple factors into a cohesive cost metric:
+</p>
 
-<p>EVE’s economy revolves around five trade hubs: Jita (the largest), Amarr, Dodixie, Hek, and Rens. Hauling often involves buying at smaller stations to sell in Jita or distributing Jita’s goods to other hubs.</p>
+<p>
+  \[
+  \text{TotalCost} = \text{WarpTime} + \text{AlignTime} + \text{RiskFactor}
+  \]
+</p>
 
-<p>Using a custom map, I calculated the fastest routes between these hubs, factoring in time and risk. Despite Ahbazon’s risks, it’s the quickest route to Amarr. Another insight was that intra-system travel (within a solar system) is often slower than inter-system travel due to warp mechanics. Warp speed depends on factors like inertia and sub-warp velocity, while jump times are fixed.</p>
+<p>
+  Specifically, WarpTime is computed as:
+</p>
 
+<p>
+  \[
+  \text{WarpTime} = \frac{\text{Distance (AU)}}{\text{WarpSpeed (AU/s)}} + \text{JumpTime}
+  \]
+</p>
 
-<img src="map.png"/>
+<p>
+  Here, <code>JumpTime</code> is a constant duration associated with stargate transitions (about 10 seconds per jump).
+</p>
 
-<h2>Finding Arbitrage Opportunities</h2>
+<p>
+  I also dynamically factored in risk assessments by regularly updating risk data from publicly available kill reports, mathematically represented as:
+</p>
 
-<p>To find trades, I downloaded all high-sec buy and sell orders. After filtering for cargo below 800m³, I removed unprofitable options using a fixed transport cost. The remaining items were ranked by profit per cubic meter (profit/m³) and per ISK invested (profit/capital). From this, I generated optimized routes to buy and sell within cargo limits.</p>
+<p>
+  \[
+  \text{RiskFactor} = \text{KillDensity} \times \text{CargoValueFactor}
+  \]
+</p>
 
-<p>This process ran once to build an itinerary. Dynamic updates would be interesting, but I kept it simple. Market data updates every five minutes, and I initially included a sniping feature for high-profit trades. These were too competitive, so I later disabled it.</p>
+<p>
+  This allowed haul to adapt to changing player behaviors and emerging threats in real-time.
+</p>
 
-<p>To speed things up, I precalculated all station paths. This worked well for steady routes but required manual risk updates. Automating this would be a worthwhile improvement.</p>
+<h2>Data Acquisition and Processing</h2>
 
-<p>Losing a Sunesis isn’t costly (20m ISK), but valuable cargo raises stakes. I capped cargo value at 100m ISK to balance profit and risk.</p>
+<h3>Real-time Data Integration</h3>
+<p>
+  I designed haul to rely heavily on real-time data sourced from EVE Online’s official EVE Swagger Interface (ESI) API, including:
+</p>
+<ul>
+  <li>Market data (real-time buy/sell orders)</li>
+  <li>Player locations</li>
+  <li>Detailed solar system attributes (security status, system connections)</li>
+  <li>Kill reports for ongoing risk mitigation</li>
+</ul>
 
-<h2>Lessons Learned</h2>
+<h3>Arbitrage Detection Approach</h3>
+<p>To accurately identify profitable trade opportunities, haul applies a structured process for analyzing market data:</p>
 
-<p>This project was a rewarding challenge. I learned OAuth 2.0, which I later applied professionally, and improved my methods for identifying arbitrage, optimizing routes, and caching data efficiently.</p>
+<ul>
+  <li><strong>Data Filtering</strong>: Initially filtering out items exceeding cargo capacity limits (800 m³) or falling below profitability thresholds.</li>
+  <li><strong>Profitability and ROI Calculations</strong>:</li>
+</ul>
 
-<p>Creating a trade hub map was especially tricky. Travel times often violated the triangle inequality, requiring overlapping lines for accuracy. Even simplified to five hubs, the graph still had an overlapping line.</p>
+<p>
+  I calculated profitability per cubic meter (profit/m³) as:
+</p>
 
-<p>Building this tool was a fun dive into EVE Online’s economy and logistics. It combined game mechanics, data analysis, and problem-solving in a satisfying way. There’s still room to improve, like automating risk updates or refining maps, but this project was a great learning experience</p>
-  </main>
+<p>
+  \[
+  \text{Profitability} = \frac{\text{SellPrice} - \text{BuyPrice} - \text{TransportCost}}{\text{CargoVolume}}
+  \]
+</p>
+
+<p>
+  Return on Investment (ROI), measuring profitability against initial investment capital, was calculated as:
+</p>
+
+<p>
+  \[
+  \text{ROI} = \frac{\text{Profit}}{\text{InitialCapital}}
+  \]
+</p>
+
+<p>
+  The results were then ranked by both profitability and ROI to produce optimized trade itineraries and routes.
+</p>
+
+<h2>Technical Implementation Details</h2>
+
+<h3>Backend Development</h3>
+<p>
+  I developed the backend infrastructure of haul using Python and FastAPI to handle API interactions efficiently. Key features include:
+</p>
+<ul>
+  <li>Asynchronous API processing via <code>asyncio</code> for concurrent data handling and reduced latency.</li>
+  <li>Real-time data streaming enabled by FastAPI’s <code>StreamingResponse</code> to provide continuous updates.</li>
+</ul>
+
+<h3>Frontend Development</h3>
+<p>
+  For the frontend, I chose React for its ability to provide users with intuitive, real-time visualizations. Server-sent events (SSE) were leveraged to maintain synchronization between frontend and backend data, dynamically presenting optimal routes, risk assessments, and profitable trading opportunities.
+</p>
+
+<h3>Performance Optimizations</h3>
+<p>
+  To ensure responsiveness and efficiency, I precomputed station-to-station paths, significantly reducing runtime computation loads. Additionally, I experimented with rewriting parts of the backend in Rust, which further enhanced performance, particularly in intensive route calculations.
+</p>
+
+<h2>Lessons Learned and Future Plans</h2>
+
+<h3>Challenges Encountered</h3>
+<ul>
+  <li><strong>Triangle Inequality Violation</strong>: I faced challenges in accurately visualizing routes due to warp mechanics that sometimes violated expected mathematical principles, requiring careful handling.</li>
+  <li><strong>Real-time Risk Data Management</strong>: Currently, risk data updates manually, which limits responsiveness to rapidly changing threats.</li>
+</ul>
+
+<h3>Planned Enhancements</h3>
+<ul>
+  <li>Automating real-time risk assessment updates.</li>
+  <li>Developing a dynamic routing mechanism responsive to real-time market conditions and risks.</li>
+  <li>Fully integrating the experimental Rust backend for improved scalability.</li>
+</ul>
+
+<p>
+  Creating haul allowed me to combine algorithmic optimization, economic modeling, and software development into a cohesive tool tailored to the unique challenges of EVE Online. Throughout this project, I developed and refined critical skills in algorithm optimization, API integration, real-time data processing, and asynchronous programming, resulting in a robust and highly functional addition to my technical portfolio.
+</p>  </main>
   </body>
 </html>
