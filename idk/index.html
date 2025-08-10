@@ -20,40 +20,66 @@
   </header>
 
   <main>
-<h1 id="title">idk: Automating Storage in Minecraft with Bots, Shulkers, and a Web UI</h1>
-
-<img src="idk.png" />
-
+<h1 id="title">
+    idk: Automating Storage in Minecraft with Bots, Shulkers, and a Web UI
+</h1>
 
 <p>
-  <a href="https://github.com/lazydancer/idk">View on GitHub</a>
+    <a href="https://github.com/lazydancer/idk">View on GitHub</a>
 </p>
 
+<section>
+    <p>
+        Minecraft may be a game, but for me, it was also a fantastic opportunity
+        to tackle something complex and practical in a multiplayer environment.
+        Managing inventories manually can be tedious, especially in large builds
+        or busy servers. My goal was straightforward: create a storage system
+        that allowed players to deposit and retrieve items effortlessly.
+        Ideally, players wouldn't need to remember item locations at all.
+    </p>
+</section>
 
-    <section>
-        <p>Minecraft may be a game, but for me, it was also a fantastic opportunity to tackle something complex and practical in a multiplayer environment. Managing inventories manually can be tedious, especially in large builds or busy servers. My goal was straightforward: create a storage system that allowed players to deposit and retrieve items effortlessly. Ideally, players wouldn't need to remember item locations at all.</p>
-    </section>
+<section>
+    <h2>The Interface Dilemma</h2>
+    <p>
+        Initially, I thought about using Minecraft-native methods like signs or
+        written books to manage item requests. However, these approaches quickly
+        proved cumbersome and unintuitive. I opted instead to build a dedicated
+        web interface. Players could now visually search, select, and request
+        items through their browsers, making the entire process significantly
+        faster and more user-friendly.
+    </p>
 
-    <section>
-        <h2>The Interface Dilemma</h2>
-        <p>Initially, I thought about using Minecraft-native methods like signs or written books to manage item requests. However, these approaches quickly proved cumbersome and unintuitive. I opted instead to build a dedicated web interface. Players could now visually search, select, and request items through their browsers, making the entire process significantly faster and more user-friendly.</p>
-        
-        <h3>How it Works:</h3>
-        <ul>
-            <li>Players request items via the web interface.</li>
-            <li>The bot (powered by Mineflayer) receives these requests.</li>
-            <li>The bot navigates efficiently to the required item, retrieves it, and places it in a designated delivery chest.</li>
-        </ul>
-    </section>
+    <h3>How it Works:</h3>
+    <ul>
+        <li>Players request items via the web interface.</li>
+        <li>The bot (powered by Mineflayer) receives these requests.</li>
+        <li>
+            The bot navigates efficiently to the required item, retrieves it,
+            and places it in a designated delivery chest.
+        </li>
+    </ul>
+</section>
 
-    <section>
-        <h2>The Storage Design</h2>
-        <p>The storage layout is intentionally straightforward and highly scalable—organized into rows of chests stacked six high. My priority was to minimize the bot's travel distance between items, optimizing retrieval and deposit times.</p>
-        
-        <h3>Optimization: Pathfinding</h3>
-        <p>Efficient navigation was critical, so the bot utilizes a breadth-first search algorithm on a simplified voxel map. It's aware of obstacles and chest positions. Most pathfinding logic is wrapped in a custom layer over Mineflayer's built-in system, extensively refined to navigate tightly packed environments without getting stuck.</p>
-        
-        <pre><code>
+<section>
+    <h2>The Storage Design</h2>
+    <p>
+        The storage layout is intentionally straightforward and highly
+        scalable—organized into rows of chests stacked six high. My priority was
+        to minimize the bot's travel distance between items, optimizing
+        retrieval and deposit times.
+    </p>
+
+    <h3>Optimization: Pathfinding</h3>
+    <p>
+        Efficient navigation was critical, so the bot utilizes a breadth-first
+        search algorithm on a simplified voxel map. It's aware of obstacles and
+        chest positions. Most pathfinding logic is wrapped in a custom layer
+        over Mineflayer's built-in system, extensively refined to navigate
+        tightly packed environments without getting stuck.
+    </p>
+
+    <pre><code>
 function findPath(start, target):
 queue = [start]
 visited = set()
@@ -68,41 +94,84 @@ foreach neighbor of current:
     queue.enqueue(neighbor)
     visited.add(neighbor)
         </code></pre>
-    </section>
+</section>
 
-    <section>
-        <h2>Inventory Management with a Real Database</h2>
-        <p>To reliably track item locations and quantities, each stack is recorded in a SQLite database. The database entries include:</p>
-        <ul>
-            <li><strong>Item ID</strong></li>
-            <li><strong>Quantity</strong></li>
-            <li><strong>Chest location</strong></li>
-        </ul>
-        <p>This database updates dynamically as players deposit or withdraw items, providing a scalable and dependable backend for inventory management.</p>
-    </section>
+<section>
+    <h2>Inventory Management with a Real Database</h2>
+    <p>
+        To reliably track item locations and quantities, each stack is recorded
+        in a SQLite database. The database entries include:
+    </p>
+    <ul>
+        <li><strong>Item ID</strong></li>
+        <li><strong>Quantity</strong></li>
+        <li><strong>Chest location</strong></li>
+    </ul>
+    <p>
+        This database updates dynamically as players deposit or withdraw items,
+        providing a scalable and dependable backend for inventory management.
+    </p>
+</section>
 
-    <section>
-        <h2>Tackling the Shulker Box Challenge</h2>
-        <p>Handling massive item transactions introduced complexities—most notably, the need for bulk storage solutions. Shulker Boxes were ideal but challenging due to their unique interactions:</p>
-        <ul>
-            <li>The bot had to recognize items stored inside Shulker Boxes.</li>
-            <li>It needed logic to pick up, place, unpack, or repack Shulkers efficiently.</li>
-        </ul>
-        <p>One particularly tricky scenario was handling partially filled Shulker Boxes or boxes containing mixed item types. The bot required intelligent decision-making logic to manage these edge cases, significantly enhancing the complexity and depth of the project.</p>
-    </section>
+<section>
+    <h2>Tackling the Shulker Box Challenge</h2>
+    <p>
+        Handling massive item transactions introduced complexities—most notably,
+        the need for bulk storage solutions. Shulker Boxes were ideal but
+        challenging due to their unique interactions:
+    </p>
+    <ul>
+        <li>The bot had to recognize items stored inside Shulker Boxes.</li>
+        <li>
+            It needed logic to pick up, place, unpack, or repack Shulkers
+            efficiently.
+        </li>
+    </ul>
+    <p>
+        One particularly tricky scenario was handling partially filled Shulker
+        Boxes or boxes containing mixed item types. The bot required intelligent
+        decision-making logic to manage these edge cases, significantly
+        enhancing the complexity and depth of the project.
+    </p>
+</section>
 
-    <section>
-        <h2>Tech Stack and Key Learnings</h2>
-        <p>Building this project marked my first significant experience using TypeScript and Svelte, making it one of my largest live projects to date. I chose TypeScript for its robustness and clarity, and Svelte for its reactive UI, which simplified state management. Mineflayer facilitated smooth server communication, handling low-level interactions while allowing me to focus more on custom logic and optimizations.</p>
-        <p>Through this project, I learned extensively about full-stack development, database management, real-time system synchronization, and the complexities of developing within game environments.</p>
-    </section>
+<section>
+    <h2>Tech Stack and Key Learnings</h2>
+    <p>
+        Building this project marked my first significant experience using
+        TypeScript and Svelte, making it one of my largest live projects to
+        date. I chose TypeScript for its robustness and clarity, and Svelte for
+        its reactive UI, which simplified state management. Mineflayer
+        facilitated smooth server communication, handling low-level interactions
+        while allowing me to focus more on custom logic and optimizations.
+    </p>
+    <p>
+        Through this project, I learned extensively about full-stack
+        development, database management, real-time system synchronization, and
+        the complexities of developing within game environments.
+    </p>
+</section>
 
-    <section>
-        <h2>Final Thoughts</h2>
-        <p>This project was exceptionally rewarding, blending game scripting, algorithm design, and full-stack web development in ways I hadn’t anticipated. Watching a bot autonomously manage complex inventories and handle intricate tasks like unpacking Shulker Boxes felt genuinely rewarding.</p>
-        <p>Looking ahead, there’s significant potential for enhancements—such as improving bot speed, introducing bulk export capabilities, or adding advanced sorting features. However, even in its current state, the automated storage system effectively demonstrates the practical intersection of gaming and technical problem-solving. Not too shabby for something built inside a block-based game!</p>
-    </section>
+<section>
+    <h2>Final Thoughts</h2>
+    <p>
+        This project was exceptionally rewarding, blending game scripting,
+        algorithm design, and full-stack web development in ways I hadn’t
+        anticipated. Watching a bot autonomously manage complex inventories and
+        handle intricate tasks like unpacking Shulker Boxes felt genuinely
+        rewarding.
+    </p>
+    <p>
+        Looking ahead, there’s significant potential for enhancements—such as
+        improving bot speed, introducing bulk export capabilities, or adding
+        advanced sorting features. However, even in its current state, the
+        automated storage system effectively demonstrates the practical
+        intersection of gaming and technical problem-solving. Not too shabby for
+        something built inside a block-based game!
+    </p>
+</section>
 
-    <img src="fourth.gif" />  </main>
+<img src="fourth.gif" />
+  </main>
   </body>
 </html>
