@@ -20,155 +20,215 @@
   </header>
 
   <main>
-<script type="text/javascript" async
-src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+<script
+    type="text/javascript"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
 
 <h1 id="title">haul: Route Planner for EVE Online</h1>
 
 <img src="hauler_route_planner.png" />
 
 <p>
-  <a href="https://github.com/lazydancer/haul">View on GitHub</a>
-</p>
-
-<p>
-  I would like to share with you <strong>haul</strong> (Hyperspace Asset Unloading and Loading), a route optimization and trade automation tool I developed specifically for the virtual economy of the EVE Online. In this article, I'll walk you through the methodologies, algorithms, and technical implementations behind haul, highlighting key aspects such as route optimization, arbitrage detection, risk assessment, and performance optimizations I included in the project.
+    I would like to share with you <strong>haul</strong> (Hyperspace Asset
+    Unloading and Loading), a route optimization and trade automation tool I
+    developed specifically for the virtual economy of the EVE Online. In this
+    article, I'll walk you through the methodologies, algorithms, and technical
+    implementations behind haul, highlighting key aspects such as route
+    optimization, arbitrage detection, risk assessment, and performance
+    optimizations I included in the project.
 </p>
 
 <h2>Route Optimization Algorithm</h2>
 
 <h3>Key Factors for Optimization</h3>
-<p>When creating haul, I identified several critical factors that significantly impact successful asset transportation in EVE Online:</p>
+<p>
+    When creating haul, I identified several critical factors that significantly
+    impact successful asset transportation in EVE Online:
+</p>
 <ul>
-  <li><strong>Warp Speed</strong>: This defines travel duration within solar systems, measured in astronomical units per second (AU/s). Faster warp speeds drastically reduce overall travel times.</li>
-  <li><strong>Align Time</strong>: The delay between initiating warp and actual warp engagement. Ships with align times under two seconds reduce vulnerability, enhancing safety.</li>
-  <li><strong>Cargo Capacity</strong>: This influences the maximum trade volume per journey, directly affecting profitability.</li>
-  <li><strong>Risk Assessment</strong>: A thorough examination of solar system security ratings, historical attacks, and known hotspots to maintain safe travel routes.</li>
+    <li>
+        <strong>Warp Speed</strong>: This defines travel duration within solar
+        systems, measured in astronomical units per second (AU/s). Faster warp
+        speeds drastically reduce overall travel times.
+    </li>
+    <li>
+        <strong>Align Time</strong>: The delay between initiating warp and
+        actual warp engagement. Ships with align times under two seconds reduce
+        vulnerability, enhancing safety.
+    </li>
+    <li>
+        <strong>Cargo Capacity</strong>: This influences the maximum trade
+        volume per journey, directly affecting profitability.
+    </li>
+    <li>
+        <strong>Risk Assessment</strong>: A thorough examination of solar system
+        security ratings, historical attacks, and known hotspots to maintain
+        safe travel routes.
+    </li>
 </ul>
 
 <h3>Route Calculation Implementation</h3>
 <p>
-  To ensure efficient navigation, haul uses Dijkstra's shortest path algorithm, enhanced with a custom heuristic I designed to integrate multiple factors into a cohesive cost metric:
+    To ensure efficient navigation, haul uses Dijkstra's shortest path
+    algorithm, enhanced with a custom heuristic I designed to integrate multiple
+    factors into a cohesive cost metric:
 </p>
 
 <p>
-  \[
-  \text{TotalCost} = \text{WarpTime} + \text{AlignTime} + \text{RiskFactor}
-  \]
+    \[ \text{TotalCost} = \text{WarpTime} + \text{AlignTime} + \text{RiskFactor}
+    \]
+</p>
+
+<p>Specifically, WarpTime is computed as:</p>
+
+<p>
+    \[ \text{WarpTime} = \frac{\text{Distance (AU)}}{\text{WarpSpeed (AU/s)}} +
+    \text{JumpTime} \]
 </p>
 
 <p>
-  Specifically, WarpTime is computed as:
+    Here, <code>JumpTime</code> is a constant duration associated with stargate
+    transitions (about 10 seconds per jump).
 </p>
 
 <p>
-  \[
-  \text{WarpTime} = \frac{\text{Distance (AU)}}{\text{WarpSpeed (AU/s)}} + \text{JumpTime}
-  \]
+    I also dynamically factored in risk assessments by regularly updating risk
+    data from publicly available kill reports, mathematically represented as:
 </p>
 
 <p>
-  Here, <code>JumpTime</code> is a constant duration associated with stargate transitions (about 10 seconds per jump).
+    \[ \text{RiskFactor} = \text{KillDensity} \times \text{CargoValueFactor} \]
 </p>
 
 <p>
-  I also dynamically factored in risk assessments by regularly updating risk data from publicly available kill reports, mathematically represented as:
-</p>
-
-<p>
-  \[
-  \text{RiskFactor} = \text{KillDensity} \times \text{CargoValueFactor}
-  \]
-</p>
-
-<p>
-  This allowed haul to adapt to changing player behaviors and emerging threats in real-time.
+    This allowed haul to adapt to changing player behaviors and emerging threats
+    in real-time.
 </p>
 
 <h2>Data Acquisition and Processing</h2>
 
 <h3>Real-time Data Integration</h3>
 <p>
-  I designed haul to rely heavily on real-time data sourced from EVE Online’s official EVE Swagger Interface (ESI) API, including:
+    I designed haul to rely heavily on real-time data sourced from EVE Online’s
+    official EVE Swagger Interface (ESI) API, including:
 </p>
 <ul>
-  <li>Market data (real-time buy/sell orders)</li>
-  <li>Player locations</li>
-  <li>Detailed solar system attributes (security status, system connections)</li>
-  <li>Kill reports for ongoing risk mitigation</li>
+    <li>Market data (real-time buy/sell orders)</li>
+    <li>Player locations</li>
+    <li>
+        Detailed solar system attributes (security status, system connections)
+    </li>
+    <li>Kill reports for ongoing risk mitigation</li>
 </ul>
 
 <h3>Arbitrage Detection Approach</h3>
-<p>To accurately identify profitable trade opportunities, haul applies a structured process for analyzing market data:</p>
+<p>
+    To accurately identify profitable trade opportunities, haul applies a
+    structured process for analyzing market data:
+</p>
 
 <ul>
-  <li><strong>Data Filtering</strong>: Initially filtering out items exceeding cargo capacity limits (800 m³) or falling below profitability thresholds.</li>
-  <li><strong>Profitability and ROI Calculations</strong>:</li>
+    <li>
+        <strong>Data Filtering</strong>: Initially filtering out items exceeding
+        cargo capacity limits (800 m³) or falling below profitability
+        thresholds.
+    </li>
+    <li><strong>Profitability and ROI Calculations</strong>:</li>
 </ul>
 
+<p>I calculated profitability per cubic meter (profit/m³) as:</p>
+
 <p>
-  I calculated profitability per cubic meter (profit/m³) as:
+    \[ \text{Profitability} = \frac{\text{SellPrice} - \text{BuyPrice} -
+    \text{TransportCost}}{\text{CargoVolume}} \]
 </p>
 
 <p>
-  \[
-  \text{Profitability} = \frac{\text{SellPrice} - \text{BuyPrice} - \text{TransportCost}}{\text{CargoVolume}}
-  \]
+    Return on Investment (ROI), measuring profitability against initial
+    investment capital, was calculated as:
 </p>
 
-<p>
-  Return on Investment (ROI), measuring profitability against initial investment capital, was calculated as:
-</p>
+<p>\[ \text{ROI} = \frac{\text{Profit}}{\text{InitialCapital}} \]</p>
 
 <p>
-  \[
-  \text{ROI} = \frac{\text{Profit}}{\text{InitialCapital}}
-  \]
-</p>
-
-<p>
-  The results were then ranked by both profitability and ROI to produce optimized trade itineraries and routes.
+    The results were then ranked by both profitability and ROI to produce
+    optimized trade itineraries and routes.
 </p>
 
 <h2>Technical Implementation Details</h2>
 
 <h3>Backend Development</h3>
 <p>
-  I developed the backend infrastructure of haul using Python and FastAPI to handle API interactions efficiently. Key features include:
+    I developed the backend infrastructure of haul using Python and FastAPI to
+    handle API interactions efficiently. Key features include:
 </p>
 <ul>
-  <li>Asynchronous API processing via <code>asyncio</code> for concurrent data handling and reduced latency.</li>
-  <li>Real-time data streaming enabled by FastAPI’s <code>StreamingResponse</code> to provide continuous updates.</li>
+    <li>
+        Asynchronous API processing via <code>asyncio</code> for concurrent data
+        handling and reduced latency.
+    </li>
+    <li>
+        Real-time data streaming enabled by FastAPI’s
+        <code>StreamingResponse</code> to provide continuous updates.
+    </li>
 </ul>
 
 <h3>Frontend Development</h3>
 <p>
-  For the frontend, I chose React for its ability to provide users with intuitive, real-time visualizations. Server-sent events (SSE) were leveraged to maintain synchronization between frontend and backend data, dynamically presenting optimal routes, risk assessments, and profitable trading opportunities.
+    For the frontend, I chose React for its ability to provide users with
+    intuitive, real-time visualizations. Server-sent events (SSE) were leveraged
+    to maintain synchronization between frontend and backend data, dynamically
+    presenting optimal routes, risk assessments, and profitable trading
+    opportunities.
 </p>
 
 <h3>Performance Optimizations</h3>
 <p>
-  To ensure responsiveness and efficiency, I precomputed station-to-station paths, significantly reducing runtime computation loads. Additionally, I experimented with rewriting parts of the backend in Rust, which further enhanced performance, particularly in intensive route calculations.
+    To ensure responsiveness and efficiency, I precomputed station-to-station
+    paths, significantly reducing runtime computation loads. Additionally, I
+    experimented with rewriting parts of the backend in Rust, which further
+    enhanced performance, particularly in intensive route calculations.
 </p>
 
 <h2>Lessons Learned and Future Plans</h2>
 
 <h3>Challenges Encountered</h3>
 <ul>
-  <li><strong>Triangle Inequality Violation</strong>: I faced challenges in accurately visualizing routes due to warp mechanics that sometimes violated expected mathematical principles, requiring careful handling.</li>
-  <li><strong>Real-time Risk Data Management</strong>: Currently, risk data updates manually, which limits responsiveness to rapidly changing threats.</li>
+    <li>
+        <strong>Triangle Inequality Violation</strong>: I faced challenges in
+        accurately visualizing routes due to warp mechanics that sometimes
+        violated expected mathematical principles, requiring careful handling.
+    </li>
+    <li>
+        <strong>Real-time Risk Data Management</strong>: Currently, risk data
+        updates manually, which limits responsiveness to rapidly changing
+        threats.
+    </li>
 </ul>
 
 <h3>Planned Enhancements</h3>
 <ul>
-  <li>Automating real-time risk assessment updates.</li>
-  <li>Developing a dynamic routing mechanism responsive to real-time market conditions and risks.</li>
-  <li>Fully integrating the experimental Rust backend for improved scalability.</li>
+    <li>Automating real-time risk assessment updates.</li>
+    <li>
+        Developing a dynamic routing mechanism responsive to real-time market
+        conditions and risks.
+    </li>
+    <li>
+        Fully integrating the experimental Rust backend for improved
+        scalability.
+    </li>
 </ul>
 
 <p>
-  Creating haul allowed me to combine algorithmic optimization, economic modeling, and software development into a cohesive tool tailored to the unique challenges of EVE Online. Throughout this project, I developed and refined critical skills in algorithm optimization, API integration, real-time data processing, and asynchronous programming, resulting in a robust and highly functional addition to my technical portfolio.
-</p>  </main>
+    Creating haul allowed me to combine algorithmic optimization, economic
+    modeling, and software development into a cohesive tool tailored to the
+    unique challenges of EVE Online. Throughout this project, I developed and
+    refined critical skills in algorithm optimization, API integration,
+    real-time data processing, and asynchronous programming, resulting in a
+    robust and highly functional addition to my technical portfolio.
+</p>
+  </main>
   </body>
 </html>

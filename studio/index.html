@@ -26,11 +26,11 @@
 
 <p>I built this program during summer 2014. The purpose of this program was to improve my Haskell knowledge and to start posting online. I tried other static site generators but found they didn't meet my needs</p>
 
-<p>At the time, I was having fun doing code golf, so I set a goal to create a static-site generator in 100 lines of Haskell. I reached my goal, sacraficing all of the readability. I later made it corrected that, adding spaces and expanding the equations.</p>
+<p>At the time, I was having fun doing code golf, so I set a goal to create a static-site generator in 100 lines of Haskell. I reached my goal, sacrificing all of the readability. I later corrected that, adding spaces and expanding the equations.</p>
 
 <p>.md text files are the inputs to studio. I used markdown which is a standard so you can add titles, links and images. We take the titles in the text files and create a table of contents for a main page, generating a link for each article.</p>
 
-<p>Haskell is a functional language, I had to divide the functional vs the unfunctional real world. It is also a dense language, you can do a lot of modifications in a few lines of codes vs other languages. We divide this program into 3 steps</p>
+<p>Haskell is a functional language, I had to divide the functional vs the unfunctional real world. It is also a dense language, you can do a lot of modifications in a few lines of code compared to other languages. We divide this program into 3 steps</p>
 
 <p>I made a data structure called Page which has the file path and date.</p>
 
@@ -42,7 +42,7 @@
 
 <h3 id="create-and-order-pages">Create and order pages</h3>
 
-<p>Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file creates a list of extra js or css files linked to the article. This offered some flexiblility to have custom assets for an article</p>
+<p>Each folder in a directory is added to a list and sent to the getPages function, this returns an IO with the pages seen inside. GetStatic file creates a list of extra js or css files linked to the article. This offered some flexibility to have custom assets for an article</p>
 
 <code>getPages :: [FilePath] -&gt; IO [Page]
 getPages = mapM (\x -&gt; do static &lt;- getStatic ("Articles/" ++ x)

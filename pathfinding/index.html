@@ -27,7 +27,7 @@
 <img src="BlockConnect.svg" style="max-width: 500px;" /> 
 
 
-<p>In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and “solution idealness” of the different approachs to take when pathfinding.</p>
+<p>In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and “solution idealness” of the different approaches to take when pathfinding.</p>
 
 <h2 id="common-elements">Common Elements</h2>
 
@@ -35,7 +35,7 @@
 
 <p>The first is a list of visited locations. I’ll call this <strong>visited</strong> and it’s coloured <strong>Blue</strong> below.</p>
 
-<p>The second is a list which contains locations to check. I’ll call this <strong>queue</strong>. For each element of the queue there will be the location and the path which lead to the location. Order is imporant, so this is best represented as a list of tuple elements. This is coloured <strong>Light Blue</strong> below.</p>
+<p>The second is a list which contains locations to check. I’ll call this <strong>queue</strong>. For each element of the queue there will be the location and the path which lead to the location. Order is important, so this is best represented as a list of tuple elements. This is coloured <strong>Light Blue</strong> below.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
 

@@ -77,21 +77,21 @@
 
 <p>The Arduino Uno used in the final design operates at 5v, while the paintball gun at 3.3v. To compensate for this difference, a voltage divider (as seen in Figure 9) was designed. This was an effective design as power draw by the paintball gun was nonexistent and the Arduino was wall powered, thus losses through the resistors were deemed acceptable.</p>
 
-<p>When you want to aim something but only have the perspective from another object is difficult.We wanted to take the webcam image and point the gun at a point in which the camera sees.</p>
+<p>When you want to aim something but only have the perspective from another object, it is difficult. We wanted to take the webcam image and point the gun at a point in which the camera sees.</p>
 
-<p>First, I tried the simplest approach and assumed they saw the samething. The shots were off by a lot and it was most noticable on the edges of the frame.</p>
+<p>First, I tried the simplest approach and assumed they saw the same thing. The shots were off by a lot and it was most noticeable on the edges of the frame.</p>
 
-<p>We needed to get the target in 3D space. First convert the 2D image seen from the camera. It is a 640 x 480 output, from an online source it was found the FOV was 60 Deg and from the aspect ration of 4:3. X had a view of 48 Deg and the y had a view of 36 Deg</p>
+<p>We needed to get the target in 3D space. First convert the 2D image seen from the camera. It is a 640 x 480 output, from an online source it was found the FOV was 60 Deg and from the aspect ratio of 4:3. X had a view of 48 Deg and the y had a view of 36 Deg</p>
 
-<p>The next we had to place this point in 3D space, we are missing a distance. Don’t tell any one we just used a constant (10 m). Most things we were going to shot where going to be far enough to avoid rebound and it would not be accurate enough to hit anything further.</p>
+<p>Next, we had to place this point in 3D space, we were missing a distance. Don't tell anyone we just used a constant (10 m). Most things we were going to shoot were far enough to avoid rebound, and it wouldn't be accurate enough to hit anything further.</p>
 
-<p>Now with spheical cordiantes now in spheical corrdiantes we convert to cartistain to move our origin to get the position reative to the gun. Getting it is simple as adding the difference in the distance between the camera and the gun, shifting the coordinate system</p>
+<p>Now with spherical coordinates now in spherical coordinates we convert to Cartesian to move our origin to get the position relative to the gun. Getting it is simple as adding the difference in the distance between the camera and the gun, shifting the coordinate system</p>
 
-<p>We are not done yet. The motors are looking for angle to be at. We do one more coordinate transmation and send the horizontal angle to the horizontal servo motor and the vertial to the vertial motor.</p>
+<p>We are not done yet. The motors are looking for angle to be at. We do one more coordinate transformation and send the horizontal angle to the horizontal servo motor and the vertical to the vertical motor.</p>
 
 <h3 id="it-takes-time-to-do-things">It takes time to do things</h3>
 
-<p>It takes time for the motor to move and even get up to speed and It takes tiem for the projectile to reach its moving target. We needed to predict we there object will be and in what direction we needed to shot to hit it.</p>
+<p>It takes time for the motor to move and get up to speed, and it takes time for the projectile to reach its moving target. We needed to predict where the object will be and in what direction we needed to shoot to hit it.</p>
 
 <p>Built in the coordinate transformation function is a target prediction that can be used to estimate where the target will be in a defined period of time. It is using simple linear extrapolation of the position based the targets current velocity, illustrated in Figure 5.</p>
 
