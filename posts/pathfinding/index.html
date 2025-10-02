@@ -69,32 +69,17 @@ description: Comparing path-finding algorithms' speed, memory & optimality
 
 <p>Instead of adding new neighbours to the front of the queue they are put at the end. This ensures we have visited all the neighbours before we introduce new ones.</p>
 
-<!--
-```python
-while queue != []:
-    (vertex, path) = queue.pop() 
+<pre><code>while queue != []:
+    (vertex, path) = queue.pop()
 
     if vertex == board.end:
         return path + [board.end]
 
     for neighbour in add_neighbours(vertex):
-        queue.insert(0, (neighbour, path + [neighbour]))
+        queue.insert(0, (neighbour, path + [neighbour]))  # Key difference
 
     visited.append(vertex)
-```
--->
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k" style="opacity: 0.3;">while</span> <span class="n" style="opacity: 0.3;">queue</span> <span class="o" style="opacity: 0.3;">!=</span> <span class="p" style="opacity: 0.3;">[]:</span>
-    <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span><span class="p" style="opacity: 0.3;">)</span> <span class="o" style="opacity: 0.3;">=</span> <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">pop</span><span class="p" style="opacity: 0.3;">()</span> 
-
-    <span class="k" style="opacity: 0.3;">if</span> <span class="n" style="opacity: 0.3;">vertex</span> <span class="o" style="opacity: 0.3;">==</span> <span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">:</span>
-        <span class="k" style="opacity: 0.3;">return</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">board</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">end</span><span class="p" style="opacity: 0.3;">]</span>
-
-    <span class="k" style="opacity: 0.3;">for</span> <span class="n" style="opacity: 0.3;">neighbour</span> <span class="ow" style="opacity: 0.3;">in</span> <span class="n" style="opacity: 0.3;">add_neighbours</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">):</span>
-        <span class="n" style="opacity: 0.3;">queue</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 1;">insert</span><span class="p" style="opacity: 0.3;">(</span><span class="mi">0</span><span class="p">,</span> <span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">,</span> <span class="n" style="opacity: 0.3;">path</span> <span class="o" style="opacity: 0.3;">+</span> <span class="p" style="opacity: 0.3;">[</span><span class="n" style="opacity: 0.3;">neighbour</span><span class="p" style="opacity: 0.3;">]))</span>
-
-    <span class="n" style="opacity: 0.3;">visited</span><span class="o" style="opacity: 0.3;">.</span><span class="n" style="opacity: 0.3;">append</span><span class="p" style="opacity: 0.3;">(</span><span class="n" style="opacity: 0.3;">vertex</span><span class="p" style="opacity: 0.3;">)</span>
-</code></pre></div></div>
+</code></pre>
 
 <p>This algorithm finds the best path through taking a step in each direction until it lands on the solution.</p>
 

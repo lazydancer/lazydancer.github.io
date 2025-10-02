@@ -24,12 +24,6 @@ python lazydancer.py
 python lazydancer.py --drafts
 ```
 
-### Use existing index.html (skip auto-generation)
-
-```bash
-python lazydancer.py --no-auto-index
-```
-
 ### Get help
 
 ```bash
@@ -48,7 +42,6 @@ python lazydancer.py --help
 │       └── index.html
 ├── docs/               # Generated site (committed for GitHub Pages)
 ├── template.html       # Page template
-├── index.html          # Homepage template/content
 ├── style.css           # Site stylesheet
 ├── favicon.ico         # Site icon
 └── lazydancer.py       # Build script
@@ -113,11 +106,7 @@ Example:
 </html>
 ```
 
-### index.html
-
-The homepage template. When auto-index is enabled (default), the `<ul class="item-list">` section is automatically updated with all posts sorted by date.
-
-To preserve a custom homepage, use `--no-auto-index`.
+The homepage is auto-generated with a list of all posts sorted by date (newest first).
 
 ## Build Process
 
@@ -126,7 +115,7 @@ To preserve a custom homepage, use `--no-auto-index`.
 3. Parses frontmatter from each post
 4. Wraps each post with `template.html`
 5. Copies static assets (favicon.ico, CNAME, style.css)
-6. Generates or copies index.html
+6. Auto-generates index.html with sorted post list
 
 ## Error Handling
 

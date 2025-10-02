@@ -92,7 +92,7 @@ def copytree(src, dst):
 
 
 def generate_index_html(posts):
-	"""Generate index.html from post metadata"""
+	"""Generate index.html content from post metadata"""
 	# Sort posts by date (newest first)
 	sorted_posts = sorted(posts, key=lambda p: p.date, reverse=True)
 
@@ -108,52 +108,27 @@ def generate_index_html(posts):
                     >
                 </li>''')
 
-	# Read the template structure from existing index.html
-	try:
-		with open('index.html', 'r') as f:
-			index_template = f.read()
-	except FileNotFoundError:
-		# If no index.html exists, create a basic one
-		return create_basic_index(items)
+	# Generate the index content (will be wrapped by template.html)
+	return f'''<div class="container">
+            <h1>Hi, I'm James Pucula</h1>
 
-	# Replace the list items in the template
-	# Find the <ul class="item-list"> section and replace its contents
-	list_pattern = r'<ul class="item-list">.*?</ul>'
-	new_list = '<ul class="item-list">\n' + '\n'.join(items) + '\n            </ul>'
+            <!-- ABOUT -->
+            <section class="about">
+                <p>
+                    Software engineer in the energy sector. I work on mathematical
+                    modelling, simulation, and optimisation, then build tools to
+                    explore the results.
+                </p>
+            </section>
 
-	# Use string replace to avoid regex escape issues
-	match = re.search(list_pattern, index_template, flags=re.DOTALL)
-	if match:
-		updated_content = index_template[:match.start()] + new_list + index_template[match.end():]
-	else:
-		# If pattern not found, append list at end of body
-		updated_content = index_template.replace('</body>', new_list + '\n</body>')
-
-	return updated_content
-
-
-def create_basic_index(items):
-	"""Create a basic index.html if one doesn't exist"""
-	return f'''<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="/style.css"/>
-</head>
-<body>
-    <div class="container">
-        <h1>Posts</h1>
-        <ul class="item-list">
+            <!-- LIST -->
+            <ul class="item-list">
 {chr(10).join(items)}
-        </ul>
-    </div>
-</body>
-</html>'''
+            </ul>
+        </div>'''
 
 
-def main(incl_drafts=False, auto_index=True):
+def main(incl_drafts=False):
 	"""Build the static site from posts and templates"""
 	# Clean docs directory
 	if os.path.isdir('docs'):
@@ -219,21 +194,13 @@ def main(incl_drafts=False, auto_index=True):
 			print(f"Warning: {asset} not found, skipping", file=sys.stderr)
 
 	# Generate home page
-	if auto_index and posts:
+	if posts:
 		index_content = generate_index_html(posts)
 		index_html = template('Home', index_content)
+		with open('docs/index.html', 'w') as f:
+			f.write(index_html)
 	else:
-		# Use existing index.html
-		try:
-			with open('index.html', 'r') as f:
-				content = f.read()
-			index_html = template('Home', content)
-		except FileNotFoundError:
-			print("Error: index.html not found", file=sys.stderr)
-			sys.exit(1)
-
-	with open('docs/index.html', 'w') as f:
-		f.write(index_html)
+		print("Warning: No posts found, skipping index.html generation", file=sys.stderr)
 
 	print(f"✓ Site built successfully to docs/ ({len(paths)} posts processed)")
 
@@ -241,7 +208,6 @@ def main(incl_drafts=False, auto_index=True):
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Build static site from posts and templates')
 	parser.add_argument('--drafts', action='store_true', help='Include draft posts in build')
-	parser.add_argument('--no-auto-index', action='store_true', help='Use existing index.html instead of auto-generating')
 	args = parser.parse_args()
 
-	main(incl_drafts=args.drafts, auto_index=not args.no_auto_index)
+	main(incl_drafts=args.drafts)

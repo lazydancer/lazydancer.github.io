@@ -20,119 +20,15 @@
   </header>
 
   <main>
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
-        <title>James Pucula – Home</title>
-
-        <!-- Inter font -->
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-        </style>
-
-        <style>
-            *,
-            *::before,
-            *::after {
-                box-sizing: border-box;
-            }
-            body {
-                margin: 0;
-                font-family: "Inter", sans-serif;
-                line-height: 1.5;
-                color: #111;
-                background: #fff;
-                font-size: 15px; /* overall smaller */
-            }
-
-            /* ---------- LAYOUT ---------- */
-            .container {
-                max-width: 960px;
-                margin: 0 0 4rem 1rem; /* left‑aligned */
-            }
-
-            /* ---------- ABOUT ---------- */
-            .about {
-                margin-top: 3rem;
-                margin-bottom: 3rem;
-            }
-            .about p {
-                max-width: 65ch;
-                font-size: 0.9rem;
-            }
-
-            /* ---------- LIST ---------- */
-            h2 {
-                font-size: 1.1rem;
-                margin: 0 0 1rem;
-                font-weight: 600;
-            }
-
-            .item-list {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                font-size: 0.9rem; /* smaller list text */
-                overflow-x: auto;
-            }
-            .item-list li {
-                display: grid;
-                grid-template-columns: 8ch 24ch 1fr; /* date • title • desc */
-                column-gap: 1rem;
-                align-items: center;
-                padding: 0.3rem 0; /* uniform row height */
-                white-space: nowrap;
-            }
-
-            /* date */
-            .date {
-                color: #666;
-                text-align: left;
-            }
-
-            /* title */
-            .title a {
-                color: #111;
-                text-decoration: underline;
-            }
-            .title a:hover {
-                color: #0076ff;
-            }
-
-            /* description */
-            .description {
-                color: #444;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            /* ---------- SMALL SCREENS ---------- */
-            @media (max-width: 680px) {
-                .item-list li {
-                    grid-template-columns: 10ch 1fr;
-                }
-                .description {
-                    display: none;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
+<div class="container">
             <h1>Hi, I'm James Pucula</h1>
 
             <!-- ABOUT -->
             <section class="about">
                 <p>
-                    Software engineer in the energy sector. I mess around with
-                    modelling, simulation, and optimisation, then make tools to
-                    play with the results.
+                    Software engineer in the energy sector. I work on mathematical
+                    modelling, simulation, and optimisation, then build tools to
+                    explore the results.
                 </p>
             </section>
 
@@ -244,9 +140,6 @@
                     >
                 </li>
             </ul>
-        </div>
-    </body>
-</html>
-  </main>
+        </div>  </main>
   </body>
 </html>
