@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.ropeproject/
+
+# Build output (committed separately as docs/)
+build/
+
+# Private content
+archive/
+drafts/

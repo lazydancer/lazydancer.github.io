@@ -1,0 +1,236 @@
+---
+title: Advent of Code
+date: 2020-01-01
+description: Speed-coding through the annual holiday challenge
+---
+
+<h1>Advent of Code</h1>
+
+<pre class="highlight"><code>  -~*~-
+   /!\
+  /%;@\
+ o/@,%\o
+ /%;`@,\
+o/@'%',\o
+'^^^N^^^`</code></pre>
+
+
+<p>Race to find the solution to problems as fast as you can using any language resource you can. I participated in Advent of Code since 2018, but unfortunately missed 2020.</p>
+
+<ul>
+  <li><a href="#2019">2019</a></li>
+  <li><a href="#2018">2018</a></li>
+</ul>
+
+
+<h2 id="2019">2019</h2>
+
+<p>In 2018 my goal was to complete all the problems. This year I will focus on writing clean code and writing more about my experience.</p>
+
+<p>You can find all of these solutions on Github: <a href="https://github.com/lazydancer/Advent-of-Code-2019">lazydancer/Advent-of-Code-2019</a></p>
+ 
+<ul>
+    <li><a href="#1">Day 1</a></li>
+    <li><a href="#2">Day 2</a></li>
+    <li><a href="#3">Day 3</a></li>
+    <li><a href="#4">Day 4</a></li>
+    <li><a href="#5">Day 5</a></li>
+    <li><a href="#6">Day 6</a></li>
+    <li><a href="#7">Day 7</a></li>
+    <li><a href="#8">Day 8</a></li>
+    <li><a href="#9">Day 9</a></li>
+    <li><a href="#10">Day 10</a></li>
+</ul>
+
+<div id="1"></div>
+
+<h3>Day 1: The Tyranny of the Rocket Equation</h3>
+
+<p>For Part 1, we simply need to divide each module weight by 3 and substact 2. The only thing in my code that is unusally is the '//' which is an integer divide. It acts as a round down function.</p>
+
+<p>For Part 2, we need to account for the extra weight of the fuel. This is done with a while loop where it looks for values which would add more fuel. When the fuel get less than 8.9999... the result will be 0.</p>
+
+<p>The tyranny of the rocket equation relates to the ideal rocket equation. Which is interesting to derive. We have the follow the rule of conservation of momentum where the momentum in a closed system needs to remain constant.</p>
+
+<div style="margin: 0 auto; max-width: 405px">
+<img src="Var_mass_system.svg"/> 
+</div>
+
+<p>All this simplifies to... mdv = v_exhaust * dm</p>
+
+<p>This makes sense the change in the momentum of the ship is the change in mass of the ship times the exhaust speed</p>
+
+<p>Rearranging and integrating both sides with respect to time and knowing 1/x integrates to ln(x) and ln(a) - ln(b) = ln(a/b). Finds the ideal rocket equation.</p>
+
+<p>v_final - v_inital = v-exhaust * ln(m_inital / m_final)</p>
+
+<div id="2"></div>
+<h3>Day 2: 1202 Program Alarm</h3>
+
+<p>For part 1, we need a run program which would set the pointer every 4 numbers. This is done with a simple for loop but not robust if another size of jump is needed.</p>
+
+<p>For part 2, we iterate over the program to find when a result is a desired number. The inputs are changed till the result is given. With only 100 possible values for the two. Leads to only 10,000 combinations and since order matters we look at the permutations using the builtin itertools module.</p>
+
+
+<div id="3"></div>
+<h3>Day 3: Crossed Wires</h3>
+
+<p>This one was done in Rust</p>
+
+<p>For Part 1, we can find the path in which each wire takes, creating a vector of locations. Finding where the two wires interset is looking at where both wire end at a location. We can use a set data type to find the union, in this case a HashSet finding an intersection.</p>
+
+<p>For Part 2, we look for the shortest manhattan distance along the path of the wires. </p>
+
+
+<div id="4"></div>
+<h3>Day 4: Secure Container</h3>
+
+<p>Part 1, we can find adjancent cells by taking a copy, shifting it by one and comparing against the original.</p>
+
+<p>Part 2, we can use a BTreeMap and count all of the numbers given finding if any are equal to 2.</p>
+
+<div id="5"></div>
+<h3>Day 5: Sunny with a Chance of Asteroids</h3>
+
+<p>Back to python</p>
+
+<p>Part 1, Using the old code from day 2, we had to introduce a new functions like input and ouput. The INPUT variable I made a global constant</p>
+
+<p>Part 2, even more functions were added and we needed to separate the pointer from the for loop and introduced more functions</p>
+
+<div id="6"></div>
+<h3>Day 6: Universal Orbit Map</h3>
+
+<p>For part 1, we can set up a map which looks at what planet it orbits. For each planet going down the chain to the base. Finding the base is done by taking the differnce between two sets. The 'guide' is a hashmap for really quick lookup values</p>
+
+<p>For part 2, we can find the path of YOU and SAN back to the base element and the paths will be common until a divergent step. Add up the remain elements that aren't common to find the paths between them.</p>
+
+<div id="7"></div>
+<h3>Day 7: Amplification Circuit</h3>
+
+<p>For part 1, we can use the itertools library and use the permutations function to get the result of the max</p>
+
+<p>For part 2, I didn't get it done in the time I had. I think you need to keep the state of the program. I will come back to this, I will try to create a stateful ampifier class</p>
+
+<div id="8"></div>
+<h3>Day 8: Space Image Format</h3>
+
+<p>For part 1, we can split the transmission into different chunks and count the layer with the fews 0 by using the min and count function</p>
+
+<p>For part 2, we just send to a function which returns 1 or 0 the first layer it sees them</p>
+
+<div id="9"></div>
+<h3>Day 9: Sensor Boost</h3>
+
+<p>After debugging for a while, I have left this one where it is. I hope to come back to this challenge</p>
+
+<div id="10"></div>
+<h3>Day 10: Monitoring Station</h3>
+
+<p>For part one I selected an asteroid to check if it had the most lines of sight by creating an expanding box from the asteroid and using any asteroids as casting shadows on the ones behind it</p>
+
+
+<h2 id="2018">2018</h2>
+
+<p>[Advent of Code](https://adventofcode.com/) is an annual programming competition to complete 25 challenges in December. It's a way to grow as a programmer, through solving problems and reviewing others' code. In this article I will cover two things I learned about this year and try to convince you to join next year's competition.</p>
+
+<h3>1. Assembly Language</h3>
+
+<p>I have always be interested in how computers work, *see* [building a transistor from scratch](https://pucula.com/notes/making-a-transistor-from-scratch-part-1.html). I have never had the chance to program in assembly. That changed on [Day 16](https://adventofcode.com/2018/day/16), the challenge was to run a new programming language called elf code. Elf code looked almost identical to assembly.</p>
+
+<div class="highlight"><pre class="highlight"><code>
+4 0 2 0
+13 2 0 2
+2 2 3 2
+4 3 2 3
+3 3 2 2
+13 2 1 2
+6 2 1 1
+10 1 2 3
+4 2 3 0
+13 1 0 1
+2 1 1 1
+</code></pre>
+</div>
+
+<p>The first number is the opcode, which could represent 1 of 16 operations, 'add', 'mul', 'mov'. The second and third were inputs and the forth was what register to use for the output.</p>
+
+<p>First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it.</p>
+
+<p>To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware.</p>
+
+<p>Using an intermeddiate step to C, Below is a snippet of the assembly. ';' is a comment. The 'l01', 'l02', 'l03' and 'l07' are labels. For example the first command is jmp l17, which is jump to label l17.</p>
+
+<pre><code>
+      jmp       l17           ;  L00: goto *jump_table[0+16+1]; //addi 3 16 3
+l01:  mov       r11, 1        ;  L01: reg[1] = 1; //seti 1 2 1
+l02:  mov       r12, 1        ;  L02: reg[2] = 1; //seti 1 1 2
+l03:  mov       rax, r11      ;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5
+      mov       rbx, r12      ;
+      imul      rax, rbx      ;
+      mov       r15, rax      ;
+      cmp       r15, r14      ;  L04: reg[5] = reg[5] == reg[4]; //eqrr 5 4 5
+      sete      al            ;  Grab the flag
+      movzx     r15, al       ;  Move the flag to r15 extends with zeros
+      je        l07           ;  L05: goto *jump_table[reg[5] + 5 + 1]; //addr 5 3 3
+      jmp       l08           ;  L06: goto *jump_table[6 + 1 + 1]; //addi 3 1 3
+l07:  add       r10, r11      ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
+</code></pre>
+
+<p>In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation.</p>
+
+<p>Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen.</p>
+
+<pre><code>print:
+      mov       [value], r10     
+      mov       rax, 1           ; system call for write
+      mov       rdi, 1           ; file handle 1 is stdout
+      mov       rsi, value       ; address of string to output
+      mov       rdx, 8           ; number of bytes
+      syscall                    ; invoke operating system to do the write
+      mov       rax, 60          ; system call for exit
+      xor       rdi, rdi         ; exit code 0
+      syscall                    ; invoke operating system to exit 
+</code></pre>
+
+<p>All the code can be found on my [github](https://github.com/lazydancer/Advent-of-Code-2018/tree/master/Day%2019)</p>
+
+<h3> 2. Python Imports</h3>
+
+<p>Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expressions</p>
+
+<p><strong>defaultdict</strong> - Having a set value for when nothing exist is a very useful feature</p>
+
+<pre><code>somedict = {}
+print(somedict[3]) # KeyError
+
+someddict = defaultdict(int)
+print(someddict[3]) # print int(), thus 0</code></pre>
+
+<p><strong>copy</strong> - Because python calls list by reference this is useful to keep things functional</p>
+
+<pre><code>import copy
+copy.copy(x)
+copy.deepcopy(x)</code></pre>
+
+
+<p><strong>dequeue</strong> - A double-ended queue, this is useful for when rotation is needed with a rotate function</p>
+
+<pre><code>d = deque(xrange(10))
+d.rotate(2)</code></pre>
+**networkx** - This was useful for all types of graph equations. Shortest path was used many times
+
+<pre><code>graph = networkx.Graph()
+# ...adding nodes...
+result = networkx.shortest_path(graph)</code></pre>
+<p><strong>re</strong> - This is a very popular library I have tried to avoid it.</p>
+
+<p><i>Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.</i></p>
+
+<pre><code>
+list(map(int, re.findall(r'-?\d+', line)))
+</code></pre>
+
+<p>During the challenge, I read as much as I coded. Reading other peoples code was enlightening. You saw how they approached the problem and what trade-offs they chose.</p>
+
+<p>Thank you <a href="http://was.tl/">Eric Wastl</a> for creating advent of code and everybody that shared their solutions online. I learned a lot.</p>
