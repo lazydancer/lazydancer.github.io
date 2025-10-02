@@ -22,7 +22,7 @@
   <main>
 <h1>Automatic Paintball Turret</h1>
 
-<p>For a mechatronics university course, we had a project to combine our electrical and mechanical knowledge. It was a very broad scope. Our team decided to make an automatic paintball turret, where it would autonomously track and shoot an object. Given how much we spend on it, it worked suprisingly well. In this article, I would like show you a brief overview on what we built and the things we learned.</p>
+<p>For a mechatronics university course, we had a project to combine our electrical and mechanical knowledge. It was a very broad scope. Our team decided to make an automatic paintball turret, where it would autonomously track and shoot an object. Given how much we spend on it, it worked surprisingly well. In this article, I would like show you a brief overview on what we built and the things we learned.</p>
 
 <p>We broke the work into 2 parts</p>
 <ol>
@@ -40,20 +40,20 @@
 
 <p>The housing was made out of ½” plywood. This selection made manufacturing simple, eliminated the need for a machine shop, and kept the housing relatively light. Before mounting the horns to the housing, the housing was suspended and with the use of a plumb the center of gravity was found to make the movement as smooth as possible. The entire assembly was mounted on a tripod constructed of ¾” schedule 40 steel piping. This allowed for flexibility in design with readily available materials. The weight of the tripod also provided for a low and stable centre of gravity. If additional mass was required the piping could be filled with sand.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-|- (Gun) -|-
+<pre><code>-|- (Gun) -|-
  |         |
  -----------
  (Lazy Susan)
  ------------
    (Tripod)
    /  |   \
-</code></pre></div></div>
+</code></pre>
 
 <h2 id="software">Software</h2>
 
 <p>Camera -&gt; Computer -&gt; Arduino -&gt; Stepper Controller -&gt; Stepper Motors -&gt; Turret</p>
 
-<p>We used a webcam which was attached to the base of the paintball gun holder. The camera data was sent to the computer over usb. The compyter was runing a python program with opencv library. The opencv did the heavy lifting of finding a color and selecting the “glob” with the most area of the camera and found the center, this was the target. We then sent the information to the arduino which converted the message to the stepper motors changing the direction of the paintball gun.</p>
+<p>We used a webcam which was attached to the base of the paintball gun holder. The camera data was sent to the computer over usb. The computer was running a python program with opencv library. The opencv did the heavy lifting of finding a color and selecting the "glob" with the most area of the camera and found the center, this was the target. We then sent the information to the arduino which converted the message to the stepper motors changing the direction of the paintball gun.</p>
 
 <p>The motor control system receives its input from either the video processing system or the joystick. An Arduino microcontroller receives serial position information over a USB link from PC processing the video. This takes the form of the ASCII character p for pan or t for tilt, followed by a step number between 0 and 1024 to signify the position between 0 and 320 degrees, finalized by a newline character ‘\n’. An example is p200/n, telling the pan motor to reach 62.5 degrees. The microcontroller ensures the position information is valid then calculates the time the motor has to move to the new position. This was calibrated as 2 milli seconds per change in step. Continuing the example, if pan started at position 300, it would have 200 milliseconds to move to position 200. The Herkulex DRS-0101 motors contain microcontrollers which plot a trapezoidal path between their current and final position. This reduces their peak power draw by ramping up, leveling off, then ramping down near the final position. The internal PID control is further explained in section 3.5. The DRS-0101 communicates over serial communication channel. The original Arduino library written by Alessandro Giacomel from Italy. Support was added for Arduino Due through additional control statements for the different build sections. The Arduino code written for this project will now build for Due, Uno, and all previous Arduinos which support either hardware UART Serial or SoftwareSerial.h.</p>
 
@@ -99,9 +99,9 @@
 
 <p>The velocity is estimated by comparing the current and previous frame and observing how far the centres of the object have moved. Using this distance and the time elapsed, the velocity of the object can be found. To predict the next position the current position is taken and added to the velocity times a defined period of ‘leading’ time which represents how far ahead we would like to predict. Longer periods of leading time can be used to track fast moving or long-distance targets. However, accuracy will likely decrease with longer leading times.</p>
 
-<p>We had to make some comprimises in our code, to bring on the code. We started trying to do most of the calculatoin on the arduino. That ended quickly when we wanted to use the opencv library.</p>
+<p>We had to make some compromises in our code, to bring on the code. We started trying to do most of the calculation on the arduino. That ended quickly when we wanted to use the opencv library.</p>
 
-<p>We had a laptop which was already getting up there in age being 6 years old at the time. It could only process 1 frame per second. We reduced the complexity of the calcultion, reduced the camera resolutoin by half.</p>
+<p>We had a laptop which was already getting up there in age being 6 years old at the time. It could only process 1 frame per second. We reduced the complexity of the calculation, reduced the camera resolution by half.</p>
 
 <p>The first step is to retrieve a frame from the camera. The camera being used is the Logitech C270 HD Webcam, with a frame displaying 640 by 480 pixels. This gives a total pixel count of 640*480 = 307200 pixels. Each pixel contains 3 numbers to define its state. The frame uses RGB(red, green and blue), each colour is a number between 0 and 255 which fits in one byte. The frame is written to a file and blurred slightly to reduce noise and make contours of greater uniformity.</p>
 

@@ -8,7 +8,7 @@ description: Convert any image into text art
 
 <img src="cat_example.gif" />
 
-<p>A fun little weekend project, I created a program which converted a picture into text. To complete this I used jupyter notebook, found below. The code is avaliable on <a href="https://github.com/lazydancer/pictotxt">github</a>.</p>
+<p>A fun little weekend project, I created a program which converted a picture into text. To complete this I used jupyter notebook, found below. The code is available on <a href="https://github.com/lazydancer/pictotxt">github</a>.</p>
 
 
 
@@ -19,7 +19,9 @@ description: Convert any image into text art
   <li><strong>Calc</strong> - the images and font characters are compared to find the best match</li>
 </ol>
 
-<code>def show_image(path):
+<p>First thing is import the image. As an example I use the finch. Most of the following code is to convert the image from a PIL array to numpy's 2D narray and use matplotlib plot function.</p>
+
+<pre><code>def show_image(path):
     image = Image.open(path)
     image = image.convert('L')
     d = list(image.getdata())
@@ -27,29 +29,7 @@ description: Convert any image into text art
     plt.imshow(image_2D, cmap='gray')
 
 show_image('download.png')
-</code>
-
-<p>First thing is import the image. As an example I use the finch. Most of the following code is to convert the image from a PIL array to numpy’s 2D narray and use matplotlib plot function.</p>
-
-<code>def show_image(path):
-    image = Image.open(path)
-    image = image.convert('L')
-    d = list(image.getdata())
-    image_2D = np.reshape(d, (image.height, image.width))
-    plt.imshow(image_2D, cmap='gray')
-
-show_image('download.png')
-</code> 
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show_image</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s">'L'</span><span class="p">)</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getdata</span><span class="p">())</span>
-    <span class="n">image_2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_2D</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
-
-<span class="n">show_image</span><span class="p">(</span><span class="s">'download.png'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre>
 <p>Output:</p>
 <div class="centerImage">
 <img src="download (1).png" style="max-width: 500px;" /> 
@@ -146,7 +126,7 @@ for i, img in enumerate(letters):
 <img src="download4.png" style="max-width: 500px;" /> 
 </div>
 
-<p>where A and B are matricis of the same size. We want the lowest score as that will be the smallest difference. I guess I could have inverted it so we were looking for the max or I could have called it the loss function.</p>
+<p>where A and B are matrices of the same size. We want the lowest score as that will be the smallest difference. I guess I could have inverted it so we were looking for the max or I could have called it the loss function.</p>
 
 <code>def solve_section(section, letters):
     min_score = 1000000
