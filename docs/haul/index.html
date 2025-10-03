@@ -20,212 +20,134 @@
   </header>
 
   <main>
-<script
-    type="text/javascript"
-    async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-></script>
-
 <h1 id="title">haul: Route Planner for EVE Online</h1>
 
 <p>
-    I would like to share with you <strong>haul</strong> (Hyperspace Asset
-    Unloading and Loading), a route optimization and trade automation tool I
-    developed specifically for the virtual economy of the EVE Online. In this
-    article, I'll walk you through the methodologies, algorithms, and technical
-    implementations behind haul, highlighting key aspects such as route
-    optimization, arbitrage detection, risk assessment, and performance
-    optimizations I included in the project.
-</p>
-
-<h2>Route Optimization Algorithm</h2>
-
-<h3>Key Factors for Optimization</h3>
-<p>
-    When creating haul, I identified several critical factors that significantly
-    impact successful asset transportation in EVE Online:
-</p>
-<ul>
-    <li>
-        <strong>Warp Speed</strong>: This defines travel duration within solar
-        systems, measured in astronomical units per second (AU/s). Faster warp
-        speeds drastically reduce overall travel times.
-    </li>
-    <li>
-        <strong>Align Time</strong>: The delay between initiating warp and
-        actual warp engagement. Ships with align times under two seconds reduce
-        vulnerability, enhancing safety.
-    </li>
-    <li>
-        <strong>Cargo Capacity</strong>: This influences the maximum trade
-        volume per journey, directly affecting profitability.
-    </li>
-    <li>
-        <strong>Risk Assessment</strong>: A thorough examination of solar system
-        security ratings, historical attacks, and known hotspots to maintain
-        safe travel routes.
-    </li>
-</ul>
-
-<h3>Route Calculation Implementation</h3>
-<p>
-    To ensure efficient navigation, haul uses Dijkstra's shortest path
-    algorithm, enhanced with a custom heuristic I designed to integrate multiple
-    factors into a cohesive cost metric:
+    I built <strong>haul</strong> (Hyperspace Asset Unloading and Loading)
+    because EVE really is spreadsheets in space, and apparently my reaction to
+    that joke was to make a better spreadsheet. The game is just an excuse; the
+    real fun was gluing together a route planner that could out-nerd me when I am
+    tired and still in love with the tooling.
 </p>
 
 <p>
-    \[ \text{TotalCost} = \text{WarpTime} + \text{AlignTime} + \text{RiskFactor}
-    \]
+    What started as a weekend experiment with a shortest-path library turned
+    into a playground for the parts of engineering I enjoy: modelling messy
+    systems, caching everything that moves, and feeding a frontend with data it
+    never expected. This write-up walks through the bits of haul that still make
+    me grin when I open the repo.
 </p>
 
-<p>Specifically, WarpTime is computed as:</p>
+<h2>Making the map behave</h2>
 
 <p>
-    \[ \text{WarpTime} = \frac{\text{Distance (AU)}}{\text{WarpSpeed (AU/s)}} +
-    \text{JumpTime} \]
-</p>
-
-<p>
-    Here, <code>JumpTime</code> is a constant duration associated with stargate
-    transitions (about 10 seconds per jump).
-</p>
-
-<p>
-    I also dynamically factored in risk assessments by regularly updating risk
-    data from publicly available kill reports, mathematically represented as:
-</p>
-
-<p>
-    \[ \text{RiskFactor} = \text{KillDensity} \times \text{CargoValueFactor} \]
+    The core of haul is a navigation graph that refuses to stay abstract. I let
+    the <code>NavigationGraph</code> class soak up ship quirks, warp curves, and
+    my personal collection of "don't go there" systems. Instead of
+    showing raw distances, each edge is weighted by how it feels to fly it. Once
+    the graph learns those preferences I cache the resulting paths so the server
+    can answer questions instantly, even when I am spamming route requests out of
+    curiosity.
 </p>
 
 <p>
-    This allowed haul to adapt to changing player behaviors and emerging threats
-    in real-time.
+    Working on this layer was equal parts math and playing whack-a-mole with
+    weird EVE map data. Stations that share a grid needed custom rules, stargate
+    hops deserved their own timing, and I slipped in logging that reads like a
+    travel diary when a route surprises me. It is how I test new ideas: change a
+    weight, watch the logs, tweak again.
 </p>
 
-<h2>Data Acquisition and Processing</h2>
-
-<h3>Real-time Data Integration</h3>
+<h2>Keeping the pipes lively</h2>
 <p>
-    I designed haul to rely heavily on real-time data sourced from EVE Online’s
-    official EVE Swagger Interface (ESI) API, including:
-</p>
-<ul>
-    <li>Market data (real-time buy/sell orders)</li>
-    <li>Player locations</li>
-    <li>
-        Detailed solar system attributes (security status, system connections)
-    </li>
-    <li>Kill reports for ongoing risk mitigation</li>
-</ul>
-
-<h3>Arbitrage Detection Approach</h3>
-<p>
-    To accurately identify profitable trade opportunities, haul applies a
-    structured process for analyzing market data:
-</p>
-
-<ul>
-    <li>
-        <strong>Data Filtering</strong>: Initially filtering out items exceeding
-        cargo capacity limits (800 m³) or falling below profitability
-        thresholds.
-    </li>
-    <li><strong>Profitability and ROI Calculations</strong>:</li>
-</ul>
-
-<p>I calculated profitability per cubic meter (profit/m³) as:</p>
-
-<p>
-    \[ \text{Profitability} = \frac{\text{SellPrice} - \text{BuyPrice} -
-    \text{TransportCost}}{\text{CargoVolume}} \]
+    The backend leans on FastAPI because I wanted something snappy while I
+    experimented. Asynchronous calls pull market orders, solar-system metadata,
+    and whatever else the ESI API lets me touch that week. An asyncio pipeline
+    cleans that firehose: filter by cargo space, sanity-check prices, hand the
+    survivors to the pathfinder, and push the results over server-sent events to
+    React. If a good trade appears, the UI lights up without a single manual
+    refresh.
 </p>
 
 <p>
-    Return on Investment (ROI), measuring profitability against initial
-    investment capital, was calculated as:
+    I wrote a Rust sidecar for the hot path just to see if it would help, and it
+    stayed because the latency drop was obvious the second the market API started
+    sulking. More importantly, the rewrite forced me to tighten the data model so
+    the Python and Rust halves share exactly the same shape. The Rust service now
+    sits beside the main app, ready to take over whenever I want to stress-test
+    the pipeline.
 </p>
 
-<p>\[ \text{ROI} = \frac{\text{Profit}}{\text{InitialCapital}} \]</p>
-
+<h2>Letting the code pick favourites</h2>
 <p>
-    The results were then ranked by both profitability and ROI to produce
-    optimized trade itineraries and routes.
+    My favourite loop lives in the pathfinder. It takes noisy trade matches,
+    filters out anything the graph cannot reach, asks how long the detour would
+    really take, and quietly throws away the ones that turn a profit only in my
+    imagination. The trimmed version looks like this:
 </p>
 
-<h2>Technical Implementation Details</h2>
+<pre><code class="language-python">def pathfinder(order_matches, graph, ship):
+    order_matches = filter_order_matches_not_in_graph(order_matches, graph)
+    order_matches = filter_order_matches_same_region(order_matches, graph)
+    order_matches = calculate_net_profit(order_matches, graph, ship)
+    return [match for match in order_matches if match.net_profit and match.net_profit > 0]
+</code></pre>
 
-<h3>Backend Development</h3>
 <p>
-    I developed the backend infrastructure of haul using Python and FastAPI to
-    handle API interactions efficiently. Key features include:
-</p>
-<ul>
-    <li>
-        Asynchronous API processing via <code>asyncio</code> for concurrent data
-        handling and reduced latency.
-    </li>
-    <li>
-        Real-time data streaming enabled by FastAPI’s
-        <code>StreamingResponse</code> to provide continuous updates.
-    </li>
-</ul>
-
-<h3>Frontend Development</h3>
-<p>
-    For the frontend, I chose React for its ability to provide users with
-    intuitive, real-time visualizations. Server-sent events (SSE) were leveraged
-    to maintain synchronization between frontend and backend data, dynamically
-    presenting optimal routes, risk assessments, and profitable trading
-    opportunities.
+    It is small, but it captures everything I wanted from haul: code that
+    quietly handles the bookkeeping so I can geek out about the next tweak. When
+    the logger announces that only three trades survived the gauntlet, I know the
+    tool did the thinking for me.
 </p>
 
-<h3>Performance Optimizations</h3>
 <p>
-    To ensure responsiveness and efficiency, I precomputed station-to-station
-    paths, significantly reducing runtime computation loads. Additionally, I
-    experimented with rewriting parts of the backend in Rust, which further
-    enhanced performance, particularly in intensive route calculations.
+    There is still plenty I want to play with--automated risk-map updates, a
+    fully Rust backend, maybe live route rewrites when markets drift--but the
+    current build already scratches the itch that started the project. haul is my
+    favourite kind of side project: the game stays a backdrop while the code gets
+    to be the main act.
 </p>
 
-<h2>Lessons Learned and Future Plans</h2>
-
-<h3>Challenges Encountered</h3>
-<ul>
-    <li>
-        <strong>Triangle Inequality Violation</strong>: I faced challenges in
-        accurately visualizing routes due to warp mechanics that sometimes
-        violated expected mathematical principles, requiring careful handling.
-    </li>
-    <li>
-        <strong>Real-time Risk Data Management</strong>: Currently, risk data
-        updates manually, which limits responsiveness to rapidly changing
-        threats.
-    </li>
-</ul>
-
-<h3>Planned Enhancements</h3>
-<ul>
-    <li>Automating real-time risk assessment updates.</li>
-    <li>
-        Developing a dynamic routing mechanism responsive to real-time market
-        conditions and risks.
-    </li>
-    <li>
-        Fully integrating the experimental Rust backend for improved
-        scalability.
-    </li>
-</ul>
+<h2>For the nerds</h2>
+<p>
+    I like EVE because everything in space has to be built by someone, but I
+    love haul because it let me fiddle with that ecosystem on my terms. This was
+    never the path to infinite ISK; it was an excuse to automate away the boring
+    bits and keep the crunchy decisions.
+</p>
 
 <p>
-    Creating haul allowed me to combine algorithmic optimization, economic
-    modeling, and software development into a cohesive tool tailored to the
-    unique challenges of EVE Online. Throughout this project, I developed and
-    refined critical skills in algorithm optimization, API integration,
-    real-time data processing, and asynchronous programming, resulting in a
-    robust and highly functional addition to my technical portfolio.
+    I flew a Sunesis almost exclusively for these runs. Low-volume, high-value
+    loot made more sense than hauling mountains of tritanium, so most nights were
+    spent sweeping the regions around The Forge and quietly feeding Jita. Fire
+    sales were my favourite targets. Some players would sell items at low prices 
+    and haul would flag them before the market bots woke up. I tuned
+    for align time and warp speed, then bolted on just enough armour to shrug off
+    the stray smart bombs that would have vaporized a lesser frigate. Two-second
+    align, roughly seven AU per second, about seven hundred cubic metres of cargo
+    space: nerd stats, but they mattered.
+</p>
+
+<p>
+    Risk calculations mixed whatever I was carrying with how sketchy the route
+    felt. The classic choice between Jita and Amarr was either the spicy five
+    minute sprint through Ahbazon or the sensible fifteen minute detour. With
+    twenty million ISK in the hold I usually gambled; with two hundred million I
+    let the planner nudge me toward the scenic route.
+</p>
+
+<p>
+    I kept mostly to high-sec, dipped into low-sec when the rewards
+    were silly, and only daydreamed about null-sec after reading killmails that
+    told me I would not make it home. On the rare occasions I needed to move a
+    freighter's worth of items, PushX got the contract. There is something
+    thrilling about watching a courier move everything you own while your
+    monitoring script quietly refreshes in the background.
+</p>
+
+<p>
+    So yes, the theme was always the same: move everything to Jita, but do it
+    with enough automation that the space spreadsheets finally felt like play.
 </p>
   </main>
   </body>
