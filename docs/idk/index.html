@@ -20,158 +20,98 @@
   </header>
 
   <main>
-<h1 id="title">
-    idk: Automating Storage in Minecraft with Bots, Shulkers, and a Web UI
-</h1>
+<h1 id="title">idk: Automating Storage in Minecraft with Bots, Shulkers, and a Web UI</h1>
 
 <p>
     <a href="https://github.com/lazydancer/idk">View on GitHub</a>
 </p>
 
-<section>
-    <p>
-        Minecraft may be a game, but for me, it was also a fantastic opportunity
-        to tackle something complex and practical in a multiplayer environment.
-        Managing inventories manually can be tedious, especially in large builds
-        or busy servers. My goal was straightforward: create a storage system
-        that allowed players to deposit and retrieve items effortlessly.
-        Ideally, players wouldn't need to remember item locations at all.
-    </p>
-</section>
+<p>
+    I built <strong>idk</strong> because rummaging through chest halls on a
+    multiplayer server was slow and boring. The plan: wire up a Mineflayer bot,
+    a small web app, and a pile of shulker boxes so anyone could dump or request
+    items without remembering where anything lives.
+</p>
 
-<section>
-    <h2>The Interface Dilemma</h2>
-    <p>
-        Initially, I thought about using Minecraft-native methods like signs or
-        written books to manage item requests. However, these approaches quickly
-        proved cumbersome and unintuitive. I opted instead to build a dedicated
-        web interface. Players could now visually search, select, and request
-        items through their browsers, making the entire process significantly
-        faster and more user-friendly.
-    </p>
+<h2>Why a web UI?</h2>
+<p>
+    In-game signs and books sounded cute until I realised nobody wants to scroll
+    through page after page of chest locations. A browser front-end felt obvious
+    once I started sketching flows. The Svelte app lists everything in storage,
+    lets players search for "mending books" or "stone," and fires an HTTP request
+    at the bot service. From there the bot walks to the right chest, grabs the
+    stack, and drops it into a delivery barrel near spawn. Deposits work the same
+    in reverse.
+</p>
 
-    <h3>How it Works:</h3>
-    <ul>
-        <li>Players request items via the web interface.</li>
-        <li>The bot (powered by Mineflayer) receives these requests.</li>
-        <li>
-            The bot navigates efficiently to the required item, retrieves it,
-            and places it in a designated delivery chest.
-        </li>
-    </ul>
-</section>
+<h2>Teaching the bot to move</h2>
+<p>
+    Storage is just rows of chests stacked six high, laid out so the bot can hop
+    between aisles without bumping into redstone. Mineflayer's default pathing
+    was close but not reliable, so I added a BFS layer that operates on a trimmed
+    voxel map. It caches reachable blocks, refuses jumps that would clip trapdoor
+    hinges, and rewinds if a player blocks the aisle mid-run.
+</p>
 
-<section>
-    <h2>The Storage Design</h2>
-    <p>
-        The storage layout is intentionally straightforward and highly
-        scalable—organized into rows of chests stacked six high. My priority was
-        to minimize the bot's travel distance between items, optimizing
-        retrieval and deposit times.
-    </p>
+<pre><code class="language-javascript">function findPath(start, target) {
+  const queue = [start];
+  const visited = new Set([start.key]);
 
-    <h3>Optimization: Pathfinding</h3>
-    <p>
-        Efficient navigation was critical, so the bot utilizes a breadth-first
-        search algorithm on a simplified voxel map. It's aware of obstacles and
-        chest positions. Most pathfinding logic is wrapped in a custom layer
-        over Mineflayer's built-in system, extensively refined to navigate
-        tightly packed environments without getting stuck.
-    </p>
+  while (queue.length) {
+    const current = queue.shift();
+    if (current.key === target.key) return reconstructPath(current);
 
-    <pre><code>
-function findPath(start, target):
-queue = [start]
-visited = set()
+    for (const neighbor of neighbors(current)) {
+      if (!visited.has(neighbor.key) && !neighbor.isBlocked) {
+        neighbor.prev = current;
+        visited.add(neighbor.key);
+        queue.push(neighbor);
+      }
+    }
+  }
+  return null;
+}
+</code></pre>
 
-while queue not empty:
-current = queue.dequeue()
-if current == target:
-  return path
+<h2>Keeping track of every stack</h2>
+<p>
+    A SQLite database sits behind the web API. Each row stores the item id, item
+    count, the chest coordinate, and whether that slot contains a shulker box. On
+    deposit the bot updates the record; on withdrawal the web UI shows the new
+    count via server-sent events. Nothing beats seeing the numbers tick down while
+    the bot jogs back with your netherite scraps.
+</p>
 
-foreach neighbor of current:
-  if neighbor not in visited:
-    queue.enqueue(neighbor)
-    visited.add(neighbor)
-        </code></pre>
-</section>
+<h2>Shulker boxes, the fun part</h2>
+<p>
+    Bulk moves needed smarter logic. The bot inspects a shulker before moving it,
+    fans out the contents into temporary chests, and packs it back together when
+    done. Mixed stacks or half-full boxes trigger a small planner that decides
+    whether to keep items in place, merge, or crack open another shulker. It is a
+    lot of branching for a block that looks like a decorative cube, but it keeps
+    the system from filling with half-used containers.
+</p>
 
-<section>
-    <h2>Inventory Management with a Real Database</h2>
-    <p>
-        To reliably track item locations and quantities, each stack is recorded
-        in a SQLite database. The database entries include:
-    </p>
-    <ul>
-        <li><strong>Item ID</strong></li>
-        <li><strong>Quantity</strong></li>
-        <li><strong>Chest location</strong></li>
-    </ul>
-    <p>
-        This database updates dynamically as players deposit or withdraw items,
-        providing a scalable and dependable backend for inventory management.
-    </p>
-</section>
+<h2>Stack choices</h2>
+<p>
+    TypeScript powers the bot service and Svelte drives the dashboard because I
+    wanted type safety on both sides and a lightweight UI. Mineflayer handles the
+    Minecraft protocol, Express exposes the API, and a small websocket layer
+    streams status updates to whoever requested the items. Building it forced me
+    to learn far more about synchronising game state, dealing with tick timing,
+    and shipping real tooling for a sandbox game.
+</p>
 
-<section>
-    <h2>Tackling the Shulker Box Challenge</h2>
-    <p>
-        Handling massive item transactions introduced complexities—most notably,
-        the need for bulk storage solutions. Shulker Boxes were ideal but
-        challenging due to their unique interactions:
-    </p>
-    <ul>
-        <li>The bot had to recognize items stored inside Shulker Boxes.</li>
-        <li>
-            It needed logic to pick up, place, unpack, or repack Shulkers
-            efficiently.
-        </li>
-    </ul>
-    <p>
-        One particularly tricky scenario was handling partially filled Shulker
-        Boxes or boxes containing mixed item types. The bot required intelligent
-        decision-making logic to manage these edge cases, significantly
-        enhancing the complexity and depth of the project.
-    </p>
-</section>
+<h2>What I would still tweak</h2>
+<p>
+    Speed is the obvious next knob to turn--either by caching more routes or by
+    dedicating a second bot to run parallel jobs. Bulk exports for building
+    projects and a smarter sorter for mixed shulkers are also on the list. Even
+    without them, idk has turned storage duty into something I look forward to
+    watching instead of doing by hand.
+</p>
 
-<section>
-    <h2>Tech Stack and Key Learnings</h2>
-    <p>
-        Building this project marked my first significant experience using
-        TypeScript and Svelte, making it one of my largest live projects to
-        date. I chose TypeScript for its robustness and clarity, and Svelte for
-        its reactive UI, which simplified state management. Mineflayer
-        facilitated smooth server communication, handling low-level interactions
-        while allowing me to focus more on custom logic and optimizations.
-    </p>
-    <p>
-        Through this project, I learned extensively about full-stack
-        development, database management, real-time system synchronization, and
-        the complexities of developing within game environments.
-    </p>
-</section>
-
-<section>
-    <h2>Final Thoughts</h2>
-    <p>
-        This project was exceptionally rewarding, blending game scripting,
-        algorithm design, and full-stack web development in ways I hadn’t
-        anticipated. Watching a bot autonomously manage complex inventories and
-        handle intricate tasks like unpacking Shulker Boxes felt genuinely
-        rewarding.
-    </p>
-    <p>
-        Looking ahead, there’s significant potential for enhancements—such as
-        improving bot speed, introducing bulk export capabilities, or adding
-        advanced sorting features. However, even in its current state, the
-        automated storage system effectively demonstrates the practical
-        intersection of gaming and technical problem-solving. Not too shabby for
-        something built inside a block-based game!
-    </p>
-</section>
-
-<img src="fourth.gif" />
+<img src="fourth.gif" alt="Mineflayer bot sorting items" />
   </main>
   </body>
 </html>

@@ -6,20 +6,20 @@ description: Comparing path-finding algorithms' speed, memory & optimality
 
 <h1>Path Finding</h1>
 
-<p>I’m working on a project where I want to connect blocks together using paths. The paths can’t overlap and the algorithm needs to run fast as there are a lot of them.</p>
+<p>I'm working on a project where I want to connect blocks together using paths. The paths can't overlap and the algorithm needs to run fast as there are a lot of them.</p>
 
 <img src="BlockConnect.svg" style="max-width: 500px;" /> 
 
 
-<p>In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and “solution idealness” of the different approaches to take when pathfinding.</p>
+<p>In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and "solution idealness" of the different approaches to take when pathfinding.</p>
 
 <h2 id="common-elements">Common Elements</h2>
 
 <p>Each of the following algorithms require two variables.</p>
 
-<p>The first is a list of visited locations. I’ll call this <strong>visited</strong> and it’s coloured <strong>Blue</strong> below.</p>
+<p>The first is a list of visited locations. I'll call this <strong>visited</strong> and it's coloured <strong>Blue</strong> below.</p>
 
-<p>The second is a list which contains locations to check. I’ll call this <strong>queue</strong>. For each element of the queue there will be the location and the path which lead to the location. Order is important, so this is best represented as a list of tuple elements. This is coloured <strong>Light Blue</strong> below.</p>
+<p>The second is a list which contains locations to check. I'll call this <strong>queue</strong>. For each element of the queue there will be the location and the path which lead to the location. Order is important, so this is best represented as a list of tuple elements. This is coloured <strong>Light Blue</strong> below.</p>
 
 <pre><code>visited = []
 
@@ -83,15 +83,15 @@ queue = [((0,0), [0,0]),
 
 <p>This algorithm finds the best path through taking a step in each direction until it lands on the solution.</p>
 
-<p>To improve the algorithm, each “step” is not always equal. An algorithm where we can change the value of each step is called Dijkstra’s algorithm.</p>
+<p>To improve the algorithm, each "step" is not always equal. An algorithm where we can change the value of each step is called Dijkstra's algorithm.</p>
 
 <h2 id="flexibility-from-dijkstra">Flexibility from (Dijkstra)</h2>
 
-<p>The same as above, we are going to explicitly define how far we have travelled. This allows us to vary the “weight” of moving from one location to another.</p>
+<p>The same as above, we are going to explicitly define how far we have travelled. This allows us to vary the "weight" of moving from one location to another.</p>
 
 <p>In the code below, I added a weight variable in each element in the queue. This will be used to compare what location to check next.</p>
 
-<p>In this case, with a step being “1”, the results are exactly the same as breadth-first search. Replacing this value will change which locations are visited first.</p>
+<p>In this case, with a step being "1", the results are exactly the same as breadth-first search. Replacing this value will change which locations are visited first.</p>
 
 <pre><code>while queue != []:
     queue = sorted(queue, lambda x: x[2], reverse=True)  # Sort by weight
@@ -124,7 +124,7 @@ queue = [((0,0), [0,0]),
 
 </video>
 
-<p>To change this from Dijkstra’s algorithm, instead of ordering the queue by “weight distance”, you order the queue by distance from the destination with the closest being at the front of the queue.</p>
+<p>To change this from Dijkstra's algorithm, instead of ordering the queue by "weight distance", you order the queue by distance from the destination with the closest being at the front of the queue.</p>
 
 <pre><code>while queue != []:
     queue = sorted(queue, lambda x: distance(x[0], board.end), reverse=True)  # Sort by distance to goal
@@ -142,7 +142,7 @@ queue = [((0,0), [0,0]),
 
 <h2 id="mix-for-taste-a">Mix For Taste (A*)</h2>
 
-<p>We can balance the idealness of Dijkstra’s algorithm with the speed of the Best-First search by combining both metrics for ordering the queue.</p>
+<p>We can balance the idealness of Dijkstra's algorithm with the speed of the Best-First search by combining both metrics for ordering the queue.</p>
 
 <video autoplay="" loop="">
 

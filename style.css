@@ -7,6 +7,17 @@
     box-sizing: border-box;
 }
 
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+pre {
+    overflow-x: auto;
+}
+
 body { background:#fff; color:#000; overflow-x: hidden; padding:0; margin:0; font-size: 16px; letter-spacing: -0.011em; line-height: 1.5;}
 
 html { font-family: 'Inter', sans-serif; }
@@ -38,7 +49,7 @@ span.date { color: grey; }
 }
 
 
-main { padding: 45px; float:left; max-width:960px;}
+main { padding: 45px; max-width:960px; margin:0 auto; width:100%;}
 main > img { max-width: 100%; height: auto; }
 main > h1 { font-size:2rem; font-weight: 600;}
 main > h2 { font-size:1.5rem; font-weight: 400; text-transform: capitalize}

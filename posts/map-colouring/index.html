@@ -36,11 +36,11 @@ description: Optimising colour assignments in adjacency graphs
 
 <p>Instead of trying every combination, lets order the way we select the nodes we colour. Starting from the node which has the most connections, choosing its colour and moving to the next, adding a new colour if neighbouring nodes used all the previous colors. This will run until all the colours are chosen</p>
 
-<p>This is so much faster! It is a greedy algorithm so it doesn’t give us an optimal result, but the speed is important here. When you add a new node, it adds only a small amount of time and is close to linear.</p>
+<p>This is so much faster! It is a greedy algorithm so it doesn't give us an optimal result, but the speed is important here. When you add a new node, it adds only a small amount of time and is close to linear.</p>
 
 <h2 id="saturation">Saturation</h2>
 
-<p>This method is very similar to the “most connected” but in this case the next node to select will update each time. When a node is colored the connected nodes are updated with a new saturation number. This saturation number tells how many different colors a node neighbours with. The other name for this algorithm is DSATUR and is a well known algorithm for completing this problem</p>
+<p>This method is very similar to the "most connected" but in this case the next node to select will update each time. When a node is colored the connected nodes are updated with a new saturation number. This saturation number tells how many different colors a node neighbours with. The other name for this algorithm is DSATUR and is a well known algorithm for completing this problem</p>
 
 <h2 id="continuing">Next...</h2>
 

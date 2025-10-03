@@ -23,34 +23,66 @@
 <h1>Visualizing VGGNet Activations</h1>
 
 <p>
-    As part of my journey through a course on neural network optimization, I've delved into the fascinating world of image classification. In this post, I'm thrilled to present a detailed visual exploration of a model akin to VGGNet, using the CIFAR-10 dataset. This exploration not only illuminates the inner workings of neural networks but also sheds light on how these models perceive and process images.
+    While working through a neural network optimisation course I wanted to see
+    what a pruned VGG-style model actually latches onto. This post is a log of
+    the setup, the dataset, and the quirks I noticed while poking at the
+    activations.
 </p>
 
-<h4>Model Overview</h4>
+<h2>Model setup</h2>
 <p>
-    The model I've used resembles the VGGNet-19 Layer architecture, with the primary adaptation being its accommodation for smaller 32x32 image inputs. Boasting 9.23 million parameters and 606 million Multiply-Accumulate Operations (MACs), this model is a powerhouse of computational ability. I employed a technique known as granular pruning, reducing the model's size by approximately half. Interestingly, this significant reduction in parameters had a minimal impact on the visualization of the activations. This outcome likely stems from the nature of granular pruning, where parameters close to zero are rounded down to zero, thereby preserving the model's essential characteristics while enhancing its efficiency.
+    The backbone is a VGG19-inspired network trimmed to accept 32x32 inputs. It
+    clocks in at 9.23 million parameters and about 606 million MACs before any
+    pruning. I ran granular pruning to zero out weights below a learned
+    threshold, which cut the parameter count nearly in half without breaking the
+    output distribution. Because the pruning mostly deletes values that were
+    already close to zero, the activation patterns in the remaining filters stay
+    surprisingly intact.
 </p>
 
-<h4>About the CIFAR-10 Dataset</h4>
 <p>
-    The model's training ground is the <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a> dataset. This dataset is a cornerstone in the computer vision domain, featuring ten distinct classes: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck. Each class offers a unique challenge, making CIFAR-10 an excellent choice for testing the robustness and versatility of image classification models.
+    Hooks were registered on every convolutional block immediately after the
+    ReLU. During a forward pass the tensors are copied to CPU, normalised per
+    channel, and saved as PNG grids. Nothing fancy--just PyTorch hooks feeding a
+    small Matplotlib helper.
 </p>
 
-<h4>Activations</h4>
+<h2>Dataset</h2>
 <p>
-    To bring these concepts to life, let's consider an example. The input image is that of a frog, sourced from the test set and thus, unseen by the network during training.
+    All experiments were run on
+    <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a>. The test
+    split became the playground for visualisation so everything shown here was
+    unseen at training time. The ten classes (airplane through truck) are compact
+    enough to keep runs quick but still diverse enough to make the filters learn
+    interesting colour and texture detectors.
+</p>
+
+<h2>What the activations show</h2>
+<p>
+    The example below uses a frog image from the test set. Darker green indicates
+    stronger positive activation after the ReLU.
     <br />
-    <img src="output/0-4.png" height="100px">
-    <br />
-    My approach to visualizing the network involved examining the activations post-Rectified Linear Unit (ReLU) function. In these visualizations, darker green indicates stronger positive activation. Early layers reveal activations that somewhat resemble a frog, demonstrating the network's focus on basic features. As we progress through the layers, these representations become more abstract, signifying the network's complex processing to discern intricate patterns. The final layer culminates in a classification decision, interestingly identifying the image as a frog with a high probability, but also considering the possibility of it being a deer.
+    <img src="output/0-4.png" height="100px" />
 </p>
 
 <p>
-    This journey through the layers of a neural network not only provides an intriguing glimpse into the 'thought process' of AI but also highlights the intricate balance between simplicity and complexity within these models.
+    The first two convolutional blocks respond to broad colour blobs and the
+    curved outline of the body. Mid-level blocks start to separate the frog from
+    the background water ripple thanks to the narrow receptive fields focusing on
+    texture. By the time the signal hits the deeper layers the activations look
+    nothing like the original image--mostly sparse highlights where the network is
+    convinced it has found amphibian skin. The classifier head still hedges a bit
+    (frog vs deer), but the high-confidence channels correspond to filters that
+    survived pruning, which was a nice sanity check.
 </p>
 
-<img src="output/Screenshot from 2025-03-29 10-34-15.png">
+<p>
+    The grid below captures every recorded activation map for that sample. It is
+    dense, but scrolling through it made it clear which filters are dead after
+    pruning and which ones still carry the classification.
+</p>
 
+<img src="output/Screenshot from 2025-03-29 10-34-15.png" alt="Activation grids for VGG-style model" />
   </main>
   </body>
 </html>

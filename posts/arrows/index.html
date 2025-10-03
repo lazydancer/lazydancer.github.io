@@ -13,7 +13,7 @@ description: Cellular-automata game built from arrow logic
 
 <p>The beauty of simple rules creating complex and unique behaviors never ceases to amaze me. In this post, I will be discussing how basic arrows can be combined to create larger logic gates and eventually an adding machine</p>
 
-<p>We will be working with three types of arrows: the normal arrow (<b>→</b>), the invert arrow (<b>»</b>), and the divide arrow (<b>↔</b>). By combining these arrows, we can create a variety of logic gates, including the OR gate and the NOT gate. While these two gates allow us to create any Boolean expression, having AND and XOR gates makes building even easier</p>
+<p>We will be working with three types of arrows: the normal arrow (<b>&rarr;</b>), the invert arrow (<b>&raquo;</b>), and the divide arrow (<b>&harr;</b>). By combining these arrows, we can create a variety of logic gates, including the OR gate and the NOT gate. While these two gates allow us to create any Boolean expression, having AND and XOR gates makes building even easier</p>
 
 <p>Using DeMorgan's Law, we can create an AND gate using NOT and OR gates. This is equivalent to NOT ((NOT A) OR (NOT B)), and when translated to arrows, it looks like this.</p> 
 
@@ -95,9 +95,8 @@ description: Cellular-automata game built from arrow logic
 
 <p>I enjoyed making this and it was a fun challenge. I also learned lots. I hope to pick it up again and try again to make a simple computer. I sure everything could be much smaller and faster than it is. </p>
 
-<p>The game logic runs in Rust with help from ggez; a window management, 2D graphics and event handling library. Written in rust allows for fast simulations of a large number of options. The Rust library is used through a C interface using ccfi in python.
+<p>The game logic runs in Rust with help from ggez; a window management, 2D graphics and event handling library. Written in rust allows for fast simulations of a large number of options. The Rust library is used through a C interface using ccfi in python.</p>
 
-<p>The Python side is where the arrows are being placed. A “Board” object is to rust to be displayed and run. In addition it contains higher level drafter, where more complex boards can be designed. Right now in the drafter, there is a topological function to arrange sub-blocks and a basic router for wires using breadth first search. Some of these I dropped but having the flexibility of trying different things quick is important</p>
+<p>The Python side is where the arrows are being placed. A "Board" object is to rust to be displayed and run. In addition it contains higher level drafter, where more complex boards can be designed. Right now in the drafter, there is a topological function to arrange sub-blocks and a basic router for wires using breadth first search. Some of these I dropped but having the flexibility of trying different things quick is important</p>
 
 <p>If you would like to take a look and run it, it's avalible on <a href="https://github.com/lazydancer/Arrows">github</a></p>
-
