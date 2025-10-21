@@ -97,7 +97,7 @@ main img.medium {max-width: 300px;}
 }
 
 main > q { font-size: 20px;max-width: 500px; display: block; margin-left:30px; }
-main > pre { font-family: monospace; background: black; color:white; padding:15px; }
+main > pre { font-family: monospace; font-size: 12px; background: black; color:white; padding:15px; }
 main > code { font-family: monospace; font-size:12px; margin-bottom: 30px; display: block; background:black; color:white; padding:15px; white-space: pre-wrap;}
 main > code comment { color:#777}
 

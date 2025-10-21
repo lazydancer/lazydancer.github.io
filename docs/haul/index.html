@@ -108,6 +108,86 @@
     tool did the thinking for me.
 </p>
 
+<h2>Chasing optimal routes</h2>
+<p>
+    Once the trades are filtered, the real game is the route. The problem
+    snapped from "shortest path" into a gritty
+    <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">travelling salesman problem</a>
+    variant the moment I tried to thread buy-and-sell stations into a single
+    circuit. Haul only flies one ship, but the constraints (cargo limits,
+    wallet caps, detours with extra risk) make it feel like the single-vehicle
+    version of the
+    <a href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">vehicle routing problem</a>.
+    I ended up writing a scorer that compared every promising trade trio,
+    stitched together the shortest path between their stations, and let profit per
+    second decide what to keep.
+</p>
+
+<pre><code class="language-python">def route(trades: list[Trade], graph: Graph, ship: Ship) -> tuple[Optional[Route], Optional[dict]]:
+    trades.sort(
+        key=lambda trade: trade.gross_profit / (trade.from_price * trade.quantity)
+        if trade.from_price * trade.quantity > 0 else 0,
+        reverse=True
+    )
+
+    best_profit_rate = 0.0
+    best_route: Optional[Route] = None
+    best_route_info: Optional[dict] = None
+    seen_routes = set()
+
+    for trade in tqdm(trades[:MAX_TRADES_TO_CONSIDER], desc="Evaluating trades"):
+        route_stations = (ship.location, trade.from_station, trade.to_station)
+        if route_stations in seen_routes:
+            continue
+        seen_routes.add(route_stations)
+
+        optimized_trades = select_trades(list(route_stations), trades, ship)
+        total_profit = sum(t.gross_profit for t in optimized_trades)
+        if not optimized_trades or total_profit <= 0:
+            continue
+
+        try:
+            path = graph.shortest_path(ship.location, trade.from_station)[:-1]
+            path += graph.shortest_path(trade.from_station, trade.to_station)
+        except Exception as exc:
+            logger.error("Error finding path: %s", exc)
+            continue
+
+        risk = sum(graph.graph[u][v]["risk"] for u, v in zip(path, path[1:]))
+        transport_time = sum(graph.graph[u][v]["time"] for u, v in zip(path, path[1:]))
+        capital = getattr(ship, "ship_cost", 0.0) + sum(t.from_price * t.quantity for t in optimized_trades)
+        if transport_time == 0:
+            logger.warning("Transport time is zero, skipping this route to avoid division by zero.")
+            continue
+
+        net_profit = total_profit - risk * capital
+        profit_rate = net_profit / transport_time
+        if profit_rate &gt; best_profit_rate:
+            formatted_route = graph.formatted_route(path)
+            best_route = set_actions(formatted_route, optimized_trades)
+            best_route_info = {
+                "profit_rate": profit_rate,
+                "risk": risk,
+                "capital": capital,
+                "transport_time": transport_time,
+                "gross_profit": total_profit,
+                "net_profit": net_profit,
+            }
+            best_profit_rate = profit_rate
+
+    return best_route, best_route_info
+</code></pre>
+
+<p>
+    That loop is greedy on purpose; it tosses bad candidates fast so I can
+    iterate on the scoring instead of waiting on combinatorics. It is not a full
+    VRP solver, but it pushed haul into a fun middle ground—quick enough for
+    real-time decisions and smart enough to side-eye profitable detours if they
+    risk my cargo or wallet. The next step on my wishlist is to sprinkle in more
+    heuristics so the planner can try alternate station permutations when the
+    market heats up.
+</p>
+
 <p>
     There is still plenty I want to play with--automated risk-map updates, a
     fully Rust backend, maybe live route rewrites when markets drift--but the

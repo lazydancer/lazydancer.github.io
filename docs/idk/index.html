@@ -96,6 +96,29 @@
     the system from filling with half-used containers.
 </p>
 
+<h2>Inventory optimizer</h2>
+<p>
+    Keeping rows of chests tidy meant teaching the bot to grade every layout and
+    shuffle stacks into better homes. A tiny A* search looks at the live database
+    snapshot, scores each move by how many slots stay occupied, and prefers moves
+    that tuck matching items together inside shulkers. The heuristic subtracts a
+    bit of cost for shulker slots and wipes out the cost for boxes that end up
+    completely full, so the planner naturally clusters loose stacks instead of
+    scattering them across the hall.
+</p>
+<pre><code class="language-typescript">export async function optimize_inventory() {
+  const before = await db.get_inventory_items();
+  console.log("starting cost", inventory_cost(before));
+
+  const moves = a_star(before, 100);
+  const after = helper.apply_moves(types.ChestType.Inventory, before, moves);
+
+  console.log("recommended", moves, inventory_cost(after));
+  await db.add_job(types.JobType.Move, moves);
+  parentPort?.postMessage("done");
+}
+</code></pre>
+
 <h2>Stack choices</h2>
 <p>
     TypeScript powers the bot service and Svelte drives the dashboard because I
