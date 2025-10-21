@@ -57,6 +57,36 @@ main > h3 { font-size:18px; font-weight: 400; text-transform: capitalize}
 p { line-height: 25px; font-size:16px}
 main > ul { line-height: 25px;}
 
+.project-links {
+    margin: 0.75rem 0 1.5rem;
+    margin-left: 2px;
+}
+
+.project-links .github-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.project-links .github-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    transition: transform 0.2s ease;
+}
+
+.project-links .github-icon:hover svg {
+    transform: scale(1.05);
+}
+
+.project-links .github-icon:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
 main > ul.jump { columns:2; line-height: 20px}
 main > ul.jump li { list-style-type: decimal-leading-zero; list-style-position: inside; text-transform: capitalize;}
 main img.medium {max-width: 300px;}
