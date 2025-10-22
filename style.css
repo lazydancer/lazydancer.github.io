@@ -1,5 +1,42 @@
-*:focus         { outline: none}
-::selection       { background: #eee; opacity:1.0; color:#000; padding:10px; /* Safari */ }
+*:focus { outline: none; }
+
+:root {
+    color-scheme: light;
+    --color-bg: #ffffff;
+    --color-text: #0a0a0a;
+    --color-muted: #666666;
+    --color-border: #1f232a;
+    --color-selection-bg: #e0e4eb;
+    --color-selection-text: #0a0a0a;
+    --color-card-hover: #f4f5f7;
+    --color-link: #111111;
+    --color-link-hover: #0076ff;
+    --color-code-bg: #111111;
+    --color-code-text: #f5f5f5;
+    --color-button-bg: #e75942;
+    --color-button-hover: #c14e3a;
+    --color-button-text: #ffffff;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-bg: #0b1018;
+    --color-text: #e7ecf5;
+    --color-muted: #9aa0b5;
+    --color-border: #2b3443;
+    --color-selection-bg: #243148;
+    --color-selection-text: #e7ecf5;
+    --color-card-hover: rgba(255, 255, 255, 0.08);
+    --color-link: #d9e4ff;
+    --color-link-hover: #88bfff;
+    --color-code-bg: #111827;
+    --color-code-text: #e5eaf3;
+    --color-button-bg: #e75942;
+    --color-button-hover: #f06b59;
+    --color-button-text: #ffffff;
+}
+
+::selection { background: var(--color-selection-bg); opacity:1.0; color:var(--color-selection-text); padding:10px; /* Safari */ }
 
 *,
 *::before,
@@ -18,15 +55,37 @@ pre {
     overflow-x: auto;
 }
 
-body { background:#fff; color:#000; overflow-x: hidden; padding:0; margin:0; font-size: 16px; letter-spacing: -0.011em; line-height: 1.5;}
+body { background:var(--color-bg); color:var(--color-text); overflow-x: hidden; padding:0; margin:0; font-size: 16px; letter-spacing: -0.011em; line-height: 1.5; transition: background-color 0.25s ease, color 0.25s ease;}
 
 html { font-family: 'Inter', sans-serif; }
 
-header { padding: 45px; }
-header a { border-bottom: none; }
+header { padding: 45px; display:flex; align-items:center; gap:1.5rem; justify-content:space-between; }
+header a { border-bottom: none; display: inline-flex; align-items: center; }
+header a img { display: block; }
+
+.theme-toggle {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--color-card-hover);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--color-link-hover);
+    outline-offset: 4px;
+}
 
 @media only screen and (max-width: 768px) {
-	header { padding: 20px; }
+	header { padding: 20px; flex-wrap: wrap; row-gap: 0.75rem; }
+	.theme-toggle { font-size: 0.85rem; }
 }
 
 .about p { max-width: 600px; }
@@ -34,10 +93,10 @@ header a { border-bottom: none; }
 .site-nav { line-height: 22px; padding-top: 30px;}
 .site-nav h3 { margin: 20px 0 20px 0; font-weight: 500; font-size: 1.5rem;}
 .site-nav ul { margin: 0px; padding: 0px; }
-.site-nav a { color: black; text-decoration: None; font-weight: 600; }
-.site-nav a:hover { background-color: whitesmoke; border-radius: 3px; padding: 4px; margin-left: -4px}
+.site-nav a { color: var(--color-text); text-decoration: none; font-weight: 600; transition: background-color 0.2s ease, color 0.2s ease; }
+.site-nav a:hover { background-color: var(--color-card-hover); border-radius: 3px; padding: 4px; margin-left: -4px}
 .site-nav li p {margin:  0.4em 0 1.5em 0;}
-span.date { color: grey; }
+span.date { color: var(--color-muted); }
 
 .site-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 80px; }
 .projects { grid-column: 1; }
@@ -97,9 +156,9 @@ main img.medium {max-width: 300px;}
 }
 
 main > q { font-size: 20px;max-width: 500px; display: block; margin-left:30px; }
-main > pre { font-family: monospace; font-size: 12px; background: black; color:white; padding:15px; }
-main > code { font-family: monospace; font-size:12px; margin-bottom: 30px; display: block; background:black; color:white; padding:15px; white-space: pre-wrap;}
-main > code comment { color:#777}
+main > pre { font-family: monospace; font-size: 12px; background: var(--color-code-bg); color:var(--color-code-text); padding:15px; border-radius: 8px; }
+main > code { font-family: monospace; font-size:12px; margin-bottom: 30px; display: block; background:var(--color-code-bg); color:var(--color-code-text); padding:15px; white-space: pre-wrap; border-radius: 8px;}
+main > code comment { color:var(--color-muted); }
 
 main ul.gallery { background:none}
 main ul.gallery li { clear: both; display: block; height: 260px; margin-top: -2px}
@@ -112,16 +171,16 @@ main ul.gallery li img { width:250px; max-width: 100%; float:left; display: bloc
 	main ul.gallery li img { width: 100%; float: none; margin-right: 0; }
 }
 
-main .button.patreon { background-color: #e75942}
-main .button {background-color: #e75942;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;}
-main .button:hover {background-color: #727272 !important;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;}
+main .button.patreon { background-color: var(--color-button-bg)}
+main .button {background-color: var(--color-button-bg);border: none;color: var(--color-button-text);padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;transition: background-color 0.2s ease;}
+main .button:hover {background-color: var(--color-button-hover) !important;border: none;color: var(--color-button-text);padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;}
 
-body select { color: black; margin-bottom: 20px }
+body select { color: var(--color-text); margin-bottom: 20px }
 main table.drpdown {padding-bottom: 15px; font-size: 18px}
-main table.drpdown td {padding-bottom: 15px; color: black;}
+main table.drpdown td {padding-bottom: 15px; color: var(--color-text);}
 
 main > table.col tr th { text-align: left}
-main > table.col tr td { border-right:1.5px solid black}
+main > table.col tr td { border-right:1.5px solid var(--color-border)}
 main > table.col tr > * { padding:5px 20px}
 main > table.col tr td:last-child { border-right: 0px }
 main > table.col tr > *:first-child { padding-left: 0px }
@@ -184,24 +243,24 @@ ul.nobull li {list-style-type: none; padding-bottom: 4px}
 
 /* date */
 .item-list .date {
-    color: #666;
+    color: var(--color-muted);
     text-align: left;
     font-family: monospace;
 }
 
 /* title */
 .item-list .title a {
-    color: #111;
+    color: var(--color-link);
     text-decoration: underline;
 }
 
 .item-list .title a:hover {
-    color: #0076ff;
+    color: var(--color-link-hover);
 }
 
 /* description */
 .item-list .description {
-    color: #444;
+    color: var(--color-muted);
     overflow: hidden;
     text-overflow: ellipsis;
 }

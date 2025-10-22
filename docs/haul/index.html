@@ -10,6 +10,19 @@
   <title>James Pucula - haul</title>
 
   <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');</style>
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('theme');
+        var mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+        var prefersDark = mediaQuery ? mediaQuery.matches : false;
+        var theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      } catch (err) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
   <link rel = "stylesheet" type="text/css" href="/style.css"/>
 
 </head>
@@ -17,6 +30,7 @@
   <header>
         <a href="/">
   <img width="64" height="64" src="/finch_128.png"></a>
+    <button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
   </header>
 
   <main>
@@ -238,5 +252,39 @@
     with enough automation that the space spreadsheets finally felt like play.
 </p>
   </main>
+  <script>
+    (function() {
+      var toggle = document.getElementById('theme-toggle');
+      if (!toggle) {
+        return;
+      }
+
+      var root = document.documentElement;
+
+      function currentTheme() {
+        return root.dataset.theme === 'dark' ? 'dark' : 'light';
+      }
+
+      function updateLabel(theme) {
+        var next = theme === 'dark' ? 'light' : 'dark';
+        toggle.textContent = next.charAt(0).toUpperCase() + next.slice(1) + ' mode';
+        toggle.setAttribute('aria-label', 'Activate ' + next + ' mode');
+        toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      }
+
+      updateLabel(currentTheme());
+
+      toggle.addEventListener('click', function() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try {
+          localStorage.setItem('theme', next);
+        } catch (err) {
+          /* localStorage might be unavailable; ignore */
+        }
+        updateLabel(next);
+      });
+    })();
+  </script>
   </body>
 </html>

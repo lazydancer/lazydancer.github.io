@@ -186,7 +186,7 @@ def main(incl_drafts=False):
 		write_post(title, url, body)
 
 	# Copy static assets
-	assets = ['favicon.ico', 'CNAME', 'style.css']
+	assets = ['favicon.ico', 'CNAME', 'style.css', 'finch_128.png']
 	for asset in assets:
 		try:
 			shutil.copy2(asset, f'docs/{asset}')
