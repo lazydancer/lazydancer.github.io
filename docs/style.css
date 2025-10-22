@@ -228,46 +228,58 @@ ul.nobull li {list-style-type: none; padding-bottom: 4px}
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 0.9rem; /* smaller list text */
+    font-size: 0.9rem;
     overflow-x: auto;
 }
 
 .item-list li {
+    margin: 0;
+}
+
+.item-list .item-link {
     display: grid;
-    grid-template-columns: 8ch 28ch 1fr; /* date • title • desc */
+    grid-template-columns: 8ch 28ch 1fr;
     column-gap: 1rem;
     align-items: center;
-    padding: 0.3rem 0; /* uniform row height */
+    padding: 0.3rem 0;
+    text-decoration: none;
+    color: inherit;
     white-space: nowrap;
 }
 
-/* date */
+.item-list .item-link:hover .title,
+.item-list .item-link:focus-visible .title {
+    color: var(--color-link-hover);
+}
+
+.item-list .item-link:focus-visible {
+    outline: 2px solid var(--color-link-hover);
+    outline-offset: 3px;
+}
+
 .item-list .date {
     color: var(--color-muted);
     text-align: left;
     font-family: monospace;
 }
 
-/* title */
-.item-list .title a {
+.item-list .title {
+    font-weight: 600;
     color: var(--color-link);
-    text-decoration: underline;
-}
-
-.item-list .title a:hover {
-    color: var(--color-link-hover);
-}
-
-/* description */
-.item-list .description {
-    color: var(--color-muted);
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Responsive - hide description on small screens */
+.item-list .description {
+    color: var(--color-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
 @media (max-width: 680px) {
-    .item-list li {
+    .item-list .item-link {
         grid-template-columns: 10ch 1fr;
     }
     .item-list .description {

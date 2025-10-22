@@ -100,13 +100,15 @@ def generate_index_html(posts):
 	items = []
 	for post in sorted_posts:
 		date_str = post.date.strftime('%Y‑%m')
-		items.append(f'''                <li>
-                    <span class="date">{date_str}</span
-                    ><span class="title"><a href="/{post.url}">{post.title}</a></span
-                    ><span class="description"
-                        >{post.description}</span
-                    >
-                </li>''')
+		items.append(
+			f'''                <li>
+                    <a class="item-link" href="/{post.url}">
+                        <span class="date">{date_str}</span>
+                        <span class="title">{post.title}</span>
+                        <span class="description">{post.description}</span>
+                    </a>
+                </li>'''
+		)
 
 	# Generate the index content (will be wrapped by template.html)
 	return f'''<div class="container">
