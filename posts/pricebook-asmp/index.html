@@ -1,0 +1,312 @@
+---
+title: Pricebook ASMP
+date: 2025-10-25
+description: Minecraft pricebook mod and append-only server for the asmp.cc economy
+---
+
+<h1 id="title">Pricebook ASMP</h1>
+<div class="project-links">
+    <a class="github-icon" href="https://github.com/lazydancer/pricebook-asmp" aria-label="View Pricebook ASMP mod on GitHub">
+        <svg aria-hidden="true" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"></path>
+        </svg>
+        <span>Mod</span><span></span>
+    </a>
+    <a class="github-icon" href="https://github.com/lazydancer/pricebook-asmp-server" aria-label="View Pricebook ASMP Server on GitHub">
+        <svg aria-hidden="true" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"></path>
+        </svg>
+        <span>Server</span>
+    </a>
+</div>
+
+<p>
+    I built Pricebook ASMP to bring clarity to the chaotic, player-driven economy on asmp.cc. Shops 
+    are scattered across the world, prices shift constantly, and waystones form a fast-travel network. 
+    Pricebook lets players search for items, track price trends, and find the nearest waystone to any shop. 
+    It combines a Fabric mod that discovers in-world listings with a SQLite API that preserves every 
+    change as an append-only timeline.
+</p>
+
+<h2>Efficient Chunk Scanning: Avoiding Redundant Network Payloads</h2>
+
+<p>
+    The first challenge was getting useful state out of Minecraft without drowning the network.
+    <code>ShopScanner</code> watches chunk loads, parses sign text into structured entries, and keeps a
+    <em>snapshot cache</em> keyed by chunk. Every scan is diffed against the last known snapshot; if
+    nothing changed we short-circuit instead of re-sending identical payloads. That keeps the client
+    responsive and the server's append-only log clean.
+</p>
+
+<pre><code class="language-java">public void scanChunk(ClientWorld world, WorldChunk chunk) {
+    if (world == null || chunk == null) {
+        return;
+    }
+
+    ChunkPos pos = chunk.getPos();
+    long key = pos.toLong();
+
+    Set&lt;ShopSignParser.ShopEntry&gt; currentShops = collectShops(world, chunk);
+    Set&lt;BlockPos&gt; currentWaystones = collectWaystones(world, chunk);
+
+    ChunkSnapshot previous = lastKnownChunks.get(key);
+    ChunkSnapshot current = new ChunkSnapshot(Set.copyOf(currentShops), Set.copyOf(currentWaystones));
+    if (previous != null &amp;&amp; previous.equals(current)) {
+        LOGGER.trace("Chunk {} unchanged, skipping scan", pos);
+        return;
+    }
+
+    lastKnownChunks.put(key, current);
+
+    List&lt;ShopSignParser.ShopEntry&gt; sorted = currentShops.stream()
+            .sorted(ENTRY_ORDER)
+            .collect(Collectors.toList());
+    List&lt;BlockPos&gt; waystones = currentWaystones.stream()
+            .sorted(BLOCK_POS_ORDER)
+            .collect(Collectors.toList());
+
+    String dimension = Dimensions.canonical(world);
+    boolean empty = sorted.isEmpty() &amp;&amp; waystones.isEmpty();
+    if (empty &amp;&amp; !transport.shouldTransmitEmpty(dimension, pos)) {
+        LOGGER.trace("Chunk {} is empty and not known to server, skipping", pos);
+        return;
+    }
+
+    transport.sendScan(config.senderId, dimension, pos, sorted, waystones);
+}</code></pre>
+
+<p>
+    Because the scanner owns a <code>Long2ObjectOpenHashMap</code> of <code>ChunkSnapshot</code>s, I can cheaply
+    clear the cache when the player disconnects, or surgically forget chunks when a world unloads.
+    The snapshot design later made it trivial to write offline tests that replay historical scans into
+    the server.
+</p>
+
+<h2>Waystones, heuristics, and bootstrap handshakes</h2>
+
+<p>
+    Shops on ASMP are often paired with waystones. I taught the mod to recognise bespoke patterns—a
+    lodestone on a slab, oxidised copper columns, even mushroom plinths—so the server can display the
+    closest fast-travel target for each listing. That rule-set lives in a static map of
+    <code>WaystonePattern</code>s and gets memoised on load.
+</p>
+
+<p>
+    The HTTP layer is intentionally boring and resilient. On startup the client bootstraps by asking
+    the server which chunks it already knows. That means I can safely skip empty scans unless they
+    clear an existing chunk, and the server never forgets to prune removed shops.
+</p>
+
+<pre><code class="language-java">public void sendScan(String senderId, String dimension, ChunkPos pos,
+                     List&lt;ShopSignParser.ShopEntry&gt; shops, List&lt;BlockPos&gt; waystones) {
+    ChunkCoordinate coordinate = new ChunkCoordinate(dimension, pos.x, pos.z);
+    boolean empty = shops.isEmpty() &amp;&amp; waystones.isEmpty();
+    if (!empty) {
+        serverKnownChunks.add(coordinate);
+    }
+
+    String payload = encodePayload(senderId, dimension, pos, shops, waystones);
+
+    HttpRequest request = HttpRequest.newBuilder(scanEndpoint)
+            .timeout(Duration.ofSeconds(REQUEST_TIMEOUT_SECONDS))
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(payload, StandardCharsets.UTF_8))
+            .build();
+
+    httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8))
+            .whenComplete((response, throwable) -&gt; handleSendResult(coordinate, empty, response, throwable));
+}
+
+public void bootstrap() {
+    LOGGER.debug("Bootstrapping transport: fetching known chunks from server");
+    fetchChunksPage();
+}</code></pre>
+
+<p>
+    The result is a client that survives flaky Wi-Fi, pauses cleanly when the player opens single
+    player worlds, and resumes scanning with a consistent view of server state.
+</p>
+
+<h2>SQLite as an append-only time machine</h2>
+
+<p>
+    I wanted the backend to feel like a flight recorder. SQLite plus
+    <code>better-sqlite3</code> gave me a zero-dependency bundle with transactions, WAL journaling, and
+    easy backups. Opening the database aggressively enables WAL and recovers from stale
+    <code>-wal</code>/<code>-shm</code> files—a practical nod to hosting on Fly.io, where process restarts are
+    frequent.
+</p>
+
+<pre><code class="language-js">const openDatabase = (dbFile) =&gt; {
+  const resolved = path.resolve(dbFile);
+
+  const attemptOpen = () =&gt; {
+    const db = new Database(resolved);
+    try {
+      db.pragma('journal_mode = WAL');
+      return db;
+    } catch (pragmaError) {
+      db.close();
+      throw pragmaError;
+    }
+  };
+
+  try {
+    return attemptOpen();
+  } catch (err) {
+    if (err &amp;&amp; err.code === 'SQLITE_IOERR_SHORT_READ') {
+      removeWalFiles(resolved);
+      return attemptOpen();
+    }
+    throw err;
+  }
+};</code></pre>
+
+<p>
+    Every table is designed to store <em>timeline segments</em>: the current state where
+    <code>removed_at IS NULL</code>, plus archived rows for everything that's been replaced. The schema spells
+    it out directly in the column comments, which makes it easy to explain the flow or chase down odd
+    edge cases later.
+</p>
+
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS shops (
+  id                 INTEGER PRIMARY KEY AUTOINCREMENT,
+  dimension          TEXT    NOT NULL,
+  pos_x              INTEGER NOT NULL,
+  pos_y              INTEGER NOT NULL,
+  pos_z              INTEGER NOT NULL,
+  owner              TEXT    NOT NULL,
+  item               TEXT    NOT NULL,
+  price              REAL    NOT NULL,
+  amount             INTEGER NOT NULL,
+  action             TEXT    NOT NULL,
+  first_seen_at      INTEGER NOT NULL,
+  first_seen_scan_id INTEGER NOT NULL REFERENCES scans(id),
+  last_seen_at       INTEGER NOT NULL,
+  last_seen_scan_id  INTEGER NOT NULL REFERENCES scans(id),
+  removed_at         INTEGER
+);
+CREATE INDEX IF NOT EXISTS idx_shops_item_action_removed
+  ON shops (LOWER(item), action, removed_at, price) WHERE removed_at IS NULL;</code></pre>
+
+<p>
+    The <code>insertScanTx</code> transaction writes a scan row, then hands the payload to the shop and
+    waystone adapters. Each adapter is responsible for reconciling current rows and marking old ones
+    as retired—no deletions, just historical breadcrumbs.
+</p>
+
+<pre><code class="language-js">const insertScanTx = db.transaction((scanRow, shopRows, waystoneRows) =&gt; {
+  const { lastInsertRowid: scanId } = insertScanStmt.run(
+    scanRow.senderId,
+    scanRow.dimension,
+    scanRow.chunkX,
+    scanRow.chunkZ,
+    scanRow.scannedAt
+  );
+
+  const persistedScan = { ...scanRow, scanId };
+
+  shops.reconcileScan(persistedScan, shopRows);
+  waystones.reconcileScan(persistedScan, waystoneRows);
+
+  return scanId;
+});</code></pre>
+
+<h2>Reconciling scans, one chunk at a time</h2>
+
+<p>
+    Reconciling is all chunk-scoped. I group incoming shops by chunk, look up the current rows, and
+    compare deterministic "state keys" (owner + item + price + action). If the state matches, I only
+    extend <code>last_seen_at</code>. If the sign changed, I mark the existing row as removed and insert a new
+    one. Missing shops simply get a <code>removed_at</code> timestamp, which makes rewinding trivial.
+</p>
+
+<pre><code class="language-js">const syncChunkShops = (dimension, chunkX, chunkZ, shops, scanRow) =&gt; {
+  const existingShops = listShopsForChunkStmt
+    .all(dimension, chunkX, chunkX, chunkZ, chunkZ)
+    .map(row =&gt; ({ ...row, posKey: keyForPosition(row.dimension, row.pos_x, row.pos_y, row.pos_z) }));
+
+  const existingByPosition = new Map(existingShops.map(shop =&gt; [shop.posKey, shop]));
+  const seenPositions = new Set();
+
+  for (const shop of shops) {
+    const posKey = keyForPosition(shop.dimension, shop.posX, shop.posY, shop.posZ);
+    seenPositions.add(posKey);
+    const existing = existingByPosition.get(posKey);
+
+    if (existing) {
+      const existingStateKey = stateKey(existing.owner, existing.item, existing.price, existing.amount, existing.action);
+      const newStateKey = stateKey(shop.owner, shop.item, shop.price, shop.amount, shop.action);
+
+      if (existingStateKey === newStateKey) {
+        updateLastSeenStmt.run(scanRow.scannedAt, scanRow.scanId, existing.id);
+      } else {
+        markNotCurrentStmt.run(scanRow.scannedAt, existing.id);
+        insertShopStmt.run(/* trimmed for brevity */);
+      }
+    } else {
+      insertShopStmt.run(/* new shop */);
+    }
+  }
+
+  for (const [posKey, shop] of existingByPosition) {
+    if (!seenPositions.has(posKey)) {
+      markNotCurrentStmt.run(scanRow.scannedAt, shop.id);
+    }
+  }
+};</code></pre>
+
+<p>
+    The same pattern powers waystones, with the added wrinkle that UI-driven packets can fill in the
+    human-readable name/owner even if a chunk scan only sees the block structure.
+</p>
+
+<h2>Time travel for shoppers</h2>
+
+<p>
+    Once the data model stores every revision, rewinding is straightforward. A recursive CTE builds a
+    seven-day ladder of midnight timestamps; for each rung I aggregate the lowest price, remaining
+    stock, and shop count among the rows that were "alive" at that moment. The API exposes the series
+    at <code>/v1/item/history</code>, and the client renders it as a timeline with deltas.
+</p>
+
+<pre><code class="language-sql">WITH RECURSIVE dates(day_timestamp, is_today) AS (
+  SELECT CAST(strftime('%s', 'now', 'start of day', '+1 day', '-1 second') AS INTEGER) * 1000, 1
+  UNION ALL
+  SELECT day_timestamp - 86400000, 0
+  FROM dates
+  WHERE day_timestamp &gt; CAST(strftime('%s', 'now', 'start of day', '-6 days') AS INTEGER) * 1000
+)
+SELECT
+  strftime('%Y-%m-%d', day_timestamp / 1000, 'unixepoch') AS date,
+  MIN(s.price) AS lowestPrice,
+  SUM(s.amount) AS stock,
+  COUNT(DISTINCT s.id) AS shops
+FROM dates d
+LEFT JOIN shops s ON
+  LOWER(s.item) = LOWER(@item)
+  AND s.action = 'sell'
+  AND s.first_seen_at &lt;= d.day_timestamp
+  AND (s.removed_at IS NULL OR s.removed_at &gt; d.day_timestamp)
+GROUP BY d.day_timestamp
+ORDER BY d.day_timestamp DESC;</code></pre>
+
+<p>
+    On the client side the <code>/pricebook_history</code> command uses <code>PricebookRenderer</code> to build a
+    console table: it colours the lowest price in green, the weekly high in gold, and adds relative
+    arrows next to stock and shop counts. It is ridiculously satisfying to watch prices drift and
+    then jump back in time to verify when a market crashed.
+</p>
+
+<h2>Putting it all together</h2>
+
+<p>
+    This build mixes client-heavy ergonomics (custom command palette, auto-complete against a remote
+    catalog, waypoint overlays) with backend rigor (normalized schema, WAL-backed durability,
+    migration scripts). The append-only log means I can take any chunk of <code>scans</code>, replay it into a
+    fresh database, and regenerate the same API responses—handy for checking a suspicious trade or
+    stress-testing a new feature. With Fly.io manifests and Dockerfiles in the tree, Pricebook ASMP
+    stays easy to ship while showing off the chunk diffing, state reconciliation, and time-travel
+    analytics that make the project tick.
+</p>
