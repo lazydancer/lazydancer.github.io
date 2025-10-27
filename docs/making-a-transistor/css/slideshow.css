@@ -1,0 +1,101 @@
+.slideShow {
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  padding: 18px 18px 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.slide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 14px 0;
+  padding: 0 4px;
+}
+
+.slide-header span {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+  letter-spacing: 0.02em;
+}
+
+.slide-header .slide-controls {
+  margin: 0;
+  flex: 1;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.slide-header .slide-indicator {
+  width: 120px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0 8px;
+}
+
+.slide-controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 8px;
+  gap: 18px;
+}
+
+.slide-controls button {
+  flex: 1;
+  padding: 12px 22px;
+  border-radius: 6px;
+  border: 1px solid #888;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.slide-controls button:hover {
+  background: #f0f0f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slide-controls button:active {
+  transform: scale(0.97);
+}
+
+.slide-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  box-shadow: none;
+}
+
+.slide svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 12px;
+}
+
+.slide-caption {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.slide-indicator {
+  font-size: 0.85rem;
+  color: #555;
+  text-align: center;
+}
+
+
+.slide-header .slide-indicator {
+  padding-top: 12px;
+}
+.slide-header span {
+  margin-right: 30px;
+}
+
+.digital-switch {
+  margin: 14px 0 24px;
+  display: block;
+}
