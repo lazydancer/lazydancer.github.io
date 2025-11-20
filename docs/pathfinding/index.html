@@ -41,7 +41,7 @@
 <img src="BlockConnect.svg" style="max-width: 500px;" /> 
 
 
-<p>In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and "solution idealness" of the different approaches to take when pathfinding.</p>
+<p>In this post I will show various methods in pathfinding and look at the different trade-offs in speed, memory and solution quality of the different approaches to take when pathfinding.</p>
 
 <h2 id="common-elements">Common Elements</h2>
 
@@ -141,12 +141,12 @@ queue = [((0,0), [0,0]),
 
 <h2 id="with-a-little-help-from-a-heuristic-best-first">With a Little Help From A Heuristic (Best-First)</h2>
 
-<p>In this algorithm, we look at all of the neighbours that have been added to the queue and go to the one that is closest to the final solution. Closest refering to the linear distance between the location and the target.</p>
+<p>In this algorithm, we look at all of the neighbours that have been added to the queue and go to the one that is closest to the final solution. Closest referring to the linear distance between the location and the target.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>distance(a, b) = ((b[0] - a[0]), (b[1] - a[1]))
 </code></pre></div></div>
 
-<p>In some cases this is the best solution, but when a wall is between the start and the destination, the solution is not optimal as the path walks into a wall than has to back up.</p>
+<p>In some cases this is the best solution, but when a wall is between the start and the destination, the solution is not optimal as the path walks into a wall then has to back up.</p>
 
 <video autoplay="" loop="">
 
@@ -195,7 +195,7 @@ queue = [((0,0), [0,0]),
     visited.append(vertex)
 </code></pre>
 
-<p>This balance directs the search while looking at multiple solutions in that direction to find a close to ideal solution.</p>
+<p>This balance directs the search while looking at multiple solutions in that direction to find a close-to-ideal solution.</p>
 
 <h2 id="graph-theory-and-networks">Graph Theory and Networks</h2>
 

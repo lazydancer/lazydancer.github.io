@@ -19,9 +19,9 @@ description: Cellular-automata game built from arrow logic
 </video>
 
 
-<p>The beauty of simple rules creating complex and unique behaviors never ceases to amaze me. In this post, I will be discussing how basic arrows can be combined to create larger logic gates and eventually an adding machine</p>
+<p>The beauty of simple rules creating complex and unique behaviors never ceases to amaze me. In this post, I will be discussing how basic arrows can be combined to create larger logic gates and eventually an adding machine.</p>
 
-<p>We will be working with three types of arrows: the normal arrow (<b>&rarr;</b>), the invert arrow (<b>&raquo;</b>), and the divide arrow (<b>&harr;</b>). By combining these arrows, we can create a variety of logic gates, including the OR gate and the NOT gate. While these two gates allow us to create any Boolean expression, having AND and XOR gates makes building even easier</p>
+<p>We will be working with three types of arrows: the normal arrow (<b>&rarr;</b>), the invert arrow (<b>&raquo;</b>), and the divide arrow (<b>&harr;</b>). By combining these arrows, we can create a variety of logic gates, including the OR gate and the NOT gate. While these two gates allow us to create any Boolean expression, having AND and XOR gates makes building even easier.</p>
 
 <p>Using DeMorgan's Law, we can create an AND gate using NOT and OR gates. This is equivalent to NOT ((NOT A) OR (NOT B)), and when translated to arrows, it looks like this.</p> 
 
@@ -33,7 +33,7 @@ description: Cellular-automata game built from arrow logic
 
 <img src="xor.png" style="width:96px"/>
 
-<p>Now we have the basic gates we can combine them to make a simple adder</p>
+<p>Now we have the basic gates we can combine them to make a simple adder.</p>
 
 <h2>Adding Machine</h2>
 
@@ -89,7 +89,7 @@ description: Cellular-automata game built from arrow logic
 
 <img src="half_adder.png" style="width: 319px"/>
 
-<p>Right now we just built a half-adder where the input in missing a carry. We can fix that by adding that. Below is a way of doing that with two half adders and an or gate</p>
+<p>Right now we just built a half-adder where the input is missing a carry. We can fix that by adding that. Below is a way of doing that with two half adders and an or gate</p>
 
 <img src="full_adder_2.svg"/>
 
@@ -101,10 +101,10 @@ description: Cellular-automata game built from arrow logic
 
 <img src="4bit adder.png" />
 
-<p>I enjoyed making this and it was a fun challenge. I also learned lots. I hope to pick it up again and try again to make a simple computer. I sure everything could be much smaller and faster than it is. </p>
+<p>I enjoyed making this and it was a fun challenge. I also learned lots. I hope to pick it up again and try again to make a simple computer. I'm sure everything could be much smaller and faster than it is. </p>
 
 <p>The game logic runs in Rust with help from ggez; a window management, 2D graphics and event handling library. Written in rust allows for fast simulations of a large number of options. The Rust library is used through a C interface using ccfi in python.</p>
 
-<p>The Python side is where the arrows are being placed. A "Board" object is to rust to be displayed and run. In addition it contains higher level drafter, where more complex boards can be designed. Right now in the drafter, there is a topological function to arrange sub-blocks and a basic router for wires using breadth first search. Some of these I dropped but having the flexibility of trying different things quick is important</p>
+<p>The Python side is where the arrows are being placed. A "Board" object is sent to Rust to be displayed and run. In addition it contains higher level drafter, where more complex boards can be designed. Right now in the drafter, there is a topological function to arrange sub-blocks and a basic router for wires using breadth first search. Some of these I dropped but having the flexibility of trying different things quick is important</p>
 
-<p>If you would like to take a look and run it, it's avalible on <a href="https://github.com/lazydancer/Arrows">github</a></p>
+<p>If you would like to take a look and run it, it's available on <a href="https://github.com/lazydancer/Arrows">github</a></p>

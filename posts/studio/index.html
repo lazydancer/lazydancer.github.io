@@ -14,15 +14,15 @@ description: Static-site generator written in Haskell
     </a>
 </div>
 
-<p>Studio converts markdown file to organized html pages - having the flexibility to change templates and adding custom css and javascript. With static webpages - your site is fast, secure and easy to deploy</p>
+<p>Studio converts markdown files to organized HTML pages—having the flexibility to change templates and add custom CSS and JavaScript. With static webpages your site is fast, secure and easy to deploy.</p>
 
-<p>I built this program during summer 2014. The purpose of this program was to improve my Haskell knowledge and to start posting online. I tried other static site generators but found they didn't meet my needs</p>
+<p>I built this program during summer 2014. The purpose of this program was to improve my Haskell knowledge and to start posting online. I tried other static site generators but found they didn't meet my needs.</p>
 
 <p>At the time, I was having fun doing code golf, so I set a goal to create a static-site generator in 100 lines of Haskell. I reached my goal, sacrificing all of the readability. I later corrected that, adding spaces and expanding the equations.</p>
 
 <p>.md text files are the inputs to studio. I used markdown which is a standard so you can add titles, links and images. We take the titles in the text files and create a table of contents for a main page, generating a link for each article.</p>
 
-<p>Haskell is a functional language, I had to divide the functional vs the unfunctional real world. It is also a dense language, you can do a lot of modifications in a few lines of code compared to other languages. We divide this program into 3 steps</p>
+<p>Haskell is a functional language, so I had to separate pure functions from the parts that touch the real world. It is also a dense language; you can do a lot of modifications in a few lines of code compared to other languages. We divide this program into 3 steps.</p>
 
 <p>I made a data structure called Page which has the file path and date.</p>
 

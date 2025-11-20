@@ -53,7 +53,7 @@ o/@'%',\o
 '^^^N^^^`</code></pre>
 
 
-<p>Race to find the solution to problems as fast as you can using any language resource you can. I participated in Advent of Code since 2018, but unfortunately missed 2020.</p>
+<p>Race to find the solution to problems as fast as you can using any language resource you can. I have participated in Advent of Code since 2018, but unfortunately missed 2020.</p>
 
 <ul>
   <li><a href="#2019">2019</a></li>
@@ -84,9 +84,9 @@ o/@'%',\o
 
 <h3>Day 1: The Tyranny of the Rocket Equation</h3>
 
-<p>For Part 1, we simply need to divide each module weight by 3 and subtract 2. The only thing in my code that is unusually is the '//' which is an integer divide. It acts as a round down function.</p>
+<p>For Part 1, we simply need to divide each module weight by 3 and subtract 2. The only thing in my code that is unusual is the '//' which is an integer divide. It acts as a round down function.</p>
 
-<p>For Part 2, we need to account for the extra weight of the fuel. This is done with a while loop where it looks for values which would add more fuel. When the fuel get less than 8.9999... the result will be 0.</p>
+<p>For Part 2, we need to account for the extra weight of the fuel. This is done with a while loop where it looks for values which would add more fuel. When the fuel gets less than 8.9999... the result will be 0.</p>
 
 <p>The tyranny of the rocket equation relates to the ideal rocket equation. Which is interesting to derive. We have the follow the rule of conservation of momentum where the momentum in a closed system needs to remain constant.</p>
 
@@ -100,14 +100,14 @@ o/@'%',\o
 
 <p>Rearranging and integrating both sides with respect to time and knowing 1/x integrates to ln(x) and ln(a) - ln(b) = ln(a/b). Finds the ideal rocket equation.</p>
 
-<p>v_final - v_inital = v-exhaust * ln(m_inital / m_final)</p>
+<p>v_final - v_initial = v-exhaust * ln(m_initial / m_final)</p>
 
 <div id="2"></div>
 <h3>Day 2: 1202 Program Alarm</h3>
 
-<p>For part 1, we need a run program which would set the pointer every 4 numbers. This is done with a simple for loop but not robust if another size of jump is needed.</p>
+<p>For part 1, we need to run a program which would set the pointer every 4 numbers. This is done with a simple for loop but not robust if another size of jump is needed.</p>
 
-<p>For part 2, we iterate over the program to find when a result is a desired number. The inputs are changed till the result is given. With only 100 possible values for the two. Leads to only 10,000 combinations and since order matters we look at the permutations using the builtin itertools module.</p>
+<p>For part 2, we iterate over the program to find when a result is a desired number. The inputs are changed till the result is given. With only 100 possible values for the two. Leads to only 10,000 combinations and since order matters we look at the permutations using the built-in itertools module.</p>
 
 
 <div id="3"></div>
@@ -115,7 +115,7 @@ o/@'%',\o
 
 <p>This one was done in Rust</p>
 
-<p>For Part 1, we can find the path in which each wire takes, creating a vector of locations. Finding where the two wires interset is looking at where both wire end at a location. We can use a set data type to find the union, in this case a HashSet finding an intersection.</p>
+<p>For Part 1, we can find the path each wire takes, creating a vector of locations. Finding where the two wires intersect is looking at where both wires end at a location. We can use a set data type to find the union, in this case a HashSet finding an intersection.</p>
 
 <p>For Part 2, we look for the shortest manhattan distance along the path of the wires. </p>
 
@@ -130,16 +130,16 @@ o/@'%',\o
 <div id="5"></div>
 <h3>Day 5: Sunny with a Chance of Asteroids</h3>
 
-<p>Back to python</p>
+<p>Back to Python</p>
 
-<p>Part 1, Using the old code from day 2, we had to introduce a new functions like input and ouput. The INPUT variable I made a global constant</p>
+<p>Part 1, using the old code from day 2, we had to introduce new functions like input and output. The INPUT variable I made a global constant</p>
 
 <p>Part 2, even more functions were added and we needed to separate the pointer from the for loop and introduced more functions</p>
 
 <div id="6"></div>
 <h3>Day 6: Universal Orbit Map</h3>
 
-<p>For part 1, we can set up a map which looks at what planet it orbits. For each planet going down the chain to the base. Finding the base is done by taking the differnce between two sets. The 'guide' is a hashmap for really quick lookup values</p>
+<p>For part 1, we can set up a map which looks at what planet it orbits. For each planet going down the chain to the base. Finding the base is done by taking the difference between two sets. The 'guide' is a hashmap for really quick lookup values</p>
 
 <p>For part 2, we can find the path of YOU and SAN back to the base element and the paths will be common until a divergent step. Add up the remain elements that aren't common to find the paths between them.</p>
 
@@ -148,12 +148,12 @@ o/@'%',\o
 
 <p>For part 1, we can use the itertools library and use the permutations function to get the result of the max</p>
 
-<p>For part 2, I didn't get it done in the time I had. I think you need to keep the state of the program. I will come back to this, I will try to create a stateful ampifier class</p>
+<p>For part 2, I didn't get it done in the time I had. I think you need to keep the state of the program. I will come back to this; I will try to create a stateful amplifier class</p>
 
 <div id="8"></div>
 <h3>Day 8: Space Image Format</h3>
 
-<p>For part 1, we can split the transmission into different chunks and count the layer with the fews 0 by using the min and count function</p>
+<p>For part 1, we can split the transmission into different chunks and count the layer with the fewest 0 by using the min and count function</p>
 
 <p>For part 2, we just send to a function which returns 1 or 0 the first layer it sees them</p>
 
@@ -193,11 +193,11 @@ o/@'%',\o
 
 <p>The first number is the opcode, which could represent 1 of 16 operations, 'add', 'mul', 'mov'. The second and third were inputs and the forth was what register to use for the output.</p>
 
-<p>First, I wrote the code in python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it.</p>
+<p>First, I wrote the code in Python. It turned out way too slow, even with pypy and a better data structure. I got it down to 1/10th of the original but after 3 hours, I stopped it.</p>
 
 <p>To solve it, you need to watch how the elf code is being executed, find the pattern and simplify the logic. I was curious if this could be completed by running right on the hardware.</p>
 
-<p>Using an intermeddiate step to C, Below is a snippet of the assembly. ';' is a comment. The 'l01', 'l02', 'l03' and 'l07' are labels. For example the first command is jmp l17, which is jump to label l17.</p>
+<p>Using an intermediate step to C, below is a snippet of the assembly. ';' is a comment. The 'l01', 'l02', 'l03' and 'l07' are labels. For example the first command is jmp l17, which is jump to label l17.</p>
 
 <pre><code>
       jmp       l17           ;  L00: goto *jump_table[0+16+1]; //addi 3 16 3
@@ -215,7 +215,7 @@ l03:  mov       rax, r11      ;  L03: reg[5] = reg[1] * reg[2]; //mulr 1 2 5
 l07:  add       r10, r11      ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
 </code></pre>
 
-<p>In the end the assembly was not fast enough, even being roughly 20x faster than my original python implementation.</p>
+<p>In the end the assembly was not fast enough, even being roughly 20x faster than my original Python implementation.</p>
 
 <p>Along the way I learned x86-64 commands, registers, flags and jump commands. I also learned why assembly is not written. This code ran about as fast as the C code that I made but not being portable between different computers and being somewhat hard to follow. Below is the code to write a single character to the screen.</p>
 
@@ -235,7 +235,7 @@ l07:  add       r10, r11      ;  L07: reg[0] = reg[1] + reg[0]; //addr 1 0 0
 
 <h3> 2. Python Imports</h3>
 
-<p>Most of the time I avoid python imports, I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, dequeue. Also networkx for building networks and re for regular expressions</p>
+<p>Most of the time I avoid Python imports; I found the default data types do the job. During these challenges, I have come to love defaultdict, copy, deque. Also networkx for building networks and re for regular expressions</p>
 
 <p><strong>defaultdict</strong> - Having a set value for when nothing exist is a very useful feature</p>
 
@@ -245,14 +245,14 @@ print(somedict[3]) # KeyError
 someddict = defaultdict(int)
 print(someddict[3]) # print int(), thus 0</code></pre>
 
-<p><strong>copy</strong> - Because python calls list by reference this is useful to keep things functional</p>
+<p><strong>copy</strong> - Because Python calls list by reference this is useful to keep things functional</p>
 
 <pre><code>import copy
 copy.copy(x)
 copy.deepcopy(x)</code></pre>
 
 
-<p><strong>dequeue</strong> - A double-ended queue, this is useful for when rotation is needed with a rotate function</p>
+<p><strong>deque</strong> - A double-ended queue, useful for when rotation is needed with a rotate function</p>
 
 <pre><code>d = deque(xrange(10))
 d.rotate(2)</code></pre>

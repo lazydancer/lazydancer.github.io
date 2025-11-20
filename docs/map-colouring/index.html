@@ -36,14 +36,14 @@
   <main>
 <h1>Map Colouring</h1>
 
-<p>Map colouring is a puzzle where you assign different colours to different features ( in this case counties ) on a map with the goal of having no 2 colours share a border. It was first introduced in 1852 to determine the minimum number of colors when trying to colour a map of England. It was postulated that 4 colours were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</p>
+<p>Map colouring is a puzzle where you assign different colours to different features (in this case counties) on a map with the goal of having no 2 colours share a border. It was first introduced in 1852 to determine the minimum number of colours when trying to colour a map of England. It was postulated that 4 colours were the minimum number of colours to fill a map so that no regions sharing a common border had the same colour.</p>
 
 <img src="English_ceremonial_counties_1998.svg" style="max-width: 500px;" /> 
 
 
 <p>This problem is called the <a href="https://en.wikipedia.org/wiki/Four_color_theorem">Four color theorem</a> and was the first major theorem to be proved using a computer in 1976.</p>
 
-<p>You can represent the map as a graph, with the counties as nodes and the borders as connections. This type of problem can be generalized and used in other problems such as scheduling, register allocation and pattern matching.</p>
+<p>You can represent the map as a graph, with the counties as nodes and the borders as connections. This type of problem can be generalized and used in other problems such as scheduling, register allocation and pattern matching; these are all examples where graph colouring applies.</p>
 
 <h2 id="solving">Solving</h2>
 
@@ -64,13 +64,13 @@
 
 <h2 id="pick-most-connected">Pick most connected</h2>
 
-<p>Instead of trying every combination, lets order the way we select the nodes we colour. Starting from the node which has the most connections, choosing its colour and moving to the next, adding a new colour if neighbouring nodes used all the previous colors. This will run until all the colours are chosen</p>
+<p>Instead of trying every combination, let's order the way we select the nodes we colour. Starting from the node which has the most connections, choosing its colour and moving to the next, adding a new colour if neighbouring nodes used all the previous colours. This will run until all the colours are chosen</p>
 
 <p>This is so much faster! It is a greedy algorithm so it doesn't give us an optimal result, but the speed is important here. When you add a new node, it adds only a small amount of time and is close to linear.</p>
 
 <h2 id="saturation">Saturation</h2>
 
-<p>This method is very similar to the "most connected" but in this case the next node to select will update each time. When a node is colored the connected nodes are updated with a new saturation number. This saturation number tells how many different colors a node neighbours with. The other name for this algorithm is DSATUR and is a well known algorithm for completing this problem</p>
+<p>This method is very similar to the "most connected" but in this case the next node to select will update each time. When a node is coloured the connected nodes are updated with a new saturation number. This saturation number tells how many different colours a node neighbours with. The other name for this algorithm is DSATUR and is a well-known algorithm for completing this problem</p>
 
 <h2 id="continuing">Next...</h2>
 

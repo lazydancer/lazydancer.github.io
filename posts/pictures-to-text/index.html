@@ -16,18 +16,18 @@ description: Convert any image into text art
 
 <img src="cat_example.gif" />
 
-<p>A fun little weekend project, I created a program which converted a picture into text. To complete this I used jupyter notebook, found below. The code is available on <a href="https://github.com/lazydancer/pictotxt">github</a>.</p>
+<p>A fun little weekend project, I created a program which converted a picture into text. To complete this I used a Jupyter notebook, found below. The code is available on <a href="https://github.com/lazydancer/pictotxt">github</a>.</p>
 
 
 
-<p>The notebook contains 3 parts:</p>
+<p>The notebook contains three parts:</p>
 <ol>
   <li><strong>Image</strong> - Input image to be converted. It's chopped up into little bits.</li>
   <li><strong>Font</strong> - Input font. The characters are extracted as images.</li>
   <li><strong>Calc</strong> - the images and font characters are compared to find the best match</li>
 </ol>
 
-<p>First thing is import the image. As an example I use the finch. Most of the following code is to convert the image from a PIL array to numpy's 2D narray and use matplotlib plot function.</p>
+<p>First, import the image. As an example I use the finch. Most of the following code is to convert the image from a PIL array to a NumPy 2D array and use the matplotlib plot function.</p>
 
 <pre><code>def show_image(path):
     image = Image.open(path)
@@ -43,7 +43,7 @@ show_image('download.png')
 <img src="download (1).png" style="max-width: 500px;" /> 
 </div>
 
-<p>The next step is taking the imported image and converting it into character sized images. The heart of the following methods are the <strong>view_as_blocks</strong>. The function fails if there is an overlap with the  edge of the imported image. The function <strong>trim_image</strong> is there to remove the excess before it sent in to <strong>view_as_blocks</strong>. The result can be seen below.</p>
+<p>The next step is taking the imported image and converting it into character-sized images. The heart of the following methods is the <strong>view_as_blocks</strong>. The function fails if there is an overlap with the edge of the imported image. The function <strong>trim_image</strong> is there to remove the excess before it is sent to <strong>view_as_blocks</strong>. The result can be seen below.</p>
 
 <code>def trim_image(matrix, size_x, size_y):
     height, width = matrix.shape
