@@ -5,218 +5,218 @@ description: Route planner for EVE Online
 ---
 <h1 id="title">haul: Route Planner for EVE Online</h1>
 <div class="project-links">
-    <a class="github-icon" href="https://github.com/lazydancer/haul" aria-label="View haul on GitHub">
-        <svg aria-hidden="true" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"></path>
-        </svg>
-        <span>GitHub</span>
-    </a>
+<a class="github-icon" href="https://github.com/lazydancer/haul" aria-label="View haul on GitHub">
+<svg aria-hidden="true" viewBox="0 0 16 16">
+<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"></path>
+</svg>
+<span>GitHub</span>
+</a>
 </div>
 
 <p>
-    I built <strong>haul</strong> (Hyperspace Asset Unloading and Loading)
-    because EVE really is spreadsheets in space, and apparently my reaction to
-    that joke was to make a better spreadsheet. The game is just an excuse; the
-    real fun was gluing together a route planner that could out-nerd me when I am
-    tired and still in love with the tooling.
+I built <strong>haul</strong> (Hyperspace Asset Unloading and Loading)
+because EVE really is spreadsheets in space, and apparently, my reflex
+was to build a better spreadsheet. The game is just an excuse; the
+real fun was gluing together a route planner that could out-nerd me even when
+I'm tired but still in love with the tooling.
 </p>
 
 <p>
-    What started as a weekend experiment with a shortest-path library turned
-    into a playground for the parts of engineering I enjoy: modelling messy
-    systems, caching everything that moves, and feeding a frontend with data it
-    never expected. This write-up walks through the bits of haul that still make
-    me grin when I open the repo.
+What started as a weekend experiment with a shortest-path library turned
+into a playground for the parts of engineering I enjoy most: modelling messy
+systems, caching everything that moves, and feeding a frontend with data it
+never expected. This write-up walks through the bits of haul that still make
+me grin when I open the repo.
 </p>
 
 <h2>Making the map behave</h2>
 
 <p>
-    The core of haul is a navigation graph that refuses to stay abstract. I let
-    the <code>NavigationGraph</code> class soak up ship quirks, warp curves, and
-    my personal collection of "don't go there" systems. Instead of
-    showing raw distances, each edge is weighted by how it feels to fly it. Once
-    the graph learns those preferences I cache the resulting paths so the server
-    can answer questions instantly, even when I am spamming route requests out of
-    curiosity.
+The core of haul is a navigation graph that refuses to stay abstract. I let
+the <code>NavigationGraph</code> class soak up ship quirks, warp curves, and
+my personal collection of "don't go there" systems. Instead of
+showing raw distances, each edge is weighted by how it <em>feels</em> to fly it.
+Once the graph learns those preferences, I cache the resulting paths so the server
+can answer questions instantly-even when I am spamming route requests out of
+curiosity.
 </p>
 
 <p>
-    Working on this layer was equal parts math and playing whack-a-mole with
-    weird EVE map data. Stations that share a grid needed custom rules, stargate
-    hops deserved their own timing, and I slipped in logging that reads like a
-    travel diary when a route surprises me. It is how I test new ideas: change a
-    weight, watch the logs, tweak again.
+Working on this layer was equal parts math and playing whack-a-mole with
+weird EVE map data. Stations that share a grid needed custom rules and stargate
+hops deserved their own timing. I slipped in logging that reads like a
+travel diary when a route surprises me. It is how I test new ideas: change a
+weight, watch the logs, tweak again.
 </p>
 
 <h2>Keeping the pipes lively</h2>
 <p>
-    The backend leans on FastAPI because I wanted something snappy while I
-    experimented. Asynchronous calls pull market orders, solar-system metadata,
-    and whatever else the ESI API lets me touch that week. An asyncio pipeline
-    cleans that firehose: filter by cargo space, sanity-check prices, hand the
-    survivors to the pathfinder, and push the results over server-sent events to
-    React. If a good trade appears, the UI lights up without a single manual
-    refresh.
+The backend leans on FastAPI because I wanted something snappy while I
+experimented. Asynchronous calls pull market orders, solar-system metadata,
+and whatever else the ESI API lets me touch that week. An asyncio pipeline
+cleans that firehose: filtering by cargo space, sanity-checking prices, handing the
+survivors to the pathfinder, and pushing the results over server-sent events to
+React. If a good trade appears, the UI lights up without a single manual
+refresh.
 </p>
 
 <p>
-    I wrote a Rust sidecar for the hot path just to see if it would help, and it
-    stayed because the latency drop was obvious the second the market API started
-    sulking. More importantly, the rewrite forced me to tighten the data model so
-    the Python and Rust halves share exactly the same shape. The Rust service now
-    sits beside the main app, ready to take over whenever I want to stress-test
-    the pipeline.
+I wrote a Rust sidecar for the hot path as an experiment, but it earned its 
+keep immediately. The performance jump was undeniable; when the market API drags 
+its feet, the Rust service powers through the backlog in a way the Python loop 
+couldn't. Better yet, the rewrite acted as a sanity check: Rust’s strictness 
+forced me to align the data models perfectly across both languages. It now 
+handles the heavy computation, leaving Python to manage the orchestration.
 </p>
 
 <h2>Letting the code pick favourites</h2>
 <p>
-    My favourite loop lives in the pathfinder. It takes noisy trade matches,
-    filters out anything the graph cannot reach, asks how long the detour would
-    really take, and quietly throws away the ones that turn a profit only in my
-    imagination. The trimmed version looks like this:
+My favourite loop lives in the pathfinder. It takes noisy trade matches,
+filters out anything the graph cannot reach, asks how long the detour would
+really take, and quietly throws away the ones that turn a profit only in my
+imagination. The trimmed version looks like this:
 </p>
 
 <pre><code class="language-python">def pathfinder(order_matches, graph, ship):
-    order_matches = filter_order_matches_not_in_graph(order_matches, graph)
-    order_matches = filter_order_matches_same_region(order_matches, graph)
-    order_matches = calculate_net_profit(order_matches, graph, ship)
-    return [match for match in order_matches if match.net_profit and match.net_profit > 0]
+order_matches = filter_order_matches_not_in_graph(order_matches, graph)
+order_matches = filter_order_matches_same_region(order_matches, graph)
+order_matches = calculate_net_profit(order_matches, graph, ship)
+return [match for match in order_matches if match.net_profit and match.net_profit > 0]
 </code></pre>
 
 <p>
-    It is small, but it captures everything I wanted from haul: code that
-    quietly handles the bookkeeping so I can geek out about the next tweak. When
-    the logger announces that only three trades survived the gauntlet, I know the
-    tool did the thinking for me.
+It is small, but it captures everything I wanted from haul: code that
+handles the bookkeeping so I can geek out about the next tweak. When
+the logger announces that only three trades survived the gauntlet, I know the
+tool did the thinking for me.
 </p>
 
 <h2>Chasing optimal routes</h2>
 <p>
-    Once the trades are filtered, the real game is the route. The problem
-    snapped from "shortest path" into a gritty
-    <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">travelling salesman problem</a>
-    variant the moment I tried to thread buy-and-sell stations into a single
-    circuit. Haul only flies one ship, but the constraints (cargo limits,
-    wallet caps, detours with extra risk) make it feel like the single-vehicle
-    version of the
-    <a href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">vehicle routing problem</a>.
-    I ended up writing a scorer that compared every promising trade trio,
-    stitched together the shortest path between their stations, and let profit per
-    second decide what to keep.
+Once the trades are filtered, the real game is the route. The problem
+snapped from "shortest path" into a gnarly
+<a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">travelling salesman problem</a>
+variant the moment I tried to thread buy-and-sell stations into a single
+circuit. Haul only flies one ship, but the constraints (cargo limits,
+wallet caps, risky detours) make it feel like the single-vehicle
+version of the
+<a href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">vehicle routing problem</a>.
+I ended up writing a scorer that compares every promising trade trio,
+stitches together the shortest path between their stations, and lets "profit per
+second" decide what to keep.
 </p>
 
 <pre><code class="language-python">def route(trades: list[Trade], graph: Graph, ship: Ship) -> tuple[Optional[Route], Optional[dict]]:
-    trades.sort(
-        key=lambda trade: trade.gross_profit / (trade.from_price * trade.quantity)
-        if trade.from_price * trade.quantity > 0 else 0,
-        reverse=True
-    )
+trades.sort(
+key=lambda trade: trade.gross_profit / (trade.from_price * trade.quantity)
+if trade.from_price * trade.quantity > 0 else 0,
+reverse=True
+)
 
-    best_profit_rate = 0.0
-    best_route: Optional[Route] = None
-    best_route_info: Optional[dict] = None
-    seen_routes = set()
+best_profit_rate = 0.0
+best_route: Optional[Route] = None
+best_route_info: Optional[dict] = None
+seen_routes = set()
 
-    for trade in tqdm(trades[:MAX_TRADES_TO_CONSIDER], desc="Evaluating trades"):
-        route_stations = (ship.location, trade.from_station, trade.to_station)
-        if route_stations in seen_routes:
-            continue
-        seen_routes.add(route_stations)
+for trade in tqdm(trades[:MAX_TRADES_TO_CONSIDER], desc="Evaluating trades"):
+route_stations = (ship.location, trade.from_station, trade.to_station)
+if route_stations in seen_routes:
+continue
+seen_routes.add(route_stations)
 
-        optimized_trades = select_trades(list(route_stations), trades, ship)
-        total_profit = sum(t.gross_profit for t in optimized_trades)
-        if not optimized_trades or total_profit <= 0:
-            continue
+optimized_trades = select_trades(list(route_stations), trades, ship)
+total_profit = sum(t.gross_profit for t in optimized_trades)
+if not optimized_trades or total_profit <= 0:
+continue
 
-        try:
-            path = graph.shortest_path(ship.location, trade.from_station)[:-1]
-            path += graph.shortest_path(trade.from_station, trade.to_station)
-        except Exception as exc:
-            logger.error("Error finding path: %s", exc)
-            continue
+try:
+path = graph.shortest_path(ship.location, trade.from_station)[:-1]
+path += graph.shortest_path(trade.from_station, trade.to_station)
+except Exception as exc:
+logger.error("Error finding path: %s", exc)
+continue
 
-        risk = sum(graph.graph[u][v]["risk"] for u, v in zip(path, path[1:]))
-        transport_time = sum(graph.graph[u][v]["time"] for u, v in zip(path, path[1:]))
-        capital = getattr(ship, "ship_cost", 0.0) + sum(t.from_price * t.quantity for t in optimized_trades)
-        if transport_time == 0:
-            logger.warning("Transport time is zero, skipping this route to avoid division by zero.")
-            continue
+risk = sum(graph.graph[u][v]["risk"] for u, v in zip(path, path[1:]))
+transport_time = sum(graph.graph[u][v]["time"] for u, v in zip(path, path[1:]))
+capital = getattr(ship, "ship_cost", 0.0) + sum(t.from_price * t.quantity for t in optimized_trades)
+if transport_time == 0:
+logger.warning("Transport time is zero, skipping this route to avoid division by zero.")
+continue
 
-        net_profit = total_profit - risk * capital
-        profit_rate = net_profit / transport_time
-        if profit_rate &gt; best_profit_rate:
-            formatted_route = graph.formatted_route(path)
-            best_route = set_actions(formatted_route, optimized_trades)
-            best_route_info = {
-                "profit_rate": profit_rate,
-                "risk": risk,
-                "capital": capital,
-                "transport_time": transport_time,
-                "gross_profit": total_profit,
-                "net_profit": net_profit,
-            }
-            best_profit_rate = profit_rate
+net_profit = total_profit - risk * capital
+profit_rate = net_profit / transport_time
+if profit_rate &gt; best_profit_rate:
+formatted_route = graph.formatted_route(path)
+best_route = set_actions(formatted_route, optimized_trades)
+best_route_info = {
+"profit_rate": profit_rate,
+"risk": risk,
+"capital": capital,
+"transport_time": transport_time,
+"gross_profit": total_profit,
+"net_profit": net_profit,
+}
+best_profit_rate = profit_rate
 
-    return best_route, best_route_info
+return best_route, best_route_info
 </code></pre>
 
 <p>
-    That loop is greedy on purpose; it tosses bad candidates fast so I can
-    iterate on the scoring instead of waiting on combinatorics. It is not a full
-    VRP solver, but it pushed haul into a fun middle ground—quick enough for
-    real-time decisions and smart enough to side-eye profitable detours if they
-    risk my cargo or wallet. The next step on my wishlist is to sprinkle in more
-    heuristics so the planner can try alternate station permutations when the
-    market heats up.
+That loop is greedy on purpose; it tosses bad candidates fast so I can
+iterate on the scoring rather than waiting on combinatorics. It is not a full
+VRP solver, but it pushed haul into a fun middle ground—quick enough for
+real-time decisions and smart enough to side-eye profitable detours if they
+risk my cargo or wallet. The next step on my wishlist is to sprinkle in more
+heuristics so the planner can try alternate station permutations when the
+market heats up.
 </p>
 
 <p>
-    There is still plenty I want to play with--automated risk-map updates, a
-    fully Rust backend, maybe live route rewrites when markets drift--but the
-    current build already scratches the itch that started the project. haul is my
-    favourite kind of side project: the game stays a backdrop while the code gets
-    to be the main act.
+There is still plenty I want to play with—automated risk-map updates, a
+fully Rust backend, maybe live route rewrites when markets drift—but the
+current build already scratches the itch that started the project. haul is my
+favourite kind of side project: the game stays a backdrop while the code gets
+to be the main act.
 </p>
 
 <h2>For the nerds</h2>
 <p>
-    I like EVE because everything in space has to be built by someone, but I
-    love haul because it let me fiddle with that ecosystem on my terms. This was
-    never the path to infinite ISK; it was an excuse to automate away the boring
-    bits and keep the crunchy decisions.
+I like EVE because everything in space has to be built by someone, but I
+love haul because it let me fiddle with that ecosystem on my terms. This was
+never the path to infinite ISK; it was an excuse to automate away the boring
+bits and keep the crunchy decisions.
 </p>
 
 <p>
-    I flew a Sunesis almost exclusively for these runs. Low-volume, high-value
-    loot made more sense than hauling mountains of tritanium, so most nights were
-    spent sweeping the regions around The Forge and quietly feeding Jita. Fire
-    sales were my favourite targets. Some players would sell items at low prices 
-    and haul would flag them before the market bots woke up. I tuned
-    for align time and warp speed, then bolted on just enough armour to shrug off
-    the stray smart bombs that would have vaporized a lesser frigate. Two-second
-    align, roughly seven AU per second, about seven hundred cubic metres of cargo
-    space: nerd stats, but they mattered.
+I flew a Sunesis almost exclusively for these runs. Low-volume, high-value
+loot made more sense than hauling mountains of tritanium, so most nights were
+spent sweeping the regions around The Forge and quietly feeding Jita. Fire
+sales were my favourite targets; some players would sell items at rock-bottom
+prices and haul would flag them before the market bots woke up. I tuned
+for align time and warp speed, then bolted on just enough armour to shrug off
+the stray smart bombs that would have vaporized a lesser frigate. Two-second
+align, roughly seven AU per second, about 700m³ of cargo space: nerd stats,
+but they mattered.
 </p>
 
 <p>
-    Risk calculations mixed whatever I was carrying with how sketchy the route
-    felt. The classic choice between Jita and Amarr was either the spicy five
-    minute sprint through Ahbazon or the sensible fifteen minute detour. With
-    twenty million ISK in the hold I usually gambled; with two hundred million I
-    let the planner nudge me toward the scenic route.
+Risk calculations weighed whatever I was carrying against how sketchy the route
+felt. The classic choice between Jita and Amarr was either the spicy five-minute
+sprint through Ahbazon or the sensible fifteen-minute detour. With
+20 million ISK in the hold, I usually gambled; with 200 million, I
+let the planner nudge me toward the scenic route.
 </p>
 
 <p>
-    I kept mostly to high-sec, dipped into low-sec when the rewards
-    were silly, and only daydreamed about null-sec after reading killmails that
-    told me I would not make it home. On the rare occasions I needed to move a
-    freighter's worth of items, PushX got the contract. There is something
-    thrilling about watching a courier move everything you own while your
-    monitoring script quietly refreshes in the background.
+I kept mostly to high-sec, dipped into low-sec when the rewards
+were silly, and only daydreamed about null-sec after reading killmails that
+told me I would not make it home. On the rare occasions I needed to move a
+freighter's worth of items, PushX got the contract. There is something
+thrilling about watching a courier move everything you own while your
+monitoring script quietly refreshes in the background.
 </p>
 
 <p>
-    So yes, the theme was always the same: move everything to Jita, but do it
-    with enough automation that the space spreadsheets finally felt like play.
+So yes, the theme was always the same: move everything to Jita, but do it
+with enough automation that the space spreadsheets finally felt like play.
 </p>
